@@ -12,7 +12,6 @@ config_version=5
 
 config/name="I Am Hotdog"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
 
 [physics]
 
