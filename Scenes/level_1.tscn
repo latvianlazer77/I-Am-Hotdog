@@ -1,3 +1,22 @@
 [gd_scene format=3 uid="uid://5oru3gp11abv"]
 
-[node name="Level 1" type="Node3D" unique_id=352209607]
+[ext_resource type="PackedScene" uid="uid://cputujhy586ph" path="res://Scenes/hotdog.tscn" id="2_xfk5q"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_qqy1o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vk57k"]
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=2140822501]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1681166699]
+shape = SubResource("WorldBoundaryShape3D_qqy1o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1780980167]
+transform = Transform3D(12.086277, 0, 0, 0, -0.3847207, -0.6320648, 0, 22.722473, -0.010701671, 0, -0.3950982, 0)
+mesh = SubResource("BoxMesh_vk57k")
+
+[node name="Hotdog" parent="." unique_id=1790327959 instance=ExtResource("2_xfk5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.968382, 1.347547, -8.47961)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=817100224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.042511, 0)
