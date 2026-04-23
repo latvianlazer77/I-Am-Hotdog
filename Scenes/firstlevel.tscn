@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://05fe4f420hv6"]
+
+[ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/game_manager.tscn" id="1_sqyb0"]
+[ext_resource type="PackedScene" uid="uid://5oru3gp11abv" path="res://Scenes/level_1.tscn" id="2_x5xfh"]
+[ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/spawn_point.tscn" id="3_ehyua"]
+[ext_resource type="PackedScene" uid="uid://cputujhy586ph" path="res://Scenes/hotdog.tscn" id="4_qc3lj"]
+[ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/hud.tscn" id="5_klft6"]
+[ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/finish_zone.tscn" id="6_x5xfh"]
+[ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/kill_zone.tscn" id="7_ehyua"]
+
+[node name="Node3D" type="Node3D" unique_id=1028082395]
+
+[node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_sqyb0")]
+
+[node name="StaticBody3D" parent="GameManager" unique_id=2140822501 instance=ExtResource("2_x5xfh")]
+
+[node name="SpawnPoint" parent="GameManager" unique_id=1033269942 instance=ExtResource("3_ehyua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1416283, 2.1759934, -5.532711)
+
+[node name="Hotdog" parent="GameManager" unique_id=1790327959 instance=ExtResource("4_qc3lj")]
+
+[node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("5_klft6")]
+
+[node name="KillZone" parent="GameManager" unique_id=1199234586 instance=ExtResource("7_ehyua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9091444, 0)
+
+[node name="FinishZone" parent="GameManager" unique_id=631311601 instance=ExtResource("6_x5xfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.006612, 13.740154, 30.968235)

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b33mgi44mkbk0"]
+
+[ext_resource type="Script" uid="uid://cfg6foysnuj8" path="res://Scripts/hud.gd" id="1_e0onf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1630524627]
+script = ExtResource("1_e0onf")
+
+[node name="Control" type="Control" parent="." unique_id=639483419]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimerLabel" type="Label" parent="Control" unique_id=1800991042]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

@@ -1,8 +1,10 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
-const GRAVITY = -9.8
+const SPEED = 10.0
+const GRAVITY = -20.0
 const MOUSE_SENSITIVITY = 0.003
+const ACCELERATION = 3.0
+const FRICTION = 2.0
 
 @onready var camera_pivot = $CameraPivot
 
@@ -11,9 +13,7 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		# Rotate the hotdog body left/right with mouse
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		# Tilt camera up/down only
 		camera_pivot.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, -0.8, 0.6)
 
@@ -26,14 +26,20 @@ func _physics_process(delta):
 
 	var input_dir = Vector3.ZERO
 	if Input.is_action_pressed("move_forward"):
-		input_dir -= transform.basis.z
+		input_dir += camera_pivot.global_transform.basis.z
 	if Input.is_action_pressed("move_back"):
-		input_dir += transform.basis.z
+		input_dir -= camera_pivot.global_transform.basis.z
 
 	input_dir.y = 0
 	input_dir = input_dir.normalized()
 
-	velocity.x = input_dir.x * SPEED
-	velocity.z = input_dir.z * SPEED
+	var target_velocity = input_dir * SPEED
+	if input_dir.length() > 0.1:
+		velocity.x = lerp(velocity.x, target_velocity.x, ACCELERATION * delta)
+		velocity.z = lerp(velocity.z, target_velocity.z, ACCELERATION * delta)
+		$Sausage.rotate_x(SPEED * delta * 3.0)
+	else:
+		velocity.x = lerp(velocity.x, 0.0, FRICTION * delta)
+		velocity.z = lerp(velocity.z, 0.0, FRICTION * delta)
 
 	move_and_slide()
