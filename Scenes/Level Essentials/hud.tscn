@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b33mgi44mkbk0"]
+
+[ext_resource type="Script" uid="uid://cfg6foysnuj8" path="res://Scripts/hud.gd" id="1_e0onf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1630524627]
+script = ExtResource("1_e0onf")
+
+[node name="Timer" type="Control" parent="." unique_id=639483419]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimerLabel" type="Label" parent="Timer" unique_id=1800991042]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LevelCompletePopup" type="ColorRect" parent="." unique_id=85160857]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.26293245, 0.26293245, 0.26293245, 1)
+
+[node name="Panel" type="Panel" parent="LevelCompletePopup" unique_id=1831983287]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 642.0
+
+[node name="TitleLabel" type="Label" parent="LevelCompletePopup" unique_id=1783303389]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 57.0
+offset_right = 631.0
+offset_bottom = 93.0
+text = "Level Complete"
+horizontal_alignment = 1
+
+[node name="MedalLabel" type="Label" parent="LevelCompletePopup" unique_id=1204921433]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 92.0
+offset_right = 595.0
+offset_bottom = 115.0
+text = "Medal:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="LevelCompletePopup" unique_id=2121598093]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 404.0
+offset_right = 637.0
+offset_bottom = 467.0
+text = "Play Again"
+
+[node name="MainMenuButton" type="Button" parent="LevelCompletePopup" unique_id=1519334500]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 280.0
+offset_right = 656.0
+offset_bottom = 363.0
+text = "Main Menu"
+
+[node name="NewBestLabel" type="Label" parent="LevelCompletePopup" unique_id=764101572]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 183.0
+offset_right = 608.0
+offset_bottom = 232.0
+text = "New BEST!!
+"
+
+[node name="BestTimeLabel" type="Label" parent="LevelCompletePopup" unique_id=1520134551]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 148.0
+offset_right = 603.0
+offset_bottom = 171.0
+text = "Best Time:"

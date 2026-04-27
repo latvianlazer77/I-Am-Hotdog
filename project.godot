@@ -13,6 +13,10 @@ config_version=5
 config/name="I Am Hotdog"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+SaveData="*uid://b1a7md74sjemg"
+
 [filesystem]
 
 import/blender/enabled=false

@@ -1,7 +1,10 @@
-extends Node3D
+extends Area3D
 
-signal level_complete(medal: String, time: float)
+signal level_complete
+
+func _ready():
+	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):
-	if body.name == "Player":
+	if body is CharacterBody3D:
 		emit_signal("level_complete")

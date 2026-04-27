@@ -20,14 +20,21 @@ func _process(delta):
 
 func _on_level_complete():
 	running = false
-	print(get_medal())
+	player.set_physics_process(false)
+	player.set_process_input(false)
+	var level_name = get_tree().current_scene.name
+	var is_new_best = false
+	var best = SaveData.get_best_time(level_name)
+	if time_elapsed < best:
+		SaveData.save_best_time(level_name, time_elapsed)
+		is_new_best = true
+	hud.show_complete(get_medal(), get_time_string(), is_new_best, format_time(best))
 
 func _on_player_died():
 	player.global_position = spawn_point.global_position
 	player.velocity = Vector3.ZERO
-	time_elapsed = 0.0
 
-func get_medal():
+func get_medal() -> String:
 	if time_elapsed < 45.0:
 		return "GOLD"
 	elif time_elapsed < 60.0:
@@ -35,8 +42,13 @@ func get_medal():
 	else:
 		return "BRONZE"
 
-func get_time_string():
-	var minutes = int(time_elapsed) / 60
-	var seconds = int(time_elapsed) % 60
-	var milliseconds = int(fmod(time_elapsed, 1.0) * 100)
+func get_time_string() -> String:
+	return format_time(time_elapsed)
+
+func format_time(t: float) -> String:
+	if t == INF:
+		return "--:--.--"
+	var minutes = int(t) / 60
+	var seconds = int(t) % 60
+	var milliseconds = int(fmod(t, 1.0) * 100)
 	return "%02d:%02d.%02d" % [minutes, seconds, milliseconds]

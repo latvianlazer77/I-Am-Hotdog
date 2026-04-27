@@ -5,9 +5,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_pum2t"]
 size = Vector3(4.2216187, 2.1538086, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_pum2t"]
+
 [node name="FinishZone" type="Area3D" unique_id=631311601]
 script = ExtResource("1_pum2t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=126553402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2359314, 0.5769043, 0)
 shape = SubResource("BoxShape3D_pum2t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1122930991]
+transform = Transform3D(4.1007833, 0, 0, 0, 1.9714975, 0, 0, 0, 1, -0.22503293, 0.553488, 0.0009849072)
+mesh = SubResource("BoxMesh_pum2t")
