@@ -28,6 +28,9 @@ func _on_level_complete():
 	if time_elapsed < best:
 		SaveData.save_best_time(level_name, time_elapsed)
 		is_new_best = true
+	var level_num = level_name.replace("level_", "").to_int()
+	var next_level = "level_" + str(level_num + 1)
+	SaveData.unlock_level(next_level)
 	hud.show_complete(get_medal(), get_time_string(), is_new_best, format_time(best))
 
 func _on_player_died():

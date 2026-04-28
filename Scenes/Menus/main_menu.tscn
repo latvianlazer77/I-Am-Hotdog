@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://mti31cs3ao5w"]
+
+[ext_resource type="Script" uid="uid://cayh4jd5fa8ak" path="res://Scripts/main_menu.gd" id="1_38aua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
+bg_color = Color(0.67058825, 0.08627451, 0, 1)
+
+[node name="Main Menu" type="Control" unique_id=385628862]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_38aua")
+
+[node name="Panel" type="Panel" parent="." unique_id=258227166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1110717601]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -78.25
+offset_right = 80.0
+offset_bottom = 78.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 19
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1791489844]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=1536449966]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=293257403]
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsPopup" type="ColorRect" parent="." unique_id=1295113986]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3180198, 0.31801978, 0.31801975, 1)
+
+[node name="Panel" type="Panel" parent="OptionsPopup" unique_id=1492369190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="OptionsPopup" unique_id=1610232895]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.47700003
+anchor_top = 0.437
+anchor_right = 0.47700003
+anchor_bottom = 0.437
+offset_left = 25.495972
+offset_top = -23.175995
+offset_right = 53.99597
+offset_bottom = -0.17599487
+grow_horizontal = 2
+text = "boi"
+
+[node name="CloseButton" type="Button" parent="OptionsPopup" unique_id=1501792278]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 481.0
+offset_right = 717.0
+offset_bottom = 585.0
+theme_override_font_sizes/font_size = 31
+text = "Close"
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1594832312]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_right = 108.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "I Am Hotdog"

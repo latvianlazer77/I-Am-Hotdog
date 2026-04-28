@@ -30,53 +30,93 @@ offset_right = 1158.0
 offset_bottom = 642.0
 
 [node name="TitleLabel" type="Label" parent="LevelCompletePopup" unique_id=1783303389]
-layout_mode = 0
-offset_left = 502.0
-offset_top = 57.0
-offset_right = 631.0
-offset_bottom = 93.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 50.0
+offset_right = 89.0
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
 text = "Level Complete"
 horizontal_alignment = 1
 
 [node name="MedalLabel" type="Label" parent="LevelCompletePopup" unique_id=1204921433]
-layout_mode = 0
-offset_left = 542.0
-offset_top = 92.0
-offset_right = 595.0
-offset_bottom = 115.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -229.5
+offset_right = 26.5
+offset_bottom = -206.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Medal:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayAgainButton" type="Button" parent="LevelCompletePopup" unique_id=2121598093]
-layout_mode = 0
-offset_left = 498.0
-offset_top = 404.0
-offset_right = 637.0
-offset_bottom = 467.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.5
+offset_top = -249.0
+offset_right = 69.5
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Play Again"
 
 [node name="MainMenuButton" type="Button" parent="LevelCompletePopup" unique_id=1519334500]
-layout_mode = 0
-offset_left = 474.0
-offset_top = 280.0
-offset_right = 656.0
-offset_bottom = 363.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -41.5
+offset_right = 91.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Main Menu"
 
 [node name="NewBestLabel" type="Label" parent="LevelCompletePopup" unique_id=764101572]
-layout_mode = 0
-offset_left = 522.0
-offset_top = 183.0
-offset_right = 608.0
-offset_bottom = 232.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -153.5
+offset_right = 43.0
+offset_bottom = -104.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "New BEST!!
 "
 
 [node name="BestTimeLabel" type="Label" parent="LevelCompletePopup" unique_id=1520134551]
-layout_mode = 0
-offset_left = 522.0
-offset_top = 148.0
-offset_right = 603.0
-offset_bottom = 171.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -188.5
+offset_right = 40.5
+offset_bottom = -165.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Best Time:"
