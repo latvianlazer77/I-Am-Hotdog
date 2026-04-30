@@ -1,17 +1,33 @@
 extends CanvasLayer
 
-@onready var timer_label = $Timer/TimerLabel
+@onready var timer_label = $TimerLabel
 @onready var popup = $LevelCompletePopup
 @onready var medal_label = $LevelCompletePopup/MedalLabel
 @onready var new_best_label = $LevelCompletePopup/NewBestLabel
 @onready var best_time_label = $LevelCompletePopup/BestTimeLabel
 @onready var play_again = $LevelCompletePopup/PlayAgainButton
-@onready var main_menu = $LevelCompletePopup/MainMenuButton
+@onready var main_menu_button = $LevelCompletePopup/MainMenuButton
+@onready var pause_menu = $PauseMenu
 
 func _ready():
 	popup.visible = false
 	play_again.pressed.connect(_on_play_again)
-	main_menu.pressed.connect(_on_main_menu)
+	main_menu_button.pressed.connect(_on_main_menu)
+	pause_menu.resumed.connect(_on_resumed)
+	pause_menu.paused.connect(_on_paused)
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel") and not popup.visible:
+		if pause_menu.visible:
+			pause_menu.hide_pause()
+		else:
+			pause_menu.show_pause()
+
+func _on_paused():
+	pass
+
+func _on_resumed():
+	pass
 
 func update_timer(time_string: String):
 	timer_label.text = time_string
@@ -37,4 +53,4 @@ func _on_play_again():
 
 func _on_main_menu():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menus/main_menu.tscn")

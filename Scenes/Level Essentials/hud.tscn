@@ -1,20 +1,10 @@
 [gd_scene format=3 uid="uid://b33mgi44mkbk0"]
 
 [ext_resource type="Script" uid="uid://cfg6foysnuj8" path="res://Scripts/hud.gd" id="1_e0onf"]
+[ext_resource type="PackedScene" uid="uid://crsk1y3ecnlwb" path="res://Scenes/Menus/pause_menu.tscn" id="2_4qu8c"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1630524627]
 script = ExtResource("1_e0onf")
-
-[node name="Timer" type="Control" parent="." unique_id=639483419]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TimerLabel" type="Label" parent="Timer" unique_id=1800991042]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [node name="LevelCompletePopup" type="ColorRect" parent="." unique_id=85160857]
 anchors_preset = 15
@@ -120,3 +110,9 @@ offset_bottom = -165.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Best Time:"
+
+[node name="PauseMenu" parent="." unique_id=299789172 instance=ExtResource("2_4qu8c")]
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1800991042]
+offset_right = 40.0
+offset_bottom = 23.0

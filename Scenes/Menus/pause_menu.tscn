@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://crsk1y3ecnlwb"]
+
+[ext_resource type="Script" uid="uid://bxeifcub23ef6" path="res://Scripts/pause_menu.gd" id="1_as6yf"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=299789172]
+script = ExtResource("1_as6yf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1183756177]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19793725, 0.19793725, 0.19793719, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1486112811]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 649.0
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="ColorRect/VBoxContainer" unique_id=282151389]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 52
+text = "PAUSED
+"
+
+[node name="ResumeButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=1932705498]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=932934513]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=789630888]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "   Quit   "
+
+[node name="OptionsPopup" type="ColorRect" parent="ColorRect" unique_id=88506330]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20511743, 0.20511743, 0.20511743, 1)
+
+[node name="Options" type="Label" parent="ColorRect/OptionsPopup" unique_id=20986924]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.5
+offset_right = 95.5
+offset_bottom = 141.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Options
+"
+
+[node name="CloseButton" type="Button" parent="ColorRect/OptionsPopup" unique_id=1936187832]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = 134.0
+offset_right = 43.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Close"

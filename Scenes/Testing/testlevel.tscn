@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_7cfhn"]
 [ext_resource type="PackedScene" uid="uid://5oru3gp11abv" path="res://Scenes/Levels/level_1.tscn" id="2_jf7v8"]
 [ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="3_lnvd4"]
-[ext_resource type="PackedScene" uid="uid://cputujhy586ph" path="res://Scenes/Level Essentials/hotdog.tscn" id="4_k5jnp"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_pwbg4"]
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="6_p8bes"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="7_txr35"]
+[ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="7_wmfn8"]
+[ext_resource type="PackedScene" uid="uid://c20kqjw6uldj3" path="res://Scenes/Testing/testramp.tscn" id="8_wmfn8"]
 
 [node name="Node3D" type="Node3D" unique_id=1028082395]
 
@@ -17,8 +18,6 @@
 [node name="SpawnPoint" parent="GameManager" unique_id=1033269942 instance=ExtResource("3_lnvd4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1416283, 2.1759934, -5.532711)
 
-[node name="Player" parent="GameManager" unique_id=1790327959 instance=ExtResource("4_k5jnp")]
-
 [node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("5_pwbg4")]
 
 [node name="KillZone" parent="GameManager" unique_id=1199234586 instance=ExtResource("6_p8bes")]
@@ -26,3 +25,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9091444, 0)
 
 [node name="FinishZone" parent="GameManager" unique_id=631311601 instance=ExtResource("7_txr35")]
 transform = Transform3D(3.0038, 0, 0, 0, 2.1642072, 0, 0, 0, 1, 0.13444686, 16.873917, 29.232197)
+
+[node name="Player" parent="GameManager" unique_id=94560684 instance=ExtResource("7_wmfn8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5139399, 1.2829967, -1.9966252)
+
+[node name="StaticBody3D" parent="." unique_id=835522195 instance=ExtResource("8_wmfn8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8363819, -9.536743e-07, -1.9577007)

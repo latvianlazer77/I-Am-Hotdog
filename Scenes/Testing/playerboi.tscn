@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bs24h6wyqdntj"]
+
+[ext_resource type="PackedScene" uid="uid://cputujhy586ph" path="res://Scenes/Level Essentials/hotdog.tscn" id="1_nab2i"]
+
+[node name="Playerboi" unique_id=1790327959 instance=ExtResource("1_nab2i")]
