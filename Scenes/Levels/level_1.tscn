@@ -1,3 +1,56 @@
 [gd_scene format=3 uid="uid://5oru3gp11abv"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_seteq"]
+flip_faces = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_tlcug"]
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_4dpyx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3mqfk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iixi8"]
+
 [node name="Level1" type="Node3D" unique_id=1124862916]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1932813551]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=777753265]
+transform = Transform3D(16.916111, 0, 0, 0, 5.8843265, 0, 0, 0, 10.666513, -0.12745523, 0, -0.61763287)
+mesh = SubResource("BoxMesh_seteq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=1512645222]
+transform = Transform3D(5.6306515, 0, 0, 0, 0.19372714, 0, 0, 0, 1.2692358, -0.20699978, -0.6162782, 4.08082)
+mesh = SubResource("BoxMesh_tlcug")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="StaticBody3D" unique_id=410356498]
+transform = Transform3D(4.406652, 0, 0, 0, 0.19372714, 0, 0, 0, 1.2692358, -6.4082046, -0.6162782, 4.08082)
+mesh = SubResource("BoxMesh_tlcug")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D" unique_id=20395874]
+transform = Transform3D(0.050035328, 0, 0, 0, 0.2177864, 0.027503602, 0, -0.106786735, 0.056092266, -3.563607, -0.4432154, 4.6376863)
+mesh = SubResource("TubeTrailMesh_4dpyx")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D" unique_id=2031118306]
+transform = Transform3D(0.050035324, 0, 0, 0, 0.02710576, 0.039599985, 0, -0.18256742, 0.0058793956, -3.562692, -0.3280903, 4.519264)
+mesh = SubResource("TubeTrailMesh_4dpyx")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D" unique_id=1960669828]
+transform = Transform3D(1.4179149, 0, 0, 0, 0.06842202, 0, 0, 0, 1.238116, -3.73019, -0.5837132, 4.098732)
+mesh = SubResource("BoxMesh_3mqfk")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="StaticBody3D" unique_id=1103093359]
+transform = Transform3D(1.2078732, 0, 0, 0, 0.015224517, 0, 0, 0, 0.022184724, -3.6068337, -0.54044825, 3.4846408)
+mesh = SubResource("BoxMesh_iixi8")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="StaticBody3D" unique_id=1805795576]
+transform = Transform3D(1.2078732, 0, 0, 0, 0.015224517, 0, 0, 0, 0.06894217, -3.6068337, -0.54044825, 4.6799855)
+mesh = SubResource("BoxMesh_iixi8")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="StaticBody3D" unique_id=1821923873]
+transform = Transform3D(-0.0013491735, 0, -0.068942115, 0, 0.015224516, 0, 1.2078725, 0, -7.7007455e-05, -3.0549638, -0.54044825, 4.0838604)
+mesh = SubResource("BoxMesh_iixi8")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="StaticBody3D" unique_id=853801430]
+transform = Transform3D(-0.0013491735, 0, -0.068942115, 0, 0.015224516, 0, 1.2078725, 0, -7.7007455e-05, -4.1742187, -0.54044825, 4.0838604)
+mesh = SubResource("BoxMesh_iixi8")
