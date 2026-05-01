@@ -22,15 +22,18 @@ func _process(delta):
 
 func _on_paused():
 	running = false
-	player.freeze = true
+	player.set_physics_process(false)
+	player.set_process_input(false)
 
 func _on_resumed():
 	running = true
-	player.freeze = false
+	player.set_physics_process(true)
+	player.set_process_input(true)
 
 func _on_level_complete():
 	running = false
-	player.freeze = true
+	player.set_physics_process(false)
+	player.set_process_input(false)
 	var level_name = get_tree().current_scene.name
 	var is_new_best = false
 	var best = SaveData.get_best_time(level_name)
@@ -43,9 +46,8 @@ func _on_level_complete():
 	hud.show_complete(get_medal(), get_time_string(), is_new_best, format_time(best))
 
 func _on_player_died():
-	player.linear_velocity = Vector3.ZERO
-	player.angular_velocity = Vector3.ZERO
 	player.global_position = spawn_point.global_position
+	player.velocity = Vector3.ZERO
 
 func get_medal() -> String:
 	if time_elapsed < 45.0:

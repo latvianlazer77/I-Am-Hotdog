@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cuphd1s4dvmy4"]
 
 [ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_7cfhn"]
-[ext_resource type="PackedScene" uid="uid://5oru3gp11abv" path="res://Scenes/Levels/level_1.tscn" id="2_jf7v8"]
 [ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="3_lnvd4"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_pwbg4"]
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="6_p8bes"]
@@ -13,15 +12,13 @@
 
 [node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_7cfhn")]
 
-[node name="StaticBody3D" parent="GameManager" unique_id=2140822501 instance=ExtResource("2_jf7v8")]
-
 [node name="SpawnPoint" parent="GameManager" unique_id=1033269942 instance=ExtResource("3_lnvd4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1416283, 2.1759934, -5.532711)
 
 [node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("5_pwbg4")]
 
 [node name="KillZone" parent="GameManager" unique_id=1199234586 instance=ExtResource("6_p8bes")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9091444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0452108, -4.9091444, 0)
 
 [node name="FinishZone" parent="GameManager" unique_id=631311601 instance=ExtResource("7_txr35")]
 transform = Transform3D(3.0038, 0, 0, 0, 2.1642072, 0, 0, 0, 1, 0.13444686, 16.873917, 29.232197)
