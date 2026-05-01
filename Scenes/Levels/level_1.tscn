@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://5oru3gp11abv"]
 
-[ext_resource type="PackedScene" uid="uid://cputujhy586ph" path="res://Scenes/Level Essentials/hotdog.tscn" id="1_tlcug"]
+[ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="1_tlcug"]
+[ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_xgxfi"]
+[ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="2_5f3p6"]
+[ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="4_jv26f"]
+[ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_rb0md"]
+[ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="6_u5ghp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_seteq"]
 flip_faces = true
@@ -42,7 +47,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rb0md"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[node name="Level1" type="Node3D" unique_id=1124862916]
+[node name="Level_1" type="Node3D" unique_id=1124862916]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1932813551]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
@@ -130,5 +135,18 @@ shape = SubResource("ConcavePolygonShape3D_rb0md")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=959646904]
 transform = Transform3D(-0.33609277, 0, 0.9418289, 0, 1, 0, -0.9418289, 0, -0.33609277, 3.2405944, 0.61007786, 2.7463698)
 
-[node name="Player" parent="." unique_id=1790327959 instance=ExtResource("1_tlcug")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0444689, -10.936236, 141.60403)
+[node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_xgxfi")]
+
+[node name="SpawnPoint" parent="GameManager" unique_id=1033269942 instance=ExtResource("2_5f3p6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 124.71222)
+
+[node name="Player" parent="GameManager" unique_id=2768484 instance=ExtResource("1_tlcug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46521, -9.935677, 128.36523)
+
+[node name="KillZone" parent="GameManager" unique_id=1199234586 instance=ExtResource("4_jv26f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -44.554478, 108.2054)
+
+[node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("5_rb0md")]
+
+[node name="FinishZone" parent="GameManager" unique_id=631311601 instance=ExtResource("6_u5ghp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -230.90935, -14.705885, 121.65426)
