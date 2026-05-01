@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="6_p8bes"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="7_txr35"]
 [ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="7_wmfn8"]
+[ext_resource type="PackedScene" uid="uid://c5061p0p8o4kd" path="res://Scenes/Level Essentials/ice_zone.tscn" id="8_4sve1"]
 [ext_resource type="PackedScene" uid="uid://c20kqjw6uldj3" path="res://Scenes/Testing/testramp.tscn" id="8_wmfn8"]
 
 [node name="Node3D" type="Node3D" unique_id=1028082395]
@@ -28,3 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5139399, 1.2829967, -1.9966
 
 [node name="StaticBody3D" parent="." unique_id=835522195 instance=ExtResource("8_wmfn8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8363819, -9.536743e-07, -1.9577007)
+
+[node name="IceZone" parent="." unique_id=1123099129 instance=ExtResource("8_4sve1")]
+transform = Transform3D(12.897729, 0, 0, 0, 4.994009, 0, 0, 0, 17.558617, -7.356434, 0, 5.807094)

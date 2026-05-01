@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c5061p0p8o4kd"]
+
+[ext_resource type="Script" uid="uid://bglpbkg8nkw0v" path="res://ice_zone.gd" id="1_iccud"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0p2yu"]
+size = Vector3(0.9930725, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iccud"]
+
+[node name="IceZone" type="Area3D" unique_id=1123099129]
+script = ExtResource("1_iccud")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=706814819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67481995, 0, 0)
+shape = SubResource("BoxShape3D_0p2yu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2093847851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66230714, 0, 0)
+mesh = SubResource("BoxMesh_iccud")
