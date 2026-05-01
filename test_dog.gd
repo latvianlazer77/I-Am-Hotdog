@@ -1,28 +1,28 @@
-extends RigidBody3D
+extends CharacterBody3D
 
-const SPEED = 50.0
+const MAX_SPEED = 20.0
+const MIN_SPEED = 3.0
+const GRAVITY = -20.0
 const MOUSE_SENSITIVITY = 0.003
-const WOBBLE_STRENGTH = 3.0
-const WOBBLE_SPEED = 3.0
+const ACCELERATION = 0.5
+const FRICTION = 1.5
 
 @onready var camera_pivot = $CameraPivot
 
-var wobble_time = 0.0
-var target_rotation_y = 0.0
+var current_speed = 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		target_rotation_y -= event.relative.x * MOUSE_SENSITIVITY
+		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		camera_pivot.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, -0.8, 0.6)
 
 func _physics_process(delta):
-	# Apply Y rotation manually since RigidBody3D blocks direct rotation
-	var current = rotation.y
-	rotation.y = lerp_angle(current, target_rotation_y, 0.3)
+	if not is_on_floor():
+		velocity.y += GRAVITY * delta
 
 	var input_dir = Vector3.ZERO
 	if Input.is_action_pressed("move_forward"):
@@ -34,14 +34,18 @@ func _physics_process(delta):
 	input_dir = input_dir.normalized()
 
 	if input_dir.length() > 0.1:
-		wobble_time += delta * WOBBLE_SPEED
-		var wobble_offset = transform.basis.x * sin(wobble_time) * WOBBLE_STRENGTH
-		apply_central_force((input_dir * SPEED) + wobble_offset)
-		$Sausage.rotate_x(SPEED * delta * 0.05)
+		# Build up speed the longer you hold W, capped at MAX_SPEED
+		current_speed = min(current_speed + ACCELERATION, MAX_SPEED)
+		var target_velocity = input_dir * current_speed
+		velocity.x = lerp(velocity.x, target_velocity.x, 0.1)
+		velocity.z = lerp(velocity.z, target_velocity.z, 0.1)
+		$Sausage.rotate_x(current_speed * delta * 3.0)
 	else:
-		wobble_time = 0.0
-		linear_velocity.x = lerp(linear_velocity.x, 0.0, 0.1)
-		linear_velocity.z = lerp(linear_velocity.z, 0.0, 0.1)
+		# Slowly bleeds off speed when you let go, doesnt stop instantly
+		current_speed = max(current_speed - FRICTION, 0.0)
+		var bleed_dir = Vector3(velocity.x, 0, velocity.z).normalized()
+		var target_velocity = bleed_dir * current_speed
+		velocity.x = lerp(velocity.x, target_velocity.x, 0.1)
+		velocity.z = lerp(velocity.z, target_velocity.z, 0.1)
 
-	angular_velocity.x = 0.0
-	angular_velocity.z = 0.0
+	move_and_slide()

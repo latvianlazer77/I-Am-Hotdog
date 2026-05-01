@@ -36,12 +36,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v1dee")
 
-[node name="Player" type="RigidBody3D" unique_id=94560684]
+[node name="Player" type="CharacterBody3D" unique_id=2768484]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-lock_rotation = true
-linear_damp = 1.0
-angular_damp = 5.0
 script = ExtResource("1_sa8xt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2027253749]
@@ -53,6 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4.203)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=2031465670]
 transform = Transform3D(-0.9999643, 0, -0.008447221, -0.0022389467, 0.9642343, 0.26504183, 0.0081451, 0.26505125, -0.96419984, 0, 1.2052517, -3.9419384)
+current = true
 
 [node name="Sausage" type="MeshInstance3D" parent="." unique_id=670953389]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6588134, 0, 0.40953517)
