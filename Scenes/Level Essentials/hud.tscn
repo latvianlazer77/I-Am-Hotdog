@@ -112,7 +112,14 @@ grow_vertical = 2
 text = "Best Time:"
 
 [node name="PauseMenu" parent="." unique_id=299789172 instance=ExtResource("2_4qu8c")]
+visible = false
 
 [node name="TimerLabel" type="Label" parent="." unique_id=1800991042]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="StaminaBar" type="ProgressBar" parent="." unique_id=365904886]
+offset_left = 3.0
+offset_top = 615.0
+offset_right = 133.0
+offset_bottom = 642.0
