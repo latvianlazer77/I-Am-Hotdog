@@ -12,14 +12,20 @@ const ICE_DRIFT_STRENGTH = 1.5
 const MAX_STAMINA = 100.0
 const STAMINA_DRAIN = 25.0
 const STAMINA_REGEN = 10.0
+const MAX_BURN = 100.0
+const BURN_DRAIN = 15.0
 
 @onready var camera_pivot = $CameraPivot
+@onready var smoke = $SmokeParticles
 
 var current_speed = 0.0
 var is_on_ice = false
 var ice_drift = 0.0
 var stamina = MAX_STAMINA
 var is_sprinting = false
+var burn_meter = 0.0
+var is_on_burner = false
+var shake_amount = 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -27,12 +33,32 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		camera_pivot.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
+		camera_pivot.rotate_x((-event.relative.y * MOUSE_SENSITIVITY) + randf_range(-shake_amount, shake_amount))
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, -0.8, 0.6)
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+
+	# Burn meter
+	if is_on_burner:
+		burn_meter = min(burn_meter + delta * 20.0, MAX_BURN)
+	else:
+		burn_meter = max(burn_meter - BURN_DRAIN * delta, 0.0)
+
+	# Die if burn meter full
+	if burn_meter >= MAX_BURN:
+		burn_meter = 0.0
+		get_tree().get_first_node_in_group("game_manager").call("_on_player_died")
+
+	# Smoke starts at 50% burn
+	smoke.emitting = burn_meter > 50.0
+
+	# Screen shake increases with burn
+	shake_amount = (burn_meter / MAX_BURN) * 0.015
+
+	# Speed penalty from burn
+	var burn_speed_mult = 1.0 - (burn_meter / MAX_BURN) * 0.7
 
 	# Sprint logic
 	var wants_to_sprint = Input.is_action_pressed("sprint") and stamina > 0
@@ -43,7 +69,7 @@ func _physics_process(delta):
 	else:
 		stamina = min(stamina + STAMINA_REGEN * delta, MAX_STAMINA)
 
-	var top_speed = SPRINT_SPEED if is_sprinting else MAX_SPEED
+	var top_speed = (SPRINT_SPEED if is_sprinting else MAX_SPEED) * burn_speed_mult
 	var accel = ICE_ACCELERATION if is_on_ice else ACCELERATION
 	var friction = ICE_FRICTION if is_on_ice else FRICTION
 
@@ -78,7 +104,13 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, target_velocity.x, friction)
 		velocity.z = lerp(velocity.z, target_velocity.z, friction)
 
-	# Sprint camera effects
+	# Camera shake
+	if shake_amount > 0:
+		camera_pivot.rotation.z = randf_range(-shake_amount, shake_amount)
+	else:
+		camera_pivot.rotation.z = lerp(camera_pivot.rotation.z, 0.0, delta * 5.0)
+
+	# Sprint camera fov
 	if is_sprinting:
 		camera_pivot.get_child(0).fov = lerp(camera_pivot.get_child(0).fov, 90.0, delta * 5.0)
 	else:
@@ -88,3 +120,6 @@ func _physics_process(delta):
 
 func get_stamina_percent() -> float:
 	return stamina / MAX_STAMINA
+
+func get_burn_percent() -> float:
+	return burn_meter / MAX_BURN

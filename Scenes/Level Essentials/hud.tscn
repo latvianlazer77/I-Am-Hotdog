@@ -15,9 +15,12 @@ grow_vertical = 2
 color = Color(0.26293245, 0.26293245, 0.26293245, 1)
 
 [node name="Panel" type="Panel" parent="LevelCompletePopup" unique_id=1831983287]
-layout_mode = 0
-offset_right = 1158.0
-offset_bottom = 642.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TitleLabel" type="Label" parent="LevelCompletePopup" unique_id=1783303389]
 layout_mode = 1
@@ -119,7 +122,27 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="StaminaBar" type="ProgressBar" parent="." unique_id=365904886]
-offset_left = 3.0
-offset_top = 615.0
-offset_right = 133.0
-offset_bottom = 642.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 130.0
+grow_vertical = 0
+
+[node name="BurnBar" type="ProgressBar" parent="." unique_id=619510495]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BurnOverlay" type="ColorRect" parent="." unique_id=365289700]
+custom_minimum_size = Vector2(600, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -36,6 +36,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v1dee")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sa8xt"]
+direction = Vector3(0, 1, 0)
+spread = 30.0
+
 [node name="Player" type="CharacterBody3D" unique_id=2768484 groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -55,3 +59,8 @@ current = true
 [node name="Sausage" type="MeshInstance3D" parent="." unique_id=670953389]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6588134, 0, 0.40953517)
 mesh = SubResource("ArrayMesh_2xtsi")
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="." unique_id=1139568453]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_sa8xt")

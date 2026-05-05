@@ -9,17 +9,20 @@ extends CanvasLayer
 @onready var main_menu_button = $LevelCompletePopup/MainMenuButton
 @onready var pause_menu = $PauseMenu
 @onready var stamina_bar = $StaminaBar
+@onready var burn_bar = $BurnBar
+@onready var burn_overlay = $BurnOverlay
 
 var player = null
 
 func _ready():
 	popup.visible = false
 	stamina_bar.visible = false
+	burn_bar.visible = false
+	burn_overlay.visible = false
 	play_again.pressed.connect(_on_play_again)
 	main_menu_button.pressed.connect(_on_main_menu)
 	pause_menu.resumed.connect(_on_resumed)
 	pause_menu.paused.connect(_on_paused)
-	# Wait a frame so the scene is fully loaded before finding the player
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 
@@ -32,27 +35,49 @@ func _input(event):
 
 func _process(_delta):
 	if player:
+		# Stamina bar
 		stamina_bar.value = player.get_stamina_percent() * 100
-		# Only show stamina bar when sprinting or stamina is not full
 		stamina_bar.visible = player.is_sprinting or player.stamina < player.MAX_STAMINA
 		if player.stamina < 25.0:
 			stamina_bar.modulate = Color(1, 0.2, 0.2)
 		else:
 			stamina_bar.modulate = Color(0.2, 1, 0.4)
 
+		# Burn bar and overlay
+		var burn = player.get_burn_percent()
+		if burn > 0:
+			burn_bar.visible = true
+			burn_overlay.visible = true
+			burn_bar.value = burn * 100
+			# Red overlay gets stronger as burn increases
+			burn_overlay.modulate = Color(1, 0, 0, burn * 0.6)
+			if burn > 0.75:
+				burn_bar.modulate = Color(1, 0.1, 0.1)
+			elif burn > 0.5:
+				burn_bar.modulate = Color(1, 0.5, 0.0)
+			else:
+				burn_bar.modulate = Color(1, 1, 0.0)
+		else:
+			burn_bar.visible = false
+			burn_overlay.visible = false
+
 func _on_paused():
 	stamina_bar.visible = false
-	timer_label.visible = false
+	burn_bar.visible = false
+	burn_overlay.visible = false
 
 func _on_resumed():
-	stamina_bar.visible = true
-	timer_label.visible = true
+	pass
 
 func update_timer(time_string: String):
 	timer_label.text = time_string
 
 func show_complete(medal: String, time_string: String, is_new_best: bool, best_time: String):
 	popup.visible = true
+	timer_label.visible = false
+	stamina_bar.visible = false
+	burn_bar.visible = false
+	burn_overlay.visible = false
 	medal_label.text = "You got " + medal + "!\nTime: " + time_string
 	new_best_label.visible = is_new_best
 	new_best_label.text = "NEW BEST!"

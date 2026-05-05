@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="7_wmfn8"]
 [ext_resource type="PackedScene" uid="uid://c5061p0p8o4kd" path="res://Scenes/Level Essentials/ice_zone.tscn" id="8_4sve1"]
 [ext_resource type="PackedScene" uid="uid://c20kqjw6uldj3" path="res://Scenes/Testing/testramp.tscn" id="8_wmfn8"]
+[ext_resource type="PackedScene" uid="uid://cl67jfcg3ecx7" path="res://Scenes/Level Essentials/burner.tscn" id="9_4sve1"]
 
 [node name="Node3D" type="Node3D" unique_id=1028082395]
 
@@ -31,4 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5139399, 1.2829967, -1.9966
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8363819, -9.536743e-07, -1.9577007)
 
 [node name="IceZone" parent="." unique_id=1123099129 instance=ExtResource("8_4sve1")]
-transform = Transform3D(12.897729, 0, 0, 0, 0.9277465, 0, 0, 0, 17.558617, -7.356434, 0, 5.807094)
+transform = Transform3D(12.897729, 0, 0, 0, 0.9277465, 0, 0, 0, 17.558617, 9.733761, 0, 5.807094)
+
+[node name="Burner" parent="." unique_id=353981741 instance=ExtResource("9_4sve1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.686264, 0.0071522593, 5.872614)
