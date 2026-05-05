@@ -8,6 +8,8 @@ func _ready():
 func _on_body_entered(body):
 	if body is CharacterBody3D:
 		body.is_on_ice = true
+		var push_dir = -body.global_transform.basis.x
+		body.velocity += push_dir * 20.0
 
 func _on_body_exited(body):
 	if body is CharacterBody3D:

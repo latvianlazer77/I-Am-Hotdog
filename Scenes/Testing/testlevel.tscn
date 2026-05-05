@@ -31,4 +31,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5139399, 1.2829967, -1.9966
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8363819, -9.536743e-07, -1.9577007)
 
 [node name="IceZone" parent="." unique_id=1123099129 instance=ExtResource("8_4sve1")]
-transform = Transform3D(12.897729, 0, 0, 0, 4.994009, 0, 0, 0, 17.558617, -7.356434, 0, 5.807094)
+transform = Transform3D(12.897729, 0, 0, 0, 0.9277465, 0, 0, 0, 17.558617, -7.356434, 0, 5.807094)

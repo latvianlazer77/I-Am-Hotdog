@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dr7o1bupduf7q"]
 
-[ext_resource type="Script" uid="uid://b6nft080jbnxm" path="res://test_dog.gd" id="1_owudh"]
+[ext_resource type="Script" uid="uid://b6nft080jbnxm" path="res://Scripts/test_dog.gd" id="1_owudh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqjuv"]
 height = 5.0197754
