@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://05fe4f420hv6"]
 
 [ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_sqyb0"]
-[ext_resource type="PackedScene" uid="uid://5oru3gp11abv" path="res://Scenes/Levels/level_1.tscn" id="2_x5xfh"]
+[ext_resource type="PackedScene" uid="uid://bpj4gh88cfq64" path="res://Scenes/Levels/level_1.tscn" id="2_x5xfh"]
 [ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="3_ehyua"]
 [ext_resource type="PackedScene" uid="uid://cputujhy586ph" path="res://Scenes/Level Essentials/hotdog.tscn" id="4_qc3lj"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_klft6"]
