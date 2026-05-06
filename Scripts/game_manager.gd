@@ -32,20 +32,25 @@ func _on_resumed():
 
 func _on_level_complete():
 	running = false
+	player.level_complete = true
 	player.set_physics_process(false)
 	player.set_process_input(false)
 	var level_name = get_tree().current_scene.name
+	print("Saving score under: ", level_name)
 	var is_new_best = false
 	var best = SaveData.get_best_time(level_name)
 	if time_elapsed < best:
 		SaveData.save_best_time(level_name, time_elapsed)
 		is_new_best = true
-	var level_num = level_name.replace("level_", "").to_int()
-	var next_level = "level_" + str(level_num + 1)
+	var level_num = level_name.replace("Level_", "").to_int()
+	var next_level = "Level_" + str(level_num + 1)
 	SaveData.unlock_level(next_level)
 	hud.show_complete(get_medal(), get_time_string(), is_new_best, format_time(best))
 
 func _on_player_died():
+	player.level_complete = false
+	player.burn_meter = 0.0
+	player.is_on_burner = false
 	player.global_position = spawn_point.global_position
 	player.velocity = Vector3.ZERO
 

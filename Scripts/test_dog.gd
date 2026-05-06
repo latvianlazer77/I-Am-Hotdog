@@ -26,6 +26,7 @@ var is_sprinting = false
 var burn_meter = 0.0
 var is_on_burner = false
 var shake_amount = 0.0
+var level_complete = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -40,22 +41,29 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
-	# Burn meter
-	if is_on_burner:
-		burn_meter = min(burn_meter + delta * 20.0, MAX_BURN)
+	if not level_complete:
+		# Burn meter
+		if is_on_burner:
+			burn_meter = min(burn_meter + delta * 50.0, MAX_BURN)
+		else:
+			burn_meter = max(burn_meter - BURN_DRAIN * delta, 0.0)
+
+		# Die if burn meter full
+		if burn_meter >= MAX_BURN:
+			burn_meter = 0.0
+			var gm = get_tree().get_first_node_in_group("game_manager")
+			if gm:
+				gm._on_player_died()
+
+		# Smoke starts at 50% burn
+		smoke.emitting = burn_meter > 50.0
+
+		# Screen shake increases with burn
+		shake_amount = (burn_meter / MAX_BURN) * 0.015
 	else:
-		burn_meter = max(burn_meter - BURN_DRAIN * delta, 0.0)
-
-	# Die if burn meter full
-	if burn_meter >= MAX_BURN:
 		burn_meter = 0.0
-		get_tree().get_first_node_in_group("game_manager").call("_on_player_died")
-
-	# Smoke starts at 50% burn
-	smoke.emitting = burn_meter > 50.0
-
-	# Screen shake increases with burn
-	shake_amount = (burn_meter / MAX_BURN) * 0.015
+		smoke.emitting = false
+		shake_amount = 0.0
 
 	# Speed penalty from burn
 	var burn_speed_mult = 1.0 - (burn_meter / MAX_BURN) * 0.7
@@ -87,7 +95,11 @@ func _physics_process(delta):
 
 		if is_on_ice:
 			ice_drift = min(ice_drift + delta * ICE_DRIFT_STRENGTH, 1.0)
-			var drift_dir = input_dir.lerp(transform.basis.x, ice_drift).normalized()
+			var ice_zone = get_tree().get_first_node_in_group("ice_zone")
+			var push = Vector3.ZERO
+			if ice_zone:
+				push = ice_zone.get_push_direction(self) * 8.0
+			var drift_dir = (input_dir + push).normalized()
 			velocity.x = lerp(velocity.x, drift_dir.x * current_speed, accel)
 			velocity.z = lerp(velocity.z, drift_dir.z * current_speed, accel)
 		else:

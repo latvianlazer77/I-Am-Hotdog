@@ -26,6 +26,7 @@ import/blender/enabled=false
 
 player=""
 game_manager=""
+ice_zone=""
 
 [input]
 
