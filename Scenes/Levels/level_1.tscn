@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="2_5f3p6"]
+[ext_resource type="PackedScene" uid="uid://cl67jfcg3ecx7" path="res://Scenes/Level Essentials/burner.tscn" id="2_jv26f"]
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="4_jv26f"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_rb0md"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="6_u5ghp"]
@@ -88,19 +89,13 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vif5h"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i7ma5"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ksf1i"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tjl6l"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u5ghp"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_31phq"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ksf1i"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i7ma5"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3628d"]
@@ -112,7 +107,7 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=777753265]
-transform = Transform3D(16.916111, 0, 0, 0, 5.8843265, 0, 0, 0, 10.666512, -0.1274552, 0, -0.61763275)
+transform = Transform3D(16.916111, 0, 0, 0, 5.8843265, 0, 0, 0, 10.666512, -0.12745519, 0, -0.6176327)
 mesh = SubResource("BoxMesh_seteq")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=666082299]
@@ -279,29 +274,25 @@ mesh = SubResource("BoxMesh_iixi8")
 transform = Transform3D(0.00995032, 0, -0.06893982, 0, 0.015224512, 0, 1.2078317, 0, 0.00056793756, -2.0796945, -0.54044825, 4.08386)
 shape = SubResource("ConcavePolygonShape3D_afv7b")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="StaticBody3D" unique_id=853801430]
-transform = Transform3D(-0.0013491735, 0, -0.068942115, 0, 0.015224516, 0, 1.2078725, 0, -7.7007455e-05, -4.1742187, -0.54044825, 4.0838604)
-mesh = SubResource("BoxMesh_iixi8")
-
 [node name="MeshInstance3D13" type="MeshInstance3D" parent="StaticBody3D" unique_id=628458473]
-transform = Transform3D(0.0055123824, -0.012307067, -0.1624757, -0.17540728, 0.39161688, -0.0051060054, 0.30892506, 0.2225792, -7.102039e-09, -7.9709263, -0.42662784, 3.602369)
+transform = Transform3D(-1.3503544e-08, -9.729246e-09, -0.16255592, -0.17549387, 0.3918102, 0, 0.30892506, 0.22257918, -7.105545e-09, -7.9709263, -0.42662784, 3.602369)
 mesh = SubResource("PlaneMesh_k2mw1")
 
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="StaticBody3D" unique_id=380897177]
-transform = Transform3D(0.025561407, 0.18727265, 0, -0.014520905, 0.3296592, 0, 0, 0, 0.64867157, -4.117043, -0.5485617, 4.1363387)
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="StaticBody3D" unique_id=1103657554]
+transform = Transform3D(-1.5265237e-09, -4.1862087e-09, -0.62617797, -0.0138351545, 0.18202183, -4.494442e-09, 0.03770639, 0.06678713, -2.6999576e-08, -7.970921, -0.51276076, -0.20103803)
 mesh = SubResource("PlaneMesh_k2mw1")
 
-[node name="CollisionShape3D24" type="CollisionShape3D" parent="StaticBody3D" unique_id=2062569676]
-transform = Transform3D(0.025561407, 0.18727265, 0, -0.014520905, 0.3296592, 0, 0, 0, 0.64867157, -4.117043, -0.5485617, 4.1363387)
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="StaticBody3D" unique_id=200297762]
+transform = Transform3D(-1.5265237e-09, -4.1862087e-09, -0.62617797, -0.0138351545, 0.18202183, -4.494442e-09, 0.03770639, 0.06678713, -2.6999576e-08, -7.970921, -0.51276076, -0.20103803)
 shape = SubResource("ConcavePolygonShape3D_vif5h")
 
-[node name="MeshInstance3D24" type="MeshInstance3D" parent="StaticBody3D" unique_id=1478427795]
-transform = Transform3D(0.025561407, 0.18727265, 0, -0.014520905, 0.3296592, 0, 0, 0, 0.64867157, -4.182025, -0.5343817, 4.1363387)
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="StaticBody3D" unique_id=380897177]
+transform = Transform3D(0.11270893, 0.0034441976, 0, -0.03045765, 0.0127452705, 0, 0, 0, 0.64867157, -4.1205955, -0.5355475, 4.1256614)
 mesh = SubResource("PlaneMesh_k2mw1")
 
-[node name="CollisionShape3D25" type="CollisionShape3D" parent="StaticBody3D" unique_id=1814669534]
-transform = Transform3D(0.025561407, 0.18727265, 0, -0.014520905, 0.3296592, 0, 0, 0, 0.64867157, -4.1820254, -0.536174, 4.1363387)
-shape = SubResource("ConcavePolygonShape3D_i7ma5")
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="StaticBody3D" unique_id=1658449987]
+transform = Transform3D(0.11270893, 0.0034441976, 0, -0.03045765, 0.0127452705, 0, 0, 0, 0.64867157, -4.1205955, -0.5355475, 4.1256614)
+shape = SubResource("ConcavePolygonShape3D_ksf1i")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D" unique_id=213597549]
 transform = Transform3D(-1.3503544e-08, -9.729246e-09, -0.16255592, -0.17549387, 0.3918102, 0, 0.30892506, 0.22257918, -7.105545e-09, -7.9709263, -0.42662784, 3.602369)
@@ -312,41 +303,51 @@ transform = Transform3D(-1.3503542e-08, -9.729244e-09, 0.16255592, -0.17549384, 
 mesh = SubResource("PlaneMesh_k2mw1")
 
 [node name="MeshInstance3D26" type="MeshInstance3D" parent="StaticBody3D" unique_id=753921594]
-transform = Transform3D(0.0049172, 0.003871398, 0.14121233, -0.61227465, 0.63792557, 0, -0.7043242, -0.55452675, 0.0009858658, -8.536934, 0.026965404, 0.63325924)
+transform = Transform3D(0.007903249, 0.006224391, 0.22699443, -0.9840883, 1.0256504, -1.6892317e-10, -1.1320368, -0.8915623, 0.0015847486, -8.369931, 0.088375784, 0.63325924)
 mesh = SubResource("PlaneMesh_k2mw1")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D" unique_id=1408425288]
-transform = Transform3D(0.0048764916, 0.0038435056, 0.054638892, -0.60720587, 0.63332975, 0, -0.6984934, -0.55053174, 0.0003814583, -8.536934, 0.035046726, 0.6399822)
-shape = SubResource("ConcavePolygonShape3D_u5ghp")
-
-[node name="MeshInstance3D28" type="MeshInstance3D" parent="StaticBody3D" unique_id=1367266146]
-transform = Transform3D(-0.0038523946, -0.0037845497, -0.058428295, -0.23984991, 0.31181493, 0, 0.27588877, 0.27103016, -0.0008158679, -8.169468, 0.8786272, 1.0696366)
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="StaticBody3D" unique_id=336483801]
+transform = Transform3D(-1.648071e-08, 0, 0.22699988, 0, 1.3589998, 0, -0.37703457, 0, -9.92248e-09, -8.096529, 1.0610223, 1.663967)
 mesh = SubResource("PlaneMesh_k2mw1")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" unique_id=1344204072]
-transform = Transform3D(-0.0038523946, -0.0037845497, -0.058428295, -0.23984991, 0.31181493, 0, 0.27588877, 0.27103016, -0.0008158679, -8.169468, 0.8786272, 1.0696366)
-shape = SubResource("ConcavePolygonShape3D_31phq")
-
-[node name="MeshInstance3D27" type="MeshInstance3D" parent="StaticBody3D" unique_id=1072281921]
-transform = Transform3D(0.24602044, 0, 0, 0, 0.8391701, 0, 0, 0, 0.054640222, -8.354777, 0.6409403, 1.392211)
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="StaticBody3D" unique_id=1092917149]
+transform = Transform3D(0.00026985267, 0.0006563565, 0.623606, -0.033601232, 0.10815388, -4.6407078e-10, -0.038652852, -0.09401445, 0.004353668, -7.969639, -0.5360893, -2.0283442)
 mesh = SubResource("PlaneMesh_k2mw1")
 
-[node name="CollisionShape3D22" type="CollisionShape3D" parent="StaticBody3D" unique_id=256163604]
-transform = Transform3D(0.24602044, 0, 0, 0, 0.8391701, 0, 0, 0, 0.054640222, -8.354777, 0.6409403, 1.392211)
-shape = SubResource("ConcavePolygonShape3D_ksf1i")
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="StaticBody3D" unique_id=376879438]
+transform = Transform3D(0.00026985267, 0.0006563565, 0.623606, -0.033601232, 0.10815388, -4.6407078e-10, -0.038652852, -0.09401445, 0.004353668, -7.969639, -0.5360893, -2.0283442)
+shape = SubResource("ConcavePolygonShape3D_i7ma5")
 
 [node name="CollisionShape3D13" type="CollisionShape3D" parent="StaticBody3D" unique_id=925008886]
 transform = Transform3D(-0.0055124084, 0.012307046, 0.1624757, -0.17540728, 0.39161682, -0.0051060054, -0.308925, -0.22257917, -7.102038e-09, -7.9709253, -0.42662784, 1.8064867)
 shape = SubResource("ConcavePolygonShape3D_3628d")
 
 [node name="IceZone" parent="StaticBody3D" unique_id=1123099129 instance=ExtResource("1_5f3p6")]
-transform = Transform3D(1.755214, 0, 0, 0, 0.10751927, 0, 0, 0, 1.2391447, -4.155469, -0.55708045, 4.0633903)
+transform = Transform3D(0.043343097, 0, 1.2387667, 0, 0.10751921, 0, -1.7546778, 0, 0.030599317, -3.3819156, -0.55708045, 5.0594735)
 
 [node name="IceZone2" parent="StaticBody3D" unique_id=1384984007 instance=ExtResource("1_5f3p6")]
 transform = Transform3D(0.37011883, 0, 0, 0, 0.033333316, 0, 0, 0, 1.2442774, -8.096088, -0.237692, 2.692372)
 
 [node name="IceZone3" parent="StaticBody3D" unique_id=1728572235 instance=ExtResource("1_5f3p6")]
 transform = Transform3D(0.37011883, 0, 0, 0, 0.029611962, 0.2851023, 0, -0.016011128, 0.5272857, -8.220628, -0.3609564, 1.9103764)
+
+[node name="Burner" parent="StaticBody3D" unique_id=353981741 instance=ExtResource("2_jv26f")]
+transform = Transform3D(0.2013635, 0, 0, 0, 0.017, 0, 0, 0, 0.20837405, -7.6296453, -0.49560988, -0.5416178)
+
+[node name="Burner2" parent="StaticBody3D" unique_id=335983356 instance=ExtResource("2_jv26f")]
+transform = Transform3D(0.20136349, 0, 0, 0, 0.017, 0, 0, 0, 0.20837404, -7.629645, -0.49560985, -1.074951)
+
+[node name="Burner3" parent="StaticBody3D" unique_id=1052519660 instance=ExtResource("2_jv26f")]
+transform = Transform3D(0.20136347, 0, 0, 0, 0.017, 0, 0, 0, 0.20837402, -7.6296444, -0.49560982, -1.6416177)
+
+[node name="Burner4" parent="StaticBody3D" unique_id=1138394409 instance=ExtResource("2_jv26f")]
+transform = Transform3D(0.20136346, 0, 0, 0, 0.017, 0, 0, 0, 0.20837401, -8.162977, -0.4956098, -1.6416177)
+
+[node name="Burner5" parent="StaticBody3D" unique_id=1726662468 instance=ExtResource("2_jv26f")]
+transform = Transform3D(0.20136344, 0, 0, 0, 0.017, 0, 0, 0, 0.208374, -8.162976, -0.49560976, -1.0524181)
+
+[node name="Burner6" parent="StaticBody3D" unique_id=260379734 instance=ExtResource("2_jv26f")]
+transform = Transform3D(0.20136343, 0, 0, 0, 0.017, 0, 0, 0, 0.20837396, -8.162974, -0.4956097, -0.5386073)
 
 [node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_xgxfi")]
 
