@@ -44,7 +44,7 @@ func _physics_process(delta):
 	if not level_complete:
 		# Burn meter
 		if is_on_burner:
-			burn_meter = min(burn_meter + delta * 50.0, MAX_BURN)
+			burn_meter = min(burn_meter + delta * 67.0, MAX_BURN)
 		else:
 			burn_meter = max(burn_meter - BURN_DRAIN * delta, 0.0)
 
