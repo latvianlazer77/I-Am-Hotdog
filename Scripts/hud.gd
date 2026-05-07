@@ -34,8 +34,7 @@ func _input(event):
 			pause_menu.show_pause()
 
 func _process(_delta):
-	if player:
-		# Stamina bar
+	if player and not popup.visible:
 		stamina_bar.value = player.get_stamina_percent() * 100
 		stamina_bar.visible = player.is_sprinting or player.stamina < player.MAX_STAMINA
 		if player.stamina < 25.0:
@@ -43,14 +42,12 @@ func _process(_delta):
 		else:
 			stamina_bar.modulate = Color(0.2, 1, 0.4)
 
-		# Burn bar and overlay
 		var burn = player.get_burn_percent()
 		if burn > 0:
 			burn_bar.visible = true
-			burn_overlay.visible = true
 			burn_bar.value = burn * 100
-			# Red overlay gets stronger as burn increases
-			burn_overlay.modulate = Color(1, 0, 0, burn * 0.6)
+			burn_overlay.visible = true
+			burn_overlay.color = Color(1, 0, 0, burn * 0.6)
 			if burn > 0.75:
 				burn_bar.modulate = Color(1, 0.1, 0.1)
 			elif burn > 0.5:
@@ -60,6 +57,7 @@ func _process(_delta):
 		else:
 			burn_bar.visible = false
 			burn_overlay.visible = false
+			burn_overlay.color = Color(1, 0, 0, 0)
 
 func _on_paused():
 	stamina_bar.visible = false
@@ -78,6 +76,7 @@ func show_complete(medal: String, time_string: String, is_new_best: bool, best_t
 	stamina_bar.visible = false
 	burn_bar.visible = false
 	burn_overlay.visible = false
+	burn_overlay.color = Color(1, 0, 0, 0)
 	medal_label.text = "You got " + medal + "!\nTime: " + time_string
 	new_best_label.visible = is_new_best
 	new_best_label.text = "NEW BEST!"
