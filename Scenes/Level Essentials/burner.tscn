@@ -22,3 +22,5 @@ shape = SubResource("CylinderShape3D_u3yw5")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1413336692]
 transform = Transform3D(2.0295243, 0, 0, 0, -0.32527614, 0, 0, 0, 1.9331774, 0, 0.122936666, 0)
 mesh = SubResource("CylinderMesh_tpug5")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1058939370]

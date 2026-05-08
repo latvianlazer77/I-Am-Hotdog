@@ -2,6 +2,7 @@ extends Node
 
 var time_elapsed = 0.0
 var running = true
+var cutscene_active = false
 
 @onready var hud = $HUD
 @onready var player = $Player
@@ -16,7 +17,7 @@ func _ready():
 	hud.pause_menu.resumed.connect(_on_resumed)
 
 func _process(delta):
-	if running:
+	if running and not cutscene_active:
 		time_elapsed += delta
 		hud.update_timer(get_time_string())
 
@@ -29,6 +30,16 @@ func _on_resumed():
 	running = true
 	player.set_physics_process(true)
 	player.set_process_input(true)
+
+func trigger_ingredient_cutscene(emoji: String, display_name: String):
+	cutscene_active = true
+	running = false
+	player.set_physics_process(false)
+	player.set_process_input(false)
+	hud.play_ingredient_cutscene(emoji, display_name, func():
+		cutscene_active = false
+		_on_level_complete()
+	)
 
 func _on_level_complete():
 	running = false
