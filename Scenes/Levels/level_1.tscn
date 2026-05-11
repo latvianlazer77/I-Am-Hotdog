@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bpj4gh88cfq64"]
 
-[ext_resource type="PackedScene" uid="uid://c5061p0p8o4kd" path="res://Scenes/Level Essentials/ice_zone.tscn" id="1_5f3p6"]
 [ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="2_5f3p6"]
@@ -341,12 +340,6 @@ shape = SubResource("ConcavePolygonShape3D_i7ma5")
 [node name="CollisionShape3D13" type="CollisionShape3D" parent="StaticBody3D" unique_id=925008886]
 transform = Transform3D(-0.0055124084, 0.012307046, 0.1624757, -0.17540728, 0.39161682, -0.0051060054, -0.308925, -0.22257917, -7.102038e-09, -7.9709253, -0.42662784, 1.8064867)
 shape = SubResource("ConcavePolygonShape3D_3628d")
-
-[node name="IceZone2" parent="StaticBody3D" unique_id=1384984007 instance=ExtResource("1_5f3p6")]
-transform = Transform3D(0.24020211, 0, 0, 0, 0.033333316, 0, 0, 0, 1.2442769, -8.131012, -0.237692, 2.692372)
-
-[node name="IceZone3" parent="StaticBody3D" unique_id=1728572235 instance=ExtResource("1_5f3p6")]
-transform = Transform3D(0.37011883, 0, 0, 0, 0.029611962, 0.2851023, 0, -0.016011128, 0.5272857, -8.220628, -0.3609564, 1.9103764)
 
 [node name="Burner" parent="StaticBody3D" unique_id=353981741 instance=ExtResource("2_jv26f")]
 transform = Transform3D(0.2013635, 0, 0, 0, 0.017, 0, 0, 0, 0.20837405, -7.6296453, -0.49560988, -0.5416178)

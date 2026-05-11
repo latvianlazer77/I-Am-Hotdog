@@ -66,9 +66,9 @@ func _on_player_died():
 	player.velocity = Vector3.ZERO
 
 func get_medal() -> String:
-	if time_elapsed < 45.0:
+	if time_elapsed < 30.0:
 		return "GOLD"
-	elif time_elapsed < 60.0:
+	elif time_elapsed < 45.0:
 		return "SILVER"
 	else:
 		return "BRONZE"

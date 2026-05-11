@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 SaveData="*uid://b1a7md74sjemg"
 Autoload="*uid://x02wmw8m0skp"
+AbilityManager="*uid://b4aba1t4r7i5u"
 
 [filesystem]
 

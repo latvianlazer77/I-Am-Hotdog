@@ -14,6 +14,8 @@ const BURN_DRAIN = 15.0
 
 @onready var camera_pivot = $CameraPivot
 @onready var smoke = $SmokeParticles
+@onready var ketchup_particles = $KetchupEffect/KetchupParticles
+@onready var lightning_light = $KetchupEffect/LightningLight
 
 var current_speed = 0.0
 var stamina = MAX_STAMINA
@@ -22,15 +24,57 @@ var burn_meter = 0.0
 var is_on_burner = false
 var shake_amount = 0.0
 var level_complete = false
+var lightning_timer = 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	AbilityManager.ability_activated.connect(_on_ability_activated)
+	AbilityManager.ability_ended.connect(_on_ability_ended)
+	ketchup_particles.emitting = false
+	lightning_light.visible = false
+
+func _on_ability_activated(ability_name: String):
+	print("Ability activated: ", ability_name)
+	match ability_name:
+		"ketchup":
+			ketchup_particles.emitting = true
+			lightning_light.visible = true
+
+func _on_ability_ended(ability_name: String):
+	print("Ability ended: ", ability_name)
+	match ability_name:
+		"ketchup":
+			ketchup_particles.emitting = false
+			lightning_light.visible = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		camera_pivot.rotate_x((-event.relative.y * MOUSE_SENSITIVITY) + randf_range(-shake_amount, shake_amount))
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, -0.8, 0.6)
+
+func _process(delta):
+	if Input.is_action_just_pressed("ability_ketchup"):
+		print("Q pressed")
+		print("Has ingredient: ", SaveData.has_ingredient("ketchup"))
+		print("Cooldown: ", AbilityManager.cooldowns["ketchup"])
+		print("Active: ", AbilityManager.active["ketchup"])
+		AbilityManager.activate("ketchup")
+		print("After activate - Active: ", AbilityManager.active["ketchup"])
+
+	# Lightning flicker effect
+	if AbilityManager.is_active("ketchup"):
+		lightning_timer -= delta
+		if lightning_timer <= 0.0:
+			lightning_light.visible = !lightning_light.visible
+			lightning_light.light_energy = randf_range(2.0, 5.0)
+			lightning_light.omni_range = randf_range(2.0, 4.0)
+			lightning_light.light_color = Color(
+				randf_range(0.8, 1.0),
+				randf_range(0.6, 1.0),
+				randf_range(0.0, 0.3)
+			)
+			lightning_timer = randf_range(0.03, 0.1)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -65,7 +109,8 @@ func _physics_process(delta):
 	else:
 		stamina = min(stamina + STAMINA_REGEN * delta, MAX_STAMINA)
 
-	var top_speed = (SPRINT_SPEED if is_sprinting else MAX_SPEED) * burn_speed_mult
+	var ketchup_mult = 3.0 if AbilityManager.is_active("ketchup") else 1.0
+	var top_speed = (SPRINT_SPEED if is_sprinting else MAX_SPEED) * burn_speed_mult * ketchup_mult
 
 	var input_dir = Vector3.ZERO
 	if Input.is_action_pressed("move_forward"):
@@ -100,6 +145,18 @@ func _physics_process(delta):
 		camera_pivot.get_child(0).fov = lerp(camera_pivot.get_child(0).fov, 75.0, delta * 5.0)
 
 	move_and_slide()
+
+func start_cutscene_float():
+	set_physics_process(false)
+	set_process_input(false)
+	var tween = create_tween().set_loops()
+	tween.tween_property(self, "position:y", global_position.y + 0.5, 0.8)
+	tween.tween_property(self, "position:y", global_position.y, 0.8)
+	var spin_tween = create_tween().set_loops()
+	spin_tween.tween_property($Sausage, "rotation:y", TAU, 1.5)
+
+func stop_cutscene_float():
+	$Sausage.rotation.y = 0.0
 
 func get_stamina_percent() -> float:
 	return stamina / MAX_STAMINA

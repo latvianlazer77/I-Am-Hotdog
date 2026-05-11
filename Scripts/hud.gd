@@ -13,12 +13,15 @@ extends CanvasLayer
 @onready var burn_overlay = $BurnOverlay
 @onready var cutscene_layer = $CutsceneLayer
 @onready var flash = $CutsceneLayer/Flash
-@onready var energy_ring = $CutsceneLayer/EnergyRing
+@onready var fade_overlay = $CutsceneLayer/FadeOverlay
 @onready var cutscene_text = $CutsceneLayer/CutsceneText
+@onready var ingredient_label = $CutsceneLayer/IngredientLabel
 @onready var interact_prompt = $InteractPrompt
 
 var player = null
 var on_complete_callback = null
+var float_tween = null
+var spin_tween = null
 
 func _ready():
 	popup.visible = false
@@ -26,7 +29,6 @@ func _ready():
 	burn_bar.visible = false
 	burn_overlay.visible = false
 	cutscene_layer.visible = false
-	interact_prompt.visible = false
 	play_again.pressed.connect(_on_play_again)
 	main_menu_button.pressed.connect(_on_main_menu)
 	pause_menu.resumed.connect(_on_resumed)
@@ -67,50 +69,92 @@ func _process(_delta):
 			burn_overlay.visible = false
 			burn_overlay.color = Color(1, 0, 0, 0)
 
-func show_interact_prompt(visible: bool):
-	interact_prompt.visible = visible
+func show_interact_prompt(show: bool):
+	interact_prompt.visible = show
 
 func play_ingredient_cutscene(emoji: String, display_name: String, on_complete: Callable):
 	on_complete_callback = on_complete
+
+	# Hide all HUD elements
+	timer_label.visible = false
+	stamina_bar.visible = false
+	burn_bar.visible = false
+	burn_overlay.visible = false
+	burn_overlay.color = Color(1, 0, 0, 0)
+
+	# Show cutscene layer
 	cutscene_layer.visible = true
 	cutscene_text.text = ""
+	ingredient_label.text = ""
 	flash.color = Color(1, 1, 1, 0)
-	energy_ring.scale = Vector2(0.1, 0.1)
-	energy_ring.modulate = Color(1, 0.8, 0, 0)
+	fade_overlay.color = Color(0, 0, 0, 0)
 
-	# Phase 1 — energy builds up around hotdog (0-2 seconds)
+	# Make hotdog float and spin
+	if player:
+		float_tween = create_tween().set_loops()
+		float_tween.tween_property(player, "position:y", player.global_position.y + 0.5, 0.8)
+		float_tween.tween_property(player, "position:y", player.global_position.y, 0.8)
+		spin_tween = create_tween().set_loops()
+		spin_tween.tween_property(player.get_node("Sausage"), "rotation:y", TAU, 1.5)
+
 	var tween = create_tween()
-	tween.tween_property(energy_ring, "modulate", Color(1, 0.8, 0, 1), 0.5)
-	tween.tween_property(energy_ring, "scale", Vector2(3.0, 3.0), 1.5).set_trans(Tween.TRANS_EXPO)
 
-	# Phase 2 — screen flashes white (2-2.5 seconds)
-	tween.tween_property(flash, "color", Color(1, 1, 1, 1), 0.3)
+	# Phase 1 — fade to dark (0-0.5s)
+	tween.tween_property(fade_overlay, "color", Color(0, 0, 0, 0.85), 0.5)
+
+	# Phase 2 — energy buildup, screen shakes (0.5-2.5s)
+	tween.tween_callback(func():
+		start_energy_buildup()
+	)
+	tween.tween_interval(2.0)
+
+	# Phase 3 — white flash (2.5-3s)
+	tween.tween_property(flash, "color", Color(1, 1, 1, 1), 0.2)
 	tween.tween_property(flash, "color", Color(1, 1, 1, 0), 0.3)
 
-	# Phase 3 — text appears letter by letter (2.5-5 seconds)
+	# Phase 4 — dramatic text appears letter by letter (3-5.5s)
 	tween.tween_callback(func():
-		var full_text = emoji + " THE HOTDOG HAS OBTAINED... " + display_name + " " + emoji
-		type_text(full_text)
+		var full_text = "THE HOTDOG HAS OBTAINED..."
+		type_text(cutscene_text, full_text, 0.06)
 	)
-
-	# Phase 4 — fade out and finish (5-6 seconds)
-	tween.tween_interval(3.0)
-	tween.tween_property(cutscene_layer, "modulate", Color(1, 1, 1, 0), 0.5)
+	tween.tween_interval(1.5)
 	tween.tween_callback(func():
+		type_text(ingredient_label, emoji + " " + display_name + " " + emoji, 0.08)
+	)
+	tween.tween_interval(2.0)
+
+	# Phase 5 — fade out (5.5-6s)
+	tween.tween_property(fade_overlay, "color", Color(0, 0, 0, 0), 0.5)
+	tween.tween_callback(func():
+		# Stop floating and spinning
+		if float_tween:
+			float_tween.kill()
+		if spin_tween:
+			spin_tween.kill()
+		if player:
+			player.get_node("Sausage").rotation.y = 0.0
 		cutscene_layer.visible = false
-		cutscene_layer.modulate = Color(1, 1, 1, 1)
+		timer_label.visible = true
 		if on_complete_callback:
 			on_complete_callback.call()
 	)
 
-func type_text(full_text: String):
-	cutscene_text.text = ""
+func start_energy_buildup():
+	# Shake the camera rapidly to simulate energy buildup
+	if player:
+		var shake_tween = create_tween().set_loops(20)
+		shake_tween.tween_property(player.get_node("CameraPivot"), "rotation:z", 0.03, 0.05)
+		shake_tween.tween_property(player.get_node("CameraPivot"), "rotation:z", -0.03, 0.05)
+
+func type_text(label: Label, full_text: String, speed: float):
+	label.text = ""
 	var tween = create_tween()
 	for i in range(full_text.length()):
 		tween.tween_callback(func():
-			cutscene_text.text += full_text[cutscene_text.text.length()]
+			if label.text.length() < full_text.length():
+				label.text += full_text[label.text.length()]
 		)
-		tween.tween_interval(0.05)
+		tween.tween_interval(speed)
 
 func _on_paused():
 	stamina_bar.visible = false
