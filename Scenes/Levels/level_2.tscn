@@ -1,3 +1,47 @@
 [gd_scene format=3 uid="uid://brbc2vhglaq5p"]
 
+[ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_ucdhh"]
+[ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="2_8qsmg"]
+[ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="2_fphuk"]
+[ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="3_fphuk"]
+[ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="5_pnnky"]
+[ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="6_blpqv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w2ac1"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ovj6s"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [node name="level_2" type="Node3D" unique_id=188781495]
+
+[node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_ucdhh")]
+
+[node name="Player" parent="GameManager" unique_id=2768484 instance=ExtResource("2_fphuk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4897442, 0)
+
+[node name="FinishZone" parent="GameManager" unique_id=631311601 instance=ExtResource("2_8qsmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88213825, -55.362896)
+
+[node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("3_fphuk")]
+
+[node name="SpawnPoint" parent="GameManager" unique_id=1033269942 instance=ExtResource("5_pnnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39851, 5.059075, 18.71721)
+
+[node name="KillZone" parent="GameManager" unique_id=1199234586 instance=ExtResource("6_blpqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.601227, -1.3207798, 18.970486)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1136980486]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1923535474]
+transform = Transform3D(29.450676, 0, 0, 0, 0.9488195, 0, 0, 0, 251.10884, 0, 0, 0)
+mesh = SubResource("BoxMesh_w2ac1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1928294765]
+transform = Transform3D(29.450676, 0, 0, 0, 0.9488195, 0, 0, 0, 251.10884, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_ovj6s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=60931307]
+transform = Transform3D(-0.9992345, 0, -0.039120287, 0, 1, 0, 0.039120287, 0, -0.9992345, 0, 2.4717093, 122.58696)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=737305360]
+transform = Transform3D(0.9994233, 0, 0.033957582, 0, 1, 0, -0.033957582, 0, 0.9994233, 0, 2.083826, -99.343605)

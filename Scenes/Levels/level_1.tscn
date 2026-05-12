@@ -360,11 +360,11 @@ transform = Transform3D(0.20136344, 0, 0, 0, 0.017, 0, 0, 0, 0.208374, -8.162976
 transform = Transform3D(0.20136343, 0, 0, 0, 0.017, 0, 0, 0, 0.20837396, -8.162974, -0.4956097, -0.5386073)
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="StaticBody3D" unique_id=1961699919]
-transform = Transform3D(2.3284254, 2.8227494, 0, -2.5340056, 2.5937443, 0, 0, 0, 0.99999875, -3.0455356, -1.8054559, 4.029306)
+transform = Transform3D(2.328425, 2.822749, 0, -2.5340056, 2.5937443, 0, 0, 0, 0.9999986, -3.045535, -1.8054557, 3.9878042)
 mesh = SubResource("SphereMesh_hd8f4")
 
-[node name="CollisionShape3D28" type="CollisionShape3D" parent="StaticBody3D" unique_id=344448832]
-transform = Transform3D(2.3284254, 2.8227494, 0, -2.5340056, 2.5937443, 0, 0, 0, 0.99999875, -3.0455356, -1.8054559, 4.029306)
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="StaticBody3D" unique_id=1423047279]
+transform = Transform3D(2.328425, 2.822749, 0, -2.5340056, 2.5937443, 0, 0, 0, 0.9999986, -3.045535, -1.8054557, 3.9878042)
 shape = SubResource("ConcavePolygonShape3D_hnn05")
 
 [node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_xgxfi")]
