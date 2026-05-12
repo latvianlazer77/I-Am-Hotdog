@@ -56,11 +56,9 @@ scale_max = 0.5
 color = Color(1, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa8xt"]
-albedo_color = Color(1, 1, 0, 1)
-emission_enabled = true
-emission_energy_multiplier = 3.0
+albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_sa8xt"]
+[sub_resource type="SphereMesh" id="SphereMesh_urq3k"]
 material = SubResource("StandardMaterial3D_sa8xt")
 
 [node name="Player" type="CharacterBody3D" unique_id=2768484 groups=["player"]]
@@ -100,4 +98,4 @@ omni_range = 3.0
 emitting = false
 amount = 60
 process_material = SubResource("ParticleProcessMaterial_urq3k")
-draw_pass_1 = SubResource("QuadMesh_sa8xt")
+draw_pass_1 = SubResource("SphereMesh_urq3k")
