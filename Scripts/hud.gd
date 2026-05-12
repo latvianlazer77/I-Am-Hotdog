@@ -17,11 +17,23 @@ extends CanvasLayer
 @onready var cutscene_text = $CutsceneLayer/CutsceneText
 @onready var ingredient_label = $CutsceneLayer/IngredientLabel
 @onready var interact_prompt = $InteractPrompt
+@onready var ability_bar = $AbilityBar
 
 var player = null
 var on_complete_callback = null
 var float_tween = null
 var spin_tween = null
+
+const ABILITY_DATA = {
+	"ketchup":  {"emoji": "🍅", "key": "Q",     "color": Color(1, 0.2, 0.2)},
+	"onion":    {"emoji": "🧅", "key": "Z",     "color": Color(0.6, 0.8, 1.0)},
+	"bun":      {"emoji": "🌭", "key": "X",     "color": Color(1, 0.8, 0.4)},
+	"hotsauce": {"emoji": "🌶️", "key": "R",     "color": Color(1, 0.4, 0.0)},
+	"pickle":   {"emoji": "🥒", "key": "F",     "color": Color(0.2, 0.9, 0.2)},
+	"relish":   {"emoji": "🧂", "key": "Space", "color": Color(1, 0.9, 0.2)},
+}
+
+const ABILITY_ORDER = ["ketchup", "onion", "bun", "hotsauce", "pickle", "relish"]
 
 func _ready():
 	popup.visible = false
@@ -33,8 +45,120 @@ func _ready():
 	main_menu_button.pressed.connect(_on_main_menu)
 	pause_menu.resumed.connect(_on_resumed)
 	pause_menu.paused.connect(_on_paused)
+	AbilityManager.ability_activated.connect(_on_ability_activated)
+	AbilityManager.ability_ended.connect(_on_ability_ended)
+	AbilityManager.cooldown_updated.connect(_on_cooldown_updated)
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
+	setup_ability_bar()
+
+func setup_ability_bar():
+	for i in range(ABILITY_ORDER.size()):
+		var ability = ABILITY_ORDER[i]
+		var slot = ability_bar.get_child(i)
+		var data = ABILITY_DATA[ability]
+		slot.get_node("EmojiLabel").text = data["emoji"]
+		slot.get_node("KeyLabel").text = data["key"]
+		update_slot(ability)
+
+func update_slot(ability_name: String):
+	var i = ABILITY_ORDER.find(ability_name)
+	if i == -1:
+		return
+	var slot = ability_bar.get_child(i)
+	var has_it = SaveData.has_ingredient(ability_name)
+
+	if not has_it:
+		slot.visible = false
+		return
+
+	slot.visible = true
+	var is_active = AbilityManager.is_active(ability_name)
+	var cooldown_pct = AbilityManager.get_cooldown_percent(ability_name)
+
+	if is_active:
+		var time_pct = AbilityManager.timers[ability_name] / AbilityManager.ABILITY_DURATIONS[ability_name]
+		slot.modulate = Color(1, 1, 1, 1)
+		slot.get_node("EmojiLabel").modulate = Color(1, 1, 1, time_pct)
+	elif cooldown_pct > 0:
+		var brightness = 1.0 - cooldown_pct
+		slot.modulate = Color(brightness, brightness, brightness, 1.0)
+	else:
+		slot.modulate = Color(1, 1, 1, 1)
+
+func _on_ability_activated(ability_name: String):
+	update_slot(ability_name)
+
+func _on_ability_ended(ability_name: String):
+	update_slot(ability_name)
+
+func _on_cooldown_updated(ability_name: String, _remaining: float):
+	update_slot(ability_name)
+
+func show_interact_prompt(show: bool):
+	interact_prompt.visible = show
+
+func play_ingredient_cutscene(emoji: String, display_name: String, on_complete: Callable):
+	on_complete_callback = on_complete
+	timer_label.visible = false
+	stamina_bar.visible = false
+	burn_bar.visible = false
+	burn_overlay.visible = false
+	burn_overlay.color = Color(1, 0, 0, 0)
+	ability_bar.visible = false
+	cutscene_layer.visible = true
+	cutscene_text.text = ""
+	ingredient_label.text = ""
+	flash.color = Color(1, 1, 1, 0)
+	fade_overlay.color = Color(0, 0, 0, 0)
+
+	if player:
+		float_tween = create_tween().set_loops()
+		float_tween.tween_property(player, "position:y", player.global_position.y + 0.5, 0.8)
+		float_tween.tween_property(player, "position:y", player.global_position.y, 0.8)
+		spin_tween = create_tween().set_loops()
+		spin_tween.tween_property(player.get_node("Sausage"), "rotation:y", TAU, 1.5)
+
+	var tween = create_tween()
+	tween.tween_property(fade_overlay, "color", Color(0, 0, 0, 0.85), 0.5)
+	tween.tween_callback(func(): start_energy_buildup())
+	tween.tween_interval(2.0)
+	tween.tween_property(flash, "color", Color(1, 1, 1, 1), 0.2)
+	tween.tween_property(flash, "color", Color(1, 1, 1, 0), 0.3)
+	tween.tween_callback(func(): type_text(cutscene_text, "THE HOTDOG HAS OBTAINED...", 0.06))
+	tween.tween_interval(1.5)
+	tween.tween_callback(func(): type_text(ingredient_label, emoji + " " + display_name + " " + emoji, 0.08))
+	tween.tween_interval(2.0)
+	tween.tween_property(fade_overlay, "color", Color(0, 0, 0, 0), 0.5)
+	tween.tween_callback(func():
+		if float_tween:
+			float_tween.kill()
+		if spin_tween:
+			spin_tween.kill()
+		if player:
+			player.get_node("Sausage").rotation.y = 0.0
+		cutscene_layer.visible = false
+		ability_bar.visible = true
+		timer_label.visible = true
+		if on_complete_callback:
+			on_complete_callback.call()
+	)
+
+func start_energy_buildup():
+	if player:
+		var shake_tween = create_tween().set_loops(20)
+		shake_tween.tween_property(player.get_node("CameraPivot"), "rotation:z", 0.03, 0.05)
+		shake_tween.tween_property(player.get_node("CameraPivot"), "rotation:z", -0.03, 0.05)
+
+func type_text(label: Label, full_text: String, speed: float):
+	label.text = ""
+	var tween = create_tween()
+	for i in range(full_text.length()):
+		tween.tween_callback(func():
+			if label.text.length() < full_text.length():
+				label.text += full_text[label.text.length()]
+		)
+		tween.tween_interval(speed)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel") and not popup.visible and not cutscene_layer.visible:
@@ -69,92 +193,9 @@ func _process(_delta):
 			burn_overlay.visible = false
 			burn_overlay.color = Color(1, 0, 0, 0)
 
-func show_interact_prompt(show: bool):
-	interact_prompt.visible = show
-
-func play_ingredient_cutscene(emoji: String, display_name: String, on_complete: Callable):
-	on_complete_callback = on_complete
-
-	# Hide all HUD elements
-	timer_label.visible = false
-	stamina_bar.visible = false
-	burn_bar.visible = false
-	burn_overlay.visible = false
-	burn_overlay.color = Color(1, 0, 0, 0)
-
-	# Show cutscene layer
-	cutscene_layer.visible = true
-	cutscene_text.text = ""
-	ingredient_label.text = ""
-	flash.color = Color(1, 1, 1, 0)
-	fade_overlay.color = Color(0, 0, 0, 0)
-
-	# Make hotdog float and spin
-	if player:
-		float_tween = create_tween().set_loops()
-		float_tween.tween_property(player, "position:y", player.global_position.y + 0.5, 0.8)
-		float_tween.tween_property(player, "position:y", player.global_position.y, 0.8)
-		spin_tween = create_tween().set_loops()
-		spin_tween.tween_property(player.get_node("Sausage"), "rotation:y", TAU, 1.5)
-
-	var tween = create_tween()
-
-	# Phase 1 — fade to dark (0-0.5s)
-	tween.tween_property(fade_overlay, "color", Color(0, 0, 0, 0.85), 0.5)
-
-	# Phase 2 — energy buildup, screen shakes (0.5-2.5s)
-	tween.tween_callback(func():
-		start_energy_buildup()
-	)
-	tween.tween_interval(2.0)
-
-	# Phase 3 — white flash (2.5-3s)
-	tween.tween_property(flash, "color", Color(1, 1, 1, 1), 0.2)
-	tween.tween_property(flash, "color", Color(1, 1, 1, 0), 0.3)
-
-	# Phase 4 — dramatic text appears letter by letter (3-5.5s)
-	tween.tween_callback(func():
-		var full_text = "THE HOTDOG HAS OBTAINED..."
-		type_text(cutscene_text, full_text, 0.06)
-	)
-	tween.tween_interval(1.5)
-	tween.tween_callback(func():
-		type_text(ingredient_label, emoji + " " + display_name + " " + emoji, 0.08)
-	)
-	tween.tween_interval(2.0)
-
-	# Phase 5 — fade out (5.5-6s)
-	tween.tween_property(fade_overlay, "color", Color(0, 0, 0, 0), 0.5)
-	tween.tween_callback(func():
-		# Stop floating and spinning
-		if float_tween:
-			float_tween.kill()
-		if spin_tween:
-			spin_tween.kill()
-		if player:
-			player.get_node("Sausage").rotation.y = 0.0
-		cutscene_layer.visible = false
-		timer_label.visible = true
-		if on_complete_callback:
-			on_complete_callback.call()
-	)
-
-func start_energy_buildup():
-	# Shake the camera rapidly to simulate energy buildup
-	if player:
-		var shake_tween = create_tween().set_loops(20)
-		shake_tween.tween_property(player.get_node("CameraPivot"), "rotation:z", 0.03, 0.05)
-		shake_tween.tween_property(player.get_node("CameraPivot"), "rotation:z", -0.03, 0.05)
-
-func type_text(label: Label, full_text: String, speed: float):
-	label.text = ""
-	var tween = create_tween()
-	for i in range(full_text.length()):
-		tween.tween_callback(func():
-			if label.text.length() < full_text.length():
-				label.text += full_text[label.text.length()]
-		)
-		tween.tween_interval(speed)
+		for ability in ABILITY_ORDER:
+			if AbilityManager.is_active(ability) or AbilityManager.get_cooldown_percent(ability) > 0:
+				update_slot(ability)
 
 func _on_paused():
 	stamina_bar.visible = false
@@ -174,6 +215,7 @@ func show_complete(medal: String, time_string: String, is_new_best: bool, best_t
 	burn_bar.visible = false
 	burn_overlay.visible = false
 	burn_overlay.color = Color(1, 0, 0, 0)
+	ability_bar.visible = false
 	medal_label.text = "You got " + medal + "!\nTime: " + time_string
 	new_best_label.visible = is_new_best
 	new_best_label.text = "NEW BEST!"

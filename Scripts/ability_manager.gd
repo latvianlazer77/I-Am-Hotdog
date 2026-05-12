@@ -1,7 +1,7 @@
 extends Node
 
 const ABILITY_COOLDOWNS = {
-	"ketchup": 15.0,
+	"ketchup": 10.0,
 	"onion": 20.0,
 	"bun": 18.0,
 	"hotsauce": 8.0,
@@ -11,7 +11,7 @@ const ABILITY_COOLDOWNS = {
 
 const ABILITY_DURATIONS = {
 	"ketchup": 15.0,
-	"onion": 10.0,
+	"onion": 6.0,
 	"bun": 6.0,
 	"hotsauce": 0.0,
 	"pickle": 8.0,
@@ -45,11 +45,16 @@ var timers = {
 	"relish": 0.0
 }
 
+var paused = false
+
 signal ability_activated(ability_name)
 signal ability_ended(ability_name)
 signal cooldown_updated(ability_name, remaining)
 
 func _process(delta):
+	if paused:
+		return
+
 	for ability in cooldowns.keys():
 		if cooldowns[ability] > 0:
 			cooldowns[ability] = max(cooldowns[ability] - delta, 0.0)
@@ -61,6 +66,8 @@ func _process(delta):
 				deactivate(ability)
 
 func can_use(ability_name: String) -> bool:
+	if not SaveData:
+		return false
 	if not SaveData.has_ingredient(ability_name):
 		return false
 	if cooldowns[ability_name] > 0:
@@ -80,6 +87,20 @@ func deactivate(ability_name: String):
 	active[ability_name] = false
 	cooldowns[ability_name] = ABILITY_COOLDOWNS[ability_name]
 	emit_signal("ability_ended", ability_name)
+
+func reset_all():
+	for ability in active.keys():
+		if active[ability]:
+			emit_signal("ability_ended", ability)
+		active[ability] = false
+		cooldowns[ability] = 0.0
+		timers[ability] = 0.0
+
+func pause_abilities():
+	paused = true
+
+func resume_abilities():
+	paused = false
 
 func is_active(ability_name: String) -> bool:
 	return active[ability_name]

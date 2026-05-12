@@ -15,6 +15,7 @@ func _ready():
 	kill_zone.player_died.connect(_on_player_died)
 	hud.pause_menu.paused.connect(_on_paused)
 	hud.pause_menu.resumed.connect(_on_resumed)
+	AbilityManager.reset_all()
 
 func _process(delta):
 	if running and not cutscene_active:
@@ -25,11 +26,13 @@ func _on_paused():
 	running = false
 	player.set_physics_process(false)
 	player.set_process_input(false)
+	AbilityManager.pause_abilities()
 
 func _on_resumed():
 	running = true
 	player.set_physics_process(true)
 	player.set_process_input(true)
+	AbilityManager.resume_abilities()
 
 func trigger_ingredient_cutscene(emoji: String, display_name: String):
 	cutscene_active = true
@@ -46,6 +49,7 @@ func _on_level_complete():
 	player.level_complete = true
 	player.set_physics_process(false)
 	player.set_process_input(false)
+	AbilityManager.reset_all()
 	var level_name = get_tree().current_scene.name
 	print("Saving score under: ", level_name)
 	var is_new_best = false
@@ -53,8 +57,8 @@ func _on_level_complete():
 	if time_elapsed < best:
 		SaveData.save_best_time(level_name, time_elapsed)
 		is_new_best = true
-	var level_num = level_name.replace("Level_", "").to_int()
-	var next_level = "Level_" + str(level_num + 1)
+	var level_num = level_name.replace("level_", "").to_int()
+	var next_level = "level_" + str(level_num + 1)
 	SaveData.unlock_level(next_level)
 	hud.show_complete(get_medal(), get_time_string(), is_new_best, format_time(best))
 
@@ -62,13 +66,14 @@ func _on_player_died():
 	player.level_complete = false
 	player.burn_meter = 0.0
 	player.is_on_burner = false
+	AbilityManager.reset_all()
 	player.global_position = spawn_point.global_position
 	player.velocity = Vector3.ZERO
 
 func get_medal() -> String:
 	if time_elapsed < 30.0:
 		return "GOLD"
-	elif time_elapsed < 45.0:
+	elif time_elapsed < 60.0:
 		return "SILVER"
 	else:
 		return "BRONZE"

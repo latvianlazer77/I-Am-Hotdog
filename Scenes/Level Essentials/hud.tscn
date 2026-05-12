@@ -7,6 +7,7 @@
 script = ExtResource("1_e0onf")
 
 [node name="LevelCompletePopup" type="ColorRect" parent="." unique_id=85160857]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -118,10 +119,12 @@ text = "Best Time:"
 visible = false
 
 [node name="TimerLabel" type="Label" parent="." unique_id=1800991042]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="StaminaBar" type="ProgressBar" parent="." unique_id=365904886]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -130,6 +133,7 @@ offset_right = 130.0
 grow_vertical = 0
 
 [node name="BurnBar" type="ProgressBar" parent="." unique_id=619510495]
+visible = false
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -140,6 +144,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BurnOverlay" type="ColorRect" parent="." unique_id=365289700]
+visible = false
 custom_minimum_size = Vector2(600, 40)
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,6 +154,7 @@ grow_vertical = 2
 color = Color(1, 0, 0, 0)
 
 [node name="CutsceneLayer" type="CanvasLayer" parent="." unique_id=1350878159]
+visible = false
 
 [node name="FadeOverlay" type="ColorRect" parent="CutsceneLayer" unique_id=991580003]
 anchors_preset = 15
@@ -184,3 +190,128 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 52
+
+[node name="AbilityBar" type="HBoxContainer" parent="." unique_id=701315566]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="KetchupSlot" type="Panel" parent="AbilityBar" unique_id=732649592]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+
+[node name="EmojiLabel" type="Label" parent="AbilityBar/KetchupSlot" unique_id=492213336]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 81.0
+offset_bottom = 103.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "skib"
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/KetchupSlot" unique_id=1537047701]
+layout_mode = 0
+offset_left = 28.0
+offset_top = -23.0
+offset_right = 68.0
+text = "Q"
+
+[node name="OnionSlot" type="Panel" parent="AbilityBar" unique_id=528978788]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+
+[node name="EmojiLabel" type="Label" parent="AbilityBar/OnionSlot" unique_id=576451680]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 41.0
+offset_right = 61.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "skib"
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/OnionSlot" unique_id=796087642]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -23.0
+offset_right = 58.0
+
+[node name="BunSlot" type="Panel" parent="AbilityBar" unique_id=492680635]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+
+[node name="EmojiLabel" type="Label" parent="AbilityBar/BunSlot" unique_id=268733999]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 41.0
+offset_right = 61.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "skib"
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/BunSlot" unique_id=536004306]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -23.0
+offset_right = 58.0
+
+[node name="HotsauceSlot" type="Panel" parent="AbilityBar" unique_id=2136994302]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+
+[node name="EmojiLabel" type="Label" parent="AbilityBar/HotsauceSlot" unique_id=1590589038]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 41.0
+offset_right = 61.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "skib"
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/HotsauceSlot" unique_id=774153989]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -23.0
+offset_right = 58.0
+
+[node name="PickleSlot" type="Panel" parent="AbilityBar" unique_id=207887325]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+
+[node name="EmojiLabel" type="Label" parent="AbilityBar/PickleSlot" unique_id=135221658]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 41.0
+offset_right = 61.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "skib"
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/PickleSlot" unique_id=10315725]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -23.0
+offset_right = 58.0
+
+[node name="RelishSlot" type="Panel" parent="AbilityBar" unique_id=428580545]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+
+[node name="EmojiLabel" type="Label" parent="AbilityBar/RelishSlot" unique_id=1248803418]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 41.0
+offset_right = 61.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "skib"
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/RelishSlot" unique_id=1545046307]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -23.0
+offset_right = 58.0
