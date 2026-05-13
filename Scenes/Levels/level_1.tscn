@@ -381,7 +381,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -44.554478, 108.2054)
 [node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("5_rb0md")]
 
 [node name="FinishZone" parent="GameManager" unique_id=631311601 instance=ExtResource("6_u5ghp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.29851, -14.705885, -108.66077)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -236.2406, -14.705885, -112.62941)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1319615241]
 transform = Transform3D(-0.80659944, 0, 0.5910984, 0, 1, 0, -0.5910984, 0, -0.80659944, 26.636116, 0, 110.22252)
