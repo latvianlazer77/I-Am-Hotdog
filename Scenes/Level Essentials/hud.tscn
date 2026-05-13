@@ -122,6 +122,7 @@ visible = false
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_constants/outline_size = 3
 
 [node name="StaminaBar" type="ProgressBar" parent="." unique_id=365904886]
 visible = false
@@ -196,6 +197,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -126.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
@@ -205,113 +208,225 @@ custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 
 [node name="EmojiLabel" type="Label" parent="AbilityBar/KetchupSlot" unique_id=492213336]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 1.0
-offset_right = 81.0
-offset_bottom = 103.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
-text = "skib"
+text = "🍅"
+
+[node name="DarkOverlay" type="ColorRect" parent="AbilityBar/KetchupSlot" unique_id=1499287236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [node name="KeyLabel" type="Label" parent="AbilityBar/KetchupSlot" unique_id=1537047701]
 layout_mode = 0
-offset_left = 28.0
-offset_top = -23.0
-offset_right = 68.0
+offset_left = 30.0
+offset_top = 99.0
+offset_right = 70.0
+offset_bottom = 122.0
 text = "Q"
 
-[node name="OnionSlot" type="Panel" parent="AbilityBar" unique_id=528978788]
+[node name="MustardSlot" type="Panel" parent="AbilityBar" unique_id=1250736134]
 custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 
-[node name="EmojiLabel" type="Label" parent="AbilityBar/OnionSlot" unique_id=576451680]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 41.0
-offset_right = 61.0
-offset_bottom = 64.0
+[node name="EmojiLabel" type="Label" parent="AbilityBar/MustardSlot" unique_id=214499107]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "skib"
+theme_override_font_sizes/font_size = 36
+text = "🍅"
 
-[node name="KeyLabel" type="Label" parent="AbilityBar/OnionSlot" unique_id=796087642]
+[node name="DarkOverlay" type="ColorRect" parent="AbilityBar/MustardSlot" unique_id=1245154217]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/MustardSlot" unique_id=1546892790]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -23.0
-offset_right = 58.0
+offset_left = 30.0
+offset_top = 99.0
+offset_right = 70.0
+offset_bottom = 122.0
+text = "Q"
 
-[node name="BunSlot" type="Panel" parent="AbilityBar" unique_id=492680635]
+[node name="BunSlot" type="Panel" parent="AbilityBar" unique_id=1571105033]
 custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 
-[node name="EmojiLabel" type="Label" parent="AbilityBar/BunSlot" unique_id=268733999]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 41.0
-offset_right = 61.0
-offset_bottom = 64.0
+[node name="EmojiLabel" type="Label" parent="AbilityBar/BunSlot" unique_id=1239801287]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "skib"
+theme_override_font_sizes/font_size = 36
+text = "🍅"
 
-[node name="KeyLabel" type="Label" parent="AbilityBar/BunSlot" unique_id=536004306]
+[node name="DarkOverlay" type="ColorRect" parent="AbilityBar/BunSlot" unique_id=392438832]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/BunSlot" unique_id=1586499863]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -23.0
-offset_right = 58.0
+offset_left = 30.0
+offset_top = 99.0
+offset_right = 70.0
+offset_bottom = 122.0
+text = "Q"
 
-[node name="HotsauceSlot" type="Panel" parent="AbilityBar" unique_id=2136994302]
+[node name="HotsauceSlot" type="Panel" parent="AbilityBar" unique_id=930913950]
 custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 
-[node name="EmojiLabel" type="Label" parent="AbilityBar/HotsauceSlot" unique_id=1590589038]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 41.0
-offset_right = 61.0
-offset_bottom = 64.0
+[node name="EmojiLabel" type="Label" parent="AbilityBar/HotsauceSlot" unique_id=209911681]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "skib"
+theme_override_font_sizes/font_size = 36
+text = "🍅"
 
-[node name="KeyLabel" type="Label" parent="AbilityBar/HotsauceSlot" unique_id=774153989]
+[node name="DarkOverlay" type="ColorRect" parent="AbilityBar/HotsauceSlot" unique_id=2091392249]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/HotsauceSlot" unique_id=729300976]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -23.0
-offset_right = 58.0
+offset_left = 30.0
+offset_top = 99.0
+offset_right = 70.0
+offset_bottom = 122.0
+text = "Q"
 
-[node name="PickleSlot" type="Panel" parent="AbilityBar" unique_id=207887325]
+[node name="PickleSlot" type="Panel" parent="AbilityBar" unique_id=606958982]
 custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 
-[node name="EmojiLabel" type="Label" parent="AbilityBar/PickleSlot" unique_id=135221658]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 41.0
-offset_right = 61.0
-offset_bottom = 64.0
+[node name="EmojiLabel" type="Label" parent="AbilityBar/PickleSlot" unique_id=144526453]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "skib"
+theme_override_font_sizes/font_size = 36
+text = "🍅"
 
-[node name="KeyLabel" type="Label" parent="AbilityBar/PickleSlot" unique_id=10315725]
+[node name="DarkOverlay" type="ColorRect" parent="AbilityBar/PickleSlot" unique_id=1523416337]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/PickleSlot" unique_id=1550178086]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -23.0
-offset_right = 58.0
+offset_left = 30.0
+offset_top = 99.0
+offset_right = 70.0
+offset_bottom = 122.0
+text = "Q"
 
-[node name="RelishSlot" type="Panel" parent="AbilityBar" unique_id=428580545]
+[node name="RelishSlot" type="Panel" parent="AbilityBar" unique_id=1924100751]
 custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 
-[node name="EmojiLabel" type="Label" parent="AbilityBar/RelishSlot" unique_id=1248803418]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 41.0
-offset_right = 61.0
-offset_bottom = 64.0
+[node name="EmojiLabel" type="Label" parent="AbilityBar/RelishSlot" unique_id=298805021]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "skib"
+theme_override_font_sizes/font_size = 36
+text = "🍅"
 
-[node name="KeyLabel" type="Label" parent="AbilityBar/RelishSlot" unique_id=1545046307]
+[node name="DarkOverlay" type="ColorRect" parent="AbilityBar/RelishSlot" unique_id=135327455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="KeyLabel" type="Label" parent="AbilityBar/RelishSlot" unique_id=955008874]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -23.0
-offset_right = 58.0
+offset_left = 30.0
+offset_top = 99.0
+offset_right = 70.0
+offset_bottom = 122.0
+text = "Q"

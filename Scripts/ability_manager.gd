@@ -2,7 +2,7 @@ extends Node
 
 const ABILITY_COOLDOWNS = {
 	"ketchup": 10.0,
-	"onion": 20.0,
+	"mustard": 20.0,
 	"bun": 18.0,
 	"hotsauce": 8.0,
 	"pickle": 15.0,
@@ -11,7 +11,7 @@ const ABILITY_COOLDOWNS = {
 
 const ABILITY_DURATIONS = {
 	"ketchup": 15.0,
-	"onion": 6.0,
+	"mustard": 6.0,
 	"bun": 6.0,
 	"hotsauce": 0.0,
 	"pickle": 8.0,
@@ -20,7 +20,7 @@ const ABILITY_DURATIONS = {
 
 var cooldowns = {
 	"ketchup": 0.0,
-	"onion": 0.0,
+	"mustard": 0.0,
 	"bun": 0.0,
 	"hotsauce": 0.0,
 	"pickle": 0.0,
@@ -29,7 +29,7 @@ var cooldowns = {
 
 var active = {
 	"ketchup": false,
-	"onion": false,
+	"mustard": false,
 	"bun": false,
 	"hotsauce": false,
 	"pickle": false,
@@ -38,7 +38,7 @@ var active = {
 
 var timers = {
 	"ketchup": 0.0,
-	"onion": 0.0,
+	"mustard": 0.0,
 	"bun": 0.0,
 	"hotsauce": 0.0,
 	"pickle": 0.0,
@@ -93,7 +93,6 @@ func reset_all():
 		if active[ability]:
 			emit_signal("ability_ended", ability)
 		active[ability] = false
-		cooldowns[ability] = 0.0
 		timers[ability] = 0.0
 
 func pause_abilities():

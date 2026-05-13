@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://dnfs7tvfkb8gf"]
 
 [ext_resource type="Script" uid="uid://b6nft080jbnxm" path="res://Scripts/test_dog.gd" id="1_sa8xt"]
+[ext_resource type="AudioStream" uid="uid://bn81xl38l4em3" path="res://Assets/Audio/speedboost.mp3" id="2_urq3k"]
+[ext_resource type="AudioStream" uid="uid://dvadm6jr4kloa" path="res://Assets/Audio/MUSTAAAAARD!!!!!.mp3" id="3_81fj7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqjuv"]
 height = 5.0197754
@@ -99,3 +101,9 @@ emitting = false
 amount = 60
 process_material = SubResource("ParticleProcessMaterial_urq3k")
 draw_pass_1 = SubResource("SphereMesh_urq3k")
+
+[node name="KetchupSound" type="AudioStreamPlayer3D" parent="." unique_id=453535580]
+stream = ExtResource("2_urq3k")
+
+[node name="MustardSound" type="AudioStreamPlayer3D" parent="." unique_id=2021185535]
+stream = ExtResource("3_81fj7")

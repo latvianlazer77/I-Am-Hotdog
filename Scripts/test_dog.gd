@@ -16,6 +16,8 @@ const BURN_DRAIN = 15.0
 @onready var smoke = $SmokeParticles
 @onready var ketchup_particles = $KetchupEffect/KetchupParticles
 @onready var lightning_light = $KetchupEffect/LightningLight
+@onready var ketchup_sound = $KetchupSound
+@onready var mustard_sound: AudioStreamPlayer3D = $MustardSound
 
 var current_speed = 0.0
 var stamina = MAX_STAMINA
@@ -39,6 +41,7 @@ func _on_ability_activated(ability_name: String):
 		"ketchup":
 			ketchup_particles.emitting = true
 			lightning_light.visible = true
+			ketchup_sound.play()
 
 func _on_ability_ended(ability_name: String):
 	print("Ability ended: ", ability_name)
@@ -46,6 +49,15 @@ func _on_ability_ended(ability_name: String):
 		"ketchup":
 			ketchup_particles.emitting = false
 			lightning_light.visible = false
+			ketchup_sound.stop()
+
+func pause_sounds():
+	if ketchup_sound.playing:
+		ketchup_sound.stream_paused = true
+
+func resume_sounds():
+	if ketchup_sound.stream_paused:
+		ketchup_sound.stream_paused = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -62,7 +74,6 @@ func _process(delta):
 		AbilityManager.activate("ketchup")
 		print("After activate - Active: ", AbilityManager.active["ketchup"])
 
-	# Lightning flicker effect
 	if AbilityManager.is_active("ketchup"):
 		lightning_timer -= delta
 		if lightning_timer <= 0.0:

@@ -26,14 +26,14 @@ var spin_tween = null
 
 const ABILITY_DATA = {
 	"ketchup":  {"emoji": "🍅", "key": "Q",     "color": Color(1, 0.2, 0.2)},
-	"onion":    {"emoji": "🧅", "key": "Z",     "color": Color(0.6, 0.8, 1.0)},
+	"mustard":  {"emoji": "🟡", "key": "Z",     "color": Color(1, 0.85, 0.0)},
 	"bun":      {"emoji": "🌭", "key": "X",     "color": Color(1, 0.8, 0.4)},
 	"hotsauce": {"emoji": "🌶️", "key": "R",     "color": Color(1, 0.4, 0.0)},
 	"pickle":   {"emoji": "🥒", "key": "F",     "color": Color(0.2, 0.9, 0.2)},
 	"relish":   {"emoji": "🧂", "key": "Space", "color": Color(1, 0.9, 0.2)},
 }
 
-const ABILITY_ORDER = ["ketchup", "onion", "bun", "hotsauce", "pickle", "relish"]
+const ABILITY_ORDER = ["ketchup", "mustard", "bun", "hotsauce", "pickle", "relish"]
 
 func _ready():
 	popup.visible = false
@@ -41,6 +41,7 @@ func _ready():
 	burn_bar.visible = false
 	burn_overlay.visible = false
 	cutscene_layer.visible = false
+	timer_label.visible = true
 	play_again.pressed.connect(_on_play_again)
 	main_menu_button.pressed.connect(_on_main_menu)
 	pause_menu.resumed.connect(_on_resumed)
@@ -75,15 +76,24 @@ func update_slot(ability_name: String):
 	slot.visible = true
 	var is_active = AbilityManager.is_active(ability_name)
 	var cooldown_pct = AbilityManager.get_cooldown_percent(ability_name)
+	var overlay = slot.get_node("DarkOverlay")
+	var slot_height = slot.size.y
 
 	if is_active:
 		var time_pct = AbilityManager.timers[ability_name] / AbilityManager.ABILITY_DURATIONS[ability_name]
+		var covered = slot_height * (1.0 - time_pct)
+		overlay.position.y = 0
+		overlay.size = Vector2(overlay.size.x, covered)
+		overlay.color = Color(0, 0, 0, 0.8)
 		slot.modulate = Color(1, 1, 1, 1)
-		slot.get_node("EmojiLabel").modulate = Color(1, 1, 1, time_pct)
 	elif cooldown_pct > 0:
-		var brightness = 1.0 - cooldown_pct
-		slot.modulate = Color(brightness, brightness, brightness, 1.0)
+		var covered = slot_height * cooldown_pct
+		overlay.position.y = 0
+		overlay.size = Vector2(overlay.size.x, covered)
+		overlay.color = Color(0, 0, 0, 0.8)
+		slot.modulate = Color(1, 1, 1, 1)
 	else:
+		overlay.size = Vector2(overlay.size.x, 0)
 		slot.modulate = Color(1, 1, 1, 1)
 
 func _on_ability_activated(ability_name: String):

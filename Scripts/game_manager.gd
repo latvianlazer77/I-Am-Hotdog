@@ -26,12 +26,14 @@ func _on_paused():
 	running = false
 	player.set_physics_process(false)
 	player.set_process_input(false)
+	player.pause_sounds()
 	AbilityManager.pause_abilities()
 
 func _on_resumed():
 	running = true
 	player.set_physics_process(true)
 	player.set_process_input(true)
+	player.resume_sounds()
 	AbilityManager.resume_abilities()
 
 func trigger_ingredient_cutscene(emoji: String, display_name: String):
