@@ -17,7 +17,8 @@ const BURN_DRAIN = 15.0
 @onready var ketchup_particles = $KetchupEffect/KetchupParticles
 @onready var lightning_light = $KetchupEffect/LightningLight
 @onready var ketchup_sound = $KetchupSound
-@onready var mustard_sound: AudioStreamPlayer3D = $MustardSound
+@onready var mustard_particles = $MustardParticles
+@onready var mustard_sound = $MustardSound
 
 var current_speed = 0.0
 var stamina = MAX_STAMINA
@@ -34,6 +35,7 @@ func _ready():
 	AbilityManager.ability_ended.connect(_on_ability_ended)
 	ketchup_particles.emitting = false
 	lightning_light.visible = false
+	mustard_particles.emitting = false
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
@@ -42,6 +44,9 @@ func _on_ability_activated(ability_name: String):
 			ketchup_particles.emitting = true
 			lightning_light.visible = true
 			ketchup_sound.play()
+		"mustard":
+			mustard_particles.emitting = true
+			mustard_sound.play()
 
 func _on_ability_ended(ability_name: String):
 	print("Ability ended: ", ability_name)
@@ -50,14 +55,21 @@ func _on_ability_ended(ability_name: String):
 			ketchup_particles.emitting = false
 			lightning_light.visible = false
 			ketchup_sound.stop()
+		"mustard":
+			mustard_particles.emitting = false
+			mustard_sound.stop()
 
 func pause_sounds():
 	if ketchup_sound.playing:
 		ketchup_sound.stream_paused = true
+	if mustard_sound.playing:
+		mustard_sound.stream_paused = true
 
 func resume_sounds():
 	if ketchup_sound.stream_paused:
 		ketchup_sound.stream_paused = false
+	if mustard_sound.stream_paused:
+		mustard_sound.stream_paused = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -67,12 +79,9 @@ func _input(event):
 
 func _process(delta):
 	if Input.is_action_just_pressed("ability_ketchup"):
-		print("Q pressed")
-		print("Has ingredient: ", SaveData.has_ingredient("ketchup"))
-		print("Cooldown: ", AbilityManager.cooldowns["ketchup"])
-		print("Active: ", AbilityManager.active["ketchup"])
 		AbilityManager.activate("ketchup")
-		print("After activate - Active: ", AbilityManager.active["ketchup"])
+	if Input.is_action_just_pressed("ability_mustard"):
+		AbilityManager.activate("mustard")
 
 	if AbilityManager.is_active("ketchup"):
 		lightning_timer -= delta
@@ -92,7 +101,7 @@ func _physics_process(delta):
 		velocity.y += GRAVITY * delta
 
 	if not level_complete:
-		if is_on_burner:
+		if is_on_burner and not AbilityManager.is_active("mustard"):
 			burn_meter = min(burn_meter + delta * 50.0, MAX_BURN)
 		else:
 			burn_meter = max(burn_meter - BURN_DRAIN * delta, 0.0)
@@ -111,7 +120,6 @@ func _physics_process(delta):
 		shake_amount = 0.0
 
 	var burn_speed_mult = 1.0 - (burn_meter / MAX_BURN) * 0.7
-
 	var wants_to_sprint = Input.is_action_pressed("sprint") and stamina > 0
 	is_sprinting = wants_to_sprint and Input.is_action_pressed("move_forward")
 

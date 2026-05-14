@@ -18,11 +18,13 @@ extends CanvasLayer
 @onready var ingredient_label = $CutsceneLayer/IngredientLabel
 @onready var interact_prompt = $InteractPrompt
 @onready var ability_bar = $AbilityBar
+@onready var mustard_overlay = $MustardOverlay
 
 var player = null
 var on_complete_callback = null
 var float_tween = null
 var spin_tween = null
+var mustard_tween = null
 
 const ABILITY_DATA = {
 	"ketchup":  {"emoji": "🍅", "key": "Q",     "color": Color(1, 0.2, 0.2)},
@@ -42,6 +44,9 @@ func _ready():
 	burn_overlay.visible = false
 	cutscene_layer.visible = false
 	timer_label.visible = true
+	mustard_overlay.visible = false
+	mustard_overlay.material = ShaderMaterial.new()
+	mustard_overlay.material.shader = load("res://Scripts/time_freeze.gdshader")
 	play_again.pressed.connect(_on_play_again)
 	main_menu_button.pressed.connect(_on_main_menu)
 	pause_menu.resumed.connect(_on_resumed)
@@ -52,6 +57,28 @@ func _ready():
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	setup_ability_bar()
+
+func _on_ability_activated(ability_name: String):
+	update_slot(ability_name)
+	if ability_name == "mustard":
+		play_mustard_effect(true)
+
+func _on_ability_ended(ability_name: String):
+	update_slot(ability_name)
+	if ability_name == "mustard":
+		play_mustard_effect(false)
+
+func play_mustard_effect(activating: bool):
+	if mustard_tween:
+		mustard_tween.kill()
+	mustard_overlay.visible = true
+	mustard_tween = create_tween()
+	if activating:
+		mustard_overlay.material.set_shader_parameter("progress", 0.0)
+		mustard_tween.tween_method(func(v): mustard_overlay.material.set_shader_parameter("progress", v), 0.0, 1.5, 0.8)
+	else:
+		mustard_tween.tween_method(func(v): mustard_overlay.material.set_shader_parameter("progress", v), 1.5, 0.0, 0.5)
+		mustard_tween.tween_callback(func(): mustard_overlay.visible = false)
 
 func setup_ability_bar():
 	for i in range(ABILITY_ORDER.size()):
@@ -66,7 +93,11 @@ func update_slot(ability_name: String):
 	var i = ABILITY_ORDER.find(ability_name)
 	if i == -1:
 		return
+	if i >= ability_bar.get_child_count():
+		return
 	var slot = ability_bar.get_child(i)
+	if not slot:
+		return
 	var has_it = SaveData.has_ingredient(ability_name)
 
 	if not has_it:
@@ -76,7 +107,9 @@ func update_slot(ability_name: String):
 	slot.visible = true
 	var is_active = AbilityManager.is_active(ability_name)
 	var cooldown_pct = AbilityManager.get_cooldown_percent(ability_name)
-	var overlay = slot.get_node("DarkOverlay")
+	var overlay = slot.get_node_or_null("DarkOverlay")
+	if not overlay:
+		return
 	var slot_height = slot.size.y
 
 	if is_active:
@@ -95,12 +128,6 @@ func update_slot(ability_name: String):
 	else:
 		overlay.size = Vector2(overlay.size.x, 0)
 		slot.modulate = Color(1, 1, 1, 1)
-
-func _on_ability_activated(ability_name: String):
-	update_slot(ability_name)
-
-func _on_ability_ended(ability_name: String):
-	update_slot(ability_name)
 
 func _on_cooldown_updated(ability_name: String, _remaining: float):
 	update_slot(ability_name)
