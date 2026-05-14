@@ -20,6 +20,7 @@ func _on_options():
 	options_popup.visible = true
 
 func _on_quit():
+	AbilityManager.reset_all()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Scenes/Menus/main_menu.tscn")
 

@@ -108,3 +108,13 @@ func get_cooldown_percent(ability_name: String) -> float:
 	if ABILITY_COOLDOWNS[ability_name] == 0:
 		return 0.0
 	return cooldowns[ability_name] / ABILITY_COOLDOWNS[ability_name]
+
+func hard_reset():
+	paused = false
+	for ability in active.keys():
+		if active[ability]:
+			emit_signal("ability_ended", ability)
+		active[ability] = false
+		cooldowns[ability] = 0.0
+		timers[ability] = 0.0
+	

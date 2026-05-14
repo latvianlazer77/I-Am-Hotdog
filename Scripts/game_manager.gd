@@ -8,17 +8,44 @@ var cutscene_active = false
 @onready var player = $Player
 @onready var spawn_point = $SpawnPoint
 @onready var finish_zone = $FinishZone
-@onready var kill_zone = $KillZone
+@onready var world_env = get_parent().get_node("WorldEnvironment")
 
 func _ready():
 	finish_zone.level_complete.connect(_on_level_complete)
-	kill_zone.player_died.connect(_on_player_died)
 	hud.pause_menu.paused.connect(_on_paused)
 	hud.pause_menu.resumed.connect(_on_resumed)
-	AbilityManager.reset_all()
+	AbilityManager.ability_activated.connect(_on_ability_activated)
+	AbilityManager.ability_ended.connect(_on_ability_ended)
+	time_elapsed = 0.0
+	running = true
+	cutscene_active = false
+	AbilityManager.hard_reset()
+
+func _on_ability_activated(ability_name: String):
+	if ability_name == "mustard":
+		if world_env:
+			var tween = create_tween()
+			tween.tween_method(func(v):
+				world_env.environment.adjustment_saturation = v
+				world_env.environment.adjustment_brightness = lerp(1.0, 0.8, 1.0 - v)
+			, 1.0, 0.1, 0.4)
+
+func _on_ability_ended(ability_name: String):
+	if ability_name == "mustard":
+		if world_env:
+			var tween = create_tween()
+			tween.tween_method(func(v):
+				world_env.environment.adjustment_saturation = v
+				world_env.environment.adjustment_brightness = lerp(1.0, 0.8, 1.0 - v)
+			, 0.1, 1.0, 0.4)
+
+func reset_world_env():
+	if world_env:
+		world_env.environment.adjustment_saturation = 1.0
+		world_env.environment.adjustment_brightness = 1.0
 
 func _process(delta):
-	if running and not cutscene_active:
+	if running and not cutscene_active and not AbilityManager.is_active("mustard"):
 		time_elapsed += delta
 		hud.update_timer(get_time_string())
 
@@ -51,7 +78,8 @@ func _on_level_complete():
 	player.level_complete = true
 	player.set_physics_process(false)
 	player.set_process_input(false)
-	AbilityManager.reset_all()
+	AbilityManager.hard_reset()
+	reset_world_env()
 	var level_name = get_tree().current_scene.name
 	print("Saving score under: ", level_name)
 	var is_new_best = false
@@ -68,7 +96,8 @@ func _on_player_died():
 	player.level_complete = false
 	player.burn_meter = 0.0
 	player.is_on_burner = false
-	AbilityManager.reset_all()
+	AbilityManager.hard_reset()
+	reset_world_env()
 	player.global_position = spawn_point.global_position
 	player.velocity = Vector3.ZERO
 

@@ -45,8 +45,6 @@ func _ready():
 	cutscene_layer.visible = false
 	timer_label.visible = true
 	mustard_overlay.visible = false
-	mustard_overlay.material = ShaderMaterial.new()
-	mustard_overlay.material.shader = load("res://Scripts/time_freeze.gdshader")
 	play_again.pressed.connect(_on_play_again)
 	main_menu_button.pressed.connect(_on_main_menu)
 	pause_menu.resumed.connect(_on_resumed)
@@ -205,6 +203,8 @@ func _input(event):
 			pause_menu.show_pause()
 
 func _process(_delta):
+	if mustard_overlay.visible:
+		mustard_overlay.material.set_shader_parameter("time", Time.get_ticks_msec() / 1000.0)
 	if player and not popup.visible and not cutscene_layer.visible:
 		stamina_bar.value = player.get_stamina_percent() * 100
 		stamina_bar.visible = player.is_sprinting or player.stamina < player.MAX_STAMINA
@@ -271,5 +271,6 @@ func _on_play_again():
 	get_tree().reload_current_scene()
 
 func _on_main_menu():
+	AbilityManager.reset_all()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Scenes/Menus/main_menu.tscn")

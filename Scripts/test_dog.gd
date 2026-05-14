@@ -17,7 +17,6 @@ const BURN_DRAIN = 15.0
 @onready var ketchup_particles = $KetchupEffect/KetchupParticles
 @onready var lightning_light = $KetchupEffect/LightningLight
 @onready var ketchup_sound = $KetchupSound
-@onready var mustard_particles = $MustardParticles
 @onready var mustard_sound = $MustardSound
 
 var current_speed = 0.0
@@ -35,7 +34,6 @@ func _ready():
 	AbilityManager.ability_ended.connect(_on_ability_ended)
 	ketchup_particles.emitting = false
 	lightning_light.visible = false
-	mustard_particles.emitting = false
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
@@ -45,7 +43,6 @@ func _on_ability_activated(ability_name: String):
 			lightning_light.visible = true
 			ketchup_sound.play()
 		"mustard":
-			mustard_particles.emitting = true
 			mustard_sound.play()
 
 func _on_ability_ended(ability_name: String):
@@ -56,7 +53,6 @@ func _on_ability_ended(ability_name: String):
 			lightning_light.visible = false
 			ketchup_sound.stop()
 		"mustard":
-			mustard_particles.emitting = false
 			mustard_sound.stop()
 
 func pause_sounds():

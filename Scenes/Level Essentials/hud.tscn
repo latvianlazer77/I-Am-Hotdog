@@ -2,17 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cfg6foysnuj8" path="res://Scripts/hud.gd" id="1_e0onf"]
 [ext_resource type="PackedScene" uid="uid://crsk1y3ecnlwb" path="res://Scenes/Menus/pause_menu.tscn" id="2_4qu8c"]
+[ext_resource type="Shader" uid="uid://cec2tbv3pjmst" path="res://Scripts/time_freeze.gdshader" id="2_7fw6p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fw6p"]
+shader = ExtResource("2_7fw6p")
+shader_parameter/progress = 0.0
+shader_parameter/time = 0.0
+shader_parameter/tint_color = Color(0.9, 0.85, 0.3, 0.3)
 
 [node name="HUD" type="CanvasLayer" unique_id=1630524627 groups=["hud"]]
 script = ExtResource("1_e0onf")
 
 [node name="MustardOverlay" type="ColorRect" parent="." unique_id=1516871646]
+material = SubResource("ShaderMaterial_7fw6p")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 0.6627451, 0.019607844)
+color = Color(1, 1, 0.6627451, 0)
 
 [node name="LevelCompletePopup" type="ColorRect" parent="." unique_id=85160857]
 visible = false
@@ -122,9 +130,6 @@ offset_bottom = -165.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Best Time:"
-
-[node name="PauseMenu" parent="." unique_id=299789172 instance=ExtResource("2_4qu8c")]
-visible = false
 
 [node name="TimerLabel" type="Label" parent="." unique_id=1800991042]
 visible = false
@@ -441,3 +446,6 @@ offset_top = 99.0
 offset_right = 70.0
 offset_bottom = 122.0
 text = "Q"
+
+[node name="PauseMenu" parent="." unique_id=299789172 instance=ExtResource("2_4qu8c")]
+visible = false
