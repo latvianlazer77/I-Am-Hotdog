@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="4_jv26f"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_rb0md"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="6_u5ghp"]
+[ext_resource type="PackedScene" uid="uid://beyjqhdiyodq1" path="res://Scenes/Level Essentials/kill_zone_box.tscn" id="8_jv26f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_seteq"]
 flip_faces = true
@@ -391,3 +392,6 @@ transform = Transform3D(-0.80659944, 0, 0.5910984, 0, 1, 0, -0.5910984, 0, -0.80
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=1706125020]
 transform = Transform3D(0.9881696, 0, 0.1533653, 0, 1, 0, -0.1533653, 0, 0.9881696, -236.37778, 0, 119.12495)
+
+[node name="KillZoneBox" parent="." unique_id=1769677191 instance=ExtResource("8_jv26f")]
+transform = Transform3D(13.25013, 0, 0, 0, 5.1, 0, 0, 0, 12.090891, 46.730507, -15.213127, 114.37892)

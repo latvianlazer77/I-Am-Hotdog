@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 0.6627451, 0.09411765)
+color = Color(1, 1, 0.6627451, 0.019607844)
 
 [node name="LevelCompletePopup" type="ColorRect" parent="." unique_id=85160857]
 visible = false
@@ -134,11 +134,14 @@ theme_override_constants/outline_size = 3
 
 [node name="StaminaBar" type="ProgressBar" parent="." unique_id=365904886]
 visible = false
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -130.0
 offset_top = -27.0
-offset_right = 130.0
+grow_horizontal = 0
 grow_vertical = 0
 
 [node name="BurnBar" type="ProgressBar" parent="." unique_id=619510495]
