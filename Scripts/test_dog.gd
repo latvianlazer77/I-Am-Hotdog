@@ -11,13 +11,16 @@ const STAMINA_DRAIN = 25.0
 const STAMINA_REGEN = 10.0
 const MAX_BURN = 100.0
 const BURN_DRAIN = 15.0
+const DASH_DISTANCE = 50.0
+const DASH_SPEED = 40.0
 
 @onready var camera_pivot = $CameraPivot
-@onready var smoke = $SmokeParticles
 @onready var ketchup_particles = $KetchupEffect/KetchupParticles
 @onready var lightning_light = $KetchupEffect/LightningLight
 @onready var ketchup_sound = $KetchupSound
 @onready var mustard_sound = $MustardSound
+@onready var smoke = $SmokeParticles
+@onready var dash_particles = $DashParticles
 
 var current_speed = 0.0
 var stamina = MAX_STAMINA
@@ -27,6 +30,11 @@ var is_on_burner = false
 var shake_amount = 0.0
 var level_complete = false
 var lightning_timer = 0.0
+var bun_flash_tween = null
+var is_dashing = false
+var dash_target = Vector3.ZERO
+var dash_start = Vector3.ZERO
+var dash_progress = 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -34,6 +42,7 @@ func _ready():
 	AbilityManager.ability_ended.connect(_on_ability_ended)
 	ketchup_particles.emitting = false
 	lightning_light.visible = false
+	dash_particles.emitting = false
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
@@ -44,6 +53,10 @@ func _on_ability_activated(ability_name: String):
 			ketchup_sound.play()
 		"mustard":
 			mustard_sound.play()
+		"bun":
+			start_bun_flash()
+		"hotsauce":
+			perform_dash()
 
 func _on_ability_ended(ability_name: String):
 	print("Ability ended: ", ability_name)
@@ -54,6 +67,63 @@ func _on_ability_ended(ability_name: String):
 			ketchup_sound.stop()
 		"mustard":
 			mustard_sound.stop()
+		"bun":
+			stop_bun_flash()
+		"hotsauce":
+			dash_particles.emitting = false
+
+func perform_dash():
+	if is_dashing:
+		return
+	is_dashing = true
+	dash_start = global_position
+	var dash_dir = -transform.basis.z
+	dash_dir.y = 0
+	dash_dir = dash_dir.normalized()
+
+	# Raycast to check for walls
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(
+		global_position,
+		global_position + dash_dir * DASH_DISTANCE
+	)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+
+	if result:
+		dash_target = result.position - dash_dir * 0.2
+	else:
+		dash_target = global_position + dash_dir * DASH_DISTANCE
+
+	dash_progress = 0.0
+	dash_particles.emitting = true
+
+	var tween = create_tween()
+	tween.tween_method(func(v):
+		global_position = dash_start.lerp(dash_target, v)
+	, 0.0, 1.0, DASH_DISTANCE / DASH_SPEED)
+	tween.tween_callback(func():
+		is_dashing = false
+		dash_particles.emitting = false
+	)
+
+func start_bun_flash():
+	if bun_flash_tween:
+		bun_flash_tween.kill()
+	bun_flash_tween = create_tween().set_loops()
+	bun_flash_tween.tween_callback(func():
+		$Sausage.get_active_material(0).albedo_color = Color(1, 1, 1, 0.3)
+	)
+	bun_flash_tween.tween_interval(0.15)
+	bun_flash_tween.tween_callback(func():
+		$Sausage.get_active_material(0).albedo_color = Color(1, 1, 1, 1.0)
+	)
+	bun_flash_tween.tween_interval(0.15)
+
+func stop_bun_flash():
+	if bun_flash_tween:
+		bun_flash_tween.kill()
+	$Sausage.get_active_material(0).albedo_color = Color(1, 1, 1, 1.0)
 
 func pause_sounds():
 	if ketchup_sound.playing:
@@ -78,6 +148,10 @@ func _process(delta):
 		AbilityManager.activate("ketchup")
 	if Input.is_action_just_pressed("ability_mustard"):
 		AbilityManager.activate("mustard")
+	if Input.is_action_just_pressed("ability_bun"):
+		AbilityManager.activate("bun")
+	if Input.is_action_just_pressed("ability_hotsauce"):
+		AbilityManager.activate("hotsauce")
 
 	if AbilityManager.is_active("ketchup"):
 		lightning_timer -= delta
@@ -93,11 +167,14 @@ func _process(delta):
 			lightning_timer = randf_range(0.03, 0.1)
 
 func _physics_process(delta):
+	if is_dashing:
+		return
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
 	if not level_complete:
-		if is_on_burner and not AbilityManager.is_active("mustard"):
+		if is_on_burner and not AbilityManager.is_active("mustard") and not AbilityManager.is_active("bun"):
 			burn_meter = min(burn_meter + delta * 50.0, MAX_BURN)
 		else:
 			burn_meter = max(burn_meter - BURN_DRAIN * delta, 0.0)

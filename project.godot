@@ -30,6 +30,7 @@ player=""
 game_manager=""
 ice_zone=""
 hud=""
+hazard=""
 
 [input]
 
