@@ -69,15 +69,19 @@ material = SubResource("StandardMaterial3D_sa8xt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81fj7"]
 lifetime_randomness = 0.2
-direction = Vector3(0, 0, 1)
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
+direction = Vector3(0, 1, -1)
+initial_velocity_min = 46.55
+initial_velocity_max = 54.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_worfy"]
-albedo_color = Color(0.86981654, 0.42358288, 0, 1)
+albedo_color = Color(1, 0.66668326, 0, 1)
+emission_enabled = true
+emission = Color(0.4716735, 0.16486329, 0.037603687, 1)
+emission_energy_multiplier = 200.0
 
-[sub_resource type="TorusMesh" id="TorusMesh_6t516"]
+[sub_resource type="BoxMesh" id="BoxMesh_6t516"]
 material = SubResource("StandardMaterial3D_worfy")
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Player" type="CharacterBody3D" unique_id=2768484 groups=["player"]]
 axis_lock_angular_x = true
@@ -125,7 +129,6 @@ stream = ExtResource("2_urq3k")
 stream = ExtResource("3_81fj7")
 
 [node name="DashParticles" type="GPUParticles3D" parent="." unique_id=1494786815]
-emitting = false
-amount = 30
+amount = 500
 process_material = SubResource("ParticleProcessMaterial_81fj7")
-draw_pass_1 = SubResource("TorusMesh_6t516")
+draw_pass_1 = SubResource("BoxMesh_6t516")

@@ -31,6 +31,7 @@ game_manager=""
 ice_zone=""
 hud=""
 hazard=""
+coin=""
 
 [input]
 

@@ -39,3 +39,19 @@ func is_cutscene_seen(level_name: String) -> bool:
 func mark_cutscene_seen(level_name: String):
 	config.set_value("cutscenes", level_name, true)
 	config.save(SAVE_PATH)
+
+func get_coins() -> int:
+	return config.get_value("wallet", "coins", 0)
+
+func add_coins(amount: int):
+	var current = get_coins()
+	config.set_value("wallet", "coins", current + amount)
+	config.save(SAVE_PATH)
+
+func spend_coins(amount: int) -> bool:
+	var current = get_coins()
+	if current < amount:
+		return false
+	config.set_value("wallet", "coins", current - amount)
+	config.save(SAVE_PATH)
+	return true

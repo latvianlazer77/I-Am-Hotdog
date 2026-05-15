@@ -12,14 +12,15 @@ const STAMINA_REGEN = 10.0
 const MAX_BURN = 100.0
 const BURN_DRAIN = 15.0
 const DASH_DISTANCE = 50.0
-const DASH_SPEED = 40.0
+const DASH_SPEED = 200.0
+const MAGNET_RADIUS = 30.0
 
 @onready var camera_pivot = $CameraPivot
+@onready var smoke = $SmokeParticles
 @onready var ketchup_particles = $KetchupEffect/KetchupParticles
 @onready var lightning_light = $KetchupEffect/LightningLight
 @onready var ketchup_sound = $KetchupSound
 @onready var mustard_sound = $MustardSound
-@onready var smoke = $SmokeParticles
 @onready var dash_particles = $DashParticles
 
 var current_speed = 0.0
@@ -57,6 +58,8 @@ func _on_ability_activated(ability_name: String):
 			start_bun_flash()
 		"hotsauce":
 			perform_dash()
+		"pickle":
+			attract_coins()
 
 func _on_ability_ended(ability_name: String):
 	print("Ability ended: ", ability_name)
@@ -70,42 +73,15 @@ func _on_ability_ended(ability_name: String):
 		"bun":
 			stop_bun_flash()
 		"hotsauce":
-			dash_particles.emitting = false
+			pass
+		"pickle":
+			pass
 
-func perform_dash():
-	if is_dashing:
-		return
-	is_dashing = true
-	dash_start = global_position
-	var dash_dir = -transform.basis.z
-	dash_dir.y = 0
-	dash_dir = dash_dir.normalized()
-
-	# Raycast to check for walls
-	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(
-		global_position,
-		global_position + dash_dir * DASH_DISTANCE
-	)
-	query.exclude = [self]
-	var result = space_state.intersect_ray(query)
-
-	if result:
-		dash_target = result.position - dash_dir * 0.2
-	else:
-		dash_target = global_position + dash_dir * DASH_DISTANCE
-
-	dash_progress = 0.0
-	dash_particles.emitting = true
-
-	var tween = create_tween()
-	tween.tween_method(func(v):
-		global_position = dash_start.lerp(dash_target, v)
-	, 0.0, 1.0, DASH_DISTANCE / DASH_SPEED)
-	tween.tween_callback(func():
-		is_dashing = false
-		dash_particles.emitting = false
-	)
+func attract_coins():
+	var coins = get_tree().get_nodes_in_group("coin")
+	for coin in coins:
+		if coin.global_position.distance_to(global_position) <= MAGNET_RADIUS:
+			coin.start_attraction()
 
 func start_bun_flash():
 	if bun_flash_tween:
@@ -152,6 +128,8 @@ func _process(delta):
 		AbilityManager.activate("bun")
 	if Input.is_action_just_pressed("ability_hotsauce"):
 		AbilityManager.activate("hotsauce")
+	if Input.is_action_just_pressed("ability_pickle"):
+		AbilityManager.activate("pickle")
 
 	if AbilityManager.is_active("ketchup"):
 		lightning_timer -= delta
@@ -165,6 +143,12 @@ func _process(delta):
 				randf_range(0.0, 0.3)
 			)
 			lightning_timer = randf_range(0.03, 0.1)
+
+	if AbilityManager.is_active("pickle"):
+		var coins = get_tree().get_nodes_in_group("coin")
+		for coin in coins:
+			if not coin.being_attracted and coin.global_position.distance_to(global_position) <= MAGNET_RADIUS:
+				coin.start_attraction()
 
 func _physics_process(delta):
 	if is_dashing:
@@ -237,6 +221,48 @@ func _physics_process(delta):
 		camera_pivot.get_child(0).fov = lerp(camera_pivot.get_child(0).fov, 75.0, delta * 5.0)
 
 	move_and_slide()
+
+func perform_dash():
+	if is_dashing:
+		return
+	is_dashing = true
+	dash_start = global_position
+	var dash_dir = transform.basis.z
+	dash_dir.y = 0
+	dash_dir = dash_dir.normalized()
+
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(
+		global_position,
+		global_position + dash_dir * DASH_DISTANCE
+	)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+
+	if result:
+		dash_target = result.position - dash_dir * 0.2
+	else:
+		dash_target = global_position + dash_dir * DASH_DISTANCE
+
+	dash_progress = 0.0
+	dash_particles.emitting = true
+	$Sausage.visible = false
+
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.play_dash_effect()
+
+	var tween = create_tween()
+	tween.tween_method(func(v):
+		global_position = dash_start.lerp(dash_target, v)
+	, 0.0, 1.0, DASH_DISTANCE / DASH_SPEED)
+	tween.tween_callback(func():
+		$Sausage.visible = true
+		is_dashing = false
+		var stop_tween = create_tween()
+		stop_tween.tween_interval(0.3)
+		stop_tween.tween_callback(func(): dash_particles.emitting = false)
+	)
 
 func start_cutscene_float():
 	set_physics_process(false)

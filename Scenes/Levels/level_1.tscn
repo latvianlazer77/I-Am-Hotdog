@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_rb0md"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="6_u5ghp"]
 [ext_resource type="PackedScene" uid="uid://fvk4ajqp8fof" path="res://Scenes/Level Essentials/spikes.tscn" id="8_jv26f"]
+[ext_resource type="PackedScene" uid="uid://c2ylildwd0ftp" path="res://Scenes/Level Essentials/coin.tscn" id="9_rb0md"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_seteq"]
 flip_faces = true
@@ -125,6 +126,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 size = Vector3(60.79419, 1, 41.92099)
 
 [sub_resource type="Environment" id="Environment_jv26f"]
+glow_hdr_luminance_cap = 2.0
 adjustment_enabled = true
 
 [node name="level_1" type="Node3D" unique_id=1124862916]
@@ -398,6 +400,9 @@ mesh = SubResource("BoxMesh_jv26f")
 transform = Transform3D(6.602438e-05, -0.73956364, -0.0010147864, -0.0044034887, -0.011088461, 0.06768148, -0.6080169, 2.194327e-11, -0.0004902865, -3.1403718, -0.13052207, 4.10127)
 shape = SubResource("ConcavePolygonShape3D_k1rx4")
 
+[node name="Spikes" parent="StaticBody3D" unique_id=1413839985 instance=ExtResource("8_jv26f")]
+transform = Transform3D(0.25492415, 0, 0, 0, 0.16165704, 0, 0, 0, 0.2177565, -3.068994, -0.2651031, 4.0534782)
+
 [node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_xgxfi")]
 
 [node name="SpawnPoint" parent="GameManager" unique_id=1033269942 instance=ExtResource("2_5f3p6")]
@@ -424,17 +429,57 @@ shape = SubResource("BoxShape3D_5f3p6")
 
 [node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("5_rb0md")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1319615241]
+[node name="Environment" type="Node3D" parent="." unique_id=627548670]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1319615241]
 transform = Transform3D(-0.80659944, 0, 0.5910984, 0, 1, 0, -0.5910984, 0, -0.80659944, 26.636116, 0, 110.22252)
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=970371158]
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment" unique_id=970371158]
 transform = Transform3D(-0.80659944, 0, 0.5910984, 0, 1, 0, -0.5910984, 0, -0.80659944, -127.40913, 0, -109.6255)
 
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=1706125020]
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Environment" unique_id=1706125020]
 transform = Transform3D(0.9881696, 0, 0.1533653, 0, 1, 0, -0.1533653, 0, 0.9881696, -236.37778, 0, 119.12495)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2028428800]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2028428800]
 environment = SubResource("Environment_jv26f")
 
-[node name="Spikes" parent="." unique_id=1413839985 instance=ExtResource("8_jv26f")]
-transform = Transform3D(7.647725, 0, 0, 0, 4.8497114, 0, 0, 0, 6.5326953, -92.069824, -7.9530935, 121.604355)
+[node name="Coins" type="Node3D" parent="." unique_id=2066951084]
+
+[node name="Coin" parent="Coins" unique_id=1597211057 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -32.007458, -13.363513, 127.66356)
+
+[node name="Coin2" parent="Coins" unique_id=1247797542 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -99, -1, 127)
+
+[node name="Coin3" parent="Coins" unique_id=1735337839 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -251, -14.268244, 125)
+
+[node name="Coin4" parent="Coins" unique_id=1320935368 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, -5.5268564, 83.93852)
+
+[node name="Coin5" parent="Coins" unique_id=1340928596 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -229.48213, -13.049551, -49.483906)
+
+[node name="Coin6" parent="Coins" unique_id=1461089363 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -244.88896, -13.049551, -49.483906)
+
+[node name="Coin7" parent="Coins" unique_id=44892009 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -229.48213, -13.049551, -32.36638)
+
+[node name="Coin8" parent="Coins" unique_id=741679220 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -248.30843, -12.500057, -32.67826)
+
+[node name="Coin9" parent="Coins" unique_id=1368787573 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -248.30843, -12.500057, -17.512383)
+
+[node name="Coin10" parent="Coins" unique_id=666920548 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -230.17395, -12.500057, -17.512383)
+
+[node name="Coin11" parent="Coins" unique_id=64155010 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.89899, 35.672318, -29.490147)
+
+[node name="Coin12" parent="Coins" unique_id=2047942030 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -253.15866, 35.0329, -7.828741)
+
+[node name="Coin13" parent="Coins" unique_id=1911430978 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.40935, 34.866802, 14.966578)

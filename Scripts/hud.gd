@@ -19,12 +19,14 @@ extends CanvasLayer
 @onready var interact_prompt = $InteractPrompt
 @onready var ability_bar = $AbilityBar
 @onready var mustard_overlay = $MustardOverlay
+@onready var coin_label = $CoinLabel
 
 var player = null
 var on_complete_callback = null
 var float_tween = null
 var spin_tween = null
 var mustard_tween = null
+var run_coins = 0
 
 const ABILITY_DATA = {
 	"ketchup":  {"emoji": "🍅", "key": "Q",     "color": Color(1, 0.2, 0.2)},
@@ -55,28 +57,14 @@ func _ready():
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	setup_ability_bar()
+	update_coin_label()
 
-func _on_ability_activated(ability_name: String):
-	update_slot(ability_name)
-	if ability_name == "mustard":
-		play_mustard_effect(true)
+func update_coin_label():
+	coin_label.text = "🪙 " + str(SaveData.get_coins())
 
-func _on_ability_ended(ability_name: String):
-	update_slot(ability_name)
-	if ability_name == "mustard":
-		play_mustard_effect(false)
-
-func play_mustard_effect(activating: bool):
-	if mustard_tween:
-		mustard_tween.kill()
-	mustard_overlay.visible = true
-	mustard_tween = create_tween()
-	if activating:
-		mustard_overlay.material.set_shader_parameter("progress", 0.0)
-		mustard_tween.tween_method(func(v): mustard_overlay.material.set_shader_parameter("progress", v), 0.0, 1.5, 0.8)
-	else:
-		mustard_tween.tween_method(func(v): mustard_overlay.material.set_shader_parameter("progress", v), 1.5, 0.0, 0.5)
-		mustard_tween.tween_callback(func(): mustard_overlay.visible = false)
+func add_run_coins(amount: int):
+	run_coins += amount
+	update_coin_label()
 
 func setup_ability_bar():
 	for i in range(ABILITY_ORDER.size()):
@@ -126,6 +114,33 @@ func update_slot(ability_name: String):
 	else:
 		overlay.size = Vector2(overlay.size.x, 0)
 		slot.modulate = Color(1, 1, 1, 1)
+
+func _on_ability_activated(ability_name: String):
+	update_slot(ability_name)
+	if ability_name == "mustard":
+		play_mustard_effect(true)
+
+func _on_ability_ended(ability_name: String):
+	update_slot(ability_name)
+	if ability_name == "mustard":
+		play_mustard_effect(false)
+
+func play_mustard_effect(activating: bool):
+	if mustard_tween:
+		mustard_tween.kill()
+	mustard_overlay.visible = true
+	mustard_tween = create_tween()
+	if activating:
+		mustard_overlay.material.set_shader_parameter("progress", 0.0)
+		mustard_tween.tween_method(func(v): mustard_overlay.material.set_shader_parameter("progress", v), 0.0, 1.5, 0.8)
+	else:
+		mustard_tween.tween_method(func(v): mustard_overlay.material.set_shader_parameter("progress", v), 1.5, 0.0, 0.5)
+		mustard_tween.tween_callback(func(): mustard_overlay.visible = false)
+
+func play_dash_effect():
+	flash.color = Color(1, 1, 1, 0.8)
+	var tween = create_tween()
+	tween.tween_property(flash, "color", Color(1, 1, 1, 0), 0.15)
 
 func _on_cooldown_updated(ability_name: String, _remaining: float):
 	update_slot(ability_name)
@@ -203,8 +218,9 @@ func _input(event):
 			pause_menu.show_pause()
 
 func _process(_delta):
-	if mustard_overlay.visible:
+	if mustard_overlay.visible and mustard_overlay.material:
 		mustard_overlay.material.set_shader_parameter("time", Time.get_ticks_msec() / 1000.0)
+
 	if player and not popup.visible and not cutscene_layer.visible:
 		stamina_bar.value = player.get_stamina_percent() * 100
 		stamina_bar.visible = player.is_sprinting or player.stamina < player.MAX_STAMINA
@@ -233,6 +249,8 @@ func _process(_delta):
 		for ability in ABILITY_ORDER:
 			if AbilityManager.is_active(ability) or AbilityManager.get_cooldown_percent(ability) > 0:
 				update_slot(ability)
+
+		update_coin_label()
 
 func _on_paused():
 	stamina_bar.visible = false
