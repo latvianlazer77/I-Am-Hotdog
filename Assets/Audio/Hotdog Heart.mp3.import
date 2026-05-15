@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfwnd3yp1wdg1"
+path="res://.godot/imported/Hotdog Heart.mp3-dfffed5b48c246885595e4ba0942cf18.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Hotdog Heart.mp3"
+dest_files=["res://.godot/imported/Hotdog Heart.mp3-dfffed5b48c246885595e4ba0942cf18.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

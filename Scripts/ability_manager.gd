@@ -15,7 +15,7 @@ const ABILITY_DURATIONS = {
 	"bun": 6.0,
 	"hotsauce": 0.0,
 	"pickle": 8.0,
-	"relish": 0.0
+	"relish": 999999.0
 }
 
 var cooldowns = {

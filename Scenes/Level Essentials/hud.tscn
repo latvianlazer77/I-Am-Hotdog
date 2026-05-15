@@ -150,9 +150,10 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="CoinLabel" type="Label" parent="." unique_id=802390807]
-offset_left = 1040.0
-offset_right = 1080.0
-offset_bottom = 42.0
+offset_left = 1085.0
+offset_top = -1.0
+offset_right = 1125.0
+offset_bottom = 41.0
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
 

@@ -74,9 +74,9 @@ initial_velocity_min = 46.55
 initial_velocity_max = 54.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_worfy"]
-albedo_color = Color(1, 0.66668326, 0, 1)
+albedo_color = Color(1, 0.9260749, 0, 1)
 emission_enabled = true
-emission = Color(0.4716735, 0.16486329, 0.037603687, 1)
+emission = Color(1, 0.9255881, 0, 1)
 emission_energy_multiplier = 200.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_6t516"]
@@ -129,6 +129,13 @@ stream = ExtResource("2_urq3k")
 stream = ExtResource("3_81fj7")
 
 [node name="DashParticles" type="GPUParticles3D" parent="." unique_id=1494786815]
+emitting = false
 amount = 500
+process_material = SubResource("ParticleProcessMaterial_81fj7")
+draw_pass_1 = SubResource("BoxMesh_6t516")
+
+[node name="RelishParticles" type="GPUParticles3D" parent="." unique_id=674195561]
+emitting = false
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_81fj7")
 draw_pass_1 = SubResource("BoxMesh_6t516")

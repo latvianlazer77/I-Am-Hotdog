@@ -13,7 +13,10 @@ const MAX_BURN = 100.0
 const BURN_DRAIN = 15.0
 const DASH_DISTANCE = 50.0
 const DASH_SPEED = 200.0
-const MAGNET_RADIUS = 30.0
+const MAGNET_RADIUS = 8.0
+const FLY_SPEED = 15.0
+const FLY_MAX_HEIGHT = 20.0
+const FLY_GRAVITY = -2.0
 
 @onready var camera_pivot = $CameraPivot
 @onready var smoke = $SmokeParticles
@@ -22,6 +25,7 @@ const MAGNET_RADIUS = 30.0
 @onready var ketchup_sound = $KetchupSound
 @onready var mustard_sound = $MustardSound
 @onready var dash_particles = $DashParticles
+@onready var relish_particles = $RelishParticles
 
 var current_speed = 0.0
 var stamina = MAX_STAMINA
@@ -36,6 +40,8 @@ var is_dashing = false
 var dash_target = Vector3.ZERO
 var dash_start = Vector3.ZERO
 var dash_progress = 0.0
+var is_flying = false
+var fly_start_height = 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -44,6 +50,7 @@ func _ready():
 	ketchup_particles.emitting = false
 	lightning_light.visible = false
 	dash_particles.emitting = false
+	relish_particles.emitting = false
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
@@ -60,6 +67,8 @@ func _on_ability_activated(ability_name: String):
 			perform_dash()
 		"pickle":
 			attract_coins()
+		"relish":
+			start_flying()
 
 func _on_ability_ended(ability_name: String):
 	print("Ability ended: ", ability_name)
@@ -76,6 +85,23 @@ func _on_ability_ended(ability_name: String):
 			pass
 		"pickle":
 			pass
+		"relish":
+			stop_flying()
+
+func start_flying():
+	is_flying = true
+	fly_start_height = global_position.y
+	relish_particles.emitting = true
+	# Tilt camera up slightly
+	var tween = create_tween()
+	tween.tween_property(camera_pivot, "rotation:x", -0.4, 0.5)
+
+func stop_flying():
+	is_flying = false
+	relish_particles.emitting = false
+	# Float down gently
+	var tween = create_tween()
+	tween.tween_property(camera_pivot, "rotation:x", camera_pivot.rotation.x, 0.3)
 
 func attract_coins():
 	var coins = get_tree().get_nodes_in_group("coin")
@@ -130,6 +156,8 @@ func _process(delta):
 		AbilityManager.activate("hotsauce")
 	if Input.is_action_just_pressed("ability_pickle"):
 		AbilityManager.activate("pickle")
+	if Input.is_action_just_pressed("ability_relish"):
+		AbilityManager.activate("relish")
 
 	if AbilityManager.is_active("ketchup"):
 		lightning_timer -= delta
@@ -154,8 +182,14 @@ func _physics_process(delta):
 	if is_dashing:
 		return
 
+	if is_flying:
+		_handle_flying(delta)
+		return
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+	else:
+		velocity.y = 0
 
 	if not level_complete:
 		if is_on_burner and not AbilityManager.is_active("mustard") and not AbilityManager.is_active("bun"):
@@ -219,6 +253,42 @@ func _physics_process(delta):
 		camera_pivot.get_child(0).fov = lerp(camera_pivot.get_child(0).fov, 90.0, delta * 5.0)
 	else:
 		camera_pivot.get_child(0).fov = lerp(camera_pivot.get_child(0).fov, 75.0, delta * 5.0)
+
+	move_and_slide()
+
+func _handle_flying(delta):
+	var input_dir = Vector3.ZERO
+	if Input.is_action_pressed("move_forward"):
+		input_dir += camera_pivot.global_transform.basis.z
+	if Input.is_action_pressed("move_back"):
+		input_dir -= camera_pivot.global_transform.basis.z
+
+	input_dir.y = 0
+	input_dir = input_dir.normalized()
+
+	var ketchup_mult = 3.0 if AbilityManager.is_active("ketchup") else 1.0
+	var fly_top_speed = FLY_SPEED * ketchup_mult
+
+	if input_dir.length() > 0.1:
+		current_speed = min(current_speed + ACCELERATION, fly_top_speed)
+		velocity.x = lerp(velocity.x, input_dir.x * current_speed, ACCELERATION * delta)
+		velocity.z = lerp(velocity.z, input_dir.z * current_speed, ACCELERATION * delta)
+		$Sausage.rotate_x(current_speed * delta * 3.0)
+	else:
+		current_speed = max(current_speed - FRICTION, 0.0)
+		velocity.x = lerp(velocity.x, 0.0, FRICTION * delta)
+		velocity.z = lerp(velocity.z, 0.0, FRICTION * delta)
+
+	# Mouse up/down controls height
+	var cam_pitch = camera_pivot.rotation.x
+	var vertical_input = -cam_pitch * FLY_SPEED
+
+	# Height limit
+	if global_position.y >= fly_start_height + FLY_MAX_HEIGHT:
+		vertical_input = min(vertical_input, 0.0)
+
+	# Slight gravity while flying
+	velocity.y = lerp(velocity.y, vertical_input + FLY_GRAVITY, delta * 3.0)
 
 	move_and_slide()
 
