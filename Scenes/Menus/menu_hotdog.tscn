@@ -1,13 +1,7 @@
-[gd_scene format=4 uid="uid://dnfs7tvfkb8gf"]
+[gd_scene format=4 uid="uid://bac2ph7oux2it"]
 
-[ext_resource type="Script" uid="uid://b6nft080jbnxm" path="res://Scripts/test_dog.gd" id="1_sa8xt"]
-[ext_resource type="AudioStream" uid="uid://bn81xl38l4em3" path="res://Assets/Audio/speedboost.mp3" id="2_urq3k"]
-[ext_resource type="Shader" uid="uid://b21hk1giqs044" path="res://Scripts/outline.gdshader" id="2_worfy"]
-[ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="3_6t516"]
-[ext_resource type="AudioStream" uid="uid://dvadm6jr4kloa" path="res://Assets/Audio/MUSTAAAAARD!!!!!.mp3" id="3_81fj7"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqjuv"]
-height = 5.0197754
+[ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="1_brvve"]
+[ext_resource type="Shader" uid="uid://b21hk1giqs044" path="res://Scripts/outline.gdshader" id="2_te6u0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81fj7"]
 transparency = 1
@@ -29,7 +23,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2xtsi"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_i20ms"]
 _surfaces = [{
 "aabb": AABB(-6.03876, -1.347547, -1.222621, 12.07752, 2.695094, 2.445242),
 "format": 34896613383,
@@ -46,9 +40,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v1dee")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6t516"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm5vk"]
 render_priority = 0
-shader = ExtResource("3_6t516")
+shader = ExtResource("1_brvve")
 shader_parameter/albedo = Color(0.95281494, 0.49010885, 0.3491902, 1)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 3
@@ -65,111 +59,20 @@ shader_parameter/use_ramp = false
 shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0h2j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_685ly"]
 render_priority = 0
-shader = ExtResource("2_worfy")
+shader = ExtResource("2_te6u0")
 shader_parameter/outline_size = 0.0400000019
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sa8xt"]
-direction = Vector3(0, 1, 0)
-spread = 30.0
+[node name="MenuHotdog" type="Node3D" unique_id=906780869]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_urq3k"]
-lifetime_randomness = 0.2
-emission_shape = 1
-emission_sphere_radius = 1.0
-direction = Vector3(0, 0, 1)
-spread = 180.0
-initial_velocity_min = 8.0
-initial_velocity_max = 15.0
-gravity = Vector3(0, -5, 0)
-damping_min = 0.5
-damping_max = 1.5000001
-scale_min = 0.29999998
-scale_max = 0.5
-color = Color(1, 0.98039216, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t516"]
-shading_mode = 0
-albedo_color = Color(1, 0.11207495, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_urq3k"]
-material = SubResource("StandardMaterial3D_6t516")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81fj7"]
-lifetime_randomness = 0.2
-direction = Vector3(0, 1, -1)
-initial_velocity_min = 46.55
-initial_velocity_max = 54.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_worfy"]
-shading_mode = 0
-albedo_color = Color(1, 0.9260749, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6t516"]
-material = SubResource("StandardMaterial3D_worfy")
-size = Vector3(0.1, 0.1, 0.1)
-
-[node name="Player" type="CharacterBody3D" unique_id=2768484 groups=["player"]]
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-script = ExtResource("1_sa8xt")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2027253749]
-transform = Transform3D(0.00724946, -2.2886877, 0, 2.2452297, 0.0073897624, 0, 0, 0, 2.486567, 0.6772816, -0.02238822, 0.33983278)
-shape = SubResource("CapsuleShape3D_wqjuv")
-
-[node name="CameraPivot" type="Node3D" parent="." unique_id=1689257655]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4.203)
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=2031465670]
-transform = Transform3D(-0.9999643, 0, -0.008447221, -0.0022389467, 0.9642343, 0.26504183, 0.0081451, 0.26505125, -0.96419984, 0, 1.2052517, -3.9419384)
-current = true
-
-[node name="Sausage" type="MeshInstance3D" parent="." unique_id=670953389]
+[node name="Sausage" type="MeshInstance3D" parent="." unique_id=1463542699]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6588134, 0, 0.40953517)
-mesh = SubResource("ArrayMesh_2xtsi")
-surface_material_override/0 = SubResource("ShaderMaterial_6t516")
+mesh = SubResource("ArrayMesh_i20ms")
+surface_material_override/0 = SubResource("ShaderMaterial_nm5vk")
 
-[node name="SausageOutline" type="MeshInstance3D" parent="Sausage" unique_id=1207160767]
+[node name="SausageOutline" type="MeshInstance3D" parent="Sausage" unique_id=654477929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00018656254, 0, -0.00046482682)
-mesh = SubResource("ArrayMesh_2xtsi")
-surface_material_override/0 = SubResource("ShaderMaterial_u0h2j")
-
-[node name="SmokeParticles" type="GPUParticles3D" parent="." unique_id=1139568453]
-emitting = false
-amount = 20
-process_material = SubResource("ParticleProcessMaterial_sa8xt")
-
-[node name="KetchupEffect" type="Node3D" parent="." unique_id=1488577345]
-
-[node name="LightningLight" type="OmniLight3D" parent="KetchupEffect" unique_id=1441926053]
-visible = false
-light_color = Color(1, 0.95281494, 0.58383155, 1)
-light_energy = 3.0
-omni_range = 3.0
-
-[node name="KetchupParticles" type="GPUParticles3D" parent="KetchupEffect" unique_id=1587438972]
-emitting = false
-amount = 60
-process_material = SubResource("ParticleProcessMaterial_urq3k")
-draw_pass_1 = SubResource("SphereMesh_urq3k")
-
-[node name="KetchupSound" type="AudioStreamPlayer3D" parent="." unique_id=453535580]
-stream = ExtResource("2_urq3k")
-
-[node name="MustardSound" type="AudioStreamPlayer3D" parent="." unique_id=2021185535]
-stream = ExtResource("3_81fj7")
-
-[node name="DashParticles" type="GPUParticles3D" parent="." unique_id=1494786815]
-emitting = false
-amount = 500
-process_material = SubResource("ParticleProcessMaterial_81fj7")
-draw_pass_1 = SubResource("BoxMesh_6t516")
-
-[node name="RelishParticles" type="GPUParticles3D" parent="." unique_id=674195561]
-emitting = false
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_81fj7")
-draw_pass_1 = SubResource("BoxMesh_6t516")
+mesh = SubResource("ArrayMesh_i20ms")
+surface_material_override/0 = SubResource("ShaderMaterial_685ly")

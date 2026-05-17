@@ -13,8 +13,8 @@ const MAX_BURN = 100.0
 const BURN_DRAIN = 15.0
 const DASH_DISTANCE = 50.0
 const DASH_SPEED = 200.0
-const MAGNET_RADIUS = 8.0
-const FLY_SPEED = 15.0
+const MAGNET_RADIUS = 20.0
+const FLY_SPEED = 20.0
 const FLY_MAX_HEIGHT = 20.0
 const FLY_GRAVITY = -2.0
 
@@ -26,6 +26,8 @@ const FLY_GRAVITY = -2.0
 @onready var mustard_sound = $MustardSound
 @onready var dash_particles = $DashParticles
 @onready var relish_particles = $RelishParticles
+@onready var sausage = $Sausage
+@onready var sausage_outline = $Sausage/SausageOutline
 
 var current_speed = 0.0
 var stamina = MAX_STAMINA
@@ -92,14 +94,12 @@ func start_flying():
 	is_flying = true
 	fly_start_height = global_position.y
 	relish_particles.emitting = true
-	# Tilt camera up slightly
 	var tween = create_tween()
 	tween.tween_property(camera_pivot, "rotation:x", -0.4, 0.5)
 
 func stop_flying():
 	is_flying = false
 	relish_particles.emitting = false
-	# Float down gently
 	var tween = create_tween()
 	tween.tween_property(camera_pivot, "rotation:x", camera_pivot.rotation.x, 0.3)
 
@@ -114,18 +114,18 @@ func start_bun_flash():
 		bun_flash_tween.kill()
 	bun_flash_tween = create_tween().set_loops()
 	bun_flash_tween.tween_callback(func():
-		$Sausage.get_active_material(0).albedo_color = Color(1, 1, 1, 0.3)
+		sausage.get_surface_override_material(0).set_shader_parameter("albedo_color", Color(1, 1, 1, 0.3))
 	)
 	bun_flash_tween.tween_interval(0.15)
 	bun_flash_tween.tween_callback(func():
-		$Sausage.get_active_material(0).albedo_color = Color(1, 1, 1, 1.0)
+		sausage.get_surface_override_material(0).set_shader_parameter("albedo_color", Color(1, 1, 1, 1.0))
 	)
 	bun_flash_tween.tween_interval(0.15)
 
 func stop_bun_flash():
 	if bun_flash_tween:
 		bun_flash_tween.kill()
-	$Sausage.get_active_material(0).albedo_color = Color(1, 1, 1, 1.0)
+	sausage.get_surface_override_material(0).set_shader_parameter("albedo_color", Color(1, 1, 1, 1.0))
 
 func pause_sounds():
 	if ketchup_sound.playing:
@@ -236,13 +236,17 @@ func _physics_process(delta):
 		var target_velocity = input_dir * current_speed
 		velocity.x = lerp(velocity.x, target_velocity.x, ACCELERATION * delta)
 		velocity.z = lerp(velocity.z, target_velocity.z, ACCELERATION * delta)
-		$Sausage.rotate_x(current_speed * delta * 3.0)
 	else:
 		current_speed = max(current_speed - FRICTION, 0.0)
 		var bleed_dir = Vector3(velocity.x, 0, velocity.z).normalized()
 		var target_velocity = bleed_dir * current_speed
 		velocity.x = lerp(velocity.x, target_velocity.x, FRICTION * delta)
 		velocity.z = lerp(velocity.z, target_velocity.z, FRICTION * delta)
+
+	# Roll based on actual movement speed
+	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
+	if horizontal_speed > 0.1:
+		sausage.rotate_x(horizontal_speed * delta * 0.3)
 
 	if shake_amount > 0:
 		camera_pivot.rotation.z = randf_range(-shake_amount, shake_amount)
@@ -273,21 +277,21 @@ func _handle_flying(delta):
 		current_speed = min(current_speed + ACCELERATION, fly_top_speed)
 		velocity.x = lerp(velocity.x, input_dir.x * current_speed, ACCELERATION * delta)
 		velocity.z = lerp(velocity.z, input_dir.z * current_speed, ACCELERATION * delta)
-		$Sausage.rotate_x(current_speed * delta * 3.0)
 	else:
 		current_speed = max(current_speed - FRICTION, 0.0)
 		velocity.x = lerp(velocity.x, 0.0, FRICTION * delta)
 		velocity.z = lerp(velocity.z, 0.0, FRICTION * delta)
 
-	# Mouse up/down controls height
+	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
+	if horizontal_speed > 0.1:
+		sausage.rotate_x(horizontal_speed * delta * 0.3)
+
 	var cam_pitch = camera_pivot.rotation.x
 	var vertical_input = -cam_pitch * FLY_SPEED
 
-	# Height limit
 	if global_position.y >= fly_start_height + FLY_MAX_HEIGHT:
 		vertical_input = min(vertical_input, 0.0)
 
-	# Slight gravity while flying
 	velocity.y = lerp(velocity.y, vertical_input + FLY_GRAVITY, delta * 3.0)
 
 	move_and_slide()
@@ -316,7 +320,7 @@ func perform_dash():
 
 	dash_progress = 0.0
 	dash_particles.emitting = true
-	$Sausage.visible = false
+	sausage.visible = false
 
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
@@ -327,7 +331,7 @@ func perform_dash():
 		global_position = dash_start.lerp(dash_target, v)
 	, 0.0, 1.0, DASH_DISTANCE / DASH_SPEED)
 	tween.tween_callback(func():
-		$Sausage.visible = true
+		sausage.visible = true
 		is_dashing = false
 		var stop_tween = create_tween()
 		stop_tween.tween_interval(0.3)
@@ -341,10 +345,10 @@ func start_cutscene_float():
 	tween.tween_property(self, "position:y", global_position.y + 0.5, 0.8)
 	tween.tween_property(self, "position:y", global_position.y, 0.8)
 	var spin_tween = create_tween().set_loops()
-	spin_tween.tween_property($Sausage, "rotation:y", TAU, 1.5)
+	spin_tween.tween_property(sausage, "rotation:y", TAU, 1.5)
 
 func stop_cutscene_float():
-	$Sausage.rotation.y = 0.0
+	sausage.rotation.y = 0.0
 
 func get_stamina_percent() -> float:
 	return stamina / MAX_STAMINA
