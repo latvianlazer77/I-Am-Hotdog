@@ -409,7 +409,7 @@ transform = Transform3D(0.25492415, 0, 0, 0, 0.16165704, 0, 0, 0, 0.2177565, -3.
 [node name="GameManager" parent="GameViewport" unique_id=6342885 instance=ExtResource("1_xgxfi")]
 
 [node name="SpawnPoint" parent="GameViewport/GameManager" unique_id=1033269942 instance=ExtResource("2_5f3p6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.679453, 124.71222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.109985, -13.679453, 121.97263)
 
 [node name="Player" parent="GameViewport/GameManager" unique_id=2768484 instance=ExtResource("1_tlcug")]
 transform = Transform3D(-0.06963459, 0, -0.99757254, 0, 1, 0, 0.99757254, 0, -0.06963459, -2.46521, -14.306036, 128.36523)

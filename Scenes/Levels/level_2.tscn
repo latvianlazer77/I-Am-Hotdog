@@ -61,16 +61,16 @@ transform = Transform3D(24.12897, 0, 0, 0, 3.507769, 0, 0, 0, 1, -0.8990059, -2.
 transform = Transform3D(24.12897, 0, 0, 0, 3.507769, 0, 0, 0, 1, -0.8990059, -2.9628427, 62.155983)
 
 [node name="Spikes2" parent="GameManager" unique_id=1001596064 instance=ExtResource("2_pnnky")]
-transform = Transform3D(24.12897, 0, 0, 0, 3.507769, 0, 0, 0, 1, -0.8990059, -2.9628427, 131.01294)
+transform = Transform3D(14.609022, 0, 0, 0, 3.507769, 0, 0, 0, 1, 6.899253, -2.9628427, 131.01294)
 
 [node name="Spikes3" parent="GameManager" unique_id=1976674641 instance=ExtResource("2_pnnky")]
-transform = Transform3D(24.12897, 0, 0, 0, 3.507769, 0, 0, 0, 1, -0.8990059, -2.9628427, 143.21771)
+transform = Transform3D(-1.0547108e-06, 0, -0.99999994, 0, 3.507769, 0, 24.12897, 0, -4.3711385e-08, 0, -2.963, 136.3628)
 
 [node name="Spikes4" parent="GameManager" unique_id=1794749778 instance=ExtResource("2_pnnky")]
-transform = Transform3D(24.12897, 0, 0, 0, 3.507769, 0, 0, 0, 1, -0.8990059, -2.9628427, 156.3552)
+transform = Transform3D(24.12897, 0, 0, 0, 3.507769, 0, 0, 0, 1, -12.397942, -2.9628427, 156.3552)
 
 [node name="Spikes5" parent="GameManager" unique_id=287098786 instance=ExtResource("2_pnnky")]
-transform = Transform3D(24.12897, 0, 0, 0, 3.507769, 0, 0, 0, 1, -0.8990059, -2.9628427, 171.17291)
+transform = Transform3D(-1.0547105e-06, 0, -0.9999999, 0, 3.5077686, 0, 24.128965, 0, -4.3711385e-08, 0, -2.963, 154.789)
 
 [node name="Player" parent="GameManager" unique_id=2768484 instance=ExtResource("2_fphuk")]
 transform = Transform3D(-0.99989015, 0, 0.014817357, 0, 1, 0, -0.014817357, 0, -0.99989015, 0, 1.8000374, 178.6255)
@@ -145,7 +145,7 @@ transform = Transform3D(0.40723622, 0, 0, 0, 44.762955, 0, 0, 0, 76.482216, 14.2
 shape = SubResource("ConcavePolygonShape3D_0x4y1")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=1127599475]
-transform = Transform3D(151.91072, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, 15.771296, 188.25777)
+transform = Transform3D(151.91072, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, 27.742743, 188.25777)
 mesh = SubResource("BoxMesh_pnnky")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=836661144]
