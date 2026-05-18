@@ -6,7 +6,7 @@ const ABILITY_COOLDOWNS = {
 	"bun": 18.0,
 	"hotsauce": 8.0,
 	"pickle": 15.0,
-	"relish": 0.0
+	"relish": 1.0
 }
 
 const ABILITY_DURATIONS = {
@@ -15,7 +15,7 @@ const ABILITY_DURATIONS = {
 	"bun": 6.0,
 	"hotsauce": 0.0,
 	"pickle": 8.0,
-	"relish": 999999.0
+	"relish": 99999.0
 }
 
 var cooldowns = {
@@ -60,7 +60,7 @@ func _process(delta):
 			cooldowns[ability] = max(cooldowns[ability] - delta, 0.0)
 			emit_signal("cooldown_updated", ability, cooldowns[ability])
 
-		if active[ability]:
+		if active[ability] and ABILITY_DURATIONS[ability] > 0 and ability != "relish":
 			timers[ability] = max(timers[ability] - delta, 0.0)
 			if timers[ability] <= 0.0:
 				deactivate(ability)
@@ -82,8 +82,15 @@ func activate(ability_name: String):
 	active[ability_name] = true
 	timers[ability_name] = ABILITY_DURATIONS[ability_name]
 	emit_signal("ability_activated", ability_name)
+	# For instant abilities with 0 duration start cooldown immediately
+	if ABILITY_DURATIONS[ability_name] == 0.0:
+		active[ability_name] = false
+		cooldowns[ability_name] = ABILITY_COOLDOWNS[ability_name]
+		emit_signal("ability_ended", ability_name)
 
 func deactivate(ability_name: String):
+	if not active[ability_name]:
+		return
 	active[ability_name] = false
 	cooldowns[ability_name] = ABILITY_COOLDOWNS[ability_name]
 	emit_signal("ability_ended", ability_name)
@@ -93,6 +100,16 @@ func reset_all():
 		if active[ability]:
 			emit_signal("ability_ended", ability)
 		active[ability] = false
+		timers[ability] = 0.0
+		# Keep cooldowns so player cant spam after death
+
+func hard_reset():
+	paused = false
+	for ability in active.keys():
+		if active[ability] and ability != "relish":
+			emit_signal("ability_ended", ability)
+		active[ability] = false
+		cooldowns[ability] = 0.0
 		timers[ability] = 0.0
 
 func pause_abilities():
@@ -108,13 +125,3 @@ func get_cooldown_percent(ability_name: String) -> float:
 	if ABILITY_COOLDOWNS[ability_name] == 0:
 		return 0.0
 	return cooldowns[ability_name] / ABILITY_COOLDOWNS[ability_name]
-
-func hard_reset():
-	paused = false
-	for ability in active.keys():
-		if active[ability]:
-			emit_signal("ability_ended", ability)
-		active[ability] = false
-		cooldowns[ability] = 0.0
-		timers[ability] = 0.0
-	

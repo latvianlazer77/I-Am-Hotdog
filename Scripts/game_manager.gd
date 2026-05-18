@@ -96,8 +96,11 @@ func _on_player_died():
 	player.level_complete = false
 	player.burn_meter = 0.0
 	player.is_on_burner = false
-	AbilityManager.hard_reset()
+	player.is_flying = false
+	AbilityManager.reset_all()
+	AbilityManager.resume_abilities()
 	reset_world_env()
+	await get_tree().create_timer(0.1).timeout
 	player.global_position = spawn_point.global_position
 	player.velocity = Vector3.ZERO
 

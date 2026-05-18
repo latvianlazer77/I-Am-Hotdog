@@ -14,7 +14,7 @@ const BURN_DRAIN = 15.0
 const DASH_DISTANCE = 50.0
 const DASH_SPEED = 200.0
 const MAGNET_RADIUS = 20.0
-const FLY_SPEED = 20.0
+const FLY_SPEED = 50.0
 const FLY_MAX_HEIGHT = 20.0
 const FLY_GRAVITY = -2.0
 
@@ -47,12 +47,19 @@ var fly_start_height = 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	is_flying = false
+	if AbilityManager.ability_activated.is_connected(_on_ability_activated):
+		AbilityManager.ability_activated.disconnect(_on_ability_activated)
+	if AbilityManager.ability_ended.is_connected(_on_ability_ended):
+		AbilityManager.ability_ended.disconnect(_on_ability_ended)
 	AbilityManager.ability_activated.connect(_on_ability_activated)
 	AbilityManager.ability_ended.connect(_on_ability_ended)
 	ketchup_particles.emitting = false
 	lightning_light.visible = false
 	dash_particles.emitting = false
 	relish_particles.emitting = false
+	AbilityManager.active["relish"] = false
+	AbilityManager.timers["relish"] = 0.0
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
@@ -157,7 +164,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ability_pickle"):
 		AbilityManager.activate("pickle")
 	if Input.is_action_just_pressed("ability_relish"):
-		AbilityManager.activate("relish")
+		if AbilityManager.is_active("relish"):
+			AbilityManager.deactivate("relish")
+		else:
+			AbilityManager.activate("relish")
 
 	if AbilityManager.is_active("ketchup"):
 		lightning_timer -= delta
@@ -243,7 +253,6 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, target_velocity.x, FRICTION * delta)
 		velocity.z = lerp(velocity.z, target_velocity.z, FRICTION * delta)
 
-	# Roll based on actual movement speed
 	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
 	if horizontal_speed > 0.1:
 		sausage.rotate_x(horizontal_speed * delta * 0.3)
