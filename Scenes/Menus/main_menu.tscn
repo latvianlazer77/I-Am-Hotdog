@@ -164,5 +164,5 @@ text = "Close"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=502705425]
 stream = ExtResource("2_pha2q")
-volume_db = -9.63
+volume_db = -0.882
 autoplay = true

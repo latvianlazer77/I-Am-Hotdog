@@ -68,7 +68,7 @@ shader_parameter/border_width = 0.01
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u0h2j"]
 render_priority = 0
 shader = ExtResource("2_worfy")
-shader_parameter/outline_size = 0.0400000019
+shader_parameter/outline_size = 0.10000000149012
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sa8xt"]

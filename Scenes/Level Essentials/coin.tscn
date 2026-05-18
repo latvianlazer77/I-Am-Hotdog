@@ -8,6 +8,8 @@
 render_priority = 0
 shader = ExtResource("2_q8t31")
 shader_parameter/albedo = Color(1, 1, 0.20906562, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 3
 shader_parameter/wrap = 0.0
@@ -35,7 +37,7 @@ data = PackedVector3Array(0, 0.099999994, 0.79999995, 0.0784, 0.099999994, 0.796
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0cov6"]
 render_priority = 0
 shader = ExtResource("3_m5r4l")
-shader_parameter/outline_size = 0.030000001425
+shader_parameter/outline_size = 0.0550000026125
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [node name="Coin" type="Area3D" unique_id=1597211057 groups=["coin"]]
