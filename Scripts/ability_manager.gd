@@ -99,9 +99,9 @@ func reset_all():
 	for ability in active.keys():
 		if active[ability]:
 			emit_signal("ability_ended", ability)
+			cooldowns[ability] = ABILITY_COOLDOWNS[ability]
 		active[ability] = false
 		timers[ability] = 0.0
-		# Keep cooldowns so player cant spam after death
 
 func hard_reset():
 	paused = false

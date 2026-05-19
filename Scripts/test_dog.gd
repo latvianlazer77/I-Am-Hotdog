@@ -28,6 +28,7 @@ const FLY_GRAVITY = -2.0
 @onready var relish_particles = $RelishParticles
 @onready var sausage = $Sausage
 @onready var sausage_outline = $Sausage/SausageOutline
+@onready var time_sphere = $TimeSphere
 
 var current_speed = 0.0
 var stamina = MAX_STAMINA
@@ -44,6 +45,7 @@ var dash_start = Vector3.ZERO
 var dash_progress = 0.0
 var is_flying = false
 var fly_start_height = 0.0
+var sphere_tween = null
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -58,6 +60,7 @@ func _ready():
 	lightning_light.visible = false
 	dash_particles.emitting = false
 	relish_particles.emitting = false
+	time_sphere.visible = false
 	AbilityManager.active["relish"] = false
 	AbilityManager.timers["relish"] = 0.0
 
@@ -70,6 +73,7 @@ func _on_ability_activated(ability_name: String):
 			ketchup_sound.play()
 		"mustard":
 			mustard_sound.play()
+			expand_time_sphere()
 		"bun":
 			start_bun_flash()
 		"hotsauce":
@@ -88,6 +92,7 @@ func _on_ability_ended(ability_name: String):
 			ketchup_sound.stop()
 		"mustard":
 			mustard_sound.stop()
+			shrink_time_sphere()
 		"bun":
 			stop_bun_flash()
 		"hotsauce":
@@ -96,6 +101,21 @@ func _on_ability_ended(ability_name: String):
 			pass
 		"relish":
 			stop_flying()
+
+func expand_time_sphere():
+	time_sphere.visible = true
+	if sphere_tween:
+		sphere_tween.kill()
+	time_sphere.scale = Vector3(0.1, 0.1, 0.1)
+	sphere_tween = create_tween()
+	sphere_tween.tween_property(time_sphere, "scale", Vector3(500.0, 500.0, 500.0), 0.6).set_trans(Tween.TRANS_EXPO)
+
+func shrink_time_sphere():
+	if sphere_tween:
+		sphere_tween.kill()
+	sphere_tween = create_tween()
+	sphere_tween.tween_property(time_sphere, "scale", Vector3(0.1, 0.1, 0.1), 0.4).set_trans(Tween.TRANS_EXPO)
+	sphere_tween.tween_callback(func(): time_sphere.visible = false)
 
 func start_flying():
 	is_flying = true

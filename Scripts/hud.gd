@@ -16,17 +16,13 @@ extends CanvasLayer
 @onready var fade_overlay = $CutsceneLayer/FadeOverlay
 @onready var cutscene_text = $CutsceneLayer/CutsceneText
 @onready var ingredient_label = $CutsceneLayer/IngredientLabel
-@onready var interact_prompt = $InteractPrompt
 @onready var ability_bar = $AbilityBar
-@onready var mustard_overlay = $MustardOverlay
 @onready var coin_label = $CoinLabel
 
 var player = null
 var on_complete_callback = null
 var float_tween = null
 var spin_tween = null
-var mustard_tween = null
-var run_coins = 0
 
 const ABILITY_DATA = {
 	"ketchup":  {"emoji": "🍅", "key": "Q",     "color": Color(1, 0.2, 0.2)},
@@ -46,7 +42,6 @@ func _ready():
 	burn_overlay.visible = false
 	cutscene_layer.visible = false
 	timer_label.visible = true
-	mustard_overlay.visible = false
 	play_again.pressed.connect(_on_play_again)
 	main_menu_button.pressed.connect(_on_main_menu)
 	pause_menu.resumed.connect(_on_resumed)
@@ -61,10 +56,6 @@ func _ready():
 
 func update_coin_label():
 	coin_label.text = "🪙 " + str(SaveData.get_coins())
-
-func add_run_coins(amount: int):
-	run_coins += amount
-	update_coin_label()
 
 func setup_ability_bar():
 	for i in range(ABILITY_ORDER.size()):
@@ -117,36 +108,17 @@ func update_slot(ability_name: String):
 
 func _on_ability_activated(ability_name: String):
 	update_slot(ability_name)
-	if ability_name == "mustard":
-		play_mustard_effect(true)
 
 func _on_ability_ended(ability_name: String):
 	update_slot(ability_name)
-	if ability_name == "mustard":
-		play_mustard_effect(false)
 
-func play_mustard_effect(activating: bool):
-	if mustard_tween:
-		mustard_tween.kill()
-	mustard_overlay.visible = true
-	mustard_tween = create_tween()
-	if activating:
-		mustard_overlay.material.set_shader_parameter("progress", 0.0)
-		mustard_tween.tween_method(func(v): mustard_overlay.material.set_shader_parameter("progress", v), 0.0, 1.5, 0.8)
-	else:
-		mustard_tween.tween_method(func(v): mustard_overlay.material.set_shader_parameter("progress", v), 1.5, 0.0, 0.5)
-		mustard_tween.tween_callback(func(): mustard_overlay.visible = false)
+func _on_cooldown_updated(ability_name: String, _remaining: float):
+	update_slot(ability_name)
 
 func play_dash_effect():
 	flash.color = Color(1, 1, 1, 0.8)
 	var tween = create_tween()
 	tween.tween_property(flash, "color", Color(1, 1, 1, 0), 0.15)
-
-func _on_cooldown_updated(ability_name: String, _remaining: float):
-	update_slot(ability_name)
-
-func show_interact_prompt(show: bool):
-	interact_prompt.visible = show
 
 func play_ingredient_cutscene(emoji: String, display_name: String, on_complete: Callable):
 	on_complete_callback = on_complete
@@ -218,9 +190,6 @@ func _input(event):
 			pause_menu.show_pause()
 
 func _process(_delta):
-	if mustard_overlay.visible and mustard_overlay.material:
-		mustard_overlay.material.set_shader_parameter("time", Time.get_ticks_msec() / 1000.0)
-
 	if player and not popup.visible and not cutscene_layer.visible:
 		stamina_bar.value = player.get_stamina_percent() * 100
 		stamina_bar.visible = player.is_sprinting or player.stamina < player.MAX_STAMINA

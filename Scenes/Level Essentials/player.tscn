@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://b21hk1giqs044" path="res://Scripts/outline.gdshader" id="2_worfy"]
 [ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="3_6t516"]
 [ext_resource type="AudioStream" uid="uid://dvadm6jr4kloa" path="res://Assets/Audio/MUSTAAAAARD!!!!!.mp3" id="3_81fj7"]
+[ext_resource type="Shader" uid="uid://cy21n8ce8nscf" path="res://Scripts/time_sphere.gdshader" id="4_11bkn"]
 [ext_resource type="Texture2D" uid="uid://5gffrrdy82r" path="res://Assets/Images/spark_02.png" id="4_mfqaq"]
 [ext_resource type="Texture2D" uid="uid://ct6jp730kv04d" path="res://Assets/Images/spark_01.png" id="4_u0h2j"]
 [ext_resource type="Texture2D" uid="uid://dhs8m8y44j83d" path="res://Assets/Images/spark_03.png" id="6_5v5kr"]
@@ -151,6 +152,15 @@ albedo_color = Color(1, 0.9260749, 0, 1)
 material = SubResource("StandardMaterial3D_worfy")
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aeb1s"]
+render_priority = 0
+shader = ExtResource("4_11bkn")
+
+[sub_resource type="SphereMesh" id="SphereMesh_hvqex"]
+material = SubResource("ShaderMaterial_aeb1s")
+radius = 0.1
+height = 0.2
+
 [node name="Player" type="CharacterBody3D" unique_id=2768484 groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -208,6 +218,7 @@ stream = ExtResource("2_urq3k")
 stream = ExtResource("3_81fj7")
 
 [node name="DashParticles" type="GPUParticles3D" parent="." unique_id=1494786815]
+emitting = false
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_81fj7")
 draw_pass_1 = SubResource("QuadMesh_5v5kr")
@@ -217,3 +228,7 @@ emitting = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_81fj7")
 draw_pass_1 = SubResource("BoxMesh_6t516")
+
+[node name="TimeSphere" type="MeshInstance3D" parent="." unique_id=620897403]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6588134, 0, 0.40953517)
+mesh = SubResource("SphereMesh_hvqex")
