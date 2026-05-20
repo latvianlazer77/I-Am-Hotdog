@@ -142,6 +142,11 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k1rx4"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxMesh" id="BoxMesh_u5ghp"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yltcr"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5f3p6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5f3p6"]
@@ -428,6 +433,14 @@ shape = SubResource("ConcavePolygonShape3D_k1rx4")
 
 [node name="Spikes" parent="GameViewport/StaticBody3D" unique_id=1413839985 instance=ExtResource("8_jv26f")]
 transform = Transform3D(0.25492415, 0, 0, 0, 0.16165704, 0, 0, 0, 0.2177565, -3.068994, -0.2651031, 4.0534782)
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=439381958]
+transform = Transform3D(0.015974872, -0.04294359, 0, 0.024771024, 0.027694331, 0, 0, 0, 0.61053133, -3.5211353, -0.100569926, 4.1004267)
+mesh = SubResource("BoxMesh_u5ghp")
+
+[node name="CollisionShape3D31" type="CollisionShape3D" parent="GameViewport/StaticBody3D" unique_id=442658160]
+transform = Transform3D(0.015974872, -0.04294359, 0, 0.024771024, 0.027694331, 0, 0, 0, 0.61053133, -3.5211353, -0.100569926, 4.1004267)
+shape = SubResource("ConcavePolygonShape3D_yltcr")
 
 [node name="GameManager" parent="GameViewport" unique_id=6342885 instance=ExtResource("1_xgxfi")]
 
