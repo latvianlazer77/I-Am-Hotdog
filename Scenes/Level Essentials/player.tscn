@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ct6jp730kv04d" path="res://Assets/Images/spark_01.png" id="4_u0h2j"]
 [ext_resource type="Texture2D" uid="uid://dhs8m8y44j83d" path="res://Assets/Images/spark_03.png" id="6_5v5kr"]
 [ext_resource type="Texture2D" uid="uid://crhn54ocns7kh" path="res://Assets/Images/star_07.png" id="7_tv2my"]
+[ext_resource type="Texture2D" uid="uid://cgd6hjjmgn71l" path="res://Assets/Images/star_09.png" id="10_aeb1s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqjuv"]
 height = 5.0197754
@@ -130,7 +131,7 @@ material = SubResource("StandardMaterial3D_11bkn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81fj7"]
 lifetime_randomness = 0.2
-direction = Vector3(0, 1, -1)
+direction = Vector3(0, -1, -1)
 initial_velocity_min = 46.55
 initial_velocity_max = 54.6
 
@@ -144,17 +145,20 @@ billboard_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_5v5kr"]
 material = SubResource("StandardMaterial3D_mfqaq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_worfy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aeb1s"]
+transparency = 1
 shading_mode = 0
-albedo_color = Color(1, 0.9260749, 0, 1)
+albedo_color = Color(0.61138725, 1, 0.47657922, 1)
+albedo_texture = ExtResource("10_aeb1s")
+billboard_mode = 1
 
-[sub_resource type="BoxMesh" id="BoxMesh_6t516"]
-material = SubResource("StandardMaterial3D_worfy")
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="QuadMesh" id="QuadMesh_hvqex"]
+material = SubResource("StandardMaterial3D_aeb1s")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aeb1s"]
 render_priority = 0
 shader = ExtResource("4_11bkn")
+shader_parameter/rim_width = 1.5
 
 [sub_resource type="SphereMesh" id="SphereMesh_hvqex"]
 material = SubResource("ShaderMaterial_aeb1s")
@@ -224,10 +228,9 @@ process_material = SubResource("ParticleProcessMaterial_81fj7")
 draw_pass_1 = SubResource("QuadMesh_5v5kr")
 
 [node name="RelishParticles" type="GPUParticles3D" parent="." unique_id=674195561]
-emitting = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_81fj7")
-draw_pass_1 = SubResource("BoxMesh_6t516")
+draw_pass_1 = SubResource("QuadMesh_hvqex")
 
 [node name="TimeSphere" type="MeshInstance3D" parent="." unique_id=620897403]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6588134, 0, 0.40953517)

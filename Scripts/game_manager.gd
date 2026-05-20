@@ -8,7 +8,7 @@ var cutscene_active = false
 @onready var player = $Player
 @onready var spawn_point = $SpawnPoint
 @onready var finish_zone = $FinishZone
-@onready var world_env = get_parent().get_node("WorldEnvironment")
+@onready var world_env: WorldEnvironment = $"../../Environment/WorldEnvironment"
 
 func _ready():
 	finish_zone.level_complete.connect(_on_level_complete)
@@ -25,10 +25,10 @@ func _on_ability_activated(ability_name: String):
 	if ability_name == "mustard":
 		if world_env:
 			var tween = create_tween()
+			tween.tween_interval(0.3)
 			tween.tween_method(func(v):
 				world_env.environment.adjustment_saturation = v
-				world_env.environment.adjustment_brightness = lerp(1.0, 0.8, 1.0 - v)
-			, 1.0, 0.1, 0.4)
+			, 1.0, 0.0, 0.3)
 
 func _on_ability_ended(ability_name: String):
 	if ability_name == "mustard":
@@ -36,8 +36,7 @@ func _on_ability_ended(ability_name: String):
 			var tween = create_tween()
 			tween.tween_method(func(v):
 				world_env.environment.adjustment_saturation = v
-				world_env.environment.adjustment_brightness = lerp(1.0, 0.8, 1.0 - v)
-			, 0.1, 1.0, 0.4)
+			, 0.0, 1.0, 0.3)
 
 func reset_world_env():
 	if world_env:
