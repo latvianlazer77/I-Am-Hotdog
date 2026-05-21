@@ -13,10 +13,11 @@ const MAX_BURN = 100.0
 const BURN_DRAIN = 15.0
 const DASH_DISTANCE = 50.0
 const DASH_SPEED = 200.0
-const MAGNET_RADIUS = 20.0
+const MAGNET_RADIUS = 60.0
 const FLY_SPEED = 50.0
 const FLY_MAX_HEIGHT = 20.0
 const FLY_GRAVITY = -2.0
+const TURN_SPEED = 2.0
 
 @onready var camera_pivot = $CameraPivot
 @onready var smoke = $SmokeParticles
@@ -188,6 +189,12 @@ func _process(delta):
 			AbilityManager.deactivate("relish")
 		else:
 			AbilityManager.activate("relish")
+
+	# Keyboard turning
+	if Input.is_action_pressed("turn_left"):
+		rotate_y(TURN_SPEED * delta)
+	if Input.is_action_pressed("turn_right"):
+		rotate_y(-TURN_SPEED * delta)
 
 	if AbilityManager.is_active("ketchup"):
 		lightning_timer -= delta

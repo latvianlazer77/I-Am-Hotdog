@@ -38,20 +38,17 @@ void fragment() {
 }
 
 void light() {
-	// Attenuation.
 	float attenuation = 1.0f;
 	if (use_attenuation) {
 		attenuation = ATTENUATION;
 	}
 
-	// Diffuse lighting.
 	float NdotL = dot(NORMAL, LIGHT);
 	float diffuse_amount = NdotL + (attenuation - 1.0) + wrap;
 	diffuse_amount *= steepness;
 	float cuts_inv = 1.0f / float(cuts);
 	float diffuse_stepped = clamp(diffuse_amount + mod(1.0f - diffuse_amount, cuts_inv), 0.0f, 1.0f);
 
-	// Calculate borders.
 	float border = 0.0f;
 	if (use_borders) {
 		float corr_border_width = length(cross(NORMAL, LIGHT)) * border_width * steepness;
@@ -59,7 +56,6 @@ void light() {
 				 - step(1.0 - corr_border_width, diffuse_amount);
 	}
 
-	// Apply diffuse result to different styles.
 	vec3 diffuse = ALBEDO.rgb * LIGHT_COLOR / PI;
 	if (use_ramp) {
 		diffuse *= texture(ramp, vec2(diffuse_stepped * (1.0f - border), 0.0f)).rgb;
@@ -73,7 +69,6 @@ void light() {
 		DIFFUSE_LIGHT += diffuse;
 	}
 
-	// Specular lighting.
 	if (use_specular) {
 		vec3 H = normalize(LIGHT + VIEW);
 		float NdotH = dot(NORMAL, H);
@@ -85,7 +80,6 @@ void light() {
 		SPECULAR_LIGHT += specular_strength * specular_amount * LIGHT_COLOR;
 	}
 
-	// Simple rim lighting.
 	if (use_rim) {
 		float NdotV = dot(NORMAL, VIEW);
 		float rim_light = pow(1.0 - NdotV, rim_width);
