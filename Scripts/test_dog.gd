@@ -137,25 +137,38 @@ func attract_coins():
 		if coin.global_position.distance_to(global_position) <= MAGNET_RADIUS:
 			coin.start_attraction()
 
+	if bun_flash_tween:
+		bun_flash_tween.kill()
+	bun_flash_tween = create_tween().set_loops()
+	bun_flash_tween.tween_callback(func():
+		sausage.get_surface_override_material(0).set_shader_parameter("albedo", Color(1, 1, 1, 0.0))
+	)
+	bun_flash_tween.tween_interval(0.15)
+	bun_flash_tween.tween_callback(func():
+		sausage.get_surface_override_material(0).set_shader_parameter("albedo", Color(1, 1, 1, 1.0))
+	)
+	bun_flash_tween.tween_interval(0.15)
+
 func start_bun_flash():
 	if bun_flash_tween:
 		bun_flash_tween.kill()
 	bun_flash_tween = create_tween().set_loops()
 	bun_flash_tween.tween_callback(func():
-		sausage.get_surface_override_material(0).set_shader_parameter("albedo_color", Color(1, 1, 1, 0.3))
+		sausage.visible = false
+		sausage_outline.visible = false
 	)
 	bun_flash_tween.tween_interval(0.15)
 	bun_flash_tween.tween_callback(func():
-		sausage.get_surface_override_material(0).set_shader_parameter("albedo_color", Color(1, 1, 1, 1.0))
+		sausage.visible = true
+		sausage_outline.visible = true
 	)
 	bun_flash_tween.tween_interval(0.15)
 
 func stop_bun_flash():
 	if bun_flash_tween:
 		bun_flash_tween.kill()
-	sausage.get_surface_override_material(0).set_shader_parameter("albedo_color", Color(1, 1, 1, 1.0))
-
-func pause_sounds():
+	sausage.visible = true
+	sausage_outline.visible = true
 	if ketchup_sound.playing:
 		ketchup_sound.stream_paused = true
 	if mustard_sound.playing:

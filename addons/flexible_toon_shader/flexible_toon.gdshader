@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode blend_mix, depth_draw_opaque;
 //render_mode ambient_light_disabled;
 uniform vec4 albedo : source_color = vec4(1.0f);
 uniform sampler2D albedo_texture : source_color, hint_default_white, repeat_enable;
@@ -35,6 +36,7 @@ void vertex() {
 void fragment() {
 	vec2 scaled_uv = UV * uv_scale + uv_offset;
 	ALBEDO = albedo.rgb * texture(albedo_texture, scaled_uv).rgb;
+	ALPHA = albedo.a;
 }
 
 void light() {
