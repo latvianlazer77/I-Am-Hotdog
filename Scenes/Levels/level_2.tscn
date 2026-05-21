@@ -15,6 +15,9 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8qsmg"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wyygt"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [sub_resource type="BoxMesh" id="BoxMesh_pnnky"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8qsmg"]
@@ -91,6 +94,10 @@ shape = SubResource("ConcavePolygonShape3D_8qsmg")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=895360243]
 transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 65.62905, 0.4303131, 0, -155.37051)
 mesh = SubResource("BoxMesh_w2ac1")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="StaticBody3D" unique_id=1868991686]
+transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 65.62905, 0.4303131, 0, -155.37051)
+shape = SubResource("ConcavePolygonShape3D_wyygt")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D" unique_id=114945263]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, 29, -187.03831)
@@ -257,4 +264,10 @@ transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-0
 shape = SubResource("ConcavePolygonShape3D_ia1lp")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=737305360]
-transform = Transform3D(0.9994233, 0, 0.033957582, 0, 1, 0, -0.033957582, 0, 0.9994233, 1.1563683, 26.45759, 54.114967)
+transform = Transform3D(0.2962082, 0, 0.9551234, 0, 1, 0, -0.9551234, 0, 0.2962082, 1.1563683, 26.45759, 54.114967)
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=522626181]
+transform = Transform3D(0.85400516, 0, -0.5202645, 0, 1, 0, 0.5202645, 0, 0.85400516, 26.051659, 26.45759, 54.114967)
+
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="." unique_id=160359254]
+transform = Transform3D(-0.8131008, 0, -0.58212304, 0, 1, 0, 0.58212304, 0, -0.8131008, 26.051659, 26.45759, 54.114967)
