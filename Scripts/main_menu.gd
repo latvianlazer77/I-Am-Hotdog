@@ -1,63 +1,174 @@
 extends Control
 
-@onready var title_label = $CanvasLayer/TitleLabel
-@onready var play_button = $CanvasLayer/VBoxContainer/PlayButton
-@onready var options_button = $CanvasLayer/VBoxContainer/OptionsButton
-@onready var quit_button = $CanvasLayer/VBoxContainer/QuitButton
-@onready var options_popup = $CanvasLayer/OptionsPopup
+@onready var title_label = $CanvasLayer/MainMenuUI/TitleLabel
+@onready var play_button = $CanvasLayer/MainMenuUI/VBoxContainer/PlayButton
+@onready var options_button = $CanvasLayer/MainMenuUI/VBoxContainer/OptionsButton
+@onready var quit_button = $CanvasLayer/MainMenuUI/VBoxContainer/QuitButton
+@onready var options_popup = $CanvasLayer/MainMenuUI/OptionsPopup
+
 @onready var menu_hotdog = $SubViewportContainer/SubViewport/MenuHotdog
-@onready var buttons = $CanvasLayer/VBoxContainer
+@onready var buttons = $CanvasLayer/MainMenuUI/VBoxContainer
+
+@onready var main_menu_ui = $CanvasLayer/MainMenuUI
+@onready var level_select_ui = $CanvasLayer/LevelSelectUI
+@onready var back_button = $CanvasLayer/LevelSelectUI/BackButton
 
 var hotdog_speed = 5.0
 var hotdog_start_x = -5.0
-var hotdog_end_x = 5.0
+
+var transitioning = false
 
 func _ready():
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 	options_popup.visible = false
+	level_select_ui.visible = false
+
 	play_button.pressed.connect(_on_play)
 	options_button.pressed.connect(_on_options)
 	quit_button.pressed.connect(_on_quit)
-	$CanvasLayer/OptionsPopup/CloseButton.pressed.connect(func(): options_popup.visible = false)
+	
+
+	$CanvasLayer/MainMenuUI/OptionsPopup/CloseButton.pressed.connect(
+		func():
+			options_popup.visible = false
+	)
 
 	# Hide everything initially
 	title_label.modulate = Color(1, 1, 1, 0)
 	title_label.scale = Vector2(0.1, 0.1)
+
 	buttons.modulate = Color(1, 1, 1, 0)
 
-	# Start hotdog off screen
+	# Start hotdog position
 	menu_hotdog.position.x = hotdog_start_x
 
-	# Play title animation then buttons
 	await get_tree().create_timer(0.3).timeout
+
 	play_title_animation()
+	
+
 
 func play_title_animation():
-	# Title slams in with bounce
+
 	var tween = create_tween()
-	tween.tween_property(title_label, "scale", Vector2(1.3, 1.3), 0.3).set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(title_label, "modulate", Color(1, 1, 1, 1), 0.1)
-	tween.parallel().tween_property(title_label, "modulate", Color(1, 1, 1, 1), 0.1)
-	tween.tween_property(title_label, "scale", Vector2(0.9, 0.9), 0.1)
-	tween.tween_property(title_label, "scale", Vector2(1.1, 1.1), 0.08)
-	tween.tween_property(title_label, "scale", Vector2(1.0, 1.0), 0.08)
-	# Buttons fade in after title
+
+	tween.tween_property(
+		title_label,
+		"scale",
+		Vector2(1.3, 1.3),
+		0.3
+	).set_trans(Tween.TRANS_EXPO)
+
+	tween.tween_property(
+		title_label,
+		"modulate",
+		Color(1, 1, 1, 1),
+		0.1
+	)
+
+	tween.parallel().tween_property(
+		title_label,
+		"modulate",
+		Color(1, 1, 1, 1),
+		0.1
+	)
+
+	tween.tween_property(
+		title_label,
+		"scale",
+		Vector2(0.9, 0.9),
+		0.1
+	)
+
+	tween.tween_property(
+		title_label,
+		"scale",
+		Vector2(1.1, 1.1),
+		0.08
+	)
+
+	tween.tween_property(
+		title_label,
+		"scale",
+		Vector2(1.0, 1.0),
+		0.08
+	)
+
 	tween.tween_interval(0.2)
-	tween.tween_property(buttons, "modulate", Color(1, 1, 1, 1), 0.5)
+
+	tween.tween_property(
+		buttons,
+		"modulate",
+		Color(1, 1, 1, 1),
+		0.5
+	)
+
 
 func _process(delta):
+
 	if not menu_hotdog:
 		return
-	menu_hotdog.position.z -= hotdog_speed * delta
-	menu_hotdog.get_child(0).rotate_x(-hotdog_speed * delta * 0.5)
-	if menu_hotdog.position.z < -hotdog_end_x:
-		menu_hotdog.position.z = hotdog_start_x
+
+	# Roll animation
+	menu_hotdog.get_child(0).rotate_x(
+		-hotdog_speed * delta * 0.5
+	)
+
+	# Move during transition
+	if transitioning:
+		menu_hotdog.position.x += hotdog_speed * delta
+
 
 func _on_play():
-	get_tree().change_scene_to_file("res://Scenes/Menus/level_select.tscn")
+
+	if transitioning:
+		return
+
+	transitioning = true
+
+	play_button.disabled = true
+	options_button.disabled = true
+	quit_button.disabled = true
+
+	var tween = create_tween()
+
+	# Fade out main menu
+	tween.tween_property(
+		main_menu_ui,
+		"modulate:a",
+		0.0,
+		0.5
+	)
+
+	# Roll hotdog across scene
+	tween.parallel().tween_property(
+		menu_hotdog,
+		"position:x",
+		40.0,
+		3.0
+	).set_trans(Tween.TRANS_SINE)
+
+	await tween.finished
+
+	# Show level select
+	level_select_ui.visible = true
+	level_select_ui.modulate.a = 0.0
+
+	var tween2 = create_tween()
+
+	tween2.tween_property(
+		level_select_ui,
+		"modulate:a",
+		1.0,
+		0.5
+	)
+
 
 func _on_options():
 	options_popup.visible = true
+
 
 func _on_quit():
 	get_tree().quit()

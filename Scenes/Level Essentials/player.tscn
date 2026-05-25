@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dnfs7tvfkb8gf"]
 
-[ext_resource type="Script" uid="uid://b6nft080jbnxm" path="res://Scripts/test_dog.gd" id="1_sa8xt"]
+[ext_resource type="Script" uid="uid://bv0ffpbvoqruo" path="res://Scripts/player.gd" id="1_11bkn"]
 [ext_resource type="AudioStream" uid="uid://bn81xl38l4em3" path="res://Assets/Audio/speedboost.mp3" id="2_urq3k"]
 [ext_resource type="Shader" uid="uid://b21hk1giqs044" path="res://Scripts/outline.gdshader" id="2_worfy"]
 [ext_resource type="AudioStream" uid="uid://dvadm6jr4kloa" path="res://Assets/Audio/MUSTAAAAARD!!!!!.mp3" id="3_81fj7"]
@@ -257,7 +257,7 @@ height = 0.2
 [node name="Player" type="CharacterBody3D" unique_id=2768484 groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-script = ExtResource("1_sa8xt")
+script = ExtResource("1_11bkn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2027253749]
 transform = Transform3D(0.00724946, -2.2886877, 0, 2.2452297, 0.0073897624, 0, 0, 0, 2.486567, 0.6772816, -0.02238822, 0.33983278)

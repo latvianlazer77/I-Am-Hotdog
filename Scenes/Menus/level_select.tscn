@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8dga51l4a67a"]
 
 [ext_resource type="Script" uid="uid://ci8w8doucxdtu" path="res://Scripts/level_select.gd" id="1_37jrt"]
+[ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Malam Poek.ttf" id="2_leldv"]
 
 [node name="LevelSelect" type="Control" unique_id=1256648337]
 layout_mode = 3
@@ -20,15 +21,21 @@ offset_left = -101.5
 offset_right = 101.5
 offset_bottom = 50.0
 grow_horizontal = 2
+theme_override_constants/line_spacing = 3
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_leldv")
 theme_override_font_sizes/font_size = 36
 text = "Level Select"
 
 [node name="BackButton" type="Button" parent="." unique_id=362101414]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 574.0
-offset_right = 128.0
-offset_bottom = 649.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+offset_right = 126.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_leldv")
 theme_override_font_sizes/font_size = 34
 text = "Back"
 
@@ -52,29 +59,35 @@ columns = 6
 [node name="Level1Button" type="Button" parent="GridContainer" unique_id=1333574409]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_leldv")
 text = "Level 1"
 
 [node name="Level2Button" type="Button" parent="GridContainer" unique_id=2011798741]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_leldv")
 text = "Level 2"
 
 [node name="Level3Button" type="Button" parent="GridContainer" unique_id=1416777013]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_leldv")
 text = "Level 3"
 
 [node name="Level4Button" type="Button" parent="GridContainer" unique_id=1964034674]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_leldv")
 text = "Level 4"
 
 [node name="Level5Button" type="Button" parent="GridContainer" unique_id=432744744]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_leldv")
 text = "Level 5"
 
 [node name="Level6Button" type="Button" parent="GridContainer" unique_id=1469849209]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_leldv")
 text = "Level 6"

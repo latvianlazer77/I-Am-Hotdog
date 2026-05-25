@@ -8,7 +8,7 @@ var cutscene_active = false
 @onready var player = $Player
 @onready var spawn_point = $SpawnPoint
 @onready var finish_zone = $FinishZone
-@onready var world_env: WorldEnvironment = $"../../Environment/WorldEnvironment"
+@onready var world_env = get_parent().get_node("Environment/WorldEnvironment")
 
 func _ready():
 	finish_zone.level_complete.connect(_on_level_complete)
@@ -52,7 +52,6 @@ func _on_paused():
 	running = false
 	player.set_physics_process(false)
 	player.set_process_input(false)
-	player.pause_sounds()
 	AbilityManager.pause_abilities()
 
 func _on_resumed():

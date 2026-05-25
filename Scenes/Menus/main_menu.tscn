@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://mti31cs3ao5w"]
 
 [ext_resource type="Script" uid="uid://cayh4jd5fa8ak" path="res://Scripts/main_menu.gd" id="1_38aua"]
+[ext_resource type="Script" uid="uid://38wytp80rar" path="res://Scripts/camera_3d.gd" id="2_neey8"]
 [ext_resource type="AudioStream" uid="uid://bfwnd3yp1wdg1" path="res://Assets/Audio/Hotdog Heart.mp3" id="2_pha2q"]
 [ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="3_neey8"]
 [ext_resource type="PackedScene" uid="uid://bac2ph7oux2it" path="res://Scenes/Menus/menu_hotdog.tscn" id="4_5wi6m"]
+[ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Malam Poek.ttf" id="4_chkef"]
+[ext_resource type="PackedScene" uid="uid://c8dga51l4a67a" path="res://Scenes/Menus/level_select.tscn" id="6_4fgt5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anmaw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wi6m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ftsii"]
-material = SubResource("StandardMaterial3D_anmaw")
+material = SubResource("StandardMaterial3D_5wi6m")
 size = Vector3(10, 0.2, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg1h6"]
@@ -56,14 +59,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1676921312]
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1958743544]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1958743544 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 0.5, 2)
+script = ExtResource("2_neey8")
+target = NodePath("../MenuHotdog")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=415353315]
 
@@ -75,53 +81,71 @@ mesh = SubResource("BoxMesh_ftsii")
 surface_material_override/0 = SubResource("ShaderMaterial_lg1h6")
 
 [node name="MenuHotdog" parent="SubViewportContainer/SubViewport" unique_id=906780869 instance=ExtResource("4_5wi6m")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.5, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.5546591, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=461874926]
 environment = SubResource("Environment_5wi6m")
 
+[node name="LevelSelectArea" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=189131972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1132427146]
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer" unique_id=1594832312]
+[node name="MainMenuUI" type="Control" parent="CanvasLayer" unique_id=587771752]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MainMenuUI" unique_id=1594832312]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -109.0
+offset_left = 249.0
 offset_top = 2.0
-offset_right = 107.0
-offset_bottom = 52.0
+offset_right = 861.0
+offset_bottom = 90.0
 grow_horizontal = 2
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_chkef")
 theme_override_font_sizes/font_size = 80
 text = "I Am Hotdog"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1110717601]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuUI" unique_id=1110717601]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = -76.25
-offset_right = 79.0
-offset_bottom = 80.25
+offset_left = 475.0
+offset_top = 227.75
+offset_right = 635.0
+offset_bottom = 384.25
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 19
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1791489844]
+[node name="PlayButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer" unique_id=1791489844]
 layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_chkef")
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1536449966]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer" unique_id=1536449966]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_chkef")
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=293257403]
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer" unique_id=293257403]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_chkef")
 text = "Quit"
 
-[node name="OptionsPopup" type="ColorRect" parent="CanvasLayer" unique_id=1295113986]
+[node name="OptionsPopup" type="ColorRect" parent="CanvasLayer/MainMenuUI" unique_id=1295113986]
 visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -133,7 +157,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3180198, 0.31801978, 0.31801975, 1)
 
-[node name="Panel" type="Panel" parent="CanvasLayer/OptionsPopup" unique_id=1492369190]
+[node name="Panel" type="Panel" parent="CanvasLayer/MainMenuUI/OptionsPopup" unique_id=1492369190]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +165,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/OptionsPopup" unique_id=1610232895]
+[node name="Label" type="Label" parent="CanvasLayer/MainMenuUI/OptionsPopup" unique_id=1610232895]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.47700003
@@ -155,7 +179,7 @@ offset_bottom = -0.17599487
 grow_horizontal = 2
 text = "boi"
 
-[node name="CloseButton" type="Button" parent="CanvasLayer/OptionsPopup" unique_id=1501792278]
+[node name="CloseButton" type="Button" parent="CanvasLayer/MainMenuUI/OptionsPopup" unique_id=1501792278]
 layout_mode = 0
 offset_left = 455.0
 offset_top = 481.0
@@ -163,6 +187,8 @@ offset_right = 717.0
 offset_bottom = 585.0
 theme_override_font_sizes/font_size = 31
 text = "Close"
+
+[node name="LevelSelectUI" parent="CanvasLayer" unique_id=1256648337 instance=ExtResource("6_4fgt5")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=502705425]
 stream = ExtResource("2_pha2q")

@@ -44,6 +44,8 @@ shadow_mesh = SubResource("ArrayMesh_v1dee")
 render_priority = 0
 shader = ExtResource("1_brvve")
 shader_parameter/albedo = Color(0.95281494, 0.49010885, 0.3491902, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 3
 shader_parameter/wrap = 0.0
@@ -62,7 +64,7 @@ shader_parameter/border_width = 0.01
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_685ly"]
 render_priority = 0
 shader = ExtResource("2_te6u0")
-shader_parameter/outline_size = 0.0400000019
+shader_parameter/outline_size = 0.10000000149012
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [node name="MenuHotdog" type="Node3D" unique_id=906780869]
