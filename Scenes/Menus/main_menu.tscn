@@ -4,20 +4,16 @@
 [ext_resource type="Script" uid="uid://38wytp80rar" path="res://Scripts/camera_3d.gd" id="2_neey8"]
 [ext_resource type="AudioStream" uid="uid://bfwnd3yp1wdg1" path="res://Assets/Audio/Hotdog Heart.mp3" id="2_pha2q"]
 [ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="3_neey8"]
+[ext_resource type="Texture2D" uid="uid://cb23r0rc6mn2c" path="res://Assets/Images/kitchen.jpg" id="4_4fgt5"]
 [ext_resource type="PackedScene" uid="uid://bac2ph7oux2it" path="res://Scenes/Menus/menu_hotdog.tscn" id="4_5wi6m"]
 [ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Malam Poek.ttf" id="4_chkef"]
 [ext_resource type="PackedScene" uid="uid://c8dga51l4a67a" path="res://Scenes/Menus/level_select.tscn" id="6_4fgt5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wi6m"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ftsii"]
-material = SubResource("StandardMaterial3D_5wi6m")
-size = Vector3(10, 0.2, 10)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg1h6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4fgt5"]
 render_priority = 0
 shader = ExtResource("3_neey8")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("4_4fgt5")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/clamp_diffuse_to_max = false
@@ -35,9 +31,13 @@ shader_parameter/use_ramp = false
 shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_j4kqa"]
+material = SubResource("ShaderMaterial_4fgt5")
+
 [sub_resource type="Environment" id="Environment_5wi6m"]
-background_mode = 1
 background_color = Color(0.9123274, 0.7252769, 0.64949137, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_neey8"]
 
 [node name="Main Menu" type="Control" unique_id=385628862]
 layout_mode = 3
@@ -54,58 +54,62 @@ script = ExtResource("1_38aua")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=594670811]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1676921312]
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1958743544 node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 0.5, 2)
+transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.1736482, 0, -0.1736482, 0.9848078, 0, 0.5, 2.67)
 script = ExtResource("2_neey8")
 target = NodePath("../MenuHotdog")
+y_offset = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=415353315]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport" unique_id=432089476]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StaticBody3D" unique_id=254787369]
-transform = Transform3D(165.78693, 0, 0, 0, 1, 0, 0, 0, 129.06607, 0, 0, 0)
-mesh = SubResource("BoxMesh_ftsii")
-surface_material_override/0 = SubResource("ShaderMaterial_lg1h6")
+transform = Transform3D(143.02347, 0, 0, 0, 1, 0, 0, 0, 129.06607, 152.83493, -0.2849064, 51.90764)
+mesh = SubResource("PlaneMesh_j4kqa")
 
 [node name="MenuHotdog" parent="SubViewportContainer/SubViewport" unique_id=906780869 instance=ExtResource("4_5wi6m")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.5546591, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.555, 0)
+
+[node name="LevelSelectArea" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=189131972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=461874926]
 environment = SubResource("Environment_5wi6m")
 
-[node name="LevelSelectArea" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=189131972]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=2016529067]
+transform = Transform3D(69.22543, 0, 0, 0, 74.52155, 0, 0, 0, 1, 0, 1.259374, -50.15191)
+mesh = SubResource("BoxMesh_neey8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1132427146]
 
 [node name="MainMenuUI" type="Control" parent="CanvasLayer" unique_id=587771752]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TitleLabel" type="Label" parent="CanvasLayer/MainMenuUI" unique_id=1594832312]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 249.0
-offset_top = 2.0
-offset_right = 861.0
-offset_bottom = 90.0
+offset_left = -306.0
+offset_right = 306.0
+offset_bottom = 88.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("4_chkef")
@@ -119,10 +123,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 475.0
-offset_top = 227.75
-offset_right = 635.0
-offset_bottom = 384.25
+offset_left = -44.0
+offset_top = -58.0
+offset_right = 44.0
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 19
