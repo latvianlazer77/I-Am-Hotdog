@@ -3,41 +3,26 @@
 [ext_resource type="Script" uid="uid://cayh4jd5fa8ak" path="res://Scripts/main_menu.gd" id="1_38aua"]
 [ext_resource type="Script" uid="uid://38wytp80rar" path="res://Scripts/camera_3d.gd" id="2_neey8"]
 [ext_resource type="AudioStream" uid="uid://bfwnd3yp1wdg1" path="res://Assets/Audio/Hotdog Heart.mp3" id="2_pha2q"]
-[ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="3_neey8"]
-[ext_resource type="Texture2D" uid="uid://cb23r0rc6mn2c" path="res://Assets/Images/kitchen.jpg" id="4_4fgt5"]
+[ext_resource type="Shader" uid="uid://ccnv8ccwcovra" path="res://Scripts/checker.gdshader" id="3_neey8"]
 [ext_resource type="PackedScene" uid="uid://bac2ph7oux2it" path="res://Scenes/Menus/menu_hotdog.tscn" id="4_5wi6m"]
 [ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Malam Poek.ttf" id="4_chkef"]
 [ext_resource type="PackedScene" uid="uid://c8dga51l4a67a" path="res://Scenes/Menus/level_select.tscn" id="6_4fgt5"]
+[ext_resource type="StyleBox" uid="uid://b8778mfvdj2c" path="res://Assets/Images/button.tres" id="6_j4kqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4fgt5"]
 render_priority = 0
 shader = ExtResource("3_neey8")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("4_4fgt5")
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = true
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = true
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
+shader_parameter/checker_size = 8.00000037674012
+shader_parameter/color_a = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/color_b = Color(0.9, 0.9, 0.9, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j4kqa"]
 material = SubResource("ShaderMaterial_4fgt5")
 
 [sub_resource type="Environment" id="Environment_5wi6m"]
-background_color = Color(0.9123274, 0.7252769, 0.64949137, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_neey8"]
+background_mode = 1
+background_color = Color(0.8865197, 0.22658296, 0.16409835, 1)
+background_energy_multiplier = 1.06
 
 [node name="Main Menu" type="Control" unique_id=385628862]
 layout_mode = 3
@@ -76,7 +61,7 @@ y_offset = 1.0
 [node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport" unique_id=432089476]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StaticBody3D" unique_id=254787369]
-transform = Transform3D(143.02347, 0, 0, 0, 1, 0, 0, 0, 129.06607, 152.83493, -0.2849064, 51.90764)
+transform = Transform3D(98.23003, 0, 0, 0, 1, 0, 0, 0, 97.09959, 31.247932, -0.2849064, 51.90764)
 mesh = SubResource("PlaneMesh_j4kqa")
 
 [node name="MenuHotdog" parent="SubViewportContainer/SubViewport" unique_id=906780869 instance=ExtResource("4_5wi6m")]
@@ -87,10 +72,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=461874926]
 environment = SubResource("Environment_5wi6m")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=2016529067]
-transform = Transform3D(69.22543, 0, 0, 0, 74.52155, 0, 0, 0, 1, 0, 1.259374, -50.15191)
-mesh = SubResource("BoxMesh_neey8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1132427146]
 
@@ -118,33 +99,36 @@ text = "I Am Hotdog"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuUI" unique_id=1110717601]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -44.0
-offset_top = -58.0
+offset_top = -184.0
 offset_right = 44.0
-offset_bottom = 58.0
+offset_bottom = -68.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_constants/separation = 19
 
 [node name="PlayButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer" unique_id=1791489844]
 layout_mode = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("4_chkef")
+theme_override_styles/normal = ExtResource("6_j4kqa")
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer" unique_id=1536449966]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_chkef")
+theme_override_styles/normal = ExtResource("6_j4kqa")
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer" unique_id=293257403]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_chkef")
+theme_override_styles/normal = ExtResource("6_j4kqa")
 text = "Quit"
 
 [node name="OptionsPopup" type="ColorRect" parent="CanvasLayer/MainMenuUI" unique_id=1295113986]

@@ -64,7 +64,6 @@ func _ready():
 	time_sphere.visible = false
 	AbilityManager.active["relish"] = false
 	AbilityManager.timers["relish"] = 0.0
-	sausage.get_surface_override_material(0).set_shader_parameter("albedo", Color(1, 1, 1, 1.0))
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
