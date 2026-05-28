@@ -11,7 +11,7 @@ extends Control
 @onready var level_select_ui = $CanvasLayer/LevelSelectUI
 @onready var back_button = $CanvasLayer/LevelSelectUI/BackButton
 
-var hotdog_speed = 1.5
+var hotdog_speed = 4.5
 var hotdog_rest_z = 0.0
 var transitioning = false
 
