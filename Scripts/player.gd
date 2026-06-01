@@ -13,8 +13,8 @@ const MAX_BURN = 100.0
 const BURN_DRAIN = 15.0
 const DASH_DISTANCE = 50.0
 const DASH_SPEED = 200.0
-const MAGNET_RADIUS = 50.0
-const FLY_SPEED = 67.0
+const MAGNET_RADIUS = 20.0
+const FLY_SPEED = 50.0
 const FLY_MAX_HEIGHT = 20.0
 const FLY_GRAVITY = -2.0
 const TURN_SPEED = 2.0
@@ -30,6 +30,7 @@ const TURN_SPEED = 2.0
 @onready var sausage = $Sausage
 @onready var sausage_outline = $Sausage/SausageOutline
 @onready var time_sphere = $TimeSphere
+@onready var roll_sound = $RollSound
 
 var current_speed = 0.0
 var stamina = MAX_STAMINA
@@ -64,6 +65,7 @@ func _ready():
 	time_sphere.visible = false
 	AbilityManager.active["relish"] = false
 	AbilityManager.timers["relish"] = 0.0
+	roll_sound.autoplay = false
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
@@ -109,7 +111,7 @@ func expand_time_sphere():
 		sphere_tween.kill()
 	time_sphere.scale = Vector3(0.1, 0.1, 0.1)
 	sphere_tween = create_tween()
-	sphere_tween.tween_property(time_sphere, "scale", Vector3(500.0, 500.0, 500.0), 0.6).set_trans(Tween.TRANS_EXPO)
+	sphere_tween.tween_property(time_sphere, "scale", Vector3(50.0, 50.0, 50.0), 0.6).set_trans(Tween.TRANS_EXPO)
 
 func shrink_time_sphere():
 	if sphere_tween:
@@ -132,7 +134,7 @@ func stop_flying():
 	tween.tween_property(camera_pivot, "rotation:x", camera_pivot.rotation.x, 0.3)
 
 func attract_coins():
-	sausage.get_surface_override_material(0).set_shader_parameter("albedo", Color(1, 1, 1, 1.0))
+	sausage.get_surface_override_material(0).set_shader_parameter("albedo", Color(0.9, 0.45, 0.1, 1.0))
 	var coins = get_tree().get_nodes_in_group("coin")
 	for coin in coins:
 		if coin.global_position.distance_to(global_position) <= MAGNET_RADIUS:
@@ -164,12 +166,16 @@ func pause_sounds():
 		ketchup_sound.stream_paused = true
 	if mustard_sound.playing:
 		mustard_sound.stream_paused = true
+	if roll_sound.playing:
+		roll_sound.stream_paused = true
 
 func resume_sounds():
 	if ketchup_sound.stream_paused:
 		ketchup_sound.stream_paused = false
 	if mustard_sound.stream_paused:
 		mustard_sound.stream_paused = false
+	if roll_sound.stream_paused:
+		roll_sound.stream_paused = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -286,6 +292,17 @@ func _physics_process(delta):
 	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
 	if horizontal_speed > 0.1:
 		sausage.rotate_x(horizontal_speed * delta * 0.3)
+		if is_on_floor():
+			if not roll_sound.playing:
+				roll_sound.play()
+			roll_sound.pitch_scale = lerp(roll_sound.pitch_scale, horizontal_speed / MAX_SPEED * 2.0, delta * 5.0)
+		else:
+			if roll_sound.playing:
+				roll_sound.stop()
+	else:
+		if roll_sound.playing:
+			roll_sound.stop()
+		roll_sound.pitch_scale = 1.0
 
 	if shake_amount > 0:
 		camera_pivot.rotation.z = randf_range(-shake_amount, shake_amount)

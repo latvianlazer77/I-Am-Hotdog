@@ -526,6 +526,10 @@ script = ExtResource("5_7r2dd")
 mesh = SubResource("ArrayMesh_7r2dd")
 surface_material_override/0 = SubResource("ShaderMaterial_k2mw1")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="GameViewport/StaticBody3D/BottleKetchup" unique_id=1035541873]
+light_color = Color(1, 1, 0.4249097, 1)
+light_energy = 3.376
+
 [node name="GameManager" parent="GameViewport" unique_id=6342885 instance=ExtResource("1_xgxfi")]
 
 [node name="SpawnPoint" parent="GameViewport/GameManager" unique_id=1033269942 instance=ExtResource("2_5f3p6")]
