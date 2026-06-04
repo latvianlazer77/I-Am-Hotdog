@@ -517,7 +517,7 @@ transform = Transform3D(10.138695, 0, 0, 0, 0.99999976, 0, 0, 0, 7.6415596, 0, -
 mesh = SubResource("PlaneMesh_afv7b")
 surface_material_override/0 = SubResource("ShaderMaterial_7r2dd")
 
-[node name="BottleKetchup" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1075280174]
+[node name="BottleKetchup" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1075280174 groups=["freezable"]]
 transform = Transform3D(0.6666665, 0, 0, 0, 0.6666665, 0, 0, 0, 0.6666665, -7.8797593, -0.5194146, -3.7462082)
 mesh = SubResource("ArrayMesh_7r2dd")
 script = ExtResource("5_7r2dd")
@@ -609,5 +609,5 @@ transform = Transform3D(-0.80659944, 0, 0.5910984, 0, 1, 0, -0.5910984, 0, -0.80
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Environment" unique_id=1706125020]
 transform = Transform3D(0.9881696, 0, 0.1533653, 0, 1, 0, -0.1533653, 0, 0.9881696, -236.37778, 0, 119.12495)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2028428800]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2028428800 groups=["world_environment", "world_manager"]]
 environment = SubResource("Environment_jv26f")

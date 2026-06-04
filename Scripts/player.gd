@@ -13,7 +13,7 @@ const MAX_BURN = 100.0
 const BURN_DRAIN = 15.0
 const DASH_DISTANCE = 50.0
 const DASH_SPEED = 200.0
-const MAGNET_RADIUS = 20.0
+const MAGNET_RADIUS = 67.0
 const FLY_SPEED = 50.0
 const FLY_MAX_HEIGHT = 20.0
 const FLY_GRAVITY = -2.0
@@ -106,6 +106,12 @@ func _on_ability_ended(ability_name: String):
 			stop_flying()
 
 func expand_time_sphere():
+	time_sphere.visible = true
+	if sphere_tween:
+		sphere_tween.kill()
+	time_sphere.scale = Vector3(0.1, 0.1, 0.1)
+	sphere_tween = create_tween()
+	sphere_tween.tween_property(time_sphere, "scale", Vector3(500.0, 500.0, 500.0), 0.6).set_trans(Tween.TRANS_EXPO)
 	time_sphere.visible = true
 	if sphere_tween:
 		sphere_tween.kill()

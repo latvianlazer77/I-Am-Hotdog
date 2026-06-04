@@ -3,14 +3,18 @@ extends Node
 var time_elapsed = 0.0
 var running = true
 var cutscene_active = false
+var target_saturation = 1.0
+var current_saturation = 1.0
 
 @onready var hud = $HUD
 @onready var player = $Player
 @onready var spawn_point = $SpawnPoint
 @onready var finish_zone = $FinishZone
-@onready var world_env = get_parent().get_node("Environment/WorldEnvironment")
-
+var world_env = null
 func _ready():
+	await get_tree().process_frame
+	world_env = get_tree().get_first_node_in_group("world_environment")
+	print("WorldEnv: ", world_env)
 	finish_zone.level_complete.connect(_on_level_complete)
 	hud.pause_menu.paused.connect(_on_paused)
 	hud.pause_menu.resumed.connect(_on_resumed)
@@ -20,18 +24,37 @@ func _ready():
 	running = true
 	cutscene_active = false
 	AbilityManager.hard_reset()
+	finish_zone.level_complete.connect(_on_level_complete)
+	hud.pause_menu.paused.connect(_on_paused)
+	hud.pause_menu.resumed.connect(_on_resumed)
+	AbilityManager.ability_activated.connect(_on_ability_activated)
+	AbilityManager.ability_ended.connect(_on_ability_ended)
+	time_elapsed = 0.0
+	running = true
+	cutscene_active = false
+	AbilityManager.hard_reset()
+	print("WorldEnv: ", world_env)
 
 func _on_ability_activated(ability_name: String):
 	if ability_name == "mustard":
+		target_saturation = 0.0
 		if world_env:
+			print("Trying greyscale")
+		if world_env:
+			print("Adjustments enabled: ", world_env.environment.adjustment_enabled)
+			world_env.environment.adjustment_saturation = 0.0
+			print("Saturation set to 0")
+		else:
+			print("World env is null!")
 			var tween = create_tween()
 			tween.tween_interval(0.3)
 			tween.tween_method(func(v):
 				world_env.environment.adjustment_saturation = v
-			, 1.0, 0.0, 0.3)
+			, 1.0, 0.0, 3)
 
 func _on_ability_ended(ability_name: String):
 	if ability_name == "mustard":
+		target_saturation = 1.0
 		if world_env:
 			var tween = create_tween()
 			tween.tween_method(func(v):
@@ -47,6 +70,10 @@ func _process(delta):
 	if running and not cutscene_active and not AbilityManager.is_active("mustard"):
 		time_elapsed += delta
 		hud.update_timer(get_time_string())
+
+	if world_env:
+		current_saturation = lerp(current_saturation, target_saturation, delta * 1.5)
+		world_env.environment.adjustment_saturation = current_saturation
 
 func _on_paused():
 	running = false

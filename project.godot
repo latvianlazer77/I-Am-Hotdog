@@ -33,6 +33,8 @@ ice_zone=""
 hud=""
 hazard=""
 coin=""
+freezable=""
+world_environment=""
 
 [input]
 

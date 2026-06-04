@@ -21,6 +21,22 @@ func _ready():
 	$MeshInstance3D.set_surface_override_material(0, mat)
 
 func _process(delta):
+	if AbilityManager.is_active("mustard"):
+		return
+	if collected:
+		return
+	if being_attracted:
+		var player = get_tree().get_first_node_in_group("player")
+		if player:
+			var dir = (player.global_position - global_position).normalized()
+			global_position += dir * MAGNET_SPEED * delta
+			rotate_y(SPIN_SPEED * 3.0 * delta)
+			if global_position.distance_to(player.global_position) < 0.5:
+				collect()
+		return
+	time += delta
+	position.y = base_y + sin(time * BOB_SPEED) * BOB_HEIGHT
+	rotate_y(SPIN_SPEED * delta)
 	if collected:
 		return
 

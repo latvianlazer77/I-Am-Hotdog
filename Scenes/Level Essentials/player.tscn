@@ -252,8 +252,8 @@ shader_parameter/rim_width = 1.5
 
 [sub_resource type="SphereMesh" id="SphereMesh_hvqex"]
 material = SubResource("ShaderMaterial_aeb1s")
-radius = 0.1
-height = 0.2
+radius = 1.0
+height = 2.0
 
 [node name="Player" type="CharacterBody3D" unique_id=2768484 groups=["player"]]
 axis_lock_angular_x = true

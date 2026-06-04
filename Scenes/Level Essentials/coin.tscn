@@ -40,7 +40,7 @@ shader = ExtResource("3_m5r4l")
 shader_parameter/outline_size = 0.0550000026125
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
-[node name="Coin" type="Area3D" unique_id=1597211057 groups=["coin"]]
+[node name="Coin" type="Area3D" unique_id=1597211057 groups=["coin", "freezable"]]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_whmch")
 

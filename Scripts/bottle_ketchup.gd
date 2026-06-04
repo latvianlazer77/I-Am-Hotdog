@@ -11,6 +11,11 @@ func _ready():
 	base_y = global_position.y
 
 func _process(delta):
+	if AbilityManager.is_active("mustard"):
+		return
+	time += delta
+	rotate_y(SPIN_SPEED * delta)
+	position.y = base_y + sin(time * BOB_SPEED) * BOB_HEIGHT
 	time += delta
 	rotate_y(SPIN_SPEED * delta)
 	global_position.y = base_y + sin(time * BOB_SPEED) * BOB_HEIGHT
