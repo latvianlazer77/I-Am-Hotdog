@@ -214,17 +214,17 @@ mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1jlnc")
 
 [node name="MeshInstance3D36" type="MeshInstance3D" parent="StaticBody3D" unique_id=1957787969]
-transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 42.106247, 0.70845985, -72.397415)
+transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 42.106247, 0.70845985, -77.237274)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1jlnc")
 
 [node name="MeshInstance3D39" type="MeshInstance3D" parent="StaticBody3D" unique_id=1933232448]
-transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 119.08891, 0.70845985, -53.838448)
+transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 103.04637, 0.70845985, -63.728867)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1jlnc")
 
 [node name="MeshInstance3D64" type="MeshInstance3D" parent="StaticBody3D" unique_id=1302318770]
-transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 162.89532, 0.70845985, -64.01532)
+transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 151.94351, 0.70845985, -64.01532)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1jlnc")
 
@@ -264,7 +264,7 @@ mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1jlnc")
 
 [node name="MeshInstance3D63" type="MeshInstance3D" parent="StaticBody3D" unique_id=1133547918]
-transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 125.94861, 0.70845985, -81.67673)
+transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 120.24704, 0.70845985, -63.032265)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1jlnc")
 
@@ -354,7 +354,7 @@ mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1jlnc")
 
 [node name="MeshInstance3D38" type="MeshInstance3D" parent="StaticBody3D" unique_id=450409093]
-transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 58.878334, 0.70845985, -56.0595)
+transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 58.878334, 0.70845985, -60.367577)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1jlnc")
 
