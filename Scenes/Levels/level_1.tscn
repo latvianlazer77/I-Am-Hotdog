@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="6_u5ghp"]
 [ext_resource type="PackedScene" uid="uid://fvk4ajqp8fof" path="res://Scenes/Level Essentials/spikes.tscn" id="8_jv26f"]
 [ext_resource type="PackedScene" uid="uid://c2ylildwd0ftp" path="res://Scenes/Level Essentials/coin.tscn" id="9_rb0md"]
+[ext_resource type="PackedScene" uid="uid://b2lxq6fynw0py" path="res://Scenes/Level Essentials/fridge.tscn" id="14_k2mw1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_seteq"]
 flip_faces = true
@@ -598,6 +599,24 @@ transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284
 [node name="Coin13" parent="GameViewport/Coins" unique_id=1911430978 instance=ExtResource("9_rb0md")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.40935, 34.866802, 14.966578)
 
+[node name="Coin14" parent="GameViewport/Coins" unique_id=195908922 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.54991, 29.432373, -150.78023)
+
+[node name="Coin15" parent="GameViewport/Coins" unique_id=1065557199 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.54991, 29.432373, -167.2082)
+
+[node name="Coin16" parent="GameViewport/Coins" unique_id=1093311472 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.54991, 29.432373, -163.97493)
+
+[node name="Coin17" parent="GameViewport/Coins" unique_id=546054561 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.54991, 29.432373, -145.59961)
+
+[node name="Coin18" parent="GameViewport/Coins" unique_id=380639718 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.54991, 29.432373, -154.89484)
+
+[node name="Coin19" parent="GameViewport/Coins" unique_id=652949879 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.54991, 29.432373, -159.96211)
+
 [node name="Environment" type="Node3D" parent="." unique_id=627548670]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1319615241]
@@ -611,3 +630,6 @@ transform = Transform3D(0.9881696, 0, 0.1533653, 0, 1, 0, -0.1533653, 0, 0.98816
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2028428800 groups=["world_environment", "world_manager"]]
 environment = SubResource("Environment_jv26f")
+
+[node name="fridge" parent="." unique_id=720257649 instance=ExtResource("14_k2mw1")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 141.58376, -88.42571, 33.430588)

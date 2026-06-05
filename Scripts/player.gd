@@ -15,7 +15,7 @@ const DASH_DISTANCE = 50.0
 const DASH_SPEED = 200.0
 const MAGNET_RADIUS = 67.0
 const FLY_SPEED = 50.0
-const FLY_MAX_HEIGHT = 20.0
+const FLY_MAX_HEIGHT = 40.0
 const FLY_GRAVITY = -2.0
 const TURN_SPEED = 2.0
 
