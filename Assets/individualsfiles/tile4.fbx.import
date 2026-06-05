@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cgpakxfsxrw2j"
-path="res://.godot/imported/tile4.fbx-9c79d54ad57a10765e5f6597e230caa3.scn"
+uid="uid://cfyp1j4737q3h"
+path="res://.godot/imported/tile4.fbx-3371ef0ea857e1794186ade40a29c07b.scn"
 
 [deps]
 
-source_file="res://Assets/Models/tile4.fbx"
-dest_files=["res://.godot/imported/tile4.fbx-9c79d54ad57a10765e5f6597e230caa3.scn"]
+source_file="res://Assets/individualsfiles/tile4.fbx"
+dest_files=["res://.godot/imported/tile4.fbx-3371ef0ea857e1794186ade40a29c07b.scn"]
 
 [params]
 
