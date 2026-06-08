@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bjjxj2bkgqrpk"]
+
+[ext_resource type="Script" uid="uid://d017c7l4tpnbw" path="res://light_fixture.gd" id="1_sx2fg"]
+[ext_resource type="Shader" uid="uid://dl47bqkswjanb" path="res://Assets/Shaders/backrooms_light.gdshader" id="2_uolfn"]
+[ext_resource type="Shader" uid="uid://1abkwq03g62i" path="res://Assets/Models/backrooms_light.gdshader" id="3_uolfn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxxl0"]
+render_priority = 0
+shader = ExtResource("2_uolfn")
+shader_parameter/light_color = Color(1, 0.95, 0.7, 1)
+shader_parameter/flicker_speed = 8.0
+shader_parameter/flicker_intensity = 0.15
+shader_parameter/base_brightness = 1.2
+shader_parameter/buzz_frequency = 60.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_66inq"]
+material = SubResource("ShaderMaterial_hxxl0")
+size = Vector3(1.2, 0.05, 0.3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66inq"]
+render_priority = 0
+shader = ExtResource("3_uolfn")
+shader_parameter/light_color = Color(1, 0.95, 0.7, 1)
+shader_parameter/flicker_speed = 8.0
+shader_parameter/flicker_intensity = 0.15
+shader_parameter/base_brightness = 1.2
+shader_parameter/buzz_frequency = 60.0
+
+[node name="LightFixture" type="Node3D" unique_id=1899471714]
+script = ExtResource("1_sx2fg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=183021470]
+mesh = SubResource("BoxMesh_66inq")
+surface_material_override/0 = SubResource("ShaderMaterial_66inq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1259555469]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.56671304, 0)
+light_color = Color(1, 0.9411765, 0.7529412, 1)
+light_energy = 1.5
+shadow_enabled = true
+shadow_blur = 2.0
+omni_range = 8.0
+omni_attenuation = 1.5
