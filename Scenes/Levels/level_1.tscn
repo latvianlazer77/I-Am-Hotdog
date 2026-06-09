@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://fvk4ajqp8fof" path="res://Scenes/Level Essentials/spikes.tscn" id="8_jv26f"]
 [ext_resource type="PackedScene" uid="uid://c2ylildwd0ftp" path="res://Scenes/Level Essentials/coin.tscn" id="9_rb0md"]
 [ext_resource type="PackedScene" uid="uid://b2lxq6fynw0py" path="res://Scenes/Level Essentials/fridge.tscn" id="14_k2mw1"]
+[ext_resource type="PackedScene" uid="uid://d3ycga4rr2q6s" path="res://Scenes/Level Essentials/bigjok.tscn" id="15_tjl6l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_seteq"]
 flip_faces = true
@@ -633,3 +634,6 @@ environment = SubResource("Environment_jv26f")
 
 [node name="fridge" parent="." unique_id=720257649 instance=ExtResource("14_k2mw1")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 141.58376, -88.42571, 33.430588)
+
+[node name="Bigjok" parent="." unique_id=1980146587 instance=ExtResource("15_tjl6l")]
+transform = Transform3D(0.00837753, 0, 0.9999649, 0, 1, 0, -0.9999649, 0, 0.00837753, -40.84488, -15.915688, 131.13922)
