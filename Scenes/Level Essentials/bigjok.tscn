@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d3ycga4rr2q6s"]
+
+[ext_resource type="PackedScene" uid="uid://c3dj5mdrltgs2" path="res://Assets/Models/young_mask.glb" id="1_jdaiv"]
+
+[node name="Bigjok" type="CharacterBody3D" unique_id=1980146587]
+
+[node name="Sketchfab_Scene" parent="." unique_id=262641331 instance=ExtResource("1_jdaiv")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
