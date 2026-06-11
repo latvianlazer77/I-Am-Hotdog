@@ -793,7 +793,7 @@ transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.8270
 shape = SubResource("ConcavePolygonShape3D_srchd")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="StaticBody3D" unique_id=423039958]
-transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 179.56717, 29, 1.2065277)
+transform = Transform3D(-1.6661636e-05, 0, 0.49648306, 0, 58.243687, 0, -381.17383, 0, -2.1701963e-08, 179.56717, 29, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
