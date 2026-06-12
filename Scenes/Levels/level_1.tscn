@@ -507,6 +507,21 @@ shape = SubResource("ConcavePolygonShape3D_k1rx4")
 [node name="Spikes" parent="GameViewport/StaticBody3D" unique_id=1413839985 instance=ExtResource("8_jv26f")]
 transform = Transform3D(0.25492415, 0, 0, 0, 0.16165704, 0, 0, 0, 0.2177565, -3.068994, -0.2651031, 4.0534782)
 
+[node name="Spikes6" parent="GameViewport/StaticBody3D" unique_id=177855395 instance=ExtResource("8_jv26f")]
+transform = Transform3D(1.1855263, 0, 0, 0, 0.16165698, 0, 0, 0, 0.21775639, -7.972884, -0.6772356, -3.4233475)
+
+[node name="Spikes5" parent="GameViewport/StaticBody3D" unique_id=577845808 instance=ExtResource("8_jv26f")]
+transform = Transform3D(0.25492415, 0, 0, 0, 0.05677618, 0, 0, 0, 0.21775639, -7.9971304, -0.30979782, 2.7870197)
+
+[node name="Spikes2" parent="GameViewport/StaticBody3D" unique_id=248212119 instance=ExtResource("8_jv26f")]
+transform = Transform3D(0.25492415, 0, 0, 0, 0.16165698, 0, 0, 0, 1.1500177, -5.2449226, -0.67697984, 4.0534763)
+
+[node name="Spikes3" parent="GameViewport/StaticBody3D" unique_id=42075488 instance=ExtResource("8_jv26f")]
+transform = Transform3D(0.25492415, 0, 0, 0, 0.16165698, 0, 0, 0, 1.1500177, -6.4113717, -0.6769798, 4.0534763)
+
+[node name="Spikes4" parent="GameViewport/StaticBody3D" unique_id=276395229 instance=ExtResource("8_jv26f")]
+transform = Transform3D(0.25492415, 0, 0, 0, 0.16165698, 0, 0, 0, 1.1500177, -7.402022, -0.6769797, 4.0534763)
+
 [node name="MeshInstance3D33" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=439381958]
 transform = Transform3D(0.015974872, -0.04294359, 0, 0.024771024, 0.027694331, 0, 0, 0, 0.61053133, -3.5211353, -0.100569926, 4.1004267)
 mesh = SubResource("BoxMesh_u5ghp")
@@ -595,11 +610,20 @@ transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284
 [node name="Coin11" parent="GameViewport/Coins" unique_id=64155010 instance=ExtResource("9_rb0md")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.89899, 35.672318, -29.490147)
 
+[node name="Coin22" parent="GameViewport/Coins" unique_id=482111058 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.44386, 35.672318, -29.490147)
+
 [node name="Coin12" parent="GameViewport/Coins" unique_id=2047942030 instance=ExtResource("9_rb0md")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -253.15866, 35.0329, -7.828741)
 
+[node name="Coin21" parent="GameViewport/Coins" unique_id=153067207 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.30678, 35.0329, -7.828741)
+
 [node name="Coin13" parent="GameViewport/Coins" unique_id=1911430978 instance=ExtResource("9_rb0md")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.40935, 34.866802, 14.966578)
+
+[node name="Coin20" parent="GameViewport/Coins" unique_id=1847532773 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.4673, 34.866802, 14.966578)
 
 [node name="Coin14" parent="GameViewport/Coins" unique_id=195908922 instance=ExtResource("9_rb0md")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.54991, 29.432373, -150.78023)
