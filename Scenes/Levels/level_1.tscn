@@ -303,6 +303,7 @@ shape = SubResource("ConcavePolygonShape3D_rb0md")
 
 [node name="CollisionShape3D16" type="CollisionShape3D" parent="GameViewport/StaticBody3D" unique_id=848223062]
 transform = Transform3D(-1.7338728e-08, 0, 0.42381355, 0, 0.014434375, 0, -0.3966638, 0, -1.8525476e-08, -7.627485, -0.50668484, -0.5758511)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_7hll7")
 
 [node name="MeshInstance3D21" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1414082345]
