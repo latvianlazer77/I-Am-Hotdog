@@ -21,6 +21,10 @@ Autoload="*uid://x02wmw8m0skp"
 AbilityManager="*uid://b4aba1t4r7i5u"
 TransitionManager="*uid://do3c7eb1hk8ie"
 
+[display]
+
+window/size/mode=1
+
 [filesystem]
 
 import/blender/enabled=false

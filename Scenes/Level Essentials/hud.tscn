@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cfg6foysnuj8" path="res://Scripts/hud.gd" id="1_e0onf"]
 [ext_resource type="PackedScene" uid="uid://crsk1y3ecnlwb" path="res://Scenes/Menus/pause_menu.tscn" id="2_4qu8c"]
 [ext_resource type="StyleBox" uid="uid://das6djqtged2w" path="res://Assets/Images/ability.tres" id="2_7fw6p"]
+[ext_resource type="FontFile" uid="uid://7e4xipn38bqf" path="res://Assets/NotoEmoji-VariableFont_wght.ttf" id="3_0ibdi"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1630524627 groups=["hud"]]
 script = ExtResource("1_e0onf")
@@ -118,13 +119,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -30.0
-offset_right = 50.0
-offset_bottom = 72.0
+offset_left = -29.0
+offset_top = -26.0
+offset_right = 48.0
+offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_0ibdi")
 theme_override_font_sizes/font_size = 36
 text = "🍅"
 
@@ -165,6 +167,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_0ibdi")
 theme_override_font_sizes/font_size = 36
 text = "🍅"
 
@@ -205,6 +208,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_0ibdi")
 theme_override_font_sizes/font_size = 36
 text = "🍅"
 
@@ -245,6 +249,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_0ibdi")
 theme_override_font_sizes/font_size = 36
 text = "🍅"
 
@@ -285,6 +290,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_0ibdi")
 theme_override_font_sizes/font_size = 36
 text = "🍅"
 
@@ -325,6 +331,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_0ibdi")
 theme_override_font_sizes/font_size = 36
 text = "🍅"
 
