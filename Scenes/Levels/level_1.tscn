@@ -636,4 +636,4 @@ environment = SubResource("Environment_jv26f")
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 141.58376, -88.42571, 33.430588)
 
 [node name="Bigjok" parent="." unique_id=1980146587 instance=ExtResource("15_tjl6l")]
-transform = Transform3D(0.00837753, 0, 0.9999649, 0, 1, 0, -0.9999649, 0, 0.00837753, -40.84488, -15.915688, 131.13922)
+transform = Transform3D(0.019598737, 0, -0.999808, 0, 1, 0, 0.999808, 0, 0.019598737, 41.27626, -15.915688, 127.54115)
