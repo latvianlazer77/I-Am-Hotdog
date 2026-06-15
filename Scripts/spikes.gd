@@ -19,11 +19,8 @@ func _ready():
 	extend_pos = base_pos + EXTEND_OFFSET
 	global_position = retract_pos
 	mesh.visible = false
-	print("Spike ready, hitbox: ", hitbox)
-	print("Mesh: ", mesh)
 	hitbox.body_entered.connect(_on_body_entered)
 	start_cycle()
-	print("Cycle started")
 
 func start_cycle():
 	if tween:
@@ -31,7 +28,6 @@ func start_cycle():
 	tween = create_tween().set_loops()
 	tween.tween_interval(WAIT_TIME)
 	tween.tween_callback(func():
-		print("Spike extending!")
 		mesh.visible = true
 	)
 	tween.tween_property(self, "global_position", extend_pos, EXTEND_TIME).set_trans(Tween.TRANS_EXPO)

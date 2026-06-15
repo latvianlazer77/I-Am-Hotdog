@@ -23,7 +23,7 @@ TransitionManager="*uid://do3c7eb1hk8ie"
 
 [display]
 
-window/size/mode=1
+window/size/mode=3
 
 [filesystem]
 
