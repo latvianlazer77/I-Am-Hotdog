@@ -1,17 +1,18 @@
 extends CharacterBody3D
 
-# --- Node references (adjust names to match your scene) ---
-@onready var anim = $BigjokModel/AnimationPlayer        # or $YourGLBName/AnimationPlayer
+# --- Node references ---
+@onready var anim = $BigjokModel/AnimationPlayer
 @onready var nav = $NavigationAgent3D
-@onready var hearing_range = $HearingArea   # Area3D with sphere CollisionShape3D
+@onready var hearing_range = $HearingArea
 
 # --- Stats ---
-@export var move_speed := 10.2
+@export var move_speed := 2.2
 @export var hearing_radius := 14.0
 @export var attack_radius := 1.6
 @export var attack_cooldown := 1.8
 @export var respawn_delay := 3.0
-@export var spawn_delay := 5.0
+@export var spawn_delay := 30.0
+@export var max_distance := 20.0  # teleport if further than this
 
 # --- Internal state ---
 enum State { WAITING, IDLE, CHASE, ATTACK, DEAD }
@@ -20,32 +21,29 @@ var player : Node3D = null
 var attack_timer := 0.0
 var spawn_timer := 0.0
 var is_attacking := false
+var is_frozen := false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-
 func _ready():
-	print("Bigjok _ready called!")
 	var players = get_tree().get_nodes_in_group("player")
-	print("Players found: ", players.size())
 	if players.size() > 0:
 		player = players[0]
 
 	hearing_range.body_entered.connect(_on_player_entered_range)
 	hearing_range.body_exited.connect(_on_player_exited_range)
 
-	visible = false
-	$CollisionShape3D.disabled = true
-	hearing_range.monitoring = false
-	print("Bigjok ready done, spawn delay is: ", spawn_delay)
-
-	hearing_range.body_entered.connect(_on_player_entered_range)
-	hearing_range.body_exited.connect(_on_player_exited_range)
+	AbilityManager.ability_activated.connect(_on_ability_activated)
+	AbilityManager.ability_ended.connect(_on_ability_ended)
 
 	visible = false
 	$CollisionShape3D.disabled = true
 	hearing_range.monitoring = false
 
 func _physics_process(delta):
+	if is_frozen:
+		velocity = Vector3.ZERO
+		return
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -61,17 +59,42 @@ func _physics_process(delta):
 		State.DEAD:
 			pass
 
+	# Constantly check distance and teleport if too far
+	if state != State.WAITING and state != State.DEAD and player:
+		if global_position.distance_to(player.global_position) > max_distance:
+			_teleport_near_player()
+
+	# Always face player
+	if player and state != State.WAITING and state != State.DEAD:
+		var dir = player.global_position - global_position
+		dir.y = 0
+		if dir.length() > 0.1:
+			look_at(global_position + dir, Vector3.UP)
+
 	move_and_slide()
+
+# ─── TELEPORT ────────────────────────────────────────────────────────────────
+func _teleport_near_player():
+	if player == null:
+		return
+	var angle = randf() * TAU
+	var offset = Vector3(cos(angle), 0, sin(angle)) * 35.0
+	global_position = player.global_position + offset
+	print("Bigjok teleported near player!")
+
+# ─── TIME STOP ───────────────────────────────────────────────────────────────
+func _on_ability_activated(ability_name: String):
+	if ability_name == "mustard":
+		is_frozen = true
+		anim.pause()
+
+func _on_ability_ended(ability_name: String):
+	if ability_name == "mustard":
+		is_frozen = false
+		anim.play()
 
 # ─── WAITING ─────────────────────────────────────────────────────────────────
 func _do_waiting(delta):
-	velocity.x = 0
-	velocity.z = 0
-	spawn_timer += delta
-	if fmod(spawn_timer, 1.0) < delta:
-		print("Waiting... ", snapped(spawn_timer, 0.1), "s / ", spawn_delay, "s")
-	if spawn_timer >= spawn_delay:
-		_spawn()
 	velocity.x = 0
 	velocity.z = 0
 	spawn_timer += delta
@@ -80,30 +103,17 @@ func _do_waiting(delta):
 
 func _spawn():
 	if player:
-		var behind = player.global_position - player.global_transform.basis.z * 6.0
+		var behind = player.global_position - player.global_transform.basis.z * 50.0
 		global_position = behind
-		look_at(player.global_position, Vector3.UP)
-	
+
 	visible = true
 	$CollisionShape3D.disabled = false
 	hearing_range.monitoring = true
 	state = State.CHASE
 	anim.play("Walk_B")
-	print("Spawning Bigjok!")
-	
-	# Spawn 2 meters behind the player
-	if player:
-		var behind = player.global_position - player.global_transform.basis.z * 6.0
-		global_position = behind
-	
-	visible = true
-	$CollisionShape3D.disabled = false
-	hearing_range.monitoring = true
-	state = State.CHASE  # go straight to chase since it spawns right behind you
-	anim.play("Walk_B")
-	print("Bigjok spawned at: ", global_position, " visible: ", visible)
+	print("Bigjok spawned!")
 
-# ─── IDLE ─────────────────────────────────────────────────────────────────────
+# ─── IDLE ────────────────────────────────────────────────────────────────────
 func _do_idle():
 	velocity.x = 0
 	velocity.z = 0
@@ -115,22 +125,20 @@ func _do_chase():
 	if player == null:
 		return
 
-	if anim.current_animation != "Walk_B":
-		anim.play("Walk_B")
-
 	if global_position.distance_to(player.global_position) <= attack_radius:
+		velocity.x = 0
+		velocity.z = 0
 		state = State.ATTACK
 		return
+
+	if anim.current_animation != "Walk_B":
+		anim.play("Walk_B")
 
 	nav.target_position = player.global_position
 	var next = nav.get_next_path_position()
 	var dir = (next - global_position).normalized()
 	velocity.x = dir.x * move_speed
 	velocity.z = dir.z * move_speed
-
-	if dir.length() > 0.1:
-		look_at(global_position + Vector3(dir.x, 0, dir.z), Vector3.UP)
-
 # ─── ATTACK ──────────────────────────────────────────────────────────────────
 func _do_attack(delta):
 	if is_attacking:
@@ -150,9 +158,9 @@ func _do_attack(delta):
 		is_attacking = true
 
 		if randf() > 0.5:
-			anim.play("Attack_B")   # Bite
+			anim.play("Attack_B")
 		else:
-			anim.play("Attack2_B")  # Lick
+			anim.play("Attack2_B")
 
 		await anim.animation_finished
 		is_attacking = false
@@ -163,7 +171,10 @@ func _kill_player():
 	if player == null or state == State.DEAD:
 		return
 
-	if player.has_method("die"):
+	var game_manager = get_tree().get_first_node_in_group("game_manager")
+	if game_manager and game_manager.has_method("_on_player_died"):
+		game_manager._on_player_died()
+	elif player.has_method("die"):
 		player.die()
 	else:
 		await get_tree().create_timer(respawn_delay).timeout
