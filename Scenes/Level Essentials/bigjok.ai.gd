@@ -12,7 +12,6 @@ extends CharacterBody3D
 @export var attack_cooldown := 1.8
 @export var respawn_delay := 3.0
 @export var spawn_delay := 30.0
-@export var max_distance := 20.0  # teleport if further than this
 
 # --- Internal state ---
 enum State { WAITING, IDLE, CHASE, ATTACK, DEAD }
@@ -20,11 +19,16 @@ var state := State.WAITING
 var player : Node3D = null
 var attack_timer := 0.0
 var spawn_timer := 0.0
+var teleport_timer := 0.0  # Tracks the 5-second interval
 var is_attacking := false
 var is_frozen := false
+var original_y_level := 0.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	# Save his floor level at startup
+	original_y_level = global_position.y
+	
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
@@ -44,8 +48,11 @@ func _physics_process(delta):
 		velocity = Vector3.ZERO
 		return
 
-	if not is_on_floor():
+	# ONLY apply gravity if he has actually spawned and isn't waiting!
+	if state != State.WAITING and state != State.DEAD and not is_on_floor():
 		velocity.y -= gravity * delta
+	elif is_on_floor():
+		velocity.y = 0 
 
 	match state:
 		State.WAITING:
@@ -59,12 +66,16 @@ func _physics_process(delta):
 		State.DEAD:
 			pass
 
-	# Constantly check distance and teleport if too far
+	# --- REPEATING TELEPORT CHECK ---
+	# Checks every 5 seconds while active if the player is too far away
 	if state != State.WAITING and state != State.DEAD and player:
-		if global_position.distance_to(player.global_position) > max_distance:
-			_teleport_near_player()
+		teleport_timer += delta
+		if teleport_timer >= 5.0:
+			teleport_timer = 0.0 # Reset the timer loop so it runs again in another 5s
+			if global_position.distance_to(player.global_position) > 20.0:
+				_teleport_near_player()
 
-	# Always face player
+	# Always face player without tilting up or down
 	if player and state != State.WAITING and state != State.DEAD:
 		var dir = player.global_position - global_position
 		dir.y = 0
@@ -73,16 +84,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-# ─── TELEPORT ────────────────────────────────────────────────────────────────
-func _teleport_near_player():
-	if player == null:
-		return
-	var angle = randf() * TAU
-	var offset = Vector3(cos(angle), 0, sin(angle)) * 35.0
-	global_position = player.global_position + offset
-	print("Bigjok teleported near player!")
-
-# ─── TIME STOP ───────────────────────────────────────────────────────────────
+# ─── TIME STOP ────────────────────────────────────────────────────────
 func _on_ability_activated(ability_name: String):
 	if ability_name == "mustard":
 		is_frozen = true
@@ -93,17 +95,17 @@ func _on_ability_ended(ability_name: String):
 		is_frozen = false
 		anim.play()
 
-# ─── WAITING ─────────────────────────────────────────────────────────────────
+# ─── WAITING ──────────────────────────────────────────────────────────
 func _do_waiting(delta):
-	velocity.x = 0
-	velocity.z = 0
+	velocity = Vector3.ZERO
 	spawn_timer += delta
 	if spawn_timer >= spawn_delay:
 		_spawn()
 
 func _spawn():
 	if player:
-		var behind = player.global_position - player.global_transform.basis.z * 50.0
+		var behind = player.global_position - player.global_transform.basis.z * 30.0
+		behind.y = original_y_level + 0.1  
 		global_position = behind
 
 	visible = true
@@ -111,40 +113,45 @@ func _spawn():
 	hearing_range.monitoring = true
 	state = State.CHASE
 	anim.play("Walk_B")
-	print("Bigjok spawned!")
+	teleport_timer = 0.0 # Clear timer on fresh spawn
 
-# ─── IDLE ────────────────────────────────────────────────────────────────────
+# ─── IDLE ─────────────────────────────────────────────────────────────
 func _do_idle():
 	velocity.x = 0
 	velocity.z = 0
 	if anim.current_animation != "Idle_B":
 		anim.play("Idle_B")
 
-# ─── CHASE ───────────────────────────────────────────────────────────────────
+# ─── CHASE ────────────────────────────────────────────────────────────
 func _do_chase():
 	if player == null:
 		return
 
-	if global_position.distance_to(player.global_position) <= attack_radius:
-		velocity.x = 0
-		velocity.z = 0
-		state = State.ATTACK
-		return
-
 	if anim.current_animation != "Walk_B":
 		anim.play("Walk_B")
+
+	var my_pos_2d = Vector2(global_position.x, global_position.z)
+	var player_pos_2d = Vector2(player.global_position.x, player.global_position.z)
+
+	if my_pos_2d.distance_to(player_pos_2d) <= attack_radius:
+		state = State.ATTACK
+		return
 
 	nav.target_position = player.global_position
 	var next = nav.get_next_path_position()
 	var dir = (next - global_position).normalized()
 	velocity.x = dir.x * move_speed
 	velocity.z = dir.z * move_speed
-# ─── ATTACK ──────────────────────────────────────────────────────────────────
+
+# ─── ATTACK ───────────────────────────────────────────────────────────
 func _do_attack(delta):
 	if is_attacking:
 		return
 
-	if player and global_position.distance_to(player.global_position) > attack_radius + 0.6:
+	var my_pos_2d = Vector2(global_position.x, global_position.z)
+	var player_pos_2d = Vector2(player.global_position.x, player.global_position.z)
+
+	if player and my_pos_2d.distance_to(player_pos_2d) > attack_radius + 0.6:
 		state = State.CHASE
 		attack_timer = 0.0
 		return
@@ -166,36 +173,27 @@ func _do_attack(delta):
 		is_attacking = false
 		_kill_player()
 
-# ─── KILL PLAYER ─────────────────────────────────────────────────────────────
-func _kill_player():
-	if player == null or state == State.DEAD:
+# ─── REPEATING ANTI-STUCK TELEPORT ───────────────────────────────────
+func _teleport_near_player():
+	if player == null:
 		return
+	var angle = randf() * TAU
+	var offset = Vector3(cos(angle), 0, sin(angle)) * 15.0
+	var new_pos = player.global_position + offset
+	new_pos.y = original_y_level + 0.1  
+	global_position = new_pos
+	print("Bigjok teleported safely near player!")
 
-	var game_manager = get_tree().get_first_node_in_group("game_manager")
-	if game_manager and game_manager.has_method("_on_player_died"):
-		game_manager._on_player_died()
-	elif player.has_method("die"):
-		player.die()
-	else:
-		await get_tree().create_timer(respawn_delay).timeout
-		get_tree().reload_current_scene()
+# ─── PLAYER INTERACTIONS ──────────────────────────────────────────────
+func _kill_player():
+	var managers = get_tree().get_nodes_in_group("game_manager")
+	if managers.size() > 0:
+		managers[0]._on_player_died()
 
-# ─── DETECTION ───────────────────────────────────────────────────────────────
 func _on_player_entered_range(body):
-	if body.is_in_group("player") and state != State.WAITING and state != State.DEAD:
-		player = body
+	if body.is_in_group("player") and state == State.IDLE:
 		state = State.CHASE
 
 func _on_player_exited_range(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and state == State.CHASE:
 		state = State.IDLE
-
-# ─── DEATH ───────────────────────────────────────────────────────────────────
-func die():
-	if state == State.DEAD:
-		return
-	state = State.DEAD
-	velocity = Vector3.ZERO
-	anim.play("Died_B")
-	await anim.animation_finished
-	queue_free()

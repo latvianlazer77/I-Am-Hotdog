@@ -14,7 +14,6 @@ radius = 67.0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_x44lv")
 spawn_delay = 5.0
-max_distance = 40.0
 
 [node name="BigjokModel" parent="." unique_id=262641331 instance=ExtResource("1_jdaiv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
