@@ -10,10 +10,12 @@ height = 20.550293
 [sub_resource type="SphereShape3D" id="SphereShape3D_naisc"]
 radius = 67.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(16.078308, 16.005981, 12.44043)
+
 [node name="Bigjok" type="CharacterBody3D" unique_id=1744229061 groups=["freezable"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_x44lv")
-spawn_delay = 5.0
 
 [node name="BigjokModel" parent="." unique_id=262641331 instance=ExtResource("1_jdaiv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -193,5 +195,11 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HearingArea" unique_id=386230561]
 shape = SubResource("SphereShape3D_naisc")
+
+[node name="AttackArea" type="Area3D" parent="." unique_id=8259082]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=157234840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5869446, 9.770203, -5.720215)
+shape = SubResource("BoxShape3D_g4v7s")
 
 [editable path="BigjokModel"]
