@@ -11,19 +11,19 @@ height = 20.550293
 radius = 67.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
-size = Vector3(16.078308, 16.005981, 12.44043)
+size = Vector3(16.078308, 17.82962, 12.44043)
 
 [node name="Bigjok" type="CharacterBody3D" unique_id=1744229061 groups=["freezable"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_x44lv")
 
 [node name="BigjokModel" parent="." unique_id=262641331 instance=ExtResource("1_jdaiv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.2668147, 0)
 
-[node name="Sketchfab_model" parent="BigjokModel" index="0" unique_id=737585355]
+[node name="Sketchfab_model" parent="BigjokModel" index="0" unique_id=1965671068]
 transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="BigjokModel/Sketchfab_model/582f80fe872649ffa4dbaa1c42e02746_fbx/Object_2/RootNode/armature/Object_6" parent_id_path=PackedInt32Array(262641331, 205049606) index="0" unique_id=724362561]
+[node name="Skeleton3D" parent="BigjokModel/Sketchfab_model/582f80fe872649ffa4dbaa1c42e02746_fbx/Object_2/RootNode/armature/Object_6" parent_id_path=PackedInt32Array(262641331, 2059076997) index="0" unique_id=2048614414]
 bones/2/position = Vector3(-1.1346926e-10, 79.076996, 3.11855)
 bones/2/rotation = Quaternion(-0.1176807, -0.089879334, 0.04052421, 0.9881452)
 bones/3/rotation = Quaternion(0.94929713, 0.058770284, -0.2726742, 0.14501633)
@@ -180,7 +180,7 @@ bones/98/position = Vector3(-3.5527137e-15, 20.055908, -1.5199184e-05)
 bones/98/rotation = Quaternion(0.19340652, 1.8887216e-09, 0.0005221763, 0.9811187)
 bones/98/scale = Vector3(0.99999994, 1, 1)
 
-[node name="AnimationPlayer" parent="BigjokModel" index="1" unique_id=976913177]
+[node name="AnimationPlayer" parent="BigjokModel" index="1" unique_id=1763707695]
 autoplay = &"Walk_B"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1532669315]
@@ -199,7 +199,7 @@ shape = SubResource("SphereShape3D_naisc")
 [node name="AttackArea" type="Area3D" parent="." unique_id=8259082]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=157234840]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5869446, 9.770203, -5.720215)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5869446, 8.858383, -5.720215)
 shape = SubResource("BoxShape3D_g4v7s")
 
 [editable path="BigjokModel"]

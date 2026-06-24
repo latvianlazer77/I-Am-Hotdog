@@ -278,7 +278,7 @@ mesh = SubResource("ArrayMesh_2xtsi")
 surface_material_override/0 = SubResource("ShaderMaterial_6t516")
 
 [node name="SausageOutline" type="MeshInstance3D" parent="Sausage" unique_id=1207160767]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00018656254, 0, -0.00046482682)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009, 0)
 mesh = SubResource("ArrayMesh_2xtsi")
 surface_material_override/0 = SubResource("ShaderMaterial_u0h2j")
 

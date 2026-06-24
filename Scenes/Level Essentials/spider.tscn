@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://8ii6khhyycf4"]
+
+[ext_resource type="PackedScene" uid="uid://dc00fhbh8t1y3" path="res://Assets/Models/crying_head.glb" id="1_mny0k"]
+[ext_resource type="Script" uid="uid://b3ja04hvkgo2j" path="res://Scripts/spider.gd" id="1_sk3gp"]
+[ext_resource type="Texture2D" uid="uid://bv5du8ux058m3" path="res://Assets/Models/crying_head_0.png" id="2_cpnsh"]
+[ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="3_bqeia"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpnsh"]
+albedo_texture = ExtResource("2_cpnsh")
+emission_enabled = true
+emission = Color(0.099985994, 0.099985994, 0.099985994, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_57qmd"]
+radius = 19.776367
+height = 39.552734
+
+[node name="Spider" type="CharacterBody3D" unique_id=1237671053]
+script = ExtResource("1_sk3gp")
+
+[node name="Sketchfab_Scene" parent="." unique_id=1379706515 instance=ExtResource("1_mny0k")]
+
+[node name="Object_78" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/CHsk/Object_5/Skeleton3D" parent_id_path=PackedInt32Array(1379706515, 619966025) index="0" unique_id=1298776266]
+surface_material_override/0 = SubResource("StandardMaterial3D_cpnsh")
+
+[node name="������������������" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode" parent_id_path=PackedInt32Array(1379706515, 1606952679) index="2" unique_id=144622173]
+visible = false
+
+[node name="������������������_Floor_0" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/������������������" index="0" unique_id=1264653156]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1812705793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.869894, 1.2701807, 9.766116)
+shape = SubResource("CapsuleShape3D_57qmd")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=634932845]
+
+[node name="KillZone" parent="." unique_id=1199234586 instance=ExtResource("3_bqeia")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone" unique_id=1756080852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.869894, 1.2701807, 9.766116)
+shape = SubResource("CapsuleShape3D_57qmd")
+
+[editable path="Sketchfab_Scene"]
