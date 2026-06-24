@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="2_8qsmg"]
 [ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="2_fphuk"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="3_fphuk"]
+[ext_resource type="Shader" uid="uid://ovm3frmfxtqv" path="res://Scripts/backroomsoverlay.gdshader" id="4_eopvx"]
 [ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="5_pnnky"]
 [ext_resource type="Texture2D" uid="uid://cos7n32b6ux5b" path="res://Assets/backrooms/backrooms/painted_wall/painted_wall_color.png" id="6_1jlnc"]
 [ext_resource type="Shader" uid="uid://dgvevh384wt44" path="res://Assets/Shaders/backrooms_wall.gdshader" id="6_u40f0"]
@@ -13,6 +14,17 @@
 [ext_resource type="PackedScene" uid="uid://bjjxj2bkgqrpk" path="res://Scenes/Level Essentials/light_fixture.tscn" id="9_0x4y1"]
 [ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="9_blpqv"]
 [ext_resource type="PackedScene" uid="uid://d3ycga4rr2q6s" path="res://Scenes/Level Essentials/bigjok.tscn" id="13_uqiic"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("4_eopvx")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.8
+shader_parameter/scanline_count = 300.0
+shader_parameter/scanline_opacity = 0.15
+shader_parameter/aberration_setting = 0.003
+shader_parameter/noise_setting = 0.12
+shader_parameter/glitch_setting = 0.4
+shader_parameter/proximity_strength = 0.0
 
 [sub_resource type="Environment" id="Environment_fphuk"]
 adjustment_enabled = true
@@ -304,6 +316,16 @@ transform = Transform3D(-0.99989015, 0, 0.014817357, 0, 1, 0, -0.014817357, 0, -
 [node name="FinishZone" parent="GameManager" unique_id=631311601 instance=ExtResource("2_8qsmg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.0641, 0.88213825, -176.59822)
 
+[node name="PostProcessing" type="CanvasLayer" parent="GameManager" unique_id=154719365]
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/PostProcessing" unique_id=922047640]
+material = SubResource("ShaderMaterial_g4v7s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("3_fphuk")]
 
 [node name="SpawnPoint" parent="GameManager" unique_id=1033269942 instance=ExtResource("5_pnnky")]
@@ -441,7 +463,7 @@ script = ExtResource("8_blpqv")
 material = SubResource("ShaderMaterial_1jlnc")
 
 [node name="Bigjok" parent="." unique_id=1980146587 instance=ExtResource("13_uqiic")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.7062836, 6.772766, 156.71577)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -58.70304, 1.052567, 156.71577)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=2143155554]
 navigation_mesh = SubResource("NavigationMesh_uqiic")
