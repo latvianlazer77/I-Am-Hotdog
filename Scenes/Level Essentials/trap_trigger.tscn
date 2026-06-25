@@ -4,7 +4,3 @@
 
 [node name="TrapTrigger" type="Area3D" unique_id=564451170]
 script = ExtResource("1_ugarc")
-
-[node name="SpawnPoints" type="Node3D" parent="." unique_id=854785423]
-
-[node name="Marker3D" type="Marker3D" parent="SpawnPoints" unique_id=1665739630]
