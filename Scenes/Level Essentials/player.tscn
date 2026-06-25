@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cgd6hjjmgn71l" path="res://Assets/Images/star_09.png" id="10_aeb1s"]
 [ext_resource type="AudioStream" uid="uid://b4fp00ygvbv31" path="res://Assets/Audio/Rolling.mp3" id="11_aeb1s"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqjuv"]
-height = 5.0197754
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aeb1s"]
+radius = 1.5283203
+height = 12.07752
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81fj7"]
 transparency = 1
@@ -261,9 +262,9 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_11bkn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2027253749]
-transform = Transform3D(0.00724946, -2.2886877, 0, 2.2452297, 0.0073897624, 0, 0, 0, 2.486567, 0.6772816, -0.02238822, 0.33983278)
-shape = SubResource("CapsuleShape3D_wqjuv")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=413036139]
+transform = Transform3D(4.371139e-08, 1, -8.742278e-08, 1, -4.371139e-08, 0, -3.821371e-15, -8.742278e-08, -1, 0.6588134, 0.009, 0.40953517)
+shape = SubResource("CapsuleShape3D_aeb1s")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1689257655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4.203)

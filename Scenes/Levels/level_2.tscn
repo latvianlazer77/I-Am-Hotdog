@@ -15,6 +15,7 @@
 [ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="9_blpqv"]
 [ext_resource type="PackedScene" uid="uid://d3ycga4rr2q6s" path="res://Scenes/Level Essentials/bigjok.tscn" id="13_uqiic"]
 [ext_resource type="PackedScene" uid="uid://8ii6khhyycf4" path="res://Scenes/Level Essentials/spider.tscn" id="15_t27xo"]
+[ext_resource type="PackedScene" uid="uid://cmmumafmsohr" path="res://Scenes/Level Essentials/trap_trigger.tscn" id="16_yxf76"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("4_eopvx")
@@ -306,6 +307,9 @@ material = SubResource("ShaderMaterial_0x4y1")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6d4lf"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(352.98376, 46.7688, 162.28955)
 
 [node name="level_2" type="Node3D" unique_id=188781495]
 
@@ -1213,7 +1217,7 @@ transform = Transform3D(25.732307, 0, 0, 0, 1, 0, 0, 0, 7.4619737, -55.56817, 22
 shape = SubResource("ConcavePolygonShape3D_potos")
 
 [node name="MeshInstance3D35" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=879160922]
-transform = Transform3D(226.17883, 0, 0, 0, -1, 1.7513868e-05, 0, -8.742278e-08, -200.33531, 0, 59.50377, 0)
+transform = Transform3D(226.17883, 0, 0, 0, -1, 1.7513868e-05, 0, -8.742278e-08, -200.33531, 0.012176514, 59.905285, 2.740982)
 mesh = SubResource("PlaneMesh_uqiic")
 
 [node name="CollisionShape3D34" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=446856741]
@@ -1246,3 +1250,17 @@ transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -120.682495, 58.72
 
 [node name="Spider" parent="." unique_id=788661335 instance=ExtResource("15_t27xo")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 58.319927, 2.3061676, 139.8287)
+
+[node name="TrapTrigger" parent="." unique_id=564451170 node_paths=PackedStringArray("spawn_location_node") instance=ExtResource("16_yxf76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3728485, 59.50377, -165.23764)
+spider_scene = ExtResource("15_t27xo")
+spawn_location_node = NodePath("../SpiderSpawnAnchor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrapTrigger" unique_id=516286839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.234192, -51.3387, 62.281784)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="SpiderSpawnAnchor" type="Node3D" parent="." unique_id=861754653]
+transform = Transform3D(1, 0, 0, 0, -0.9279861, -0.37261477, 0, 0.37261477, -0.9279861, -20.624607, 1.7439365, -132.75616)
+
+[editable path="TrapTrigger"]
