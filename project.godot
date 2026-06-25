@@ -39,6 +39,7 @@ hazard=""
 coin=""
 freezable=""
 world_environment=""
+enemies=""
 
 [input]
 

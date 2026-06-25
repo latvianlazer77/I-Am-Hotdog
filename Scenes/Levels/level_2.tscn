@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bjjxj2bkgqrpk" path="res://Scenes/Level Essentials/light_fixture.tscn" id="9_0x4y1"]
 [ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="9_blpqv"]
 [ext_resource type="PackedScene" uid="uid://d3ycga4rr2q6s" path="res://Scenes/Level Essentials/bigjok.tscn" id="13_uqiic"]
+[ext_resource type="PackedScene" uid="uid://8ii6khhyycf4" path="res://Scenes/Level Essentials/spider.tscn" id="15_t27xo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("4_eopvx")
@@ -1242,3 +1243,6 @@ transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, 98.99893, 58.72270
 
 [node name="LightFixture8" parent="NavigationRegion3D/StaticBody3D" unique_id=573662287 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -120.682495, 58.722702, -132.88722)
+
+[node name="Spider" parent="." unique_id=788661335 instance=ExtResource("15_t27xo")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 58.319927, 2.3061676, 139.8287)
