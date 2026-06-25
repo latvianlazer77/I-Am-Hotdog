@@ -21,9 +21,20 @@ refraction_enabled = true
 refraction_texture_channel = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+size = Vector3(1.359375, 1, 1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yy6i0"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0u6y"]
+transparency = 1
+albedo_color = Color(0.6901961, 0.8784314, 0.9019608, 1)
+metallic_specular = 0.0
+roughness = 0.0
+emission = Color(0.73333335, 0.9607843, 1, 1)
+rim_enabled = true
+rim = 0.5
+refraction_enabled = true
+refraction_scale = 0.03
+
+[sub_resource type="BoxMesh" id="BoxMesh_yf5fn"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1hf40"]
 
@@ -35,13 +46,14 @@ glow_enabled = true
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1575246096]
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D" unique_id=201078818]
-transform = Transform3D(549.11237, 0, 0, 0, 1.2079794, 0, 0, 0, 173.63536, 0.1345253, 2.3626385, 33.642906)
+transform = Transform3D(25.420227, 0, 0, 0, 1.2079794, 0, 0, 0, 34.038456, 0.1345253, 2.3626385, -5.024975)
 material_override = SubResource("StandardMaterial3D_57qmd")
 mesh = SubResource("BoxMesh_g4v7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=17740057]
-transform = Transform3D(549.11237, 0, 0, 0, 1.2079794, 0, 0, 0, 173.63536, 0.1345253, 2.3626385, 33.642906)
-shape = SubResource("ConcavePolygonShape3D_yy6i0")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1754545430]
+transform = Transform3D(22.744339, 0, 0, 0, 18.211637, 0, 0, 0, 1, 0, 11.728561, 0)
+material_override = SubResource("StandardMaterial3D_d0u6y")
+mesh = SubResource("BoxMesh_yf5fn")
 
 [node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_yy6i0")]
 
