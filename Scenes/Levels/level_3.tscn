@@ -6,15 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="4_4ahh4"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="5_dl55b"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="6_osqx1"]
+[ext_resource type="Texture2D" uid="uid://b6ctqlmcbigr0" path="res://Assets/Images/zrdwMQv5GKotVK6JHozwGi-1600-80.png" id="7_167vu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
 transparency = 4
-albedo_color = Color(0.73333335, 0.9607843, 1, 1)
+albedo_color = Color(0.73333335, 0.9607843, 1, 0.8039216)
 metallic_specular = 0.0
 roughness = 0.0
 emission_enabled = true
-emission = Color(0.73333335, 0.9607843, 1, 1)
-emission_energy_multiplier = 1.08
+emission = Color(4.0670484e-06, 0.38222072, 0.4288771, 1)
+emission_energy_multiplier = 1.34
 rim_enabled = true
 rim = 0.51
 refraction_enabled = true
@@ -23,37 +24,71 @@ refraction_texture_channel = 2
 [sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
 size = Vector3(1.359375, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0u6y"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yy6i0"]
+data = PackedVector3Array(-0.67969996, 0.5, 0.5, 0.67969996, 0.5, 0.5, -0.67969996, -0.5, 0.5, 0.67969996, 0.5, 0.5, 0.67969996, -0.5, 0.5, -0.67969996, -0.5, 0.5, 0.67969996, 0.5, -0.5, -0.67969996, 0.5, -0.5, 0.67969996, -0.5, -0.5, -0.67969996, 0.5, -0.5, -0.67969996, -0.5, -0.5, 0.67969996, -0.5, -0.5, 0.67969996, 0.5, 0.5, 0.67969996, 0.5, -0.5, 0.67969996, -0.5, 0.5, 0.67969996, 0.5, -0.5, 0.67969996, -0.5, -0.5, 0.67969996, -0.5, 0.5, -0.67969996, 0.5, -0.5, -0.67969996, 0.5, 0.5, -0.67969996, -0.5, -0.5, -0.67969996, 0.5, 0.5, -0.67969996, -0.5, 0.5, -0.67969996, -0.5, -0.5, 0.67969996, 0.5, 0.5, -0.67969996, 0.5, 0.5, 0.67969996, 0.5, -0.5, -0.67969996, 0.5, 0.5, -0.67969996, 0.5, -0.5, 0.67969996, 0.5, -0.5, -0.67969996, -0.5, 0.5, 0.67969996, -0.5, 0.5, -0.67969996, -0.5, -0.5, 0.67969996, -0.5, 0.5, 0.67969996, -0.5, -0.5, -0.67969996, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_167vu"]
 transparency = 1
-albedo_color = Color(0.6901961, 0.8784314, 0.9019608, 1)
-metallic_specular = 0.0
-roughness = 0.0
-emission = Color(0.73333335, 0.9607843, 1, 1)
-rim_enabled = true
-rim = 0.5
-refraction_enabled = true
-refraction_scale = 0.03
+albedo_color = Color(0.64705884, 0.9490196, 1, 0.47058824)
+roughness = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_yf5fn"]
+size = Vector3(0.92285156, 0.93066406, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_167vu"]
+data = PackedVector3Array(-0.4614, 0.4653, 0.5, 0.4614, 0.4653, 0.5, -0.4614, -0.4653, 0.5, 0.4614, 0.4653, 0.5, 0.4614, -0.4653, 0.5, -0.4614, -0.4653, 0.5, 0.4614, 0.4653, -0.5, -0.4614, 0.4653, -0.5, 0.4614, -0.4653, -0.5, -0.4614, 0.4653, -0.5, -0.4614, -0.4653, -0.5, 0.4614, -0.4653, -0.5, 0.4614, 0.4653, 0.5, 0.4614, 0.4653, -0.5, 0.4614, -0.4653, 0.5, 0.4614, 0.4653, -0.5, 0.4614, -0.4653, -0.5, 0.4614, -0.4653, 0.5, -0.4614, 0.4653, -0.5, -0.4614, 0.4653, 0.5, -0.4614, -0.4653, -0.5, -0.4614, 0.4653, 0.5, -0.4614, -0.4653, 0.5, -0.4614, -0.4653, -0.5, 0.4614, 0.4653, 0.5, -0.4614, 0.4653, 0.5, 0.4614, 0.4653, -0.5, -0.4614, 0.4653, 0.5, -0.4614, 0.4653, -0.5, 0.4614, 0.4653, -0.5, -0.4614, -0.4653, 0.5, 0.4614, -0.4653, 0.5, -0.4614, -0.4653, -0.5, 0.4614, -0.4653, 0.5, 0.4614, -0.4653, -0.5, -0.4614, -0.4653, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x1k1j"]
+data = PackedVector3Array(-0.4614, 0.4653, 0.5, 0.4614, 0.4653, 0.5, -0.4614, -0.4653, 0.5, 0.4614, 0.4653, 0.5, 0.4614, -0.4653, 0.5, -0.4614, -0.4653, 0.5, 0.4614, 0.4653, -0.5, -0.4614, 0.4653, -0.5, 0.4614, -0.4653, -0.5, -0.4614, 0.4653, -0.5, -0.4614, -0.4653, -0.5, 0.4614, -0.4653, -0.5, 0.4614, 0.4653, 0.5, 0.4614, 0.4653, -0.5, 0.4614, -0.4653, 0.5, 0.4614, 0.4653, -0.5, 0.4614, -0.4653, -0.5, 0.4614, -0.4653, 0.5, -0.4614, 0.4653, -0.5, -0.4614, 0.4653, 0.5, -0.4614, -0.4653, -0.5, -0.4614, 0.4653, 0.5, -0.4614, -0.4653, 0.5, -0.4614, -0.4653, -0.5, 0.4614, 0.4653, 0.5, -0.4614, 0.4653, 0.5, 0.4614, 0.4653, -0.5, -0.4614, 0.4653, 0.5, -0.4614, 0.4653, -0.5, 0.4614, 0.4653, -0.5, -0.4614, -0.4653, 0.5, 0.4614, -0.4653, 0.5, -0.4614, -0.4653, -0.5, 0.4614, -0.4653, 0.5, 0.4614, -0.4653, -0.5, -0.4614, -0.4653, -0.5)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1hf40"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ahh4"]
+panorama = ExtResource("7_167vu")
+
+[sub_resource type="Sky" id="Sky_yy6i0"]
+sky_material = SubResource("PanoramaSkyMaterial_4ahh4")
+
 [sub_resource type="Environment" id="Environment_g4v7s"]
+background_mode = 2
+sky = SubResource("Sky_yy6i0")
+tonemap_mode = 2
 glow_enabled = true
 
 [node name="level_3" type="Node3D" unique_id=715588296]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1013201999]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1575246096]
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D" unique_id=201078818]
-transform = Transform3D(25.420227, 0, 0, 0, 1.2079794, 0, 0, 0, 34.038456, 0.1345253, 2.3626385, -5.024975)
+transform = Transform3D(25.420227, 0, 0, 0, 7.594279, 0, 0, 0, 34.038456, 0.1345253, -0.8573351, -5.024975)
 material_override = SubResource("StandardMaterial3D_57qmd")
 mesh = SubResource("BoxMesh_g4v7s")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1638713282]
+transform = Transform3D(25.420227, 0, 0, 0, 7.594279, 0, 0, 0, 34.038456, 0.1345253, -0.8573351, -5.024975)
+shape = SubResource("ConcavePolygonShape3D_yy6i0")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1754545430]
-transform = Transform3D(22.744339, 0, 0, 0, 18.211637, 0, 0, 0, 1, 0, 11.728561, 0)
-material_override = SubResource("StandardMaterial3D_d0u6y")
+transform = Transform3D(22.744339, 0, 0, 0, -7.3653e-07, -0.99999994, 0, 16.84984, -4.3711385e-08, 27.891493, 2.3, -4.9866023)
+material_override = SubResource("StandardMaterial3D_167vu")
 mesh = SubResource("BoxMesh_yf5fn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1971480492]
+transform = Transform3D(22.744339, 0, 0, 0, -7.3653e-07, -0.99999994, 0, 16.84984, -4.3711385e-08, 27.891493, 2.3, -4.9866023)
+shape = SubResource("ConcavePolygonShape3D_167vu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=928020893]
+transform = Transform3D(-9.941866e-07, 16.84984, -4.3711385e-08, 0, -7.365299e-07, -0.99999994, -22.744339, -7.365299e-07, 1.9106853e-15, -0.7879582, 2.3, 21.927292)
+material_override = SubResource("StandardMaterial3D_167vu")
+mesh = SubResource("BoxMesh_yf5fn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1879675671]
+transform = Transform3D(-9.941866e-07, 16.84984, -4.3711385e-08, 0, -7.365299e-07, -0.99999994, -22.744339, -7.365299e-07, 1.9106853e-15, -0.7879582, 2.3, 21.927292)
+shape = SubResource("ConcavePolygonShape3D_x1k1j")
 
 [node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_yy6i0")]
 
@@ -74,9 +109,6 @@ shape = SubResource("WorldBoundaryShape3D_1hf40")
 transform = Transform3D(0.8132762, 0, 0, 0, 1.5681041, 0, 0, 0, 1, 0.8301935, 2.3287277, 29.023346)
 
 [node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("6_osqx1")]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=372321500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.575558, -38.478916)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1275291239]
 environment = SubResource("Environment_g4v7s")
