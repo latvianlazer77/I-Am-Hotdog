@@ -35,6 +35,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var shader_rect : ColorRect = null
 
+# NEW: Flag to keep him completely out of the maze mechanics
+var is_banned_from_maze := false
+
 func _ready():
 	original_y_level = global_position.y
 	
@@ -91,7 +94,8 @@ func _physics_process(delta):
 			pass
 
 	# --- STRICT SHADER STATE & INSTANT TELEPORT CHECKS ---
-	if player and state != State.WAITING and state != State.DEAD:
+	# UPDATED: Added tracking ban condition check
+	if player and state != State.WAITING and state != State.DEAD and not is_banned_from_maze:
 		var current_dist = global_position.distance_to(player.global_position)
 		
 		# 1. Update Shader Proximity based on actual distance
@@ -103,8 +107,12 @@ func _physics_process(delta):
 		# 2. INSTANT TELEPORT CHECK (Runs every frame, no 5s timer delay)
 		if current_dist > max_chase_distance:
 			_teleport_far_away()
+	elif is_banned_from_maze:
+		# Keep his full-screen glitches turned off while player is in the maze
+		_reset_shader()
 
-	if player and state != State.WAITING and state != State.DEAD:
+	# UPDATED: He will only lock his vision to you if he isn't banned from the maze zone
+	if player and state != State.WAITING and state != State.DEAD and not is_banned_from_maze:
 		var dir = player.global_position - global_position
 		dir.y = 0
 		if dir.length() > 0.1:
@@ -120,7 +128,6 @@ func _update_shader_proximity(dist: float):
 	if shader_rect == null:
 		return
 	
-	# Linear distance calculation (80m down to 10m)
 	var strength = 1.0 - ((dist - min_effect_distance) / (max_effect_distance - min_effect_distance))
 	strength = clamp(strength, 0.0, 1.0) 
 	
@@ -129,11 +136,9 @@ func _update_shader_proximity(dist: float):
 	else:
 		shader_rect.visible = true
 		if shader_rect.material:
-			# Sharp exponential curve: 
-			# At 40m out, strength is 0.5 -> 0.5^4 = 0.06 (barely 6% visible!)
-			# At 12m out, strength is 0.9 -> 0.9^4 = 0.65 (suddenly hits like a truck!)
 			var skewed_strength = pow(strength, 4.0)
 			shader_rect.material.set_shader_parameter("proximity_strength", skewed_strength)
+
 func _reset_shader():
 	if shader_rect != null:
 		shader_rect.visible = false
@@ -142,12 +147,10 @@ func _reset_shader():
 
 # ─── INSTANT TELEPORTATION SYSTEM ────────────────────────────────────
 func _teleport_far_away():
-	if player == null:
+	if player == null or is_banned_from_maze:
 		return
 		
-	# Pick a random angle around the player
 	var angle = randf() * TAU
-	# Spawns him further away (at your exact customized teleport distance setting)
 	var offset = Vector3(cos(angle), 0, sin(angle)) * teleport_forward_dist
 	
 	var new_pos = player.global_position + offset
@@ -176,8 +179,7 @@ func _do_waiting(delta):
 		_spawn()
 
 func _spawn():
-	if player:
-		# Lands 25 meters back right away
+	if player and not is_banned_from_maze:
 		var behind = player.global_position - player.global_transform.basis.z * 25.0
 		behind.y = original_y_level + 0.1  
 		global_position = behind
@@ -198,7 +200,8 @@ func _do_idle():
 
 # ─── CHASE ────────────────────────────────────────────────────────────
 func _do_chase():
-	if player == null:
+	if player == null or is_banned_from_maze:
+		state = State.IDLE
 		return
 
 	if anim.current_animation != "Walk_B":
@@ -219,7 +222,7 @@ func _do_attack(delta):
 	if is_attacking:
 		return
 
-	if not player_in_attack_range:
+	if not player_in_attack_range or is_banned_from_maze:
 		state = State.CHASE
 		attack_timer = 0.0
 		return
@@ -240,7 +243,7 @@ func _do_attack(delta):
 		await anim.animation_finished
 		is_attacking = false
 		
-		if player_in_attack_range:
+		if player_in_attack_range and not is_banned_from_maze:
 			_kill_player()
 
 # ─── PLAYER INTERACTIONS & COLLISION DETECTORS ───────────────────────
@@ -256,7 +259,7 @@ func _kill_player():
 		managers[0]._on_player_died()
 
 func _on_player_entered_range(body):
-	if body.is_in_group("player") and state == State.IDLE:
+	if body.is_in_group("player") and state == State.IDLE and not is_banned_from_maze:
 		state = State.CHASE
 
 func _on_player_exited_range(body):

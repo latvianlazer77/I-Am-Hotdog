@@ -2,24 +2,30 @@
 
 [ext_resource type="PackedScene" uid="uid://dc00fhbh8t1y3" path="res://Assets/Models/crying_head.glb" id="1_mny0k"]
 [ext_resource type="Script" uid="uid://b3ja04hvkgo2j" path="res://Scripts/spider.gd" id="1_sk3gp"]
-[ext_resource type="Texture2D" uid="uid://bv5du8ux058m3" path="res://Assets/Models/crying_head_0.png" id="2_cpnsh"]
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="3_bqeia"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpnsh"]
-albedo_texture = ExtResource("2_cpnsh")
-emission_enabled = true
-emission = Color(0.099985994, 0.099985994, 0.099985994, 1)
-emission_energy_multiplier = 0.5
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_57qmd"]
-radius = 19.776367
-height = 39.552734
+radius = 35.74707
+height = 71.49414
 
 [node name="Spider" type="CharacterBody3D" unique_id=1237671053]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_sk3gp")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1812705793]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.8698941, 16.39305, 6.5382094)
+shape = SubResource("CapsuleShape3D_57qmd")
+
+[node name="KillZone" parent="." unique_id=1199234586 instance=ExtResource("3_bqeia")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone" unique_id=804725808]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.8698941, 16.39305, 6.5382094)
+shape = SubResource("CapsuleShape3D_57qmd")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=634932845]
+
 [node name="Sketchfab_Scene" parent="." unique_id=1379706515 instance=ExtResource("1_mny0k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 15.349091, 0)
 
 [node name="Skeleton3D" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/CHsk/Object_5" parent_id_path=PackedInt32Array(1379706515, 344948772) index="0" unique_id=1723998441]
 bones/1/position = Vector3(-0.00053153373, 0.11573737, 0.0024347124)
@@ -84,9 +90,6 @@ bones/67/rotation = Quaternion(0.7071069, 4.8511235e-09, 8.086389e-09, 0.7071067
 bones/69/position = Vector3(-0.17500536, -0.028123286, -0.16751944)
 bones/69/rotation = Quaternion(0.7071069, 4.8511235e-09, 8.086389e-09, 0.70710677)
 
-[node name="Object_78" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/CHsk/Object_5/Skeleton3D" index="0" unique_id=870190993]
-surface_material_override/0 = SubResource("StandardMaterial3D_cpnsh")
-
 [node name="������������������" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode" parent_id_path=PackedInt32Array(1379706515, 1827490528) index="2" unique_id=1691442251]
 visible = false
 
@@ -95,13 +98,6 @@ visible = false
 
 [node name="AnimationPlayer" parent="Sketchfab_Scene" index="1" unique_id=828686348]
 autoplay = &"MOVE"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1812705793]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.869894, 1.2701807, 9.766116)
-shape = SubResource("CapsuleShape3D_57qmd")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=634932845]
-
-[node name="KillZone" parent="." unique_id=1199234586 instance=ExtResource("3_bqeia")]
+speed_scale = 3.0
 
 [editable path="Sketchfab_Scene"]

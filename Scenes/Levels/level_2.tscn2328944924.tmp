@@ -1260,6 +1260,7 @@ transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -120.682495, 58.72
 [node name="TrapTrigger" parent="." unique_id=564451170 node_paths=PackedStringArray("spawn_location_node") instance=ExtResource("16_yxf76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3728485, 59.50377, -165.23764)
 spider_scene = ExtResource("15_t27xo")
+horde_size = 1
 spawn_location_node = NodePath("../SpiderSpawnAnchor")
 bigjok_kickback_position = Vector3(-58.703, 1.053, 156.716)
 
