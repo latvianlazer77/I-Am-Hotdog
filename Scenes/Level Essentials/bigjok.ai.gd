@@ -180,7 +180,8 @@ func _do_waiting(delta):
 
 func _spawn():
 	if player and not is_banned_from_maze:
-		var behind = player.global_position - player.global_transform.basis.z * 25.0
+		# FIXED: Changed minus to plus so he lands 25 meters BEHIND your forward view
+		var behind = player.global_position + player.global_transform.basis.z * 25.0
 		behind.y = original_y_level + 0.1  
 		global_position = behind
 

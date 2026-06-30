@@ -309,7 +309,7 @@ material = SubResource("ShaderMaterial_0x4y1")
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
-size = Vector3(352.98376, 46.7688, 162.28955)
+size = Vector3(105.63375, 46.7688, 162.28955)
 
 [node name="level_2" type="Node3D" unique_id=188781495]
 
@@ -330,947 +330,937 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("3_fphuk")]
 
 [node name="SpawnPoint" parent="GameManager" unique_id=1033269942 instance=ExtResource("5_pnnky")]
 transform = Transform3D(-0.45427042, 0, -0.89086384, 0, 1, 0, 0.89086384, 0, -0.45427042, -2.0748634, 0.7859025, 144.52419)
 
-[node name="Coins" type="Node3D" parent="." unique_id=898375157]
+[node name="Coins" type="Node3D" parent="GameManager" unique_id=898375157]
 
-[node name="Coin7" parent="Coins" unique_id=1597211057 instance=ExtResource("7_fphuk")]
+[node name="Coin7" parent="GameManager/Coins" unique_id=1597211057 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -132.60396, 1.5516181, 74.930145)
 
-[node name="Coin14" parent="Coins" unique_id=989771777 instance=ExtResource("7_fphuk")]
+[node name="Coin14" parent="GameManager/Coins" unique_id=989771777 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -58.213966, 23.925224, 183.64969)
 
-[node name="Coin15" parent="Coins" unique_id=761592953 instance=ExtResource("7_fphuk")]
+[node name="Coin15" parent="GameManager/Coins" unique_id=761592953 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -55.3384, 23.925224, 183.64969)
 
-[node name="Coin16" parent="Coins" unique_id=1376564761 instance=ExtResource("7_fphuk")]
+[node name="Coin16" parent="GameManager/Coins" unique_id=1376564761 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -50.088398, 23.925224, 183.64969)
 
-[node name="Coin17" parent="Coins" unique_id=848435129 instance=ExtResource("7_fphuk")]
+[node name="Coin17" parent="GameManager/Coins" unique_id=848435129 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -47.05542, 23.925224, 183.64969)
 
-[node name="Coin18" parent="Coins" unique_id=206821134 instance=ExtResource("7_fphuk")]
+[node name="Coin18" parent="GameManager/Coins" unique_id=206821134 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -48.83377, 23.925224, 183.64969)
 
-[node name="Coin19" parent="Coins" unique_id=1252103044 instance=ExtResource("7_fphuk")]
+[node name="Coin19" parent="GameManager/Coins" unique_id=1252103044 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -51.662865, 23.925224, 183.64969)
 
-[node name="Coin35" parent="Coins" unique_id=1381893879 instance=ExtResource("7_fphuk")]
+[node name="Coin35" parent="GameManager/Coins" unique_id=1381893879 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -50.81378, 23.925224, 183.64969)
 
-[node name="Coin20" parent="Coins" unique_id=835553335 instance=ExtResource("7_fphuk")]
+[node name="Coin20" parent="GameManager/Coins" unique_id=835553335 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -53.78107, 23.925224, 183.64969)
 
-[node name="Coin21" parent="Coins" unique_id=261345206 instance=ExtResource("7_fphuk")]
+[node name="Coin21" parent="GameManager/Coins" unique_id=261345206 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -56.78107, 23.925224, 183.64969)
 
-[node name="Coin22" parent="Coins" unique_id=546125285 instance=ExtResource("7_fphuk")]
+[node name="Coin22" parent="GameManager/Coins" unique_id=546125285 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -60.516445, 23.925224, 183.64969)
 
-[node name="Coin31" parent="Coins" unique_id=643580086 instance=ExtResource("7_fphuk")]
+[node name="Coin31" parent="GameManager/Coins" unique_id=643580086 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -59.34463, 23.925224, 183.64969)
 
-[node name="Coin32" parent="Coins" unique_id=2007627209 instance=ExtResource("7_fphuk")]
+[node name="Coin32" parent="GameManager/Coins" unique_id=2007627209 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -61.76463, 23.925224, 183.64969)
 
-[node name="Coin33" parent="Coins" unique_id=1505002506 instance=ExtResource("7_fphuk")]
+[node name="Coin33" parent="GameManager/Coins" unique_id=1505002506 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -63.52828, 23.925224, 183.64969)
 
-[node name="Coin34" parent="Coins" unique_id=1969938723 instance=ExtResource("7_fphuk")]
+[node name="Coin34" parent="GameManager/Coins" unique_id=1969938723 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -65.73468, 23.925224, 183.64969)
 
-[node name="Coin23" parent="Coins" unique_id=2000218123 instance=ExtResource("7_fphuk")]
+[node name="Coin23" parent="GameManager/Coins" unique_id=2000218123 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -62.684505, 23.925224, 183.64969)
 
-[node name="Coin24" parent="Coins" unique_id=1882490499 instance=ExtResource("7_fphuk")]
+[node name="Coin24" parent="GameManager/Coins" unique_id=1882490499 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -64.53866, 23.925224, 183.64969)
 
-[node name="Coin25" parent="Coins" unique_id=880061996 instance=ExtResource("7_fphuk")]
+[node name="Coin25" parent="GameManager/Coins" unique_id=880061996 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -52.764103, 23.925224, 183.64969)
 
-[node name="Coin26" parent="Coins" unique_id=938125491 instance=ExtResource("7_fphuk")]
+[node name="Coin26" parent="GameManager/Coins" unique_id=938125491 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -48.20914, 23.925224, 183.64969)
 
-[node name="Coin27" parent="Coins" unique_id=1569358416 instance=ExtResource("7_fphuk")]
+[node name="Coin27" parent="GameManager/Coins" unique_id=1569358416 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -45.943604, 23.925224, 183.64969)
 
-[node name="Coin28" parent="Coins" unique_id=2126444798 instance=ExtResource("7_fphuk")]
+[node name="Coin28" parent="GameManager/Coins" unique_id=2126444798 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -45.0634, 23.925224, 183.64969)
 
-[node name="Coin29" parent="Coins" unique_id=91174628 instance=ExtResource("7_fphuk")]
+[node name="Coin29" parent="GameManager/Coins" unique_id=91174628 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -44.09431, 23.925224, 183.64969)
 
-[node name="Coin30" parent="Coins" unique_id=396227161 instance=ExtResource("7_fphuk")]
+[node name="Coin30" parent="GameManager/Coins" unique_id=396227161 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -43.350418, 23.925224, 183.64969)
 
-[node name="Coin13" parent="Coins" unique_id=778816412 instance=ExtResource("7_fphuk")]
+[node name="Coin13" parent="GameManager/Coins" unique_id=778816412 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -132.60396, 1.5516181, 24.531158)
 
-[node name="Coin" parent="Coins" unique_id=427156651 instance=ExtResource("7_fphuk")]
+[node name="Coin" parent="GameManager/Coins" unique_id=427156651 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -87.89607, 1.5304158, 75.10106)
 
-[node name="Coin12" parent="Coins" unique_id=1701307876 instance=ExtResource("7_fphuk")]
+[node name="Coin12" parent="GameManager/Coins" unique_id=1701307876 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -87.89607, 1.5304158, 24.643627)
 
-[node name="Coin2" parent="Coins" unique_id=1387154868 instance=ExtResource("7_fphuk")]
+[node name="Coin2" parent="GameManager/Coins" unique_id=1387154868 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -42.658623, 2.0008502, 75.04526)
 
-[node name="Coin36" parent="Coins" unique_id=1286723544 instance=ExtResource("7_fphuk")]
+[node name="Coin36" parent="GameManager/Coins" unique_id=1286723544 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -42.658623, 2.0008502, 25.370905)
 
-[node name="Coin3" parent="Coins" unique_id=1628734210 instance=ExtResource("7_fphuk")]
+[node name="Coin3" parent="GameManager/Coins" unique_id=1628734210 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -0.21124268, 0.953053, 76.09878)
 
-[node name="Coin11" parent="Coins" unique_id=1015909651 instance=ExtResource("7_fphuk")]
+[node name="Coin11" parent="GameManager/Coins" unique_id=1015909651 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -0.21124268, 0.953053, 25.137451)
 
-[node name="Coin5" parent="Coins" unique_id=68341638 instance=ExtResource("7_fphuk")]
+[node name="Coin5" parent="GameManager/Coins" unique_id=68341638 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, 87.26839, 1.2623811, 75.77722)
 
-[node name="Coin9" parent="Coins" unique_id=1527759254 instance=ExtResource("7_fphuk")]
+[node name="Coin9" parent="GameManager/Coins" unique_id=1527759254 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, 87.26839, 1.2623811, 25.37608)
 
-[node name="Coin4" parent="Coins" unique_id=93179222 instance=ExtResource("7_fphuk")]
+[node name="Coin4" parent="GameManager/Coins" unique_id=93179222 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, 42.004288, 1.0158324, 75.34132)
 
-[node name="Coin10" parent="Coins" unique_id=1558380894 instance=ExtResource("7_fphuk")]
+[node name="Coin10" parent="GameManager/Coins" unique_id=1558380894 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, 42.004288, 1.0158324, 24.982445)
 
-[node name="Coin6" parent="Coins" unique_id=1796976029 instance=ExtResource("7_fphuk")]
+[node name="Coin6" parent="GameManager/Coins" unique_id=1796976029 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, 136.7051, 1.9142599, 75.847534)
 
-[node name="Coin8" parent="Coins" unique_id=966426375 instance=ExtResource("7_fphuk")]
+[node name="Coin8" parent="GameManager/Coins" unique_id=966426375 instance=ExtResource("7_fphuk")]
 transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, 136.7051, 1.9142599, 25.472862)
 
-[node name="Environment" type="Node3D" parent="." unique_id=800585961]
+[node name="Environment" type="Node3D" parent="GameManager" unique_id=800585961]
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment" unique_id=737305360]
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=737305360]
 transform = Transform3D(0.2962082, 0, 0.9551234, 0, 1, 0, -0.9551234, 0, 0.2962082, 1.1563683, 26.45759, 54.114967)
 visible = false
 
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Environment" unique_id=522626181]
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=522626181]
 transform = Transform3D(0.8540052, 0, -0.52026457, 0, 1, 0, 0.52026457, 0, 0.8540052, 26.051655, 26.457594, 54.114964)
 visible = false
 
-[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="Environment" unique_id=160359254]
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=160359254]
 transform = Transform3D(-0.8131007, 0, -0.582123, 0, 1, 0, 0.582123, 0, -0.8131007, 26.051659, 26.45759, 54.114967)
 visible = false
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=907718772 groups=["world_environment"]]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="GameManager/Environment" unique_id=907718772 groups=["world_environment"]]
 environment = SubResource("Environment_fphuk")
 
-[node name="CobyStrange" type="Node" parent="." unique_id=1058603887]
+[node name="CobyStrange" type="Node" parent="GameManager" unique_id=1058603887]
 script = ExtResource("8_blpqv")
 material = SubResource("ShaderMaterial_1jlnc")
 
-[node name="Bigjok" parent="." unique_id=1980146587 instance=ExtResource("13_uqiic")]
+[node name="Bigjok" parent="GameManager" unique_id=1980146587 instance=ExtResource("13_uqiic")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -58.70304, 1.052567, 156.71577)
-move_speed = 2.2
-hearing_radius = 14.0
-attack_cooldown = 1.8
-respawn_delay = 3.0
-spawn_delay = 5.0
-max_effect_distance = 80.0
-min_effect_distance = 10.0
-max_chase_distance = 90.0
-teleport_forward_dist = 25.0
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=2143155554]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="GameManager" unique_id=2143155554]
 navigation_mesh = SubResource("NavigationMesh_uqiic")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1136980486]
+[node name="StaticBody3D" type="StaticBody3D" parent="GameManager/NavigationRegion3D" unique_id=1136980486]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1923535474]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1923535474]
 transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 65.62905, 0, 0, 155.168)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="MeshInstance3D18" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=253616417]
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=253616417]
 transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 248.02289, 0, -26.8832, -1.8695679)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=433942580]
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=433942580]
 transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 248.02289, 0, -26.8832, -1.8695679)
 shape = SubResource("ConcavePolygonShape3D_5buja")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1059715830]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1059715830]
 transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 65.62905, 0.4303131, 0, 155.16763)
 shape = SubResource("ConcavePolygonShape3D_8qsmg")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=895360243]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=895360243]
 transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 170.47745, 0.4303131, 0, -109.95578)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1525380817]
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1525380817]
 transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 170.47745, 0.4303131, 0, -109.95578)
 shape = SubResource("ConcavePolygonShape3D_wyygt")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=114945263]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=114945263]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, 29, -187.03831)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D35" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1467851058]
+[node name="CollisionShape3D35" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1467851058]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, 29, -187.03831)
 shape = SubResource("ConcavePolygonShape3D_c0rmi")
 
-[node name="MeshInstance3D19" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=981840160]
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=981840160]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, -122.9249)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D27" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1155241708]
+[node name="CollisionShape3D27" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1155241708]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, -122.9249)
 shape = SubResource("ConcavePolygonShape3D_u87on")
 
-[node name="MeshInstance3D23" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=813991010]
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=813991010]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, -76.128456)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D28" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1743619440]
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1743619440]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, -76.128456)
 shape = SubResource("ConcavePolygonShape3D_iunut")
 
-[node name="MeshInstance3D24" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=625856545]
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=625856545]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, 0.70845985, -24.414959)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="MeshInstance3D36" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1957787969]
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1957787969]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 42.106247, 0.70845985, -77.237274)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D45" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1114402356]
+[node name="CollisionShape3D45" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1114402356]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 42.106247, 0.70845985, -77.237274)
 shape = SubResource("ConcavePolygonShape3D_xcfnk")
 
-[node name="MeshInstance3D39" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1933232448]
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1933232448]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 103.04637, 0.70845985, -63.728867)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D43" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=118895644]
+[node name="CollisionShape3D43" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=118895644]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 103.04637, 0.70845985, -63.728867)
 shape = SubResource("ConcavePolygonShape3D_tjmj4")
 
-[node name="MeshInstance3D64" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1302318770]
+[node name="MeshInstance3D64" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1302318770]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 137.63173, 0.70845985, -79.64017)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D38" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1078403463]
+[node name="CollisionShape3D38" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1078403463]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 137.63173, 0.70845985, -79.64017)
 shape = SubResource("ConcavePolygonShape3D_8jijy")
 
-[node name="MeshInstance3D40" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=705303137]
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=705303137]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 21.61081, 0.70845985, -120.489624)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D50" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1332035745]
+[node name="CollisionShape3D50" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1332035745]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 21.61081, 0.70845985, -120.489624)
 shape = SubResource("ConcavePolygonShape3D_vybpq")
 
-[node name="MeshInstance3D41" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2027140560]
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2027140560]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 0.26110077, 0.70845985, -65.75606)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D48" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=332918076]
+[node name="CollisionShape3D48" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=332918076]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 0.26110077, 0.70845985, -65.75606)
 shape = SubResource("ConcavePolygonShape3D_txe2d")
 
-[node name="MeshInstance3D42" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1496241342]
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1496241342]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 4.9372826, 0.70845985, -104.310555)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D49" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=56275296]
+[node name="CollisionShape3D49" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=56275296]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 4.9372826, 0.70845985, -104.310555)
 shape = SubResource("ConcavePolygonShape3D_sqb48")
 
-[node name="MeshInstance3D43" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1386151412]
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1386151412]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 105.656654, 0.70845985, -98.91424)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D41" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=769288598]
+[node name="CollisionShape3D41" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=769288598]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 105.656654, 0.70845985, -98.91424)
 shape = SubResource("ConcavePolygonShape3D_vhmb4")
 
-[node name="MeshInstance3D60" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1770232895]
+[node name="MeshInstance3D60" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1770232895]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 157.32626, 0.70845985, -98.91424)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D37" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1015424734]
+[node name="CollisionShape3D37" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1015424734]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 157.32626, 0.70845985, -98.91424)
 shape = SubResource("ConcavePolygonShape3D_udsq5")
 
-[node name="MeshInstance3D61" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=82059764]
+[node name="MeshInstance3D61" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=82059764]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 157.32626, 0.70845985, -134.61374)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D36" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=784565246]
+[node name="CollisionShape3D36" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=784565246]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 157.32626, 0.70845985, -134.61374)
 shape = SubResource("ConcavePolygonShape3D_v0mst")
 
-[node name="MeshInstance3D62" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1760316886]
+[node name="MeshInstance3D62" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1760316886]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 65.61354, 0.70845985, -123.64047)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D44" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1035753516]
+[node name="CollisionShape3D44" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1035753516]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 65.61354, 0.70845985, -123.64047)
 shape = SubResource("ConcavePolygonShape3D_lm4xk")
 
-[node name="MeshInstance3D63" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1133547918]
+[node name="MeshInstance3D63" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1133547918]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 120.24704, 0.70845985, -63.032265)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D42" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=472287260]
+[node name="CollisionShape3D42" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=472287260]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 120.24704, 0.70845985, -63.032265)
 shape = SubResource("ConcavePolygonShape3D_dx2dd")
 
-[node name="MeshInstance3D44" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1797832654]
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1797832654]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 105.656654, 0.70845985, -149.5613)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D40" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1317144042]
+[node name="CollisionShape3D40" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1317144042]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 105.656654, 0.70845985, -149.5613)
 shape = SubResource("ConcavePolygonShape3D_fhs8x")
 
-[node name="MeshInstance3D45" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1505709858]
+[node name="MeshInstance3D45" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1505709858]
 transform = Transform3D(34.042572, -0.37355888, 0.0017667742, 0.21839832, 58.242477, -0.00021097594, -0.12105114, 0.026079403, 0.4964799, 105.656654, 0.70845985, -166.63637)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D39" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2103408277]
+[node name="CollisionShape3D39" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2103408277]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 105.656654, 0.70845985, -166.63637)
 shape = SubResource("ConcavePolygonShape3D_18dqt")
 
-[node name="MeshInstance3D46" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1078813714]
+[node name="MeshInstance3D46" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1078813714]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -22.879433, 0.70845985, -165.72452)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D52" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=784223419]
+[node name="CollisionShape3D52" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=784223419]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -22.879433, 0.70845985, -165.72452)
 shape = SubResource("ConcavePolygonShape3D_qxvyg")
 
-[node name="MeshInstance3D47" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1098296188]
+[node name="MeshInstance3D47" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1098296188]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 1.7375259, 0.70845985, -155.8294)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="MeshInstance3D65" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=148575626]
+[node name="MeshInstance3D65" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=148575626]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 39.11642, 0.70845985, -170.9467)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="MeshInstance3D66" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2022947813]
+[node name="MeshInstance3D66" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2022947813]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -64.48358, 0.70845985, -170.9467)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D66" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=837855166]
+[node name="CollisionShape3D66" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=837855166]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -64.48358, 0.70845985, -170.9467)
 shape = SubResource("ConcavePolygonShape3D_aoifj")
 
-[node name="CollisionShape3D65" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1609360550]
+[node name="CollisionShape3D65" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1609360550]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 39.11642, 0.70845985, -170.9467)
 shape = SubResource("ConcavePolygonShape3D_25vps")
 
-[node name="CollisionShape3D51" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=923020750]
+[node name="CollisionShape3D51" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=923020750]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 1.7375259, 0.70845985, -155.8294)
 shape = SubResource("ConcavePolygonShape3D_280dn")
 
-[node name="MeshInstance3D48" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=540650699]
+[node name="MeshInstance3D48" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=540650699]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -99.01876, 0.70845985, -148.29553)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D67" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=410192688]
+[node name="CollisionShape3D67" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=410192688]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -99.01876, 0.70845985, -148.29553)
 shape = SubResource("ConcavePolygonShape3D_1axn8")
 
-[node name="MeshInstance3D58" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1526393754]
+[node name="MeshInstance3D58" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1526393754]
 transform = Transform3D(65.2956, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -148.72415, 0.70845985, -164.6004)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D58" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=702955120]
+[node name="CollisionShape3D58" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=702955120]
 transform = Transform3D(65.2956, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -148.72415, 0.70845985, -164.6004)
 shape = SubResource("ConcavePolygonShape3D_1sv8b")
 
-[node name="MeshInstance3D59" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=256251797]
+[node name="MeshInstance3D59" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=256251797]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -81.29776, 0.70845985, -164.6004)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D57" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=345319556]
+[node name="CollisionShape3D57" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=345319556]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -81.29776, 0.70845985, -164.6004)
 shape = SubResource("ConcavePolygonShape3D_4m2nc")
 
-[node name="MeshInstance3D49" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1767892790]
+[node name="MeshInstance3D49" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1767892790]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -99.01876, 0.70845985, -105.6133)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D61" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1650194825]
+[node name="CollisionShape3D61" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1650194825]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -99.01876, 0.70845985, -105.6133)
 shape = SubResource("ConcavePolygonShape3D_501n3")
 
-[node name="MeshInstance3D50" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1043929505]
+[node name="MeshInstance3D50" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1043929505]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -54.15164, 0.70845985, -105.6133)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D55" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=597624387]
+[node name="CollisionShape3D55" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=597624387]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -54.15164, 0.70845985, -105.6133)
 shape = SubResource("ConcavePolygonShape3D_rjua8")
 
-[node name="MeshInstance3D51" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2132169224]
+[node name="MeshInstance3D51" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2132169224]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -54.15164, 0.70845985, -122.67187)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D56" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1540322377]
+[node name="CollisionShape3D56" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1540322377]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -54.15164, 0.70845985, -122.67187)
 shape = SubResource("ConcavePolygonShape3D_0f3b1")
 
-[node name="MeshInstance3D52" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1100467091]
+[node name="MeshInstance3D52" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1100467091]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -54.15164, 0.70845985, -79.75696)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D54" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1512048613]
+[node name="CollisionShape3D54" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1512048613]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -54.15164, 0.70845985, -79.75696)
 shape = SubResource("ConcavePolygonShape3D_8fgsm")
 
-[node name="MeshInstance3D53" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=203538088]
+[node name="MeshInstance3D53" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=203538088]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -54.15164, 0.70845985, -49.003494)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="MeshInstance3D67" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=794234212]
+[node name="MeshInstance3D67" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=794234212]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 5.763157, 0.70845985, -48.961353)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="MeshInstance3D68" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=355123296]
+[node name="MeshInstance3D68" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=355123296]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 103.678085, 0.70845985, -47.17153)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="MeshInstance3D69" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1721726004]
+[node name="MeshInstance3D69" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1721726004]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 158.09283, 0.70845985, -41.879883)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D69" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2090244246]
+[node name="CollisionShape3D69" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2090244246]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 158.09283, 0.70845985, -41.879883)
 shape = SubResource("ConcavePolygonShape3D_k5w7j")
 
-[node name="CollisionShape3D68" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1831057684]
+[node name="CollisionShape3D68" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1831057684]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 103.678085, 0.70845985, -47.17153)
 shape = SubResource("ConcavePolygonShape3D_6l0ih")
 
-[node name="CollisionShape3D59" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1145977978]
+[node name="CollisionShape3D59" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1145977978]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 5.763157, 0.70845985, -48.961353)
 shape = SubResource("ConcavePolygonShape3D_nv54f")
 
-[node name="CollisionShape3D53" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2029699034]
+[node name="CollisionShape3D53" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2029699034]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -54.15164, 0.70845985, -49.003494)
 shape = SubResource("ConcavePolygonShape3D_wt3sb")
 
-[node name="MeshInstance3D54" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1666743958]
+[node name="MeshInstance3D54" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1666743958]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -90.38409, 0.70845985, -62.879753)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D62" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1507393778]
+[node name="CollisionShape3D62" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1507393778]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -90.38409, 0.70845985, -62.879753)
 shape = SubResource("ConcavePolygonShape3D_lorqr")
 
-[node name="MeshInstance3D55" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=330474256]
+[node name="MeshInstance3D55" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=330474256]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -147.25667, 0.70845985, -129.11536)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D60" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=437210772]
+[node name="CollisionShape3D60" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=437210772]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -147.25667, 0.70845985, -129.11536)
 shape = SubResource("ConcavePolygonShape3D_43mmr")
 
-[node name="MeshInstance3D56" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=215552298]
+[node name="MeshInstance3D56" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=215552298]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -147.25667, 0.70845985, -96.87411)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D63" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=940510292]
+[node name="CollisionShape3D63" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=940510292]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, -147.25667, 0.70845985, -96.87411)
 shape = SubResource("ConcavePolygonShape3D_uyqpg")
 
-[node name="MeshInstance3D57" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=636219129]
+[node name="MeshInstance3D57" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=636219129]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -147.25667, 0.70845985, -59.778076)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D64" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=900491759]
+[node name="CollisionShape3D64" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=900491759]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, -147.25667, 0.70845985, -59.778076)
 shape = SubResource("ConcavePolygonShape3D_r0vsu")
 
-[node name="MeshInstance3D37" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=221678829]
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=221678829]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 42.106247, 0.70845985, -49.981434)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D47" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=376507360]
+[node name="CollisionShape3D47" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=376507360]
 transform = Transform3D(34.043488, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 42.106247, 0.70845985, -49.981434)
 shape = SubResource("ConcavePolygonShape3D_hsx3u")
 
-[node name="MeshInstance3D38" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=450409093]
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=450409093]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 58.878334, 0.70845985, -60.367577)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D46" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1950244551]
+[node name="CollisionShape3D46" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1950244551]
 transform = Transform3D(-1.4880881e-06, 0, 0.4964831, 0, 58.243694, 0, -34.043488, 0, -2.1701965e-08, 58.878334, 0.70845985, -60.367577)
 shape = SubResource("ConcavePolygonShape3D_tsbrm")
 
-[node name="CollisionShape3D29" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1191285551]
+[node name="CollisionShape3D29" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1191285551]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, -24.414959)
 shape = SubResource("ConcavePolygonShape3D_jd2hh")
 
-[node name="MeshInstance3D25" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1134637789]
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1134637789]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 24.572025)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D30" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1836479104]
+[node name="CollisionShape3D30" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1836479104]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 24.572025)
 shape = SubResource("ConcavePolygonShape3D_jip10")
 
-[node name="MeshInstance3D26" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=118960136]
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=118960136]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 74.498146)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D31" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=379404460]
+[node name="CollisionShape3D31" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=379404460]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 74.498146)
 shape = SubResource("ConcavePolygonShape3D_1xj2d")
 
-[node name="MeshInstance3D20" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2043224889]
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2043224889]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 122.469086)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D32" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2113415873]
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2113415873]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 122.469086)
 shape = SubResource("ConcavePolygonShape3D_7h8th")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1741956983]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1741956983]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, 29, 187.70943)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D16" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=754568780]
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=754568780]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, 29, 187.70943)
 shape = SubResource("ConcavePolygonShape3D_m4i1e")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1011204319]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1011204319]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -179.03397, 29, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D15" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=293196718]
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=293196718]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -179.03397, 29, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_ixm8h")
 
-[node name="MeshInstance3D21" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1337874171]
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1337874171]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -179.03397, -29.121895, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D25" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=877647274]
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=877647274]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -179.03397, -29.121895, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_xk8vt")
 
-[node name="MeshInstance3D27" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2123303598]
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2123303598]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -133.52539, -29.121895, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D24" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2000280277]
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2000280277]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -133.52539, -29.121895, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_umcau")
 
-[node name="MeshInstance3D28" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1748776146]
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1748776146]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -88.76769, -29.121895, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D23" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2002985762]
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2002985762]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -88.76769, -29.121895, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_ud172")
 
-[node name="MeshInstance3D29" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=694802112]
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=694802112]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -42.583923, -29.121895, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D22" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=298159669]
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=298159669]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -42.583923, -29.121895, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_s5367")
 
-[node name="MeshInstance3D30" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1549214702]
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1549214702]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -0.1385498, -29.121895, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D21" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1054592002]
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1054592002]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, -0.1385498, -29.121895, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_blyvk")
 
-[node name="MeshInstance3D31" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=832171009]
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=832171009]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 41.16889, -29.121895, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D20" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1577779044]
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1577779044]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 41.16889, -29.121895, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_ts3wb")
 
-[node name="MeshInstance3D32" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=905348440]
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=905348440]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 86.54127, -29.121895, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D18" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=963834321]
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=963834321]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 86.54127, -29.121895, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_chm77")
 
-[node name="MeshInstance3D33" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=783599744]
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=783599744]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 136.69762, -29.121895, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D19" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1862619985]
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1862619985]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 136.69762, -29.121895, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_srchd")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=423039958]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=423039958]
 transform = Transform3D(-1.6661636e-05, 0, 0.49648306, 0, 58.243687, 0, -381.17383, 0, -2.1701963e-08, 179.56717, 29, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D17" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1685304518]
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1685304518]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 179.56717, 29, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_p6e1f")
 
-[node name="MeshInstance3D22" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1556055742]
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1556055742]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 179.56717, -4.744732, 1.2065277)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D26" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2034018707]
+[node name="CollisionShape3D26" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2034018707]
 transform = Transform3D(-1.642792e-05, 0, 0.49648306, 0, 58.243687, 0, -375.82706, 0, -2.1701963e-08, 179.56717, -4.744732, 1.2065277)
 shape = SubResource("ConcavePolygonShape3D_xo6ri")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=974586275]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=974586275]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, 0, 0, -0.6894169)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1182859500]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1182859500]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, 0, 0, -0.6894169)
 shape = SubResource("ConcavePolygonShape3D_fphuk")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1769598899]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1769598899]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, 41.98092, 0, -0.6894169)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1316053860]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1316053860]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, 41.98092, 0, -0.6894169)
 shape = SubResource("ConcavePolygonShape3D_pnnky")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1513878941]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1513878941]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, 87.503555, 0, -0.6894169)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1806864675]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1806864675]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, 87.503555, 0, -0.6894169)
 shape = SubResource("ConcavePolygonShape3D_blpqv")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=865726168]
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=865726168]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, 136.87129, 0, -0.6894169)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=940136734]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=940136734]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, 136.87129, 0, -0.6894169)
 shape = SubResource("ConcavePolygonShape3D_1jlnc")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=860480536]
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=860480536]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, -42.313477, 0, -0.6894169)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=731557319]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=731557319]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, -42.313477, 0, -0.6894169)
 shape = SubResource("ConcavePolygonShape3D_u40f0")
 
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=105033039]
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=105033039]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, -87.82897, 0, -0.6894169)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1138879444]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1138879444]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, -87.82897, 0, -0.6894169)
 shape = SubResource("ConcavePolygonShape3D_0x4y1")
 
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=287092919]
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=287092919]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, -132.88223, 0, -0.6894169)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1437849518]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1437849518]
 transform = Transform3D(6.1283655, 0, 0, 0, 0.94105214, 0, 0, 0, -247.59602, -132.88223, 0, -0.6894169)
 shape = SubResource("ConcavePolygonShape3D_uqiic")
 
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=34729604]
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=34729604]
 transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-07, 0.94105214, 0, -6.1283655, -8.226939e-08, 1.5877447e-05, -0.01020813, 0, 75.38201)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1387656145]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1387656145]
 transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-07, 0.94105214, 0, -6.1283655, -8.226939e-08, 1.5877447e-05, -0.01020813, 0, 75.38201)
 shape = SubResource("ConcavePolygonShape3D_eopvx")
 
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=475610888]
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=475610888]
 transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-07, 0.94105214, 0, -6.1283655, -8.226939e-08, 1.5877447e-05, -0.01020813, 0, 25.095543)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=508650494]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=508650494]
 transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-07, 0.94105214, 0, -6.1283655, -8.226939e-08, 1.5877447e-05, -0.01020813, 0, 25.095543)
 shape = SubResource("ConcavePolygonShape3D_t27xo")
 
-[node name="MeshInstance3D16" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1420470605]
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1420470605]
 transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-07, 0.94105214, 0, -6.1283655, -8.226939e-08, 1.5877447e-05, -0.01020813, 0, -25.545723)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=816386342]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=816386342]
 transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-07, 0.94105214, 0, -6.1283655, -8.226939e-08, 1.5877447e-05, -0.01020813, 0, -25.545723)
 shape = SubResource("ConcavePolygonShape3D_yxf76")
 
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1978387529]
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1978387529]
 transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-07, 0.94105214, 0, -6.1283655, -8.226939e-08, 1.5877447e-05, -0.01020813, 0, -75.49828)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=905505061]
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=905505061]
 transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-07, 0.94105214, 0, -6.1283655, -8.226939e-08, 1.5877447e-05, -0.01020813, 0, -75.49828)
 shape = SubResource("ConcavePolygonShape3D_ia1lp")
 
-[node name="Spikes12" parent="NavigationRegion3D/StaticBody3D" unique_id=794942874 instance=ExtResource("8_pnnky")]
+[node name="Spikes12" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=794942874 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.7997265, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, 42.042336, -1.7922115, 100.19899)
 
-[node name="Spikes8" parent="NavigationRegion3D/StaticBody3D" unique_id=224192477 instance=ExtResource("8_pnnky")]
+[node name="Spikes8" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=224192477 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 100.199)
 
-[node name="Spikes15" parent="NavigationRegion3D/StaticBody3D" unique_id=177855395 instance=ExtResource("8_pnnky")]
+[node name="Spikes15" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=177855395 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 82.79122)
 
-[node name="Spikes22" parent="NavigationRegion3D/StaticBody3D" unique_id=208610192 instance=ExtResource("8_pnnky")]
+[node name="Spikes22" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=208610192 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 67.430725)
 
-[node name="Spikes35" parent="NavigationRegion3D/StaticBody3D" unique_id=466120811 instance=ExtResource("8_pnnky")]
+[node name="Spikes35" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=466120811 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 67.430725)
 
-[node name="Spikes36" parent="NavigationRegion3D/StaticBody3D" unique_id=795575653 instance=ExtResource("8_pnnky")]
+[node name="Spikes36" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=795575653 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 48.907528)
 
-[node name="Spikes37" parent="NavigationRegion3D/StaticBody3D" unique_id=899916598 instance=ExtResource("8_pnnky")]
+[node name="Spikes37" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=899916598 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 31.684875)
 
-[node name="Spikes26" parent="NavigationRegion3D/StaticBody3D" unique_id=803911484 instance=ExtResource("8_pnnky")]
+[node name="Spikes26" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=803911484 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -42.2807, -1.7922115, 67.430725)
 
-[node name="Spikes33" parent="NavigationRegion3D/StaticBody3D" unique_id=368332527 instance=ExtResource("8_pnnky")]
+[node name="Spikes33" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=368332527 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -42.2807, -1.7922115, 48.927338)
 
-[node name="Spikes34" parent="NavigationRegion3D/StaticBody3D" unique_id=636595576 instance=ExtResource("8_pnnky")]
+[node name="Spikes34" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=636595576 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -42.2807, -1.7922115, 32.406696)
 
-[node name="Spikes27" parent="NavigationRegion3D/StaticBody3D" unique_id=1364432581 instance=ExtResource("8_pnnky")]
+[node name="Spikes27" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1364432581 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -87.8379, -1.7922115, 67.430725)
 
-[node name="Spikes31" parent="NavigationRegion3D/StaticBody3D" unique_id=1636751346 instance=ExtResource("8_pnnky")]
+[node name="Spikes31" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1636751346 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -87.8379, -1.7922115, 48.871525)
 
-[node name="Spikes32" parent="NavigationRegion3D/StaticBody3D" unique_id=781623546 instance=ExtResource("8_pnnky")]
+[node name="Spikes32" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=781623546 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -87.8379, -1.7922115, 32.298645)
 
-[node name="Spikes28" parent="NavigationRegion3D/StaticBody3D" unique_id=1323212694 instance=ExtResource("8_pnnky")]
+[node name="Spikes28" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1323212694 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -132.88844, -1.7922115, 67.430725)
 
-[node name="Spikes29" parent="NavigationRegion3D/StaticBody3D" unique_id=314585253 instance=ExtResource("8_pnnky")]
+[node name="Spikes29" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=314585253 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -132.88844, -1.7922115, 49.39111)
 
-[node name="Spikes30" parent="NavigationRegion3D/StaticBody3D" unique_id=2109415336 instance=ExtResource("8_pnnky")]
+[node name="Spikes30" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2109415336 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -132.88844, -1.7922115, 32.17357)
 
-[node name="Spikes23" parent="NavigationRegion3D/StaticBody3D" unique_id=1991646818 instance=ExtResource("8_pnnky")]
+[node name="Spikes23" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1991646818 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 41.9982, -1.7922115, 67.430725)
 
-[node name="Spikes38" parent="NavigationRegion3D/StaticBody3D" unique_id=648953676 instance=ExtResource("8_pnnky")]
+[node name="Spikes38" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=648953676 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 41.9982, -1.7922115, 49.24064)
 
-[node name="Spikes39" parent="NavigationRegion3D/StaticBody3D" unique_id=1699064702 instance=ExtResource("8_pnnky")]
+[node name="Spikes39" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1699064702 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 41.9982, -1.7922115, 31.824783)
 
-[node name="Spikes24" parent="NavigationRegion3D/StaticBody3D" unique_id=1237749958 instance=ExtResource("8_pnnky")]
+[node name="Spikes24" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1237749958 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 87.504456, -1.7922115, 67.430725)
 
-[node name="Spikes40" parent="NavigationRegion3D/StaticBody3D" unique_id=1546649788 instance=ExtResource("8_pnnky")]
+[node name="Spikes40" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1546649788 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 87.504456, -1.7922115, 49.542942)
 
-[node name="Spikes41" parent="NavigationRegion3D/StaticBody3D" unique_id=591151586 instance=ExtResource("8_pnnky")]
+[node name="Spikes41" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=591151586 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 87.504456, -1.7922115, 31.69802)
 
-[node name="Spikes25" parent="NavigationRegion3D/StaticBody3D" unique_id=110531931 instance=ExtResource("8_pnnky")]
+[node name="Spikes25" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=110531931 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 136.9067, -1.7922115, 67.430725)
 
-[node name="Spikes42" parent="NavigationRegion3D/StaticBody3D" unique_id=1712588064 instance=ExtResource("8_pnnky")]
+[node name="Spikes42" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1712588064 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 136.9067, -1.7922115, 48.609894)
 
-[node name="Spikes43" parent="NavigationRegion3D/StaticBody3D" unique_id=2120023360 instance=ExtResource("8_pnnky")]
+[node name="Spikes43" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2120023360 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 136.9067, -1.7922115, 30.703438)
 
-[node name="Spikes19" parent="NavigationRegion3D/StaticBody3D" unique_id=769289405 instance=ExtResource("8_pnnky")]
+[node name="Spikes19" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=769289405 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -42.227623, -1.7922115, 82.79122)
 
-[node name="Spikes20" parent="NavigationRegion3D/StaticBody3D" unique_id=1692965143 instance=ExtResource("8_pnnky")]
+[node name="Spikes20" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1692965143 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -87.74075, -1.7922115, 82.79122)
 
-[node name="Spikes21" parent="NavigationRegion3D/StaticBody3D" unique_id=1815018397 instance=ExtResource("8_pnnky")]
+[node name="Spikes21" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1815018397 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, -132.76627, -1.7922115, 82.79122)
 
-[node name="Spikes16" parent="NavigationRegion3D/StaticBody3D" unique_id=1133362187 instance=ExtResource("8_pnnky")]
+[node name="Spikes16" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1133362187 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 42.07783, -1.7922115, 82.79122)
 
-[node name="Spikes17" parent="NavigationRegion3D/StaticBody3D" unique_id=1186615710 instance=ExtResource("8_pnnky")]
+[node name="Spikes17" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1186615710 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 87.670235, -1.7922115, 82.79122)
 
-[node name="Spikes18" parent="NavigationRegion3D/StaticBody3D" unique_id=2094768288 instance=ExtResource("8_pnnky")]
+[node name="Spikes18" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2094768288 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449683, 0, 0, 0, 8.018766, 136.80157, -1.7922115, 82.79122)
 
-[node name="Spikes" parent="NavigationRegion3D/StaticBody3D" unique_id=1697680416 instance=ExtResource("8_pnnky")]
+[node name="Spikes" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1697680416 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 118.42254)
 
-[node name="Spikes14" parent="NavigationRegion3D/StaticBody3D" unique_id=1651432172 instance=ExtResource("8_pnnky")]
+[node name="Spikes14" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1651432172 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, 136.90181, -1.7922115, 100.199)
 
-[node name="Spikes9" parent="NavigationRegion3D/StaticBody3D" unique_id=1937559005 instance=ExtResource("8_pnnky")]
+[node name="Spikes9" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1937559005 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.144968, 0, 0, 0, 8.018766, -42.488754, -1.7922115, 100.199)
 
-[node name="Spikes10" parent="NavigationRegion3D/StaticBody3D" unique_id=556477905 instance=ExtResource("8_pnnky")]
+[node name="Spikes10" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=556477905 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, -87.78339, -1.7922115, 100.199)
 
-[node name="Spikes11" parent="NavigationRegion3D/StaticBody3D" unique_id=1595324705 instance=ExtResource("8_pnnky")]
+[node name="Spikes11" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1595324705 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, -132.96457, -1.7922115, 100.199)
 
-[node name="Spikes5" parent="NavigationRegion3D/StaticBody3D" unique_id=1118502196 instance=ExtResource("8_pnnky")]
+[node name="Spikes5" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1118502196 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, -42.23032, -1.7922115, 118.42254)
 
-[node name="Spikes6" parent="NavigationRegion3D/StaticBody3D" unique_id=1609735015 instance=ExtResource("8_pnnky")]
+[node name="Spikes6" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1609735015 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, -87.80454, -1.7922115, 118.42254)
 
-[node name="Spikes7" parent="NavigationRegion3D/StaticBody3D" unique_id=1012199356 instance=ExtResource("8_pnnky")]
+[node name="Spikes7" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1012199356 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, -132.83401, -1.7922115, 118.42254)
 
-[node name="Spikes13" parent="NavigationRegion3D/StaticBody3D" unique_id=1727383799 instance=ExtResource("8_pnnky")]
+[node name="Spikes13" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1727383799 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, 87.606064, -1.7922115, 100.199)
 
-[node name="Spikes4" parent="NavigationRegion3D/StaticBody3D" unique_id=1927829031 instance=ExtResource("8_pnnky")]
+[node name="Spikes4" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1927829031 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, 136.98056, -1.7922115, 118.42254)
 
-[node name="Spikes3" parent="NavigationRegion3D/StaticBody3D" unique_id=92952952 instance=ExtResource("8_pnnky")]
+[node name="Spikes3" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=92952952 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, 87.43611, -1.7922115, 118.42254)
 
-[node name="Spikes2" parent="NavigationRegion3D/StaticBody3D" unique_id=628311257 instance=ExtResource("8_pnnky")]
+[node name="Spikes2" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=628311257 instance=ExtResource("8_pnnky")]
 transform = Transform3D(5.799726, 0, 0, 0, 2.1449678, 0, 0, 0, 8.018766, 42.081253, -1.7922115, 118.42254)
 
-[node name="MeshInstance3D34" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1975206980]
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1975206980]
 transform = Transform3D(25.732307, 0, 0, 0, 1, 0, 0, 0, 7.4619737, -55.56817, 22.203056, 183.91415)
 mesh = SubResource("BoxMesh_blpqv")
 surface_material_override/0 = SubResource("ShaderMaterial_u40f0")
 
-[node name="CollisionShape3D33" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1626173724]
+[node name="CollisionShape3D33" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1626173724]
 transform = Transform3D(25.732307, 0, 0, 0, 1, 0, 0, 0, 7.4619737, -55.56817, 22.203056, 183.91415)
 shape = SubResource("ConcavePolygonShape3D_potos")
 
-[node name="MeshInstance3D35" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=879160922]
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=879160922]
 transform = Transform3D(226.17883, 0, 0, 0, -1, 1.7513868e-05, 0, -8.742278e-08, -200.33531, 0.012176514, 59.905285, 2.740982)
 mesh = SubResource("PlaneMesh_uqiic")
 
-[node name="CollisionShape3D34" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=446856741]
+[node name="CollisionShape3D34" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=446856741]
 transform = Transform3D(226.17883, 0, 0, 0, 1, 0, 0, 0, 200.33531, 0, 59.50377, 0)
 shape = SubResource("ConcavePolygonShape3D_6d4lf")
 
-[node name="LightFixture" parent="NavigationRegion3D/StaticBody3D" unique_id=1899471714 instance=ExtResource("9_0x4y1")]
+[node name="LightFixture" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1899471714 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -47, 58.722702, -5)
 
-[node name="LightFixture2" parent="NavigationRegion3D/StaticBody3D" unique_id=1819071797 instance=ExtResource("9_0x4y1")]
+[node name="LightFixture2" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1819071797 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -47, 58.722702, 73.82404)
 
-[node name="LightFixture3" parent="NavigationRegion3D/StaticBody3D" unique_id=1342268375 instance=ExtResource("9_0x4y1")]
+[node name="LightFixture3" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1342268375 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -107.17824, 58.722702, -5)
 
-[node name="LightFixture4" parent="NavigationRegion3D/StaticBody3D" unique_id=2007637201 instance=ExtResource("9_0x4y1")]
+[node name="LightFixture4" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2007637201 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, 80.42981, 58.722702, -5)
 
-[node name="LightFixture5" parent="NavigationRegion3D/StaticBody3D" unique_id=1157533730 instance=ExtResource("9_0x4y1")]
+[node name="LightFixture5" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1157533730 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, 27.41661, 58.722702, -5)
 
-[node name="LightFixture6" parent="NavigationRegion3D/StaticBody3D" unique_id=701653609 instance=ExtResource("9_0x4y1")]
+[node name="LightFixture6" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=701653609 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -47, 58.722702, -105.33286)
 
-[node name="LightFixture7" parent="NavigationRegion3D/StaticBody3D" unique_id=1752756458 instance=ExtResource("9_0x4y1")]
+[node name="LightFixture7" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1752756458 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, 98.99893, 58.722702, -102.94083)
 
-[node name="LightFixture8" parent="NavigationRegion3D/StaticBody3D" unique_id=573662287 instance=ExtResource("9_0x4y1")]
+[node name="LightFixture8" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=573662287 instance=ExtResource("9_0x4y1")]
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -120.682495, 58.722702, -132.88722)
 
-[node name="TrapTrigger" parent="." unique_id=564451170 node_paths=PackedStringArray("spawn_location_node") instance=ExtResource("16_yxf76")]
+[node name="TrapTrigger" parent="GameManager" unique_id=564451170 node_paths=PackedStringArray("spawn_location_node") instance=ExtResource("16_yxf76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3728485, 59.50377, -165.23764)
 spider_scene = ExtResource("15_t27xo")
+horde_size = 9
 spawn_location_node = NodePath("../SpiderSpawnAnchor")
 bigjok_kickback_position = Vector3(-58.703, 1.053, 156.716)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrapTrigger" unique_id=516286839]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.234192, -51.3387, 62.281784)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/TrapTrigger" unique_id=516286839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.90921, -51.3387, 62.281784)
 shape = SubResource("BoxShape3D_g4v7s")
 
-[node name="SpiderSpawnAnchor" type="Node3D" parent="." unique_id=861754653]
-transform = Transform3D(1, 0, 0, 0, -0.9279861, -0.37261477, 0, 0.37261477, -0.9279861, -20.624607, 1.7439365, -132.75616)
+[node name="SpiderSpawnAnchor" type="Node3D" parent="GameManager" unique_id=861754653]
+transform = Transform3D(0.9999978, -0.00019792683, 0.0020911724, 0.0005883037, -0.92931956, -0.36927634, 0.0020164517, 0.36927676, -0.9293174, 127.15233, 1.7439365, -144.12059)
 
-[node name="Spider" parent="." unique_id=1237671053 instance=ExtResource("15_t27xo")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 158.15326, 4.7750244, 175.59293)
-
-[editable path="TrapTrigger"]
+[editable path="GameManager/TrapTrigger"]
