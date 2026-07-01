@@ -30,9 +30,7 @@ func _ready():
 func _on_ability_activated(ability_name: String):
 	if ability_name == "mustard":
 		target_saturation = 0.0
-		
-		# FIXED: Checked if world_env exists BEFORE trying to read its environment property
-		if world_env:
+		if world_env and world_env.environment:
 			print("Trying greyscale")
 			print("Adjustments enabled: ", world_env.environment.adjustment_enabled)
 			world_env.environment.adjustment_saturation = 0.0
@@ -41,22 +39,23 @@ func _on_ability_activated(ability_name: String):
 			print("World env is null! Running safe fallback tween.")
 			var tween = create_tween()
 			tween.tween_interval(0.3)
-			# Fallback method safely handles it later once world_env populates
 			tween.tween_method(func(v):
 				if world_env and world_env.environment:
 					world_env.environment.adjustment_saturation = v
 			, 1.0, 0.0, 3)
+
 func _on_ability_ended(ability_name: String):
 	if ability_name == "mustard":
 		target_saturation = 1.0
-		if world_env:
+		if world_env and world_env.environment:
 			var tween = create_tween()
 			tween.tween_method(func(v):
-				world_env.environment.adjustment_saturation = v
+				if world_env and world_env.environment:
+					world_env.environment.adjustment_saturation = v
 			, 0.0, 1.0, 0.3)
 
 func reset_world_env():
-	if world_env:
+	if world_env and world_env.environment:
 		world_env.environment.adjustment_saturation = 1.0
 		world_env.environment.adjustment_brightness = 1.0
 
@@ -65,7 +64,7 @@ func _process(delta):
 		time_elapsed += delta
 		hud.update_timer(get_time_string())
 
-	if world_env:
+	if world_env and world_env.environment:
 		current_saturation = lerp(current_saturation, target_saturation, delta * 1.5)
 		world_env.environment.adjustment_saturation = current_saturation
 
@@ -112,6 +111,8 @@ func _on_level_complete():
 	hud.show_complete(get_medal(), get_time_string(), is_new_best, format_time(best))
 
 func _on_player_died():
+	print("!!! GAME MANAGER: _on_player_died() HAS BEEN TRIGGERED !!!")
+	
 	# 1. Reset player data and states immediately
 	player.level_complete = false
 	player.burn_meter = 0.0
@@ -119,96 +120,46 @@ func _on_player_died():
 	player.is_flying = false
 	AbilityManager.reset_all()
 	AbilityManager.resume_abilities()
-	reset_world_env()
 	
-	# 2. Teleport the player back to spawn instantly
+	# 2. Stop enemies from sticking to or tracking the player position
+	var spiders = get_tree().get_nodes_in_group("enemies")
+	for spider in spiders:
+		if "velocity" in spider:
+			spider.velocity = Vector3.ZERO
+	
+	# 3. Teleport player safely back to spawn
 	player.global_position = spawn_point.global_position
 	player.velocity = Vector3.ZERO
 
-	# 3. Dynamic Deep Search for the screen overlay node
-	var shader_rect: ColorRect = null
-	
-	# First check the local paths
-	if has_node("PostProcessing/ColorRect"):
-		shader_rect = get_node("PostProcessing/ColorRect") as ColorRect
-	elif has_node("PostProcessing"):
-		shader_rect = get_node("PostProcessing") as ColorRect
-	
-	# If still null, scour the scene tree for ANY ColorRect used for PostProcessing
-	if shader_rect == null:
-		var all_rects = get_tree().get_nodes_in_group("post_processing") # Check group if you have one
-		if all_rects.size() > 0:
-			shader_rect = all_rects[0] as ColorRect
-		else:
-			# Absolute fail-safe: Search the scene tree manually for the node named ColorRect
-			var root = get_tree().current_scene
-			shader_rect = _find_color_rect_recursive(root)
-
-	# 4. Flash the screen deep blood-maroon color
-	if shader_rect:
-		print("GameManager: Found screen overlay! Flashing blood-red now.")
-		var old_mat = shader_rect.material
-		shader_rect.material = null # Clear the glitch shader out
+	# 4. Pure Red Screen Correction Flash
+	if world_env and world_env.environment:
+		print("FOUND WORLDENVIRONMENT! Injecting red correction texture.")
 		
-		# Dark, heavy blood tone
-		shader_rect.color = Color(0.45, 0.0, 0.0, 0.85) 
-		shader_rect.visible = true
+		# Enable adjustments so color correction works
+		world_env.environment.adjustment_enabled = true
 		
-		# Safe tween to fade out the opacity cleanly
-		var flash_tween = create_tween()
-		flash_tween.tween_property(shader_rect, "color:a", 0.0, 0.4)
-		flash_tween.tween_callback(func():
-			shader_rect.visible = false
-			shader_rect.material = old_mat # Put the glitch material back
-		)
+		# Create a dynamic 1D texture that forces the screen profile to render red
+		var red_gradient = Gradient.new()
+		# Map shadows to black, but map midtones and highlights directly to solid red
+		red_gradient.set_color(0, Color(0.0, 0.0, 0.0))
+		red_gradient.set_color(1, Color(0.8, 0.0, 0.0))
+		
+		var red_texture = GradientTexture1D.new()
+		red_texture.gradient = red_gradient
+		
+		# Inject the red profile into the environment instantly
+		world_env.environment.adjustment_color_correction = red_texture
+		
+		# Smoothly clear the texture out over 0.4 seconds to return to normal rendering
+		var env_tween = create_tween()
+		env_tween.tween_property(world_env.environment, "adjustment_color_correction", null, 0.4)
+		
+		# Reset tracking variables back to operational baselines
+		target_saturation = 1.0
+		current_saturation = 1.0
 	else:
-		print("ERROR: GameManager could not find BigJok's glitch overlay ColorRect anywhere in the scene tree!")
+		print("CRITICAL ERROR: world_env is null or missing environment profile during death!")
 
-# Helper function to find the ColorRect automatically if paths change
-func _find_color_rect_recursive(node: Node) -> ColorRect:
-	if node is ColorRect:
-		return node
-	for child in node.get_children():
-		var found = _find_color_rect_recursive(child)
-		if found:
-			return found
-	return null
-	# 1. Grab the shader rect directly from your PostProcessing path
-	var shader_rect: ColorRect = null
-	if has_node("PostProcessing/ColorRect"):
-		shader_rect = get_node("PostProcessing/ColorRect") as ColorRect
-	elif has_node("PostProcessing"):
-		shader_rect = get_node("PostProcessing") as ColorRect
-
-	# 2. Reset player data and states immediately
-	player.level_complete = false
-	player.burn_meter = 0.0
-	player.is_on_burner = false
-	player.is_flying = false
-	AbilityManager.reset_all()
-	AbilityManager.resume_abilities()
-	reset_world_env()
-	
-	# 3. Teleport the player back to spawn instantly
-	player.global_position = spawn_point.global_position
-	player.velocity = Vector3.ZERO
-
-	# 4. Flash the screen a deep blood-maroon color
-	if shader_rect:
-		var old_mat = shader_rect.material
-		shader_rect.material = null # Clear the glitch shader out
-		
-		# FIXED: Lowered light values to make a much darker, heavy blood tone
-		shader_rect.color = Color(0.45, 0.0, 0.0, 0.85) 
-		shader_rect.visible = true
-		
-		# Force a safe tween that fades out the opacity cleanly
-		var flash_tween = create_tween()
-		flash_tween.tween_property(shader_rect, "color:a", 0.0, 0.4) # Slightly longer fade out for style
-		flash_tween.tween_callback(func():
-			shader_rect.visible = false
-			shader_rect.material = old_mat # Put the glitch material back
-		)
 func get_medal() -> String:
 	if time_elapsed < 30.0:
 		return "GOLD"
