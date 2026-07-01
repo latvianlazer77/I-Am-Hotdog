@@ -6,12 +6,17 @@ extends CharacterBody3D
 @onready var hearing_range = $HearingArea
 @onready var attack_range = $AttackArea
 
+# NEW: Audio Node References
+@onready var laugh_sound = $LaughSound
+@onready var bite_sound = $BiteSound
+@onready var lick_sound = $LickSound
+
 # --- Stats ---
 @export var move_speed := 2.2
 @export var hearing_radius := 14.0
 @export var attack_cooldown := 1.8
 @export var respawn_delay := 3.0
-@export var spawn_delay := 5.0 # TESTING ONLY
+@export var spawn_delay := 60.0 # FIXED: Updated from 5.0 to 60.0 seconds (1 minute)
 
 # --- Massive Proximity Shader Settings ---
 @export var max_effect_distance := 80.0  # Faint edge glitches start way out at 80 meters
@@ -94,24 +99,21 @@ func _physics_process(delta):
 			pass
 
 	# --- STRICT SHADER STATE & INSTANT TELEPORT CHECKS ---
-	# UPDATED: Added tracking ban condition check
 	if player and state != State.WAITING and state != State.DEAD and not is_banned_from_maze:
 		var current_dist = global_position.distance_to(player.global_position)
 		
-		# 1. Update Shader Proximity based on actual distance
+		# Update Shader Proximity based on actual distance
 		if (state == State.CHASE or state == State.ATTACK) and visible == true:
 			_update_shader_proximity(current_dist)
 		else:
 			_reset_shader()
 
-		# 2. INSTANT TELEPORT CHECK (Runs every frame, no 5s timer delay)
+		# INSTANT TELEPORT CHECK
 		if current_dist > max_chase_distance:
 			_teleport_far_away()
 	elif is_banned_from_maze:
-		# Keep his full-screen glitches turned off while player is in the maze
 		_reset_shader()
 
-	# UPDATED: He will only lock his vision to you if he isn't banned from the maze zone
 	if player and state != State.WAITING and state != State.DEAD and not is_banned_from_maze:
 		var dir = player.global_position - global_position
 		dir.y = 0
@@ -120,7 +122,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	# Keep his height perfectly locked to the map baseline floor
 	if state != State.WAITING and state != State.DEAD:
 		global_position.y = original_y_level + 0.1
 
@@ -180,7 +181,6 @@ func _do_waiting(delta):
 
 func _spawn():
 	if player and not is_banned_from_maze:
-		# FIXED: Changed minus to plus so he lands 25 meters BEHIND your forward view
 		var behind = player.global_position + player.global_transform.basis.z * 25.0
 		behind.y = original_y_level + 0.1  
 		global_position = behind
@@ -191,6 +191,10 @@ func _spawn():
 	attack_range.monitoring = true  
 	state = State.CHASE
 	anim.play("Walk_B")
+	
+	# NEW: Looping 3D laugh starts only when he spawns in!
+	if laugh_sound and not laugh_sound.playing:
+		laugh_sound.play()
 
 # ─── IDLE ─────────────────────────────────────────────────────────────
 func _do_idle():
@@ -236,9 +240,14 @@ func _do_attack(delta):
 		attack_timer = attack_cooldown
 		is_attacking = true
 
+		# NEW: Hooks the 2 different attack sound styles into your animation choices
 		if randf() > 0.5:
+			if bite_sound:
+				bite_sound.play()
 			anim.play("Attack_B")
 		else:
+			if lick_sound:
+				lick_sound.play()
 			anim.play("Attack2_B")
 
 		await anim.animation_finished
@@ -254,6 +263,10 @@ func _kill_player():
 	spawn_timer = 0.0
 	visible = false
 	$CollisionShape3D.disabled = true
+	
+	# NEW: Turns his laugh track off immediately when he vanishes after a kill
+	if laugh_sound and laugh_sound.playing:
+		laugh_sound.stop()
 
 	var managers = get_tree().get_nodes_in_group("game_manager")
 	if managers.size() > 0:
