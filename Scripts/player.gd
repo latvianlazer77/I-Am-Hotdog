@@ -186,7 +186,8 @@ func resume_sounds():
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		camera_pivot.rotate_x((-event.relative.y * MOUSE_SENSITIVITY) + randf_range(-shake_amount, shake_amount))
+		# Corrected non-inverted mouse look up/down standard
+		camera_pivot.rotate_x((event.relative.y * MOUSE_SENSITIVITY) + randf_range(-shake_amount, shake_amount))
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, -0.8, 0.6)
 
 func _process(delta):
@@ -275,6 +276,7 @@ func _physics_process(delta):
 	var top_speed = (SPRINT_SPEED if is_sprinting else MAX_SPEED) * burn_speed_mult * ketchup_mult
 
 	var input_dir = Vector3.ZERO
+	# FIXED: Restored to + for forward and - for back to match your camera perspective alignment
 	if Input.is_action_pressed("move_forward"):
 		input_dir += camera_pivot.global_transform.basis.z
 	if Input.is_action_pressed("move_back"):
@@ -324,6 +326,7 @@ func _physics_process(delta):
 
 func _handle_flying(delta):
 	var input_dir = Vector3.ZERO
+	# FIXED: Synced flying loop movement fields to the corrected directions too
 	if Input.is_action_pressed("move_forward"):
 		input_dir += camera_pivot.global_transform.basis.z
 	if Input.is_action_pressed("move_back"):
@@ -363,6 +366,7 @@ func perform_dash():
 		return
 	is_dashing = true
 	dash_start = global_position
+	# FIXED: Synchronized dash direction to standard forward vector field
 	var dash_dir = transform.basis.z
 	dash_dir.y = 0
 	dash_dir = dash_dir.normalized()

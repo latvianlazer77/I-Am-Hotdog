@@ -16,15 +16,6 @@ size = Vector3(16.078308, 17.82962, 12.44043)
 [node name="Bigjok" type="CharacterBody3D" unique_id=1744229061 groups=["freezable"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_x44lv")
-move_speed = null
-hearing_radius = null
-attack_cooldown = null
-respawn_delay = null
-spawn_delay = null
-max_effect_distance = null
-min_effect_distance = null
-max_chase_distance = null
-teleport_forward_dist = null
 
 [node name="BigjokModel" parent="." unique_id=262641331 instance=ExtResource("1_jdaiv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.2668147, 0)
@@ -210,5 +201,11 @@ shape = SubResource("SphereShape3D_naisc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=157234840]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5869446, 8.858383, -5.720215)
 shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="LaughSound" type="AudioStreamPlayer3D" parent="." unique_id=11095817]
+
+[node name="BiteSound" type="AudioStreamPlayer3D" parent="." unique_id=325745717]
+
+[node name="LickSound" type="AudioStreamPlayer3D" parent="." unique_id=1558897131]
 
 [editable path="BigjokModel"]

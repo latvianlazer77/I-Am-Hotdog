@@ -5,7 +5,7 @@ extends CharacterBody3D
 # NEW: Grab the spider's animation player node
 @onready var anim = $Sketchfab_Scene/AnimationPlayer
 
-@export var move_speed := 12.0 
+@export var move_speed := 8.0 
 var player : Node3D = null
 var original_y_level := 0.0
 
