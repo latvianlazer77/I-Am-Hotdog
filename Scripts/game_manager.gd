@@ -30,19 +30,22 @@ func _ready():
 func _on_ability_activated(ability_name: String):
 	if ability_name == "mustard":
 		target_saturation = 0.0
+		
+		# FIXED: Checked if world_env exists BEFORE trying to read its environment property
 		if world_env:
 			print("Trying greyscale")
 			print("Adjustments enabled: ", world_env.environment.adjustment_enabled)
 			world_env.environment.adjustment_saturation = 0.0
 			print("Saturation set to 0")
 		else:
-			print("World env is null!")
+			print("World env is null! Running safe fallback tween.")
 			var tween = create_tween()
 			tween.tween_interval(0.3)
+			# Fallback method safely handles it later once world_env populates
 			tween.tween_method(func(v):
-				world_env.environment.adjustment_saturation = v
+				if world_env and world_env.environment:
+					world_env.environment.adjustment_saturation = v
 			, 1.0, 0.0, 3)
-
 func _on_ability_ended(ability_name: String):
 	if ability_name == "mustard":
 		target_saturation = 1.0
