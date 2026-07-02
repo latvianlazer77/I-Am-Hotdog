@@ -102,6 +102,10 @@ tonemap_mode = 2
 glow_enabled = true
 adjustment_enabled = true
 
+[sub_resource type="PrismMesh" id="PrismMesh_57qmd"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7numd"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_3gngh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
@@ -287,8 +291,17 @@ transform = Transform3D(0.8132762, 0, 0, 0, 1.5681041, 0, 0, 0, 1, 0.8301935, 2.
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1275291239]
 environment = SubResource("Environment_g4v7s")
 
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="." unique_id=10719693]
+transform = Transform3D(-6.096227e-07, 0, 15.236319, 0, 3.9143267, 0, -13.946541, 0, -6.660005e-07, 110.13529, 30.110775, 189.59724)
+mesh = SubResource("PrismMesh_57qmd")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGMesh3D3" unique_id=1468060205]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1.0000004, 0, 1.0658141e-14, 0, 0.9999998, 0, 0.5109439, 0)
+operation = 2
+mesh = SubResource("CapsuleMesh_7numd")
+
 [node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1252232758]
-transform = Transform3D(3.6298838, 0, 0, 0, 1, 0, 0, 0, 2.9752278, 0, 5.129815, 0)
+transform = Transform3D(-1.5866726e-07, 0, 2.9752278, 0, 1, 0, -3.6298838, 0, -1.3005133e-07, 101.00224, 19.653584, 211.71701)
 mesh = SubResource("BoxMesh_3gngh")
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGMesh3D" unique_id=1987888251]
