@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+@onready var damage_flash = $DamageFlash
 @onready var timer_label = $TimerLabel
 @onready var popup = $LevelCompletePopup
 @onready var medal_label = $LevelCompletePopup/MedalLabel
@@ -24,6 +24,7 @@ var on_complete_callback = null
 var float_tween = null
 var spin_tween = null
 
+
 const ABILITY_DATA = {
 	"ketchup":  {"emoji": "🍅", "key": "Q",     "color": Color(1, 0.2, 0.2)},
 	"mustard":  {"emoji": "🟡", "key": "Z",     "color": Color(1, 0.85, 0.0)},
@@ -36,6 +37,8 @@ const ABILITY_DATA = {
 const ABILITY_ORDER = ["ketchup", "mustard", "bun", "hotsauce", "pickle", "relish"]
 
 func _ready():
+	damage_flash.visible = false
+	damage_flash.color = Color(1, 0, 0, 0)
 	popup.visible = false
 	stamina_bar.visible = false
 	burn_bar.visible = false
@@ -119,6 +122,22 @@ func play_dash_effect():
 	flash.color = Color(1, 1, 1, 0.8)
 	var tween = create_tween()
 	tween.tween_property(flash, "color", Color(1, 1, 1, 0), 0.15)
+
+func play_death_flash():
+	damage_flash.visible = true
+	damage_flash.color = Color(1, 0, 0, 0.85)
+
+	var tween = create_tween()
+	tween.tween_property(
+		damage_flash,
+		"color",
+		Color(1, 0, 0, 0),
+		0.15
+	)
+
+	tween.tween_callback(func():
+		damage_flash.visible = false
+	)
 
 func play_ingredient_cutscene(emoji: String, display_name: String, on_complete: Callable):
 	on_complete_callback = on_complete

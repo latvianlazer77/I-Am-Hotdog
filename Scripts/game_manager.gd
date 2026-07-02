@@ -130,35 +130,12 @@ func _on_player_died():
 	# 3. Teleport player safely back to spawn
 	player.global_position = spawn_point.global_position
 	player.velocity = Vector3.ZERO
+	# 4. Flash the screen red
+	hud.play_death_flash()
 
-	# 4. Pure Red Screen Correction Flash
-	if world_env and world_env.environment:
-		print("FOUND WORLDENVIRONMENT! Injecting red correction texture.")
-		
-		# Enable adjustments so color correction works
-		world_env.environment.adjustment_enabled = true
-		
-		# Create a dynamic 1D texture that forces the screen profile to render red
-		var red_gradient = Gradient.new()
-		# Map shadows to black, but map midtones and highlights directly to solid red
-		red_gradient.set_color(0, Color(0.0, 0.0, 0.0))
-		red_gradient.set_color(1, Color(0.8, 0.0, 0.0))
-		
-		var red_texture = GradientTexture1D.new()
-		red_texture.gradient = red_gradient
-		
-		# Inject the red profile into the environment instantly
-		world_env.environment.adjustment_color_correction = red_texture
-		
-		# Smoothly clear the texture out over 0.4 seconds to return to normal rendering
-		var env_tween = create_tween()
-		env_tween.tween_property(world_env.environment, "adjustment_color_correction", null, 0.4)
-		
-		# Reset tracking variables back to operational baselines
-		target_saturation = 1.0
-		current_saturation = 1.0
-	else:
-		print("CRITICAL ERROR: world_env is null or missing environment profile during death!")
+	# Reset colour grading values
+	target_saturation = 1.0
+	current_saturation = 1.0
 
 func get_medal() -> String:
 	if time_elapsed < 30.0:
