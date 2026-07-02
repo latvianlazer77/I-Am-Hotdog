@@ -223,7 +223,11 @@ shader_parameter/outline_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5f3p6"]
 size = Vector3(60.79419, 1, 41.92099)
 
+[sub_resource type="Sky" id="Sky_k2mw1"]
+
 [sub_resource type="Environment" id="Environment_jv26f"]
+background_mode = 2
+sky = SubResource("Sky_k2mw1")
 glow_hdr_luminance_cap = 2.0
 adjustment_enabled = true
 adjustment_brightness = 0.75
