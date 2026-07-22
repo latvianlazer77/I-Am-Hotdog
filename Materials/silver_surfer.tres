@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bp8iiitef5ful"]
+
+[ext_resource type="Shader" uid="uid://b7wvctdh671oc" path="res://Scripts/silver_surfer.gdshader" id="1_nku5w"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nku5w")
+shader_parameter/chrome_color = Color(0.9452769, 0.96489865, 1, 1)
+shader_parameter/brightness = 0.55
