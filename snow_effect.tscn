@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://duvju37gjq5t7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_huoq4"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -2, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctgh7"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_pktn2"]
+material = SubResource("StandardMaterial3D_ctgh7")
+size = Vector2(0.1, 0.1)
+
+[node name="snow_effect" type="GPUParticles3D" unique_id=1610775857]
+amount = 2000
+lifetime = 1.86
+preprocess = 10.0
+process_material = SubResource("ParticleProcessMaterial_huoq4")
+draw_pass_1 = SubResource("QuadMesh_pktn2")

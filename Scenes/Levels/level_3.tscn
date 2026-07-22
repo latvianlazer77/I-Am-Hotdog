@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="4_4ahh4"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="5_dl55b"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="6_osqx1"]
+[ext_resource type="PackedScene" uid="uid://duvju37gjq5t7" path="res://snow_effect.tscn" id="7_167vu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy6i0"]
 transparency = 4
@@ -449,3 +450,6 @@ mesh = SubResource("BoxMesh_3gngh")
 transform = Transform3D(0.53735554, 0, 0, 0, 1, 0, 0, 0, 0.56729734, 0, 0, 0)
 operation = 2
 mesh = SubResource("CapsuleMesh_g4v7s")
+
+[node name="snow_effect" parent="." unique_id=1610775857 instance=ExtResource("7_167vu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.587616, 729.4978, 151.73465)
