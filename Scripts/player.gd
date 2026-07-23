@@ -66,6 +66,28 @@ func _ready():
 	AbilityManager.active["relish"] = false
 	AbilityManager.timers["relish"] = 0.0
 	roll_sound.autoplay = false
+	
+	# Load the equipped skin right when the player spawns!
+	apply_skin()
+
+# ==========================================
+# SKIN SYSTEM LOGIC
+# ==========================================
+
+func apply_skin():
+	var current_skin = SaveData.get_equipped_skin()
+	
+	if current_skin == "silver":
+		# IMPORTANT: Double check this path matches exactly where you saved your material!
+		var silver_mat = preload("res://Materials/silver_surfer.tres") 
+		sausage.set_surface_override_material(0, silver_mat)
+	else:
+		var classic_mat = preload("res://materials/classic.tres")
+		sausage.set_surface_override_material(0, classic_mat)
+
+# ==========================================
+# ABILITIES & GAMEPLAY
+# ==========================================
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
@@ -140,7 +162,11 @@ func stop_flying():
 	tween.tween_property(camera_pivot, "rotation:x", camera_pivot.rotation.x, 0.3)
 
 func attract_coins():
-	sausage.get_surface_override_material(0).set_shader_parameter("albedo", Color(0.9, 0.45, 0.1, 1.0))
+	# FIXED: Safely checks for a material override before changing colors!
+	var current_mat = sausage.get_surface_override_material(0)
+	if current_mat != null:
+		current_mat.set_shader_parameter("albedo", Color(0.9, 0.45, 0.1, 1.0))
+		
 	var coins = get_tree().get_nodes_in_group("coin")
 	for coin in coins:
 		if coin.global_position.distance_to(global_position) <= MAGNET_RADIUS:
@@ -186,7 +212,6 @@ func resume_sounds():
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		# Corrected non-inverted mouse look up/down standard
 		camera_pivot.rotate_x((event.relative.y * MOUSE_SENSITIVITY) + randf_range(-shake_amount, shake_amount))
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, -0.8, 0.6)
 
@@ -276,7 +301,6 @@ func _physics_process(delta):
 	var top_speed = (SPRINT_SPEED if is_sprinting else MAX_SPEED) * burn_speed_mult * ketchup_mult
 
 	var input_dir = Vector3.ZERO
-	# FIXED: Restored to + for forward and - for back to match your camera perspective alignment
 	if Input.is_action_pressed("move_forward"):
 		input_dir += camera_pivot.global_transform.basis.z
 	if Input.is_action_pressed("move_back"):
@@ -326,7 +350,6 @@ func _physics_process(delta):
 
 func _handle_flying(delta):
 	var input_dir = Vector3.ZERO
-	# FIXED: Synced flying loop movement fields to the corrected directions too
 	if Input.is_action_pressed("move_forward"):
 		input_dir += camera_pivot.global_transform.basis.z
 	if Input.is_action_pressed("move_back"):
@@ -366,7 +389,6 @@ func perform_dash():
 		return
 	is_dashing = true
 	dash_start = global_position
-	# FIXED: Synchronized dash direction to standard forward vector field
 	var dash_dir = transform.basis.z
 	dash_dir.y = 0
 	dash_dir = dash_dir.normalized()

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dnfs7tvfkb8gf"]
 
 [ext_resource type="Script" uid="uid://bv0ffpbvoqruo" path="res://Scripts/player.gd" id="1_11bkn"]
-[ext_resource type="Material" uid="uid://dq6vffal4272a" path="res://Materials/classic.tres" id="2_hvqex"]
+[ext_resource type="Material" uid="uid://bp8iiitef5ful" path="res://Materials/silver_surfer.tres" id="2_hvqex"]
 [ext_resource type="AudioStream" uid="uid://bn81xl38l4em3" path="res://Assets/Audio/speedboost.mp3" id="2_urq3k"]
 [ext_resource type="Shader" uid="uid://b21hk1giqs044" path="res://Scripts/outline.gdshader" id="2_worfy"]
 [ext_resource type="AudioStream" uid="uid://dvadm6jr4kloa" path="res://Assets/Audio/MUSTAAAAARD!!!!!.mp3" id="3_81fj7"]

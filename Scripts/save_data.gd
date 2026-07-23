@@ -55,3 +55,25 @@ func spend_coins(amount: int) -> bool:
 	config.set_value("wallet", "coins", current - amount)
 	config.save(SAVE_PATH)
 	return true
+
+# ==========================================
+# NEW SKIN SYSTEM FUNCTIONS
+# ==========================================
+
+func get_equipped_skin() -> String:
+	# Returns "default" if the player hasn't equipped anything yet
+	return config.get_value("skins", "equipped", "default")
+
+func equip_skin(skin_name: String):
+	config.set_value("skins", "equipped", skin_name)
+	config.save(SAVE_PATH)
+
+func is_skin_owned(skin_name: String) -> bool:
+	if skin_name == "default":
+		return true # You always own the default skin!
+	# Checks if the config file has "owned_silver" saved as true
+	return config.get_value("skins", "owned_" + skin_name, false)
+
+func unlock_skin(skin_name: String):
+	config.set_value("skins", "owned_" + skin_name, true)
+	config.save(SAVE_PATH)

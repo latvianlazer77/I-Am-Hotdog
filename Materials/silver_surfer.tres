@@ -1,9 +1,48 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://bp8iiitef5ful"]
 
-[ext_resource type="Shader" uid="uid://b7wvctdh671oc" path="res://Scripts/silver_surfer.gdshader" id="1_nku5w"]
+[sub_resource type="Shader" id="Shader_vvyhy"]
+code = "shader_type spatial;
+render_mode cull_back;
+
+uniform vec3 silver_tint : source_color = vec3(0.9, 0.95, 1.0);
+uniform float brightness : hint_range(0.1, 5.0) = 1.0;
+
+// NEW: Push this up to 3, 5, or 10 to force the bloom effect!
+uniform float glow_strength : hint_range(1.0, 15.0) = 4.0;
+
+void fragment() {
+    // Base metal settings
+    ALBEDO = vec3(0.0);
+    METALLIC = 1.0;
+    ROUGHNESS = 0.05;
+
+    // The fake chrome reflection math
+    vec3 view_dir = (INV_VIEW_MATRIX * vec4(VIEW, 0.0)).xyz;
+    vec3 normal_dir = (INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz;
+    vec3 ref_dir = reflect(-view_dir, normal_dir);
+    float y = ref_dir.y;
+
+    vec3 sky = mix(vec3(0.3, 0.35, 0.4), vec3(1.0, 1.0, 1.0), smoothstep(0.0, 1.0, y));
+    vec3 ground = mix(vec3(0.05, 0.05, 0.05), vec3(0.15, 0.15, 0.15), smoothstep(-1.0, 0.0, y));
+
+    float horizon = smoothstep(-0.02, 0.02, y);
+    vec3 fake_chrome = mix(ground, sky, horizon);
+
+    vec3 light_dir = normalize(vec3(0.5, 1.0, -0.5));
+    float light_source = pow(max(dot(ref_dir, light_dir), 0.0), 30.0);
+
+    // NEW: Calculate a super bright rim glow for the edges
+    float fresnel = 1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0);
+    vec3 rim_glow = silver_tint * pow(fresnel, 2.0) * glow_strength;
+
+    // Add the fake chrome and the new rim glow together into EMISSION
+    EMISSION = ((fake_chrome * silver_tint + vec3(light_source)) * brightness) + rim_glow;
+}
+"
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_nku5w")
-shader_parameter/chrome_color = Color(0.9452769, 0.96489865, 1, 1)
+shader = SubResource("Shader_vvyhy")
+shader_parameter/silver_tint = Color(0.9, 0.95, 1, 1)
 shader_parameter/brightness = 0.55
+shader_parameter/glow_strength = 4.0

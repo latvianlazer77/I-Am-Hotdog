@@ -125,6 +125,12 @@ theme_override_fonts/font = ExtResource("4_chkef")
 theme_override_styles/normal = ExtResource("6_j4kqa")
 text = "Options"
 
+[node name="ShopButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer" unique_id=195654673]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_chkef")
+theme_override_styles/normal = ExtResource("6_j4kqa")
+text = "Shop"
+
 [node name="QuitButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer" unique_id=293257403]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_chkef")
@@ -132,7 +138,6 @@ theme_override_styles/normal = ExtResource("6_j4kqa")
 text = "Quit"
 
 [node name="OptionsPopup" type="ColorRect" parent="CanvasLayer/MainMenuUI" unique_id=1295113986]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,6 +183,90 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 31
 text = "Close"
+
+[node name="Control" type="Control" parent="CanvasLayer/MainMenuUI" unique_id=423799430]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShopPopup" type="ColorRect" parent="CanvasLayer/MainMenuUI" unique_id=713213510]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.31711304, 0.31711304, 0.31711304, 0.518)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1279434877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=217056135]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_right = 19.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Shop"
+
+[node name="CloseShopButton" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1951032464]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -185.0
+offset_right = 131.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 31
+text = "Close"
+
+[node name="BtnRegular" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1122445183]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 103.0
+offset_bottom = 15.5
+grow_vertical = 2
+text = "Regular skin"
+
+[node name="BtnSilver" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1720854038]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Silver surfer marlon skin"
+
+[node name="CoinText" type="Label" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=612932208]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -39.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Shop"
 
 [node name="LevelSelectUI" parent="CanvasLayer" unique_id=1256648337 instance=ExtResource("6_4fgt5")]
 
