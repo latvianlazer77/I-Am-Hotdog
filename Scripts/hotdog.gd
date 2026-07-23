@@ -36,7 +36,22 @@ func _physics_process(delta):
 		input_dir += transform.basis.z
 
 	input_dir = input_dir.normalized()
-	velocity.x = input_dir.x * SPEED
-	velocity.z = input_dir.z * SPEED
+# Default friction (stops instantly)
+	var friction = SPEED 
+	
+	# Check if we are on ice
+	if is_on_floor():
+		var floor_collision = get_last_slide_collision()
+		if floor_collision and floor_collision.get_collider().is_in_group("Ice"):
+			friction = 0.02 # Lower this to slide more, raise it to slide less!
 
+	# Apply the movement or the slide
+	if input_dir != Vector3.ZERO:
+		# If you are pressing movement keys, run normal speed
+		velocity.x = input_dir.x * SPEED
+		velocity.z = input_dir.z * SPEED
+	else:
+		# If you let go, use the friction variable to slide to a stop
+		velocity.x = move_toward(velocity.x, 0, friction)
+		velocity.z = move_toward(velocity.z, 0, friction)
 	move_and_slide()
