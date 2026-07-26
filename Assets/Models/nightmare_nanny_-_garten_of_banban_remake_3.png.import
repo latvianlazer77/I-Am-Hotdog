@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfihkjo43wlm"
-path.s3tc="res://.godot/imported/star_05.png-372fd2730667f91701ef856092b72d96.s3tc.ctex"
+uid="uid://ck5b2t5ef1von"
+path.s3tc="res://.godot/imported/nightmare_nanny_-_garten_of_banban_remake_3.png-38eb9114639ea09f24e8fd54d935f6bf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "7eb82af39a5570d689c47e3b6fcdf349"
+}
 
 [deps]
 
-source_file="res://Assets/Images/star_05.png"
-dest_files=["res://.godot/imported/star_05.png-372fd2730667f91701ef856092b72d96.s3tc.ctex"]
+source_file="res://Assets/Models/nightmare_nanny_-_garten_of_banban_remake_3.png"
+dest_files=["res://.godot/imported/nightmare_nanny_-_garten_of_banban_remake_3.png-38eb9114639ea09f24e8fd54d935f6bf.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://Assets/Models/nightmare_nanny_-_garten_of_banban_remake_3.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfihkjo43wlm"
-path.s3tc="res://.godot/imported/star_05.png-372fd2730667f91701ef856092b72d96.s3tc.ctex"
+uid="uid://33odb81jptqb"
+path.s3tc="res://.godot/imported/nightmare_nanny_-_garten_of_banban_remake_1.png-47d0e8a711675d383481c93b301a6395.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "70bb002d14205311fd39b5919a281433"
+}
 
 [deps]
 
-source_file="res://Assets/Images/star_05.png"
-dest_files=["res://.godot/imported/star_05.png-372fd2730667f91701ef856092b72d96.s3tc.ctex"]
+source_file="res://Assets/Models/nightmare_nanny_-_garten_of_banban_remake_1.png"
+dest_files=["res://.godot/imported/nightmare_nanny_-_garten_of_banban_remake_1.png-47d0e8a711675d383481c93b301a6395.s3tc.ctex"]
 
 [params]
 

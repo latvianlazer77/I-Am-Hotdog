@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjjxj2bkgqrpk"]
 
-[ext_resource type="Script" uid="uid://d017c7l4tpnbw" path="res://light_fixture.gd" id="1_sx2fg"]
+[ext_resource type="Script" uid="uid://d017c7l4tpnbw" path="res://Scripts/light_fixture.gd" id="1_sx2fg"]
 [ext_resource type="Shader" uid="uid://dl47bqkswjanb" path="res://Assets/Shaders/backrooms_light.gdshader" id="2_uolfn"]
 [ext_resource type="Shader" uid="uid://1abkwq03g62i" path="res://Assets/Models/backrooms_light.gdshader" id="3_uolfn"]
 
