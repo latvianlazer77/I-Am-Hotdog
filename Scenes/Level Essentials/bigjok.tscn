@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3ycga4rr2q6s"]
 
-[ext_resource type="PackedScene" uid="uid://c3dj5mdrltgs2" path="res://Assets/Models/young_mask.glb" id="1_jdaiv"]
+[ext_resource type="PackedScene" uid="uid://c3dj5mdrltgs2" path="res://Assets/Models/Bigjok/young_mask.glb" id="1_jdaiv"]
 [ext_resource type="Script" uid="uid://ba1yy5q4u4sw0" path="res://Scenes/Level Essentials/bigjok.ai.gd" id="1_x44lv"]
 [ext_resource type="AudioStream" uid="uid://dl4nabruja0in" path="res://Assets/Audio/BigJokLaugh.mp3" id="3_gpex6"]
 [ext_resource type="AudioStream" uid="uid://ojvdnej1rl2p" path="res://Assets/Audio/BigJokBite.mp3" id="4_qv4sv"]

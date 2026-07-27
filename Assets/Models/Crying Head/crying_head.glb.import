@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dc00fhbh8t1y3"
-path="res://.godot/imported/crying_head.glb-23418cda03bb266d0b0b8208a5971336.scn"
+path="res://.godot/imported/crying_head.glb-1891a54c713de203fa9e2ea9b42d88cf.scn"
 
 [deps]
 
-source_file="res://Assets/Models/crying_head.glb"
-dest_files=["res://.godot/imported/crying_head.glb-23418cda03bb266d0b0b8208a5971336.scn"]
+source_file="res://Assets/Models/Crying Head/crying_head.glb"
+dest_files=["res://.godot/imported/crying_head.glb-1891a54c713de203fa9e2ea9b42d88cf.scn"]
 
 [params]
 

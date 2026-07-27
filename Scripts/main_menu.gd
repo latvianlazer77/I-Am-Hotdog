@@ -11,10 +11,10 @@ extends Control
 @onready var coin_text = $CanvasLayer/MainMenuUI/ShopPopup/CoinText
 @onready var btn_regular = $CanvasLayer/MainMenuUI/ShopPopup/BtnRegular
 @onready var btn_silver = $CanvasLayer/MainMenuUI/ShopPopup/BtnSilver
+@onready var btn_india = $CanvasLayer/MainMenuUI/ShopPopup/BtnIndia
 @onready var close_shop_button = $CanvasLayer/MainMenuUI/ShopPopup/CloseShopButton
 
 @onready var menu_hotdog = $SubViewportContainer/SubViewport/MenuHotdog
-# --- YOUR EXACT MESH PATH ---
 @onready var menu_hotdog_mesh = $SubViewportContainer/SubViewport/MenuHotdog/Sausage
 
 @onready var buttons = $CanvasLayer/MainMenuUI/VBoxContainer
@@ -28,6 +28,7 @@ var transitioning = false
 
 # Prices for the shop
 const SILVER_PRICE = 100
+const INDIA_PRICE = 50
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -48,8 +49,9 @@ func _ready():
 	close_shop_button.pressed.connect(func(): shop_popup.visible = false)
 	btn_regular.pressed.connect(_on_regular_skin_pressed)
 	btn_silver.pressed.connect(_on_silver_skin_pressed)
+	btn_india.pressed.connect(_on_india_skin_pressed)
 	
-	# --- LOAD THE SHOP AND 3D SKIN ON STARTUP ---
+	# Load shop and 3D skin on startup
 	refresh_shop_ui()
 	update_menu_hotdog_skin()
 	
@@ -71,9 +73,6 @@ func play_title_animation():
 	tween.tween_interval(0.2)
 	tween.tween_property(buttons, "modulate", Color(1, 1, 1, 1), 0.5)
 
-func _process(delta):
-	pass
-
 func _on_play():
 	if transitioning:
 		return
@@ -87,17 +86,14 @@ func _on_play():
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC) 
 	
-	# Fade the UI out fast
 	tween.tween_property(main_menu_ui, "modulate:a", 0.0, 0.2)
 	
-	# Force everything below this line to happen AT THE SAME TIME
 	tween.set_parallel(true) 
 	
 	var rolling_part = menu_hotdog.get_child(0)
 	tween.tween_property(menu_hotdog, "position:z", -8.0, 3.0)
 	tween.tween_property(rolling_part, "rotation:x", rolling_part.rotation.x + (PI * 2), 3.0)
 	
-	# Turn parallel off for the next step
 	tween.set_parallel(false) 
 	
 	await tween.finished
@@ -105,10 +101,8 @@ func _on_play():
 	level_select_ui.visible = true
 	level_select_ui.modulate.a = 0.0
 	
-	# We use a different name here (tween2) so Godot doesn't get confused!
 	var tween2 = create_tween()
 	tween2.tween_property(level_select_ui, "modulate:a", 1.0, 0.2)
-
 
 func _on_back():
 	level_select_ui.visible = false
@@ -118,10 +112,8 @@ func _on_back():
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	
-	# Fade the UI back in
 	tween.tween_property(main_menu_ui, "modulate:a", 1.0, 0.3)
 	
-	# Force the movement and rotation to link up perfectly
 	tween.set_parallel(true)
 	
 	var rolling_part = menu_hotdog.get_child(0)
@@ -136,7 +128,6 @@ func _on_back():
 	options_button.disabled = false
 	shop_button.disabled = false 
 	quit_button.disabled = false
-
 
 func _on_options():
 	options_popup.visible = true
@@ -174,8 +165,18 @@ func refresh_shop_ui():
 	else:
 		btn_silver.text = "BUY SILVER (" + str(SILVER_PRICE) + " Coins)"
 		btn_silver.disabled = false
+		
+	# India Skin Check
+	if equipped == "india":
+		btn_india.text = "EQUIPPED"
+		btn_india.disabled = true
+	elif SaveData.is_skin_owned("india"):
+		btn_india.text = "EQUIP INDIA"
+		btn_india.disabled = false
+	else:
+		btn_india.text = "BUY INDIA (" + str(INDIA_PRICE) + " Coins)"
+		btn_india.disabled = false
 
-# This ONE function handles the buying/equipping for every single skin!
 func handle_skin_button(skin_name: String, price: int):
 	if skin_name == "regular" or skin_name == "default":
 		SaveData.equip_skin("regular")
@@ -199,6 +200,9 @@ func _on_regular_skin_pressed():
 func _on_silver_skin_pressed():
 	handle_skin_button("silver", SILVER_PRICE)
 
+func _on_india_skin_pressed():
+	handle_skin_button("india", INDIA_PRICE)
+
 # ==========================================
 # APPLY SKIN TO MENU 3D MODEL
 # ==========================================
@@ -211,11 +215,11 @@ func update_menu_hotdog_skin():
 	
 	match current_skin:
 		"silver":
-			# Ensure this path matches where you saved your silver material!
 			var silver_mat = preload("res://materials/silver_surfer.tres")
 			menu_hotdog_mesh.set_surface_override_material(0, silver_mat)
+		"india": 
+			var india_mat = preload("res://materials/india.tres")
+			menu_hotdog_mesh.set_surface_override_material(0, india_mat)
 		_: 
-			# This underscore "_" is the default catch-all that loads the classic skin
-			# Ensure this path matches where you saved your normal hotdog material!
 			var classic_mat = preload("res://materials/classic.tres")
 			menu_hotdog_mesh.set_surface_override_material(0, classic_mat)

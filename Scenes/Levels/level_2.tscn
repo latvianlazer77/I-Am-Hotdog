@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://brbc2vhglaq5p"]
+[gd_scene format=4 uid="uid://brbc2vhglaq5p"]
 
 [ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_ucdhh"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="2_8qsmg"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://d3ycga4rr2q6s" path="res://Scenes/Level Essentials/bigjok.tscn" id="13_uqiic"]
 [ext_resource type="PackedScene" uid="uid://8ii6khhyycf4" path="res://Scenes/Level Essentials/spider.tscn" id="15_t27xo"]
 [ext_resource type="PackedScene" uid="uid://cmmumafmsohr" path="res://Scenes/Level Essentials/trap_trigger.tscn" id="16_yxf76"]
+[ext_resource type="Material" uid="uid://bb43ngplsfis2" path="res://addons/flexible_toon_shader/FlexibleToonMaterial.tres" id="17_wyygt"]
+[ext_resource type="Script" uid="uid://74dp8vcohhat" path="res://Scripts/bottle_ketchup.gd" id="18_u87on"]
+[ext_resource type="Shader" uid="uid://b21hk1giqs044" path="res://Scripts/outline.gdshader" id="19_iunut"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("4_eopvx")
@@ -311,6 +314,64 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
 size = Vector3(105.63375, 46.7688, 162.28955)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afv7b"]
+render_priority = 0
+shader = ExtResource("9_blpqv")
+shader_parameter/albedo = Color(0.8030442, 0.1680183, 0.1428257, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dj3ye"]
+_surfaces = [{
+"aabb": AABB(-0.07205331, 0, -0.0832, 0.14410663, 0.39312, 0.1664),
+"format": 34359742465,
+"index_count": 288,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAQAEAAIABQACAAQABQADAAIAAQAGAAQABwAFAAQABgAHAAQABQAHAAgABwAJAAgACQAFAAgABwAGAAoACgAJAAcABQAJAAsACwADAAUACgAMAAkADAALAAkADAAKAA0ACgAOAA0ADgAMAA0ADgAKAAYACwAMAA8ADwADAAsADAAOAA8ADwAQAAMAEAAPAA4AEQAOAAYAEQAGAAEAEgAOABEADgASABAAEQATABIAEwAQABIAAQAUABEAEwARABQAFAABABUAAQAAABUAFAAWABMAFQAXABQAFgAUABcAGAAVAAAAFQAYABkAFwAVABkAGgAXABkAGgAZABgAGwAWABcAGwAXABwAHAAXABoAFgAbAB0AHAAeABsAHgAdABsAHwATABYAHQAfABYAEwAfACAAEAATACAAIQAgAB8AHwAdACEAIgAQACAAIAAhACIAEAAiAAMAAAADACIAIgAYAAAAGAAiACEAIQAdACMAIQAjABgAGAAjACQAGAAkABoAIwAlACQAJQAaACQAHQAmACMAJQAjACYAJgAdACcAHQAeACcAHgAmACcAGgAlACgAKQAaACgAGgApABwAHgAcACkAKgApACgAKgAoACUAKwAeACkAKwApACoAJgAeACwAHgArACwAJgAtACUAJgAsAC0AJQAtACoAKwAuACwALAAvAC0ALwAsAC4ALwAqAC0ALgArADAAMAAvAC4AKgAwACsALwAwADEAMAAqADEAKgAvADEA"),
+"name": "red",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 50,
+"vertex_data": PackedByteArray("sJCTvQXFjz7DZCq9sJCTvcNkqjzDZCo9sJCTvcNkqjzDZCq9AAAAAMNkqjzDZKq9edxzvcNkqjwXyww9edxzvcNkqjwXywy9AAAAAMNkqjwZy4w9edxzvQAAAAAXyww9edxzvQAAAAAXywy9AAAAAAAAAAAZy4y9AAAAAAAAAAAZy4w9AAAAAMNkqjwZy4y9edxzPQAAAAAXywy9edxzPQAAAAAXyww9edxzPcNkqjwXyww9edxzPcNkqjwXywy9sJCTPcNkqjzDZCq9AAAAAMNkqjzDZKo9sJCTPcNkqjzDZCo9sJCTPQXFjz7DZCo9AAAAAAXFjz7DZKo9sJCTvQXFjz7DZCo9QVWDPQ5KmD56phc9AAAAAA5KmD58ppc9QVWDvQ5KmD56phe9QVWDvQ5KmD56phc9KaxJvQ5KmD4S3+g8KaxJPQ5KmD4S3+g8AAAAAA5KmD4S32g9KaxJPQ5KmD4S3+i8KaxJPT4ipj4S3+g8QVWDPQ5KmD56phe9sJCTPQXFjz7DZCq9AAAAAA5KmD58ppe9AAAAAAXFjz7DZKq9AAAAAA5KmD4S32i9KaxJvQ5KmD4S3+i8KaxJvT4ipj4S3+i8AAAAAD4ipj4S32i9KaxJPT4ipj4S3+i8KaxJvT4ipj4S3+g8AAAAAD4ipj4S32g96nhMvD4ipj7qeEw86nhMPD4ipj7qeEw86nhMPD4ipj7qeEy86nhMvD4ipj7qeEy8TgLlOwZHyT5OAuW7TgLluwZHyT5OAuW7TgLlOwZHyT5OAuU7TgLluwZHyT5OAuU7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jd2hh"]
+_surfaces = [{
+"aabb": AABB(-0.07205331, 0, -0.0832, 0.14410663, 0.39312, 0.1664),
+"attribute_data": PackedByteArray("8Pf7wDGZUMLw9/tA8Pc7wPD3+8Dw9zvA8Pf7QDGZUMLw9/vA8Pc7wPD3+0AxmVDC8Pf7QPD3O8Dw9/vAMZlQwoEy0MAAAIA/gTLQQPD3O8CBMtBAAACAP4Ey0MDw9zvA8Pf7QPD3O8Dw9/vAMZlQwvD3+0AxmVDC8Pf7wPD3O8Dw9/vA8Pc7wPD3+0AxmVDC8Pf7QPD3O8Dw9/vAMZlQwoEy0MAAAIA/gTLQQPD3O8CBMtBAAACAP4Ey0MDw9zvAqFKpv6FKpb6oUqk/VKkUQKhSqb9UqRRAqFKpP6FKpb6BMtDA8Pc7wIEy0EAAAIA/gTLQwAAAgD+BMtBA8Pc7wN1NNEGBMvBAAAAAAIEyQMHdTTRBgTKwwAAAAACBMmBB3U00wYEysMDdTTTBgTLwQIEy0MAAAIA/gTLQQPD3O8CBMtBAAACAP4Ey0MDw9zvAgTLQQAAAgD+BMtDA8Pc7wIEy0EDw9zvAgTLQwAAAgD+BMtDAAACAP4Ey0EDw9zvAgTLQQAAAgD+BMtDA8Pc7wPD3+8Dw9zvA8Pf7QDGZUMLw9/tA8Pc7wPD3+8AxmVDC8Pf7wPD3O8Dw9/tAMZlQwvD3+0Dw9zvA8Pf7wDGZUMLw9/vAfnokwoFA4EDcbjLC8Pf7QH56JMKBQODA3G4ywvD3+8B+eiTCgUDgQNxuMsLw9/tAfnokwoFA4MDcbjLCti2swGQyXcK2LaxAVqtxwrYtrEBkMl3Cti2swFarccK2LazAZDJdwrYtrEBWq3HCti2sQGQyXcK2LazAVqtxwrYtrMBWq3HCti2sQGQyXcK2LazAZDJdwrYtrEBWq3HC8Pf7wH56JMKBQOBA3G4ywvD3+0B+eiTCgUDgwNxuMsLw9/vAfnokwoFA4EDcbjLC8Pf7QH56JMKBQODA3G4ywrYtrEBkMl3Cti2swFarccK2LaxAVqtxwrYtrMBkMl3CgUDgwNxuMsLw9/tAfnokwvD3+8B+eiTCgUDgQNxuMsJrHBXBti2MwAAAAAC2LTxBaxwVwbYtzEBeLhfAXi5XQF4uF8C8XK6/Xi4XQF4uV0AAAAAAti0cwWscFUG2LcxAXi4XQLxcrr9rHBVBti2MwLYtrMBkMl3Cti2sQFarccK2LaxAZDJdwrYtrMBWq3HCti2swGQyXcK2LaxAVqtxwrYtrEBkMl3Cti2swFarccLw9/vAfnokwoFA4EDcbjLC8Pf7QH56JMKBQODA3G4ywl4uF8AnInDCqFKpP00iksJeLhdAJyJwwqhSqb9NIpLCXi4XwCcicMKoUqk/TSKSwl4uF0AnInDCqFKpv00iksJeLhfAJyJwwqhSqT9NIpLCXi4XQCcicMKoUqm/TSKSwqhSqb9NIpLCXi4XQCcicMJeLhfAJyJwwqhSqT9NIpLCaxwVwbYtzEA1NULBQCAAQTU1QsGBQMDAAAAAAINAcEFrHBXBti2MwAAAAAC2LTxBAAAAAINAUME1NUJBQCAAQQAAAAC2LRzBaxwVQbYtzEBrHBVBti2MwDU1QkGBQMDA3U00QYEysMARNlpB8PfbwBE2WkH4+w1BAAAAAO73a8HdTTRBgTLwQAAAAACBMkDBAAAAAPf7hUERNlrB8PfbwAAAAACBMmBB3U00wYEysMDdTTTBgTLwQBE2WsH4+w1B"),
+"format": 34359742487,
+"index_count": 288,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACQAIAAsADAANAA4ADQAMAA8AEAARABIAEQAQABMAFAAVABYAFQAUABcAGAAZABoAGQAYABsAHAAdAB4AHQAcAB8AIAAhACIAIQAgACMAIQAjACQAJAAjACUAJgAnACgAJwAmACkAKgArACwAKwAqAC0ALgAvADAALwAuADEAMgAzADQAMwAyADUANgA3ADgANwA2ADkAOgA7ADwAOwA6AD0APgA/AEAAPwA+AEEAQgBDAEQAQwBCAEUARgBHAEgARwBGAEkASgBLAEwASwBKAE0ATgBPAFAATwBOAFEAUgBTAFQAUwBSAFUAVgBXAFgAVwBWAFkAWgBbAFwAWwBaAF0AXgBfAGAAXwBeAGEAXgBiAGEAXwBhAGMAYgBeAGQAXwBjAGUAYgBkAGYAZQBjAGYAZgBkAGcAZgBnAGUAaABpAGoAaQBoAGsAbABtAG4AbQBsAG8AcABxAHIAcQBwAHMAdAB1AHYAdQB0AHcAeAB5AHoAeQB4AHsAfAB9AH4AfQB8AH8AgACBAIIAgQCAAIMAhACFAIYAhQCEAIcAhgCIAIQAhwCEAIkAiACGAIoAhwCJAIsAiACKAIwAiwCJAI0AjACKAI4AiwCNAI4AjgCKAI8AjgCPAIsAkACRAJIAkQCQAJMAkgCUAJAAkwCQAJUAlACSAJYAkwCVAJcAlACWAJgAlwCVAJkAmACWAJoAlwCZAJsAmgCWAJsAmgCbAJkA"),
+"material": SubResource("ShaderMaterial_afv7b"),
+"name": "red",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 156,
+"vertex_data": PackedByteArray("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AAAAAMNkqjzDZKq9sJCTvcNkqjzDZCo9AAAAAMNkqjwZy4y9edxzvcNkqjwXyww9edxzvcNkqjwXywy9sJCTvcNkqjzDZCq9AADZrp59/7/ZLv9/YIL/vwAA2a6eff+/2S7/f2CC/7/ZLv9/2s//v/9//39z0v+//3//f3PS/7/ZLv9/2s//v/9//3///8TWJdH/f///Edgl0f9///8R2P9//3///8TW///ZrgAAzv4l0f9////O/v//2a4AAM7+JdH/f///zv7/f/9////E1iXR/3///xHYJdH/f///Edj/f/9////E1tku/3/az/+//3//f3PS/7//f/9/c9L/v9ku/3/az/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/78AANmunn3/v9ku/39ggv+/AADZrp59/7/ZLv9/YIL/v/9/AAD+//+//38AAP7//7//fwAA////v/9/AAD+//+//38AAP///7//fwAA////v/////+LLf+/AADZriQw/78AANmuJDD/v/////+LLf+////ZrgAAzv4l0f9////O/v//2a4AAM7+JdH/f///zv7//9muAAAR2P////8AAMTW/////wAAxNb//9muAAAR2P////+LLf+/AADZriQw/78AANmuJDD/v/////+LLf+////ZrgAAEdj/////AADE1v////8AAMTW///ZrgAAEdjaub2k2P4W/0HbJMYmAeeAQdskxiYB54Daub2k2P4W/0HbJMbaAC/Yk9L//9wAy6iT0v//3ADLqEHbJMbaAC/Y/3//f///xNYl0f9///8R2CXR/3///xHY/3//f///xNb/////iy3/vwAA2a4kMP+/AADZriQw/7//////iy3/vwAA2a6eff+/2S7/f2CC/78AANmunn3/v9ku/39ggv+//39qrSL/Mtfaub2kJP/Pp9q5vaQk/8+n/39qrSL/MteT0v//Zy5twL0kJMZgMJG/vSQkxmAwkb+T0v//Zy5twP//2a4AAM7+JdH/f///zv7//9muAADO/iXR/3///87+vSQkxi9+ksAkRr2kz4Frv70kJMYvfpLAJEa9pM+Ba7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v///2a4AABHY/////wAAxNb/////AADE1v//2a4AABHY2S7/f9rP/7//f/9/c9L/v/9//39z0v+/2S7/f9rP/78kRr2kns9swP9/aq2X0ZG//39qrZfRkb8kRr2kns9swIP2eon/////g/Z6if////+D9nqJ/////4P2eon//////396if///7//f3qJ////v/9/eon///+//396if///7+D9v//AAD/v4P2//8AAP+/g/b//wAA/7+D9v//AAD/v3sJeon/f/+/ewl6if9//797CXqJ/3//v3sJeon/f/+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//38AAP7//7//fwAA/v//v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dj3ye")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jip10"]
+render_priority = 0
+shader = ExtResource("19_iunut")
+shader_parameter/outline_size = 0.0030000001425
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
 [node name="level_2" type="Node3D" unique_id=188781495]
 
 [node name="GameManager" parent="." unique_id=6342885 instance=ExtResource("1_ucdhh")]
@@ -319,7 +380,8 @@ size = Vector3(105.63375, 46.7688, 162.28955)
 transform = Transform3D(-0.99989015, 0, 0.014817357, 0, 1, 0, -0.014817357, 0, -0.99989015, -1.0550995, 1.8000374, 144.93625)
 
 [node name="FinishZone" parent="GameManager" unique_id=631311601 instance=ExtResource("2_8qsmg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.0641, 0.88213825, -176.59822)
+transform = Transform3D(1, 0, 0, 0, 3.057036, 0, 0, 0, 9.959585, -161.91672, 4.2754436, -176.41522)
+visible = false
 
 [node name="PostProcessing" type="CanvasLayer" parent="GameManager" unique_id=154719365]
 
@@ -1262,5 +1324,19 @@ shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="SpiderSpawnAnchor" type="Node3D" parent="GameManager" unique_id=861754653]
 transform = Transform3D(0.9999978, -0.00019792683, 0.0020911724, 0.0005883037, -0.92931956, -0.36927634, 0.0020164517, 0.36927676, -0.9293174, 127.15233, 1.7439365, -144.12059)
+
+[node name="BottleKetchup" type="MeshInstance3D" parent="." unique_id=316484844 groups=["freezable"]]
+transform = Transform3D(36, 0, 0, 0, 36, 0, 0, 0, 36, -162.38443, 2.9013247, -177.54274)
+mesh = SubResource("ArrayMesh_jd2hh")
+surface_material_override/0 = ExtResource("17_wyygt")
+script = ExtResource("18_u87on")
+
+[node name="BottleKetchup2" type="MeshInstance3D" parent="BottleKetchup" unique_id=973498986]
+mesh = SubResource("ArrayMesh_jd2hh")
+surface_material_override/0 = SubResource("ShaderMaterial_jip10")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BottleKetchup" unique_id=2094672672]
+light_color = Color(1, 1, 0.4249097, 1)
+light_energy = 3.376
 
 [editable path="GameManager/TrapTrigger"]

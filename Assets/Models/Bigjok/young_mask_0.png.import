@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1s5umao5r8lh"
-path.s3tc="res://.godot/imported/young_mask_2.jpg-173e7089d63cec8cc8fbaee6738daf2c.s3tc.ctex"
+uid="uid://cmfens2fdno57"
+path.s3tc="res://.godot/imported/young_mask_0.png-36560551ad05c112e7b04a79692c076b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3795d38bc5bfcd3860d52f7b2bde0186"
+"md5": "9316b3be310413e181d6c34646de3799"
 }
 
 [deps]
 
-source_file="res://Assets/Models/young_mask_2.jpg"
-dest_files=["res://.godot/imported/young_mask_2.jpg-173e7089d63cec8cc8fbaee6738daf2c.s3tc.ctex"]
+source_file="res://Assets/Models/Bigjok/young_mask_0.png"
+dest_files=["res://.godot/imported/young_mask_0.png-36560551ad05c112e7b04a79692c076b.s3tc.ctex"]
 
 [params]
 

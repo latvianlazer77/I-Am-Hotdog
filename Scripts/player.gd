@@ -77,13 +77,17 @@ func _ready():
 func apply_skin():
 	var current_skin = SaveData.get_equipped_skin()
 	
-	if current_skin == "silver":
-		# IMPORTANT: Double check this path matches exactly where you saved your material!
-		var silver_mat = preload("res://Materials/silver_surfer.tres") 
-		sausage.set_surface_override_material(0, silver_mat)
-	else:
-		var classic_mat = preload("res://materials/classic.tres")
-		sausage.set_surface_override_material(0, classic_mat)
+	match current_skin:
+		"silver":
+			var silver_mat = preload("res://Materials/silver_surfer.tres")
+			sausage.set_surface_override_material(0, silver_mat)
+		"india":
+			# Added the new India skin right here!
+			var india_mat = preload("res://materials/india.tres")
+			sausage.set_surface_override_material(0, india_mat)
+		_:
+			var classic_mat = preload("res://materials/classic.tres")
+			sausage.set_surface_override_material(0, classic_mat)
 
 # ==========================================
 # ABILITIES & GAMEPLAY
@@ -162,7 +166,6 @@ func stop_flying():
 	tween.tween_property(camera_pivot, "rotation:x", camera_pivot.rotation.x, 0.3)
 
 func attract_coins():
-	# FIXED: Safely checks for a material override before changing colors!
 	var current_mat = sausage.get_surface_override_material(0)
 	if current_mat != null:
 		current_mat.set_shader_parameter("albedo", Color(0.9, 0.45, 0.1, 1.0))

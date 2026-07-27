@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vl6ni7w8rm3j"
-path.s3tc="res://.godot/imported/young_mask_1.jpg-e89b58526f725311d844d288990ade6b.s3tc.ctex"
+uid="uid://4l7xmvbfgs38"
+path.s3tc="res://.godot/imported/young_mask_4.jpg-31a8225d76f6493ea199d4b6085f99a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "34ace08c80f7bc481a574537f797e386"
+"md5": "8ebc3bd4e5abd898406805549972dc4c"
 }
 
 [deps]
 
-source_file="res://Assets/Models/young_mask_1.jpg"
-dest_files=["res://.godot/imported/young_mask_1.jpg-e89b58526f725311d844d288990ade6b.s3tc.ctex"]
+source_file="res://Assets/Models/Bigjok/young_mask_4.jpg"
+dest_files=["res://.godot/imported/young_mask_4.jpg-31a8225d76f6493ea199d4b6085f99a7.s3tc.ctex"]
 
 [params]
 
@@ -30,7 +30,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Models/young_mask_1.jpg"
+roughness/src_normal="res://Assets/Models/young_mask_4.jpg"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cyqkml5b4g4c4"]
 
-[ext_resource type="PackedScene" uid="uid://c3dj5mdrltgs2" path="res://Assets/Models/young_mask.glb" id="1_b6ktq"]
+[ext_resource type="PackedScene" uid="uid://c3dj5mdrltgs2" path="res://Assets/Models/Bigjok/young_mask.glb" id="1_b6ktq"]
 
 [node name="Sketchfab_Scene" unique_id=92036079 instance=ExtResource("1_b6ktq")]
 

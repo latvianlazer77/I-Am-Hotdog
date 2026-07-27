@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://ccnv8ccwcovra" path="res://Scripts/checker.gdshader" id="3_neey8"]
 [ext_resource type="PackedScene" uid="uid://bac2ph7oux2it" path="res://Scenes/Menus/menu_hotdog.tscn" id="4_5wi6m"]
 [ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Malam Poek.ttf" id="4_chkef"]
-[ext_resource type="Material" uid="uid://dq6vffal4272a" path="res://materials/classic.tres" id="5_j4kqa"]
+[ext_resource type="Material" uid="uid://dq6vffal4272a" path="res://Materials/classic.tres" id="5_j4kqa"]
 [ext_resource type="PackedScene" uid="uid://c8dga51l4a67a" path="res://Scenes/Menus/level_select.tscn" id="6_4fgt5"]
 [ext_resource type="StyleBox" uid="uid://b8778mfvdj2c" path="res://Assets/Images/button.tres" id="6_j4kqa"]
 
@@ -69,6 +69,7 @@ mesh = SubResource("PlaneMesh_j4kqa")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.555, 0)
 
 [node name="Sausage" parent="SubViewportContainer/SubViewport/MenuHotdog" index="0" unique_id=1463542699]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.41)
 surface_material_override/0 = ExtResource("5_j4kqa")
 
 [node name="LevelSelectArea" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=189131972]
@@ -261,6 +262,21 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "Silver surfer marlon skin"
+
+[node name="BtnIndia" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=976713996]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -15.5
+offset_right = 51.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "India Skin"
 
 [node name="CoinText" type="Label" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=612932208]
 layout_mode = 1

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv5du8ux058m3"
-path.s3tc="res://.godot/imported/crying_head_0.png-c177788ca430b6277059dee17f590aec.s3tc.ctex"
+uid="uid://biuwn3ew212jd"
+path.s3tc="res://.godot/imported/young_mask_6.png-6f89deb77cd306bf04a58023b09b8804.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a4591aeee420700cf6e92df34f769cb6"
+"md5": "a73ad2ef9ee0392a57fb62b0e8091cb9"
 }
 
 [deps]
 
-source_file="res://Assets/Models/crying_head_0.png"
-dest_files=["res://.godot/imported/crying_head_0.png-c177788ca430b6277059dee17f590aec.s3tc.ctex"]
+source_file="res://Assets/Models/Bigjok/young_mask_6.png"
+dest_files=["res://.godot/imported/young_mask_6.png-6f89deb77cd306bf04a58023b09b8804.s3tc.ctex"]
 
 [params]
 

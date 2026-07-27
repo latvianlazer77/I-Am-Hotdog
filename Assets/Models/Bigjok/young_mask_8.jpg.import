@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7682vu48xyyl"
-path.s3tc="res://.godot/imported/crying_head_4.png-22553560966e8b56ddf539c0990cddea.s3tc.ctex"
+uid="uid://bjhbs2n2d24pa"
+path.s3tc="res://.godot/imported/young_mask_8.jpg-58d364c97f09b171b3fcfce523b38668.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d8e94480191a8f81a9f02932d3fce9fb"
+"md5": "d1b6c2b48e0b3d6389ed53e476bbb233"
 }
 
 [deps]
 
-source_file="res://Assets/Models/crying_head_4.png"
-dest_files=["res://.godot/imported/crying_head_4.png-22553560966e8b56ddf539c0990cddea.s3tc.ctex"]
+source_file="res://Assets/Models/Bigjok/young_mask_8.jpg"
+dest_files=["res://.godot/imported/young_mask_8.jpg-58d364c97f09b171b3fcfce523b38668.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://Assets/Models/young_mask_8.jpg"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

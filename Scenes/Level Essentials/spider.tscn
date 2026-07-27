@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8ii6khhyycf4"]
 
-[ext_resource type="PackedScene" uid="uid://dc00fhbh8t1y3" path="res://Assets/Models/crying_head.glb" id="1_mny0k"]
+[ext_resource type="PackedScene" uid="uid://dc00fhbh8t1y3" path="res://Assets/Models/Crying Head/crying_head.glb" id="1_mny0k"]
 [ext_resource type="Script" uid="uid://b3ja04hvkgo2j" path="res://Scripts/spider.gd" id="1_sk3gp"]
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="3_bqeia"]
 
@@ -27,7 +27,7 @@ shape = SubResource("CapsuleShape3D_57qmd")
 [node name="Sketchfab_Scene" parent="." unique_id=1379706515 instance=ExtResource("1_mny0k")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 15.349091, 0)
 
-[node name="Skeleton3D" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/CHsk/Object_5" parent_id_path=PackedInt32Array(1379706515, 344948772) index="0" unique_id=1723998441]
+[node name="Skeleton3D" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/CHsk/Object_5" parent_id_path=PackedInt32Array(1379706515, 85537997) index="0" unique_id=924383956]
 bones/1/position = Vector3(-0.00053153373, -0.060011007, 0.037293866)
 bones/1/rotation = Quaternion(0.67996836, 0.0054369653, 0.005097419, 0.73320365)
 bones/2/rotation = Quaternion(0.7907823, -0.016337365, 0.009743452, 0.611802)
@@ -89,13 +89,13 @@ bones/67/rotation = Quaternion(0.7071069, 4.8511235e-09, 8.086389e-09, 0.7071067
 bones/69/position = Vector3(-0.07014638, 0.23002198, -0.16751939)
 bones/69/rotation = Quaternion(0.7071069, 4.8511235e-09, 8.086389e-09, 0.70710677)
 
-[node name="������������������" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode" parent_id_path=PackedInt32Array(1379706515, 1827490528) index="2" unique_id=1691442251]
+[node name="������������������" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode" parent_id_path=PackedInt32Array(1379706515, 2060992676) index="2" unique_id=1923606834]
 visible = false
 
-[node name="������������������_Floor_0" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/������������������" index="0" unique_id=512398163]
+[node name="������������������_Floor_0" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/������������������" index="0" unique_id=662273145]
 visible = false
 
-[node name="AnimationPlayer" parent="Sketchfab_Scene" index="1" unique_id=828686348]
+[node name="AnimationPlayer" parent="Sketchfab_Scene" index="1" unique_id=1432895012]
 autoplay = &"MOVE"
 speed_scale = 3.0
 
