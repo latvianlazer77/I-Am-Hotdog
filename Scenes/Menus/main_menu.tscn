@@ -278,6 +278,18 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "India Skin"
 
+[node name="BtnIceman" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=2003020309]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 199.0
+offset_top = -15.0
+offset_right = 302.0
+offset_bottom = 16.0
+grow_vertical = 2
+text = "Iceman Skin"
+
 [node name="CoinText" type="Label" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=612932208]
 layout_mode = 1
 anchors_preset = 1

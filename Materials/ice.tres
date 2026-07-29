@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://qfu73yyowimc"]
+
+[ext_resource type="Shader" uid="uid://cfpwwe22iw8m1" path="res://Scripts/ice.gdshader" id="1_eo6w1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7r86d"]
+noise_type = 2
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eo6w1"]
+noise = SubResource("FastNoiseLite_7r86d")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_eo6w1")
+shader_parameter/ice_color = Color(0.72135246, 0.86663747, 0.96857667, 0.67)
+shader_parameter/edge_color = Color(0.8, 0.95, 1, 1)
+shader_parameter/fresnel_power = 1.8750000890625
+shader_parameter/edge_glow_strength = 2.0
+shader_parameter/frost_noise = SubResource("NoiseTexture2D_eo6w1")
+shader_parameter/noise_scale = 10.0
+shader_parameter/frost_intensity = 0.62000002945
+shader_parameter/bump_strength = 1.5
+shader_parameter/fake_light_direction = Vector3(0.5, 1, 0.5)
+shader_parameter/fake_sparkle_power = 32.0

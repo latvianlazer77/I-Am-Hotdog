@@ -12,6 +12,7 @@ extends Control
 @onready var btn_regular = $CanvasLayer/MainMenuUI/ShopPopup/BtnRegular
 @onready var btn_silver = $CanvasLayer/MainMenuUI/ShopPopup/BtnSilver
 @onready var btn_india = $CanvasLayer/MainMenuUI/ShopPopup/BtnIndia
+@onready var btn_iceman = $CanvasLayer/MainMenuUI/ShopPopup/BtnIceman
 @onready var close_shop_button = $CanvasLayer/MainMenuUI/ShopPopup/CloseShopButton
 
 @onready var menu_hotdog = $SubViewportContainer/SubViewport/MenuHotdog
@@ -28,7 +29,8 @@ var transitioning = false
 
 # Prices for the shop
 const SILVER_PRICE = 100
-const INDIA_PRICE = 50
+const INDIA_PRICE = 67
+const ICEMAN_PRICE = 36
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -50,6 +52,7 @@ func _ready():
 	btn_regular.pressed.connect(_on_regular_skin_pressed)
 	btn_silver.pressed.connect(_on_silver_skin_pressed)
 	btn_india.pressed.connect(_on_india_skin_pressed)
+	btn_iceman.pressed.connect(_on_iceman_skin_pressed) # Added Iceman connection here!
 	
 	# Load shop and 3D skin on startup
 	refresh_shop_ui()
@@ -176,6 +179,17 @@ func refresh_shop_ui():
 	else:
 		btn_india.text = "BUY INDIA (" + str(INDIA_PRICE) + " Coins)"
 		btn_india.disabled = false
+		
+	# Iceman Skin Check (Added here!)
+	if equipped == "iceman":
+		btn_iceman.text = "EQUIPPED"
+		btn_iceman.disabled = true
+	elif SaveData.is_skin_owned("iceman"):
+		btn_iceman.text = "EQUIP ICEMAN"
+		btn_iceman.disabled = false
+	else:
+		btn_iceman.text = "BUY ICEMAN (" + str(ICEMAN_PRICE) + " Coins)"
+		btn_iceman.disabled = false
 
 func handle_skin_button(skin_name: String, price: int):
 	if skin_name == "regular" or skin_name == "default":
@@ -203,6 +217,9 @@ func _on_silver_skin_pressed():
 func _on_india_skin_pressed():
 	handle_skin_button("india", INDIA_PRICE)
 
+func _on_iceman_skin_pressed(): # Added Iceman press function!
+	handle_skin_button("iceman", ICEMAN_PRICE)
+
 # ==========================================
 # APPLY SKIN TO MENU 3D MODEL
 # ==========================================
@@ -220,6 +237,9 @@ func update_menu_hotdog_skin():
 		"india": 
 			var india_mat = preload("res://materials/india.tres")
 			menu_hotdog_mesh.set_surface_override_material(0, india_mat)
+		"iceman": # Added Iceman material here!
+			var iceman_mat = preload("res://materials/ice.tres")
+			menu_hotdog_mesh.set_surface_override_material(0, iceman_mat)
 		_: 
 			var classic_mat = preload("res://materials/classic.tres")
 			menu_hotdog_mesh.set_surface_override_material(0, classic_mat)

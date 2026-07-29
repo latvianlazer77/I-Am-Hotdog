@@ -71,24 +71,28 @@ func _ready():
 	apply_skin()
 
 # ==========================================
-# SKIN SYSTEM LOGIC
+# SKIN SYSTEM
 # ==========================================
-
 func apply_skin():
+	if not sausage:
+		print("ERROR: Couldn't find the Sausage mesh to apply the skin!")
+		return
+		
 	var current_skin = SaveData.get_equipped_skin()
 	
 	match current_skin:
 		"silver":
-			var silver_mat = preload("res://Materials/silver_surfer.tres")
+			var silver_mat = preload("res://materials/silver_surfer.tres")
 			sausage.set_surface_override_material(0, silver_mat)
-		"india":
-			# Added the new India skin right here!
+		"india": 
 			var india_mat = preload("res://materials/india.tres")
 			sausage.set_surface_override_material(0, india_mat)
-		_:
+		"iceman": 
+			var iceman_mat = preload("res://materials/ice.tres")
+			sausage.set_surface_override_material(0, iceman_mat)
+		_: 
 			var classic_mat = preload("res://materials/classic.tres")
 			sausage.set_surface_override_material(0, classic_mat)
-
 # ==========================================
 # ABILITIES & GAMEPLAY
 # ==========================================
