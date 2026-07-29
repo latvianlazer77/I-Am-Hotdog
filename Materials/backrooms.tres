@@ -1,0 +1,138 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://brp13x56ltik4"]
+
+[ext_resource type="Texture2D" uid="uid://cos7n32b6ux5b" path="res://Assets/backrooms/backrooms/painted_wall/painted_wall_color.png" id="1_vji8e"]
+
+[sub_resource type="Shader" id="Shader_phny5"]
+code = "shader_type spatial;
+render_mode diffuse_lambert, specular_schlick_ggx;
+
+// Base color controls
+uniform vec4 wall_color : source_color = vec4(0.82, 0.78, 0.52, 1.0);  // Yellowed wallpaper
+uniform vec4 stain_color : source_color = vec4(0.55, 0.48, 0.30, 1.0); // Damp stains
+uniform vec4 mold_color : source_color = vec4(0.38, 0.42, 0.28, 1.0);  // Greenish mold
+
+// Texture maps (optional — works without them too)
+uniform sampler2D albedo_texture : source_color, hint_default_white;
+uniform sampler2D normal_map : hint_normal;
+uniform bool use_textures = false;
+
+// Surface properties
+uniform float roughness : hint_range(0.0, 1.0) = 0.88;
+uniform float metallic : hint_range(0.0, 1.0) = 0.0;
+uniform float normal_strength : hint_range(0.0, 3.0) = 1.0;
+
+// Pattern tiling
+uniform float tile_scale = 4.0;   // Wallpaper/carpet repeat
+uniform float stain_scale = 1.5;  // Stain blotch scale
+
+// Atmosphere
+uniform float wetness : hint_range(0.0, 1.0) = 0.3;       // Damp sheen
+uniform float mold_amount : hint_range(0.0, 1.0) = 0.2;   // Mold coverage
+uniform float yellowing : hint_range(0.0, 1.0) = 0.6;     // Age yellowing
+
+// Subtle pulsing emission (the \"wrongness\" of the backrooms)
+uniform vec3 emission_color : source_color = vec3(0.9, 0.85, 0.5);
+uniform float emission_strength : hint_range(0.0, 0.5) = 0.04;
+
+// --- Noise helpers ---
+float hash(vec2 p) {
+	return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+}
+
+float smoothnoise(vec2 p) {
+	vec2 i = floor(p);
+	vec2 f = fract(p);
+	vec2 u = f * f * (3.0 - 2.0 * f);
+	return mix(
+		mix(hash(i + vec2(0,0)), hash(i + vec2(1,0)), u.x),
+		mix(hash(i + vec2(0,1)), hash(i + vec2(1,1)), u.x),
+		u.y
+	);
+}
+
+float fbm(vec2 p) {
+	float v = 0.0;
+	float a = 0.5;
+	for (int i = 0; i < 5; i++) {
+		v += a * smoothnoise(p);
+		p *= 2.1;
+		a *= 0.5;
+	}
+	return v;
+}
+
+// Wallpaper/carpet tile pattern (subtle grid lines)
+float tile_pattern(vec2 uv, float scale) {
+	vec2 tiled = fract(uv * scale);
+	float line_x = smoothstep(0.97, 1.0, tiled.x) + smoothstep(0.97, 1.0, 1.0 - tiled.x);
+	float line_y = smoothstep(0.97, 1.0, tiled.y) + smoothstep(0.97, 1.0, 1.0 - tiled.y);
+	return clamp(line_x + line_y, 0.0, 1.0) * 0.15;
+}
+
+void fragment() {
+	vec2 uv = UV;
+
+	// --- Base color ---
+	vec3 base;
+	if (use_textures) {
+		base = texture(albedo_texture, uv * tile_scale).rgb;
+	} else {
+		base = wall_color.rgb;
+		// Subtle tile seam lines
+		base -= tile_pattern(uv, tile_scale);
+	}
+
+	// --- Age yellowing ---
+	base = mix(base, base * vec3(1.1, 1.05, 0.7), yellowing * 0.5);
+
+	// --- Stain / damp patches ---
+	float stain_mask = fbm(uv * stain_scale + vec2(3.7, 1.2));
+	stain_mask = smoothstep(0.52, 0.72, stain_mask);
+	base = mix(base, stain_color.rgb, stain_mask * wetness);
+
+	// --- Mold patches (darker, greenish) ---
+	float mold_mask = fbm(uv * stain_scale * 1.8 + vec2(9.1, 4.5));
+	mold_mask = smoothstep(0.6, 0.78, mold_mask);
+	base = mix(base, mold_color.rgb, mold_mask * mold_amount);
+
+	// --- Subtle high-frequency noise (texture grain) ---
+	float grain = smoothnoise(uv * 120.0) * 0.06 - 0.03;
+	base += grain;
+
+	// --- Normal map ---
+	if (use_textures) {
+		NORMAL_MAP = texture(normal_map, uv * tile_scale).rgb;
+		NORMAL_MAP_DEPTH = normal_strength;
+	}
+
+	// --- Wetness spec boost ---
+	float spec_boost = mix(0.0, 0.15, wetness * stain_mask);
+
+	// --- Output ---
+	ALBEDO = clamp(base, 0.0, 1.0);
+	ROUGHNESS = roughness - spec_boost;
+	METALLIC = metallic;
+
+	// Very faint emission — gives the walls a slightly \"lit from nowhere\" quality
+	EMISSION = emission_color * emission_strength * (0.8 + 0.2 * smoothnoise(uv * 3.0 + TIME * 0.05));
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_phny5")
+shader_parameter/wall_color = Color(0.82, 0.78, 0.52, 1)
+shader_parameter/stain_color = Color(0.55, 0.48, 0.3, 1)
+shader_parameter/mold_color = Color(0.38, 0.42, 0.28, 1)
+shader_parameter/albedo_texture = ExtResource("1_vji8e")
+shader_parameter/use_textures = true
+shader_parameter/roughness = 0.88
+shader_parameter/metallic = 0.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/tile_scale = 4.0
+shader_parameter/stain_scale = 1.5
+shader_parameter/wetness = 0.3
+shader_parameter/mold_amount = 0.2
+shader_parameter/yellowing = 0.6
+shader_parameter/emission_color = Color(0.9, 0.85, 0.5, 1)
+shader_parameter/emission_strength = 0.04
