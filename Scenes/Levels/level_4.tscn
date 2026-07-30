@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="4_keyqw"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="5_gsxik"]
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="6_3asqb"]
+[ext_resource type="AudioStream" uid="uid://djt56ev3o45sp" path="res://Assets/Audio/india level.mp3" id="7_i4hbv"]
+[ext_resource type="PackedScene" uid="uid://c2bmsvlniokhu" path="res://model/bhelpuri shop by ajay.fbx" id="8_h0uxt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_slbhm"]
 
@@ -48,3 +50,11 @@ transform = Transform3D(9.312075, 0, 0, 0, 4.9056935, 0, 0, 0, 1, -4.005741, 2.3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2136923417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.575558, -38.478916)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=191463421]
+stream = ExtResource("7_i4hbv")
+autoplay = true
+parameters/looping = true
+
+[node name="bhelpuri shop by ajay" parent="." unique_id=948558868 instance=ExtResource("8_h0uxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.212994, 1.2509868, 3.2547855)
