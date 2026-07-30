@@ -3,7 +3,7 @@ extends Node3D
 @onready var omni = $OmniLight3D
 @onready var mesh = $MeshInstance3D
 
-var base_energy := 1.5        # normal brightness
+var base_energy := 36     # normal brightness
 var flicker_speed := 8.0
 var stutter_chance := 0.03    # 3% chance per frame of a stutter
 

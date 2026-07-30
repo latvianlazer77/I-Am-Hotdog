@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://275roerhr20m"]
+
+[ext_resource type="Shader" uid="uid://clsjsil7gufvf" path="res://Scripts/india.gdshader" id="1_hpdnq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hpdnq")
+shader_parameter/color_saffron = Color(1, 1, 1, 1)
+shader_parameter/color_white = Color(1, 1, 1, 1)
+shader_parameter/color_green = Color(1, 1, 1, 1)
+shader_parameter/color_chakra = Color(0.9304411, 0.09320182, 0.09320182, 1)
+shader_parameter/stripe_1 = 0.2
+shader_parameter/stripe_2 = -0.2
+shader_parameter/chakra_size = 0.2
