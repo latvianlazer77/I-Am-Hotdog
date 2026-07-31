@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c86dl8qktmbds"]
 
-[ext_resource type="Texture2D" uid="uid://b6q6mk14y0d8d" path="res://textures/ICENew_Graph_basecolor.png" id="1_sy7oa"]
+[ext_resource type="Texture2D" uid="uid://b6q6mk14y0d8d" path="res://textures/coo.png" id="1_sy7oa"]
 [ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_yy6i0"]
-[ext_resource type="Texture2D" uid="uid://utfc0wyaonoc" path="res://textures/Heightmap_16BIT_PNG.png" id="2_13yca"]
+[ext_resource type="Texture2D" uid="uid://utfc0wyaonoc" path="res://textures/coolest.png" id="2_13yca"]
 [ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="2_167vu"]
 [ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="3_x1k1j"]
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="4_4ahh4"]
@@ -10,9 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="6_osqx1"]
 [ext_resource type="PackedScene" uid="uid://duvju37gjq5t7" path="res://Scenes/Level Essentials/snow_effect.tscn" id="7_167vu"]
 [ext_resource type="AudioStream" uid="uid://ccaysxtp6wn07" path="res://Assets/Audio/Iceman.mp3" id="8_x1k1j"]
-[ext_resource type="Texture2D" uid="uid://d04vaerdyjpsg" path="res://textures/Snowmap_8BIT_PNG.png" id="9_1hf40"]
 [ext_resource type="PackedScene" uid="uid://fvk4ajqp8fof" path="res://Scenes/Level Essentials/spikes.tscn" id="9_4ahh4"]
-[ext_resource type="ArrayMesh" uid="uid://dka7lkr3cwfsa" path="res://model/SnowyMountain_V2_Mesh.obj" id="9_md4x4"]
 [ext_resource type="PackedScene" uid="uid://c2ylildwd0ftp" path="res://Scenes/Level Essentials/coin.tscn" id="10_dl55b"]
 [ext_resource type="PackedScene" uid="uid://dab80x73ea20e" path="res://Scenes/Level Essentials/sweeper.tscn" id="14_1hf40"]
 
@@ -144,9 +142,6 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1hf40"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x66yp"]
-albedo_texture = ExtResource("9_1hf40")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ahh4"]
 
@@ -411,11 +406,6 @@ shape = SubResource("WorldBoundaryShape3D_1hf40")
 transform = Transform3D(0.8132762, 0, 0, 0, 1.5681041, 0, 0, 0, 1, -7.277262, 32.774334, 302.7088)
 
 [node name="HUD" parent="GameManager" unique_id=1630524627 instance=ExtResource("6_osqx1")]
-
-[node name="SnowyMountainV2Mesh" type="MeshInstance3D" parent="GameManager" unique_id=1799931279]
-transform = Transform3D(228.23303, 0, -276.80048, 0, 293.79105, 0, 284.6382, 0, 221.94843, 13.63171, -186.7821, -183.98596)
-material_override = SubResource("StandardMaterial3D_x66yp")
-mesh = ExtResource("9_md4x4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1275291239]
 environment = SubResource("Environment_g4v7s")

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://brp13x56ltik4"]
 
-[ext_resource type="Texture2D" uid="uid://cos7n32b6ux5b" path="res://Assets/backrooms/backrooms/painted_wall/painted_wall_color.png" id="1_vji8e"]
+[ext_resource type="Texture2D" uid="uid://cos7n32b6ux5b" path="res://Assets/Images/painted_wall_color.png" id="1_vji8e"]
 
 [sub_resource type="Shader" id="Shader_phny5"]
 code = "shader_type spatial;
