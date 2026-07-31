@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bjjxj2bkgqrpk" path="res://Scenes/Level Essentials/light_fixture.tscn" id="9_0x4y1"]
 [ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="9_blpqv"]
 [ext_resource type="Material" uid="uid://brp13x56ltik4" path="res://Materials/backrooms.tres" id="11_5buja"]
-[ext_resource type="Texture2D" uid="uid://cos7n32b6ux5b" path="res://Assets/backrooms/backrooms/painted_wall/painted_wall_color.png" id="11_wyygt"]
+[ext_resource type="Texture2D" uid="uid://cos7n32b6ux5b" path="res://Assets/Images/painted_wall_color.png" id="11_wyygt"]
 [ext_resource type="PackedScene" uid="uid://d3ycga4rr2q6s" path="res://Scenes/Level Essentials/bigjok.tscn" id="13_uqiic"]
 [ext_resource type="PackedScene" uid="uid://8ii6khhyycf4" path="res://Scenes/Level Essentials/spider.tscn" id="15_t27xo"]
 [ext_resource type="PackedScene" uid="uid://cmmumafmsohr" path="res://Scenes/Level Essentials/trap_trigger.tscn" id="16_yxf76"]
@@ -581,7 +581,6 @@ render_priority = 0
 shader = ExtResource("19_iunut")
 shader_parameter/outline_size = 0.0030000001425
 shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_fade_thickness = 0.8
 
 [node name="level_2" type="Node3D" unique_id=188781495]
 
