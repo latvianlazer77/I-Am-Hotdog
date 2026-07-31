@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfg6foysnuj8" path="res://Scripts/hud.gd" id="1_e0onf"]
 [ext_resource type="PackedScene" uid="uid://crsk1y3ecnlwb" path="res://Scenes/Menus/pause_menu.tscn" id="2_4qu8c"]
 [ext_resource type="StyleBox" uid="uid://das6djqtged2w" path="res://Assets/Images/ability.tres" id="2_7fw6p"]
-[ext_resource type="FontFile" uid="uid://7e4xipn38bqf" path="res://Assets/NotoEmoji-VariableFont_wght.ttf" id="3_0ibdi"]
+[ext_resource type="FontFile" uid="uid://bydjq6t8y8mxu" path="res://Assets/Fonts/NotoColorEmoji-Regular.ttf" id="3_0ibdi"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1630524627 groups=["hud"]]
 script = ExtResource("1_e0onf")

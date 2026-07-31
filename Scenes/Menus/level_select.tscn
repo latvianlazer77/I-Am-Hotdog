@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8dga51l4a67a"]
 
 [ext_resource type="Script" uid="uid://ci8w8doucxdtu" path="res://Scripts/level_select.gd" id="1_37jrt"]
-[ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Malam Poek.ttf" id="2_leldv"]
+[ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Fonts/Malam Poek.ttf" id="2_leldv"]
 
 [node name="LevelSelect" type="Control" unique_id=1256648337]
 layout_mode = 3

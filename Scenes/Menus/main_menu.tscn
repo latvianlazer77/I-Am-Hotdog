@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bfwnd3yp1wdg1" path="res://Assets/Audio/Hotdog Heart.mp3" id="2_pha2q"]
 [ext_resource type="Shader" uid="uid://ccnv8ccwcovra" path="res://Scripts/checker.gdshader" id="3_neey8"]
 [ext_resource type="PackedScene" uid="uid://bac2ph7oux2it" path="res://Scenes/Menus/menu_hotdog.tscn" id="4_5wi6m"]
-[ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Malam Poek.ttf" id="4_chkef"]
+[ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Fonts/Malam Poek.ttf" id="4_chkef"]
 [ext_resource type="Material" uid="uid://dq6vffal4272a" path="res://Materials/classic.tres" id="5_j4kqa"]
 [ext_resource type="PackedScene" uid="uid://c8dga51l4a67a" path="res://Scenes/Menus/level_select.tscn" id="6_4fgt5"]
 [ext_resource type="StyleBox" uid="uid://b8778mfvdj2c" path="res://Assets/Images/button.tres" id="6_j4kqa"]
