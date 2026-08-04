@@ -58,7 +58,7 @@ func _ready():
 	update_coin_label()
 
 func update_coin_label():
-	coin_label.text = "🪙 " + str(SaveData.get_coins())
+	coin_label.text = str(SaveData.get_coins())
 
 func setup_ability_bar():
 	for i in range(ABILITY_ORDER.size()):

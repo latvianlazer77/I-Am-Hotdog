@@ -420,6 +420,7 @@ environment = SubResource("Environment_g4v7s")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1483918345]
 stream = ExtResource("8_x1k1j")
 autoplay = true
+parameters/looping = true
 
 [node name="Spikes" parent="." unique_id=177855395 instance=ExtResource("9_4ahh4")]
 transform = Transform3D(1, 0, 0, 0, 1.1076776, 0, 0, 0, 15.345527, 28.906303, 1.2054892, -5.25865)
@@ -583,7 +584,6 @@ transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284
 
 [node name="Sweeper" parent="." unique_id=1018930307 instance=ExtResource("14_1hf40")]
 transform = Transform3D(3.798155, 0, 0, 0, 2.5472658, 0, 0, 0, 1.7859141, -1.3965406, 3.9398022, 49.57796)
-spin_speed = 200.0
 
 [node name="Sweeper4" parent="." unique_id=851481707 instance=ExtResource("14_1hf40")]
 transform = Transform3D(3.7981548, 0, 0, 0, 2.5472658, 0, 0, 0, 1.785914, 55.977303, 3.9398022, -4.6102285)

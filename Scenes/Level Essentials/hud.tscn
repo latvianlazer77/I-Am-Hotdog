@@ -36,6 +36,22 @@ offset_bottom = 42.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
+text = "36"
+
+[node name="CoinEmoji" type="Label" parent="CoinLabel" unique_id=637830758]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -103.0
+offset_top = 5.0
+offset_right = -45.0
+offset_bottom = 47.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0ibdi")
+theme_override_font_sizes/font_size = 30
+text = "🪙"
 
 [node name="BurnBar" type="ProgressBar" parent="." unique_id=619510495]
 visible = false
@@ -463,6 +479,7 @@ grow_vertical = 2
 text = "Best Time:"
 
 [node name="DamageFlash" type="ColorRect" parent="." unique_id=94845342]
+visible = false
 z_index = 100
 anchors_preset = 15
 anchor_right = 1.0

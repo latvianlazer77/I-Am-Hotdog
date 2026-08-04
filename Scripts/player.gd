@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const MAX_SPEED = 20.0
-const SPRINT_SPEED = 35.0
+const MAX_SPEED = 25.0
+const SPRINT_SPEED = 40.0
 const GRAVITY = -20.0
 const MOUSE_SENSITIVITY = 0.003
 const ACCELERATION = 0.5

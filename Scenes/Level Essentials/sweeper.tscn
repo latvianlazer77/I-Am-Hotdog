@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="1_2brmg"]
 [ext_resource type="Script" uid="uid://bugykuj64bp1f" path="res://Scenes/Level Essentials/sweeper.gd" id="1_nd3t7"]
-[ext_resource type="Material" uid="uid://qfu73yyowimc" path="res://materials/ice.tres" id="2_e26dl"]
+[ext_resource type="Material" uid="uid://qfu73yyowimc" path="res://Materials/ice.tres" id="2_e26dl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_g4v7s"]
 
