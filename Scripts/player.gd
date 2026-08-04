@@ -82,16 +82,16 @@ func apply_skin():
 	
 	match current_skin:
 		"silver":
-			var silver_mat = preload("res://materials/silver_surfer.tres")
+			var silver_mat = preload("res://Materials/silver_surfer.tres")
 			sausage.set_surface_override_material(0, silver_mat)
 		"india": 
-			var india_mat = preload("res://materials/india.tres")
+			var india_mat = preload("res://Materials/india.tres")
 			sausage.set_surface_override_material(0, india_mat)
 		"iceman": 
-			var iceman_mat = preload("res://materials/ice.tres")
+			var iceman_mat = preload("res://Materials/ice.tres")
 			sausage.set_surface_override_material(0, iceman_mat)
 		_: 
-			var classic_mat = preload("res://materials/classic.tres")
+			var classic_mat = preload("res://Materials/classic.tres")
 			sausage.set_surface_override_material(0, classic_mat)
 # ==========================================
 # ABILITIES & GAMEPLAY
