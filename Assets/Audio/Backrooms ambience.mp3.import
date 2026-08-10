@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cg2xl234ivikv"
+path="res://.godot/imported/Backrooms ambience.mp3-aa7c068c1034dbd2aa8065170f4e536f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Backrooms ambience.mp3"
+dest_files=["res://.godot/imported/Backrooms ambience.mp3-aa7c068c1034dbd2aa8065170f4e536f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
