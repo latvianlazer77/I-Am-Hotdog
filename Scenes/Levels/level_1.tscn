@@ -193,15 +193,6 @@ albedo_color = Color(1, 0.93333334, 0.90588236, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hll7"]
 albedo_color = Color(1, 0.93333334, 0.90588236, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjl6l"]
-albedo_color = Color(1, 0.93333334, 0.90588236, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3628d"]
-albedo_color = Color(1, 0.93333334, 0.90588236, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_irw6p"]
-albedo_color = Color(1, 0.93333334, 0.90588236, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6b06j"]
 albedo_color = Color(0.70980394, 0.61960787, 0.47843137, 1)
 
@@ -277,6 +268,14 @@ shader = ExtResource("5_afv7b")
 shader_parameter/outline_size = 0.0030000001425
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+size = Vector3(20.893127, 0.28187206, 12.308655)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvukc"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iht5x"]
+data = PackedVector3Array(-10.4466, 0.1409, 6.1542997, 10.4466, 0.1409, 6.1542997, -10.4466, -0.1409, 6.1542997, 10.4466, 0.1409, 6.1542997, 10.4466, -0.1409, 6.1542997, -10.4466, -0.1409, 6.1542997, 10.4466, 0.1409, -6.1542997, -10.4466, 0.1409, -6.1542997, 10.4466, -0.1409, -6.1542997, -10.4466, 0.1409, -6.1542997, -10.4466, -0.1409, -6.1542997, 10.4466, -0.1409, -6.1542997, 10.4466, 0.1409, 6.1542997, 10.4466, 0.1409, -6.1542997, 10.4466, -0.1409, 6.1542997, 10.4466, 0.1409, -6.1542997, 10.4466, -0.1409, -6.1542997, 10.4466, -0.1409, 6.1542997, -10.4466, 0.1409, -6.1542997, -10.4466, 0.1409, 6.1542997, -10.4466, -0.1409, -6.1542997, -10.4466, 0.1409, 6.1542997, -10.4466, -0.1409, 6.1542997, -10.4466, -0.1409, -6.1542997, 10.4466, 0.1409, 6.1542997, -10.4466, 0.1409, 6.1542997, 10.4466, 0.1409, -6.1542997, -10.4466, 0.1409, 6.1542997, -10.4466, 0.1409, -6.1542997, 10.4466, 0.1409, -6.1542997, -10.4466, -0.1409, 6.1542997, 10.4466, -0.1409, 6.1542997, -10.4466, -0.1409, -6.1542997, 10.4466, -0.1409, 6.1542997, 10.4466, -0.1409, -6.1542997, -10.4466, -0.1409, -6.1542997)
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5f3p6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5f3p6"]
@@ -285,8 +284,12 @@ size = Vector3(60.79419, 1, 41.92099)
 [sub_resource type="Sky" id="Sky_k2mw1"]
 
 [sub_resource type="Environment" id="Environment_jv26f"]
+background_color = Color(1, 1, 1, 1)
 background_energy_multiplier = 5.0
 sky = SubResource("Sky_k2mw1")
+ambient_light_source = 1
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.0
 glow_blend_mode = 0
 glow_hdr_luminance_cap = 2.0
 adjustment_enabled = true
@@ -606,24 +609,6 @@ transform = Transform3D(0.25492415, 0, 0, 0, 0.05677618, 0, 0, 0, 0.21775639, -7
 [node name="MeshInstance3D" parent="GameViewport/StaticBody3D/Spikes5" index="0" unique_id=375723437]
 surface_material_override/0 = SubResource("StandardMaterial3D_7hll7")
 
-[node name="Spikes2" parent="GameViewport/StaticBody3D" unique_id=248212119 instance=ExtResource("8_jv26f")]
-transform = Transform3D(0.25492415, 0, 0, 0, 0.16165698, 0, 0, 0, 1.1500177, -5.2449226, -0.67697984, 4.0534763)
-
-[node name="MeshInstance3D" parent="GameViewport/StaticBody3D/Spikes2" index="0" unique_id=375723437]
-surface_material_override/0 = SubResource("StandardMaterial3D_tjl6l")
-
-[node name="Spikes3" parent="GameViewport/StaticBody3D" unique_id=42075488 instance=ExtResource("8_jv26f")]
-transform = Transform3D(0.25492415, 0, 0, 0, 0.16165698, 0, 0, 0, 1.1500177, -6.4113717, -0.6769798, 4.0534763)
-
-[node name="MeshInstance3D" parent="GameViewport/StaticBody3D/Spikes3" index="0" unique_id=375723437]
-surface_material_override/0 = SubResource("StandardMaterial3D_3628d")
-
-[node name="Spikes4" parent="GameViewport/StaticBody3D" unique_id=276395229 instance=ExtResource("8_jv26f")]
-transform = Transform3D(0.25492415, 0, 0, 0, 0.16165698, 0, 0, 0, 1.1500177, -7.402022, -0.6769797, 4.0534763)
-
-[node name="MeshInstance3D" parent="GameViewport/StaticBody3D/Spikes4" index="0" unique_id=375723437]
-surface_material_override/0 = SubResource("StandardMaterial3D_irw6p")
-
 [node name="MeshInstance3D33" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=439381958]
 transform = Transform3D(0.015974872, -0.04294359, 0, 0.024771024, 0.027694331, 0, 0, 0, 0.61053133, -3.5211353, -0.100569926, 4.1004267)
 material_override = SubResource("StandardMaterial3D_6b06j")
@@ -650,6 +635,14 @@ surface_material_override/0 = SubResource("ShaderMaterial_k2mw1")
 [node name="OmniLight3D" type="OmniLight3D" parent="GameViewport/StaticBody3D/BottleKetchup" unique_id=1035541873]
 light_color = Color(1, 1, 0.4249097, 1)
 light_energy = 3.376
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=953486548]
+transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999857, -2.1020153, 2.753423, -1.1095858)
+mesh = SubResource("BoxMesh_g4v7s")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvukc")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="GameViewport/StaticBody3D/MeshInstance3D36" unique_id=1685680837]
+shape = SubResource("ConcavePolygonShape3D_iht5x")
 
 [node name="GameManager" parent="GameViewport" unique_id=6342885 instance=ExtResource("1_xgxfi")]
 
@@ -765,6 +758,3 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 137.53178, -88.42571, 33.4
 
 [editable path="GameViewport/StaticBody3D/Spikes"]
 [editable path="GameViewport/StaticBody3D/Spikes5"]
-[editable path="GameViewport/StaticBody3D/Spikes2"]
-[editable path="GameViewport/StaticBody3D/Spikes3"]
-[editable path="GameViewport/StaticBody3D/Spikes4"]
