@@ -31,6 +31,9 @@ shader_parameter/glitch_setting = 0.4
 shader_parameter/proximity_strength = 0.0
 
 [sub_resource type="Environment" id="Environment_fphuk"]
+ambient_light_color = Color(1, 1, 1, 0.6)
+tonemap_mode = 3
+ssao_enabled = true
 adjustment_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_uqiic"]
@@ -727,18 +730,57 @@ transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=737305360]
 transform = Transform3D(0.2962082, 0, 0.9551234, 0, 1, 0, -0.9551234, 0, 0.2962082, 1.1563683, 26.45759, 54.114967)
-visible = false
+light_color = Color(0.3137255, 0.14509805, 0.007843138, 1)
+light_energy = 0.36
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=522626181]
 transform = Transform3D(0.8540052, 0, -0.52026457, 0, 1, 0, 0.52026457, 0, 0.8540052, 26.051655, 26.457594, 54.114964)
-visible = false
+light_color = Color(0.3137255, 0.14509805, 0.007843138, 1)
+light_energy = 0.36
 
 [node name="DirectionalLight3D4" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=160359254]
 transform = Transform3D(-0.8131007, 0, -0.582123, 0, 1, 0, 0.582123, 0, -0.8131007, 26.051659, 26.45759, 54.114967)
-visible = false
+light_color = Color(0.3137255, 0.14509805, 0.007843138, 1)
+light_energy = 0.36
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GameManager/Environment" unique_id=907718772 groups=["world_environment"]]
 environment = SubResource("Environment_fphuk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="GameManager/Environment" unique_id=1797112913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.473324, 58.19725, -6.1063385)
+light_energy = 16.0
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="GameManager/Environment" unique_id=367226268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.57398, 58.19725, -5.5256844)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="GameManager/Environment" unique_id=988661562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.79728, 58.19725, -6.1063385)
+shadow_enabled = true
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="GameManager/Environment" unique_id=1587281731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.49995, 58.19725, -6.1063385)
+shadow_enabled = true
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="GameManager/Environment" unique_id=327543157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.67685, 58.19725, -132.70146)
+shadow_enabled = true
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="GameManager/Environment" unique_id=2132524503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.119354, 58.19725, -105.42161)
+shadow_enabled = true
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="GameManager/Environment" unique_id=2079315707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.85368, 58.19725, -102.94848)
+shadow_enabled = true
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="GameManager/Environment" unique_id=90424890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.745968, 58.19725, 73.43691)
+shadow_enabled = true
 
 [node name="Bigjok" parent="GameManager" unique_id=1980146587 instance=ExtResource("13_uqiic")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -58.70304, 1.052567, 156.71577)
