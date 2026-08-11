@@ -269,7 +269,7 @@ shader_parameter/outline_size = 0.0030000001425
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
-size = Vector3(20.893127, 0.28187206, 12.308655)
+size = Vector3(20.893127, 0.28187206, 11.266792)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvukc"]
 
@@ -287,9 +287,10 @@ size = Vector3(60.79419, 1, 41.92099)
 background_color = Color(1, 1, 1, 1)
 background_energy_multiplier = 5.0
 sky = SubResource("Sky_k2mw1")
-ambient_light_source = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.90876085, 0.75031245, 0.6090043, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.0
+ambient_light_energy = 0.1
 glow_blend_mode = 0
 glow_hdr_luminance_cap = 2.0
 adjustment_enabled = true
@@ -303,7 +304,8 @@ adjustment_brightness = 0.75
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=777753265]
-transform = Transform3D(16.916111, 0, 0, 0, 5.8843265, 0, 0, 0, 10.666512, -0.12817742, -0.03692576, -0.6162914)
+transform = Transform3D(16.916111, 0, 0, 0, 5.8843265, 0, 0, 0, 10.666512, -0.12754163, -0.03692576, -0.65947276)
+visible = false
 mesh = SubResource("BoxMesh_seteq")
 surface_material_override/0 = SubResource("StandardMaterial3D_xs3h8")
 
@@ -568,16 +570,16 @@ transform = Transform3D(0.20136344, 0, 0, 0, 0.017, 0, 0, 0, 0.208374, -8.162976
 transform = Transform3D(0.20136343, 0, 0, 0, 0.017, 0, 0, 0, 0.20837396, -8.162974, -0.4956097, -0.5386073)
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1555971523]
-transform = Transform3D(-0.0022559862, -0.7366328, 0.03474883, -0.0037822013, 0.43938297, 0.058257014, -0.60800767, -1.9279765e-10, -0.00049133104, -2.4171426, -0.32534984, 4.10127)
+transform = Transform3D(-0.0022559678, -0.7366329, 0.03474884, -0.0037822013, 0.43938303, 0.058257002, -0.6080076, -2.396445e-08, -0.00049132935, -2.4171426, -0.32534984, 4.10127)
 material_override = SubResource("StandardMaterial3D_wlx48")
 mesh = SubResource("BoxMesh_jv26f")
 
 [node name="CollisionShape3D28" type="CollisionShape3D" parent="GameViewport/StaticBody3D" unique_id=371360777]
-transform = Transform3D(-0.0022559862, -0.7366328, 0.03474883, -0.0037822013, 0.43938297, 0.058257014, -0.60800767, -1.9279765e-10, -0.00049133104, -2.4171426, -0.32534984, 4.10127)
+transform = Transform3D(-0.0022559678, -0.7366329, 0.03474884, -0.0037822013, 0.43938303, 0.058257002, -0.6080076, -2.396445e-08, -0.00049132935, -2.4171426, -0.32534984, 4.10127)
 shape = SubResource("ConcavePolygonShape3D_hnn05")
 
 [node name="MeshInstance3D31" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1538876097]
-transform = Transform3D(0.0030411803, 0.73663205, -0.034748163, -0.0037822, 0.43938288, 0.05825701, 0.60800415, -0.0009513062, 0.00053620606, -3.8832455, -0.32534972, 4.10127)
+transform = Transform3D(0.003041161, 0.7366319, -0.034748163, -0.0037821997, 0.4393828, 0.05825695, 0.6080041, -0.000951285, 0.0005362044, -3.883245, -0.3253497, 4.10127)
 material_override = SubResource("StandardMaterial3D_5j5e2")
 mesh = SubResource("BoxMesh_jv26f")
 
@@ -586,7 +588,7 @@ transform = Transform3D(0.0030411803, 0.73663205, -0.034748163, -0.0037822, 0.43
 shape = SubResource("ConcavePolygonShape3D_wxmgb")
 
 [node name="MeshInstance3D32" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1086118581]
-transform = Transform3D(6.602438e-05, -0.73956364, -0.0010147864, -0.0044034887, -0.011088461, 0.06768148, -0.6080169, 2.194327e-11, -0.0004902865, -3.1403718, -0.13052207, 4.10127)
+transform = Transform3D(6.602438e-05, -0.7395635, -0.0010147863, -0.0044034887, -0.011088459, 0.06768148, -0.6080168, 2.1943267e-11, -0.0004902865, -3.1403713, -0.117044896, 4.10127)
 material_override = SubResource("StandardMaterial3D_c020q")
 mesh = SubResource("BoxMesh_jv26f")
 
@@ -599,9 +601,6 @@ transform = Transform3D(0.25492415, 0, 0, 0, 0.16165704, 0, 0, 0, 0.2177565, -3.
 
 [node name="MeshInstance3D" parent="GameViewport/StaticBody3D/Spikes" index="0" unique_id=375723437]
 surface_material_override/0 = SubResource("StandardMaterial3D_k2mw1")
-
-[node name="Spikes6" parent="GameViewport/StaticBody3D" unique_id=177855395 instance=ExtResource("8_jv26f")]
-transform = Transform3D(1.1855263, 0, 0, 0, 0.16165698, 0, 0, 0, 0.21775639, -7.972884, -0.6772356, -3.4233475)
 
 [node name="Spikes5" parent="GameViewport/StaticBody3D" unique_id=577845808 instance=ExtResource("8_jv26f")]
 transform = Transform3D(0.25492415, 0, 0, 0, 0.05677618, 0, 0, 0, 0.21775639, -7.9971304, -0.30979782, 2.7870197)
@@ -623,6 +622,75 @@ transform = Transform3D(10.138695, 0, 0, 0, 0.99999976, 0, 0, 0, 7.6415596, 0, -
 mesh = SubResource("PlaneMesh_afv7b")
 surface_material_override/0 = SubResource("ShaderMaterial_7r2dd")
 
+[node name="Coins" type="Node3D" parent="GameViewport/StaticBody3D/MeshInstance3D34" unique_id=2066951084]
+transform = Transform3D(0.0032877345, 0, 0, 0, 0.033333346, 0, 0, 0, 0.004362111, 0, 2.9416163, 0)
+
+[node name="Coin" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1597211057 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -32.007, -13, 123)
+
+[node name="Coin2" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1247797542 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -96, -1, 123)
+
+[node name="Coin3" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1735337839 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -239, -13, 123)
+
+[node name="Coin4" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1320935368 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -239, -5.527, 83.939)
+
+[node name="Coin5" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1340928596 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -228.5, -13.05, -47.9)
+
+[node name="Coin6" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1461089363 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -244.7, -13.05, -47.992)
+
+[node name="Coin7" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=44892009 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -228.5, -13.05, -32.366)
+
+[node name="Coin8" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=741679220 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -244.7, -12.5, -32.678)
+
+[node name="Coin9" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1368787573 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -244.7, -12.5, -17)
+
+[node name="Coin10" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=666920548 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -228.5, -13, -17)
+
+[node name="Coin11" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=64155010 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.89899, 35.672318, -29.490147)
+
+[node name="Coin22" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=482111058 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.44386, 35.672318, -29.490147)
+
+[node name="Coin12" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=2047942030 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -253.15866, 35.0329, -7.828741)
+
+[node name="Coin21" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=153067207 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.30678, 35.0329, -7.828741)
+
+[node name="Coin13" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1911430978 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.40935, 34.866802, 14.966578)
+
+[node name="Coin20" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1847532773 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.4673, 34.866802, 14.966578)
+
+[node name="Coin14" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=195908922 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -150)
+
+[node name="Coin15" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1065557199 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -170)
+
+[node name="Coin16" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=1093311472 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -165)
+
+[node name="Coin17coo" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=546054561 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -145)
+
+[node name="Coin18" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=380639718 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -155)
+
+[node name="Coin19" parent="GameViewport/StaticBody3D/MeshInstance3D34/Coins" unique_id=652949879 instance=ExtResource("9_rb0md")]
+transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -160)
+
 [node name="BottleKetchup" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1075280174 groups=["freezable"]]
 transform = Transform3D(0.6666665, 0, 0, 0, 0.6666665, 0, 0, 0, 0.6666665, -7.8797593, -0.5194146, -3.7462082)
 mesh = SubResource("ArrayMesh_7r2dd")
@@ -637,11 +705,43 @@ light_color = Color(1, 1, 0.4249097, 1)
 light_energy = 3.376
 
 [node name="MeshInstance3D36" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=953486548]
-transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999857, -2.1020153, 2.753423, -1.1095858)
+transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999857, -2.1020153, 2.6954858, -0.89618057)
 mesh = SubResource("BoxMesh_g4v7s")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvukc")
 
 [node name="CollisionShape3D32" type="CollisionShape3D" parent="GameViewport/StaticBody3D/MeshInstance3D36" unique_id=1685680837]
+shape = SubResource("ConcavePolygonShape3D_iht5x")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=846371235]
+transform = Transform3D(0.99999857, 0, 0, 0, -4.3711307e-08, -0.99999857, 0, 0.99999857, -4.3711307e-08, -2.1020153, -0.2652186, 4.846287)
+mesh = SubResource("BoxMesh_g4v7s")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvukc")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="GameViewport/StaticBody3D/MeshInstance3D37" unique_id=1558166162]
+shape = SubResource("ConcavePolygonShape3D_iht5x")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1081364910]
+transform = Transform3D(0.99999857, 0, 0, 0, -4.3711307e-08, -0.99999857, 0, 0.99999857, -4.3711307e-08, -2.1020153, -0.2652186, -6.12658)
+mesh = SubResource("BoxMesh_g4v7s")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvukc")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="GameViewport/StaticBody3D/MeshInstance3D38" unique_id=1840736391]
+shape = SubResource("ConcavePolygonShape3D_iht5x")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=418079988]
+transform = Transform3D(-4.3711314e-08, 0.99999857, -4.3711314e-08, 0, -4.3711314e-08, -0.99999857, -0.99999857, -4.3711314e-08, 1.910682e-15, 8.195971, -0.91309595, 1.0514587)
+mesh = SubResource("BoxMesh_g4v7s")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvukc")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="GameViewport/StaticBody3D/MeshInstance3D39" unique_id=856251390]
+shape = SubResource("ConcavePolygonShape3D_iht5x")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1054997637]
+transform = Transform3D(-4.3711307e-08, 0.99999857, -4.3711307e-08, 0, -4.3711307e-08, -0.99999857, -0.99999857, -4.3711307e-08, 1.9106808e-15, -8.720644, -0.91309595, 1.0514587)
+mesh = SubResource("BoxMesh_g4v7s")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvukc")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="GameViewport/StaticBody3D/MeshInstance3D40" unique_id=2078563067]
 shape = SubResource("ConcavePolygonShape3D_iht5x")
 
 [node name="GameManager" parent="GameViewport" unique_id=6342885 instance=ExtResource("1_xgxfi")]
@@ -671,84 +771,14 @@ shape = SubResource("BoxShape3D_5f3p6")
 
 [node name="HUD" parent="GameViewport/GameManager" unique_id=1630524627 instance=ExtResource("5_rb0md")]
 
-[node name="Coins" type="Node3D" parent="GameViewport" unique_id=2066951084]
-
-[node name="Coin" parent="GameViewport/Coins" unique_id=1597211057 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -32.007, -13, 123)
-
-[node name="Coin2" parent="GameViewport/Coins" unique_id=1247797542 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -96, -1, 123)
-
-[node name="Coin3" parent="GameViewport/Coins" unique_id=1735337839 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -239, -13, 123)
-
-[node name="Coin4" parent="GameViewport/Coins" unique_id=1320935368 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -239, -5.527, 83.939)
-
-[node name="Coin5" parent="GameViewport/Coins" unique_id=1340928596 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -228.5, -13.05, -47.9)
-
-[node name="Coin6" parent="GameViewport/Coins" unique_id=1461089363 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -244.7, -13.05, -47.992)
-
-[node name="Coin7" parent="GameViewport/Coins" unique_id=44892009 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -228.5, -13.05, -32.366)
-
-[node name="Coin8" parent="GameViewport/Coins" unique_id=741679220 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -244.7, -12.5, -32.678)
-
-[node name="Coin9" parent="GameViewport/Coins" unique_id=1368787573 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -244.7, -12.5, -17)
-
-[node name="Coin10" parent="GameViewport/Coins" unique_id=666920548 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -228.5, -13, -17)
-
-[node name="Coin11" parent="GameViewport/Coins" unique_id=64155010 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.89899, 35.672318, -29.490147)
-
-[node name="Coin22" parent="GameViewport/Coins" unique_id=482111058 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.44386, 35.672318, -29.490147)
-
-[node name="Coin12" parent="GameViewport/Coins" unique_id=2047942030 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -253.15866, 35.0329, -7.828741)
-
-[node name="Coin21" parent="GameViewport/Coins" unique_id=153067207 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.30678, 35.0329, -7.828741)
-
-[node name="Coin13" parent="GameViewport/Coins" unique_id=1911430978 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -252.40935, 34.866802, 14.966578)
-
-[node name="Coin20" parent="GameViewport/Coins" unique_id=1847532773 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -247.4673, 34.866802, 14.966578)
-
-[node name="Coin14" parent="GameViewport/Coins" unique_id=195908922 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -150)
-
-[node name="Coin15" parent="GameViewport/Coins" unique_id=1065557199 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -170)
-
-[node name="Coin16" parent="GameViewport/Coins" unique_id=1093311472 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -165)
-
-[node name="Coin17coo" parent="GameViewport/Coins" unique_id=546054561 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -145)
-
-[node name="Coin18" parent="GameViewport/Coins" unique_id=380639718 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -155)
-
-[node name="Coin19" parent="GameViewport/Coins" unique_id=652949879 instance=ExtResource("9_rb0md")]
-transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284, 0, 0, 0, 1, -238, 25, -160)
-
 [node name="Environment" type="Node3D" parent="." unique_id=627548670]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1319615241]
-transform = Transform3D(-0.80659944, 0, 0.5910984, 0, 1, 0, -0.5910984, 0, -0.80659944, 26.636116, 0, 110.22252)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment" unique_id=970371158]
-transform = Transform3D(-0.80659944, 0, 0.5910984, 0, 1, 0, -0.5910984, 0, -0.80659944, -127.40913, 0, -109.6255)
-
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Environment" unique_id=1706125020]
-transform = Transform3D(0.9881696, 0, 0.1533653, 0, 1, 0, -0.1533653, 0, 0.9881696, -236.37778, 0, 119.12495)
+[node name="OmniLight3D2" type="OmniLight3D" parent="Environment" unique_id=531272396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 70, 0)
+light_color = Color(1, 1, 0.9098039, 1)
+light_energy = 6.0
+shadow_enabled = true
+omni_range = 670.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2028428800 groups=["world_environment", "world_manager"]]
 environment = SubResource("Environment_jv26f")
