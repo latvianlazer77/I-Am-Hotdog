@@ -308,3 +308,4 @@ volume_db = -0.882
 autoplay = true
 
 [editable path="SubViewportContainer/SubViewport/MenuHotdog"]
+[editable path="CanvasLayer/LevelSelectUI"]

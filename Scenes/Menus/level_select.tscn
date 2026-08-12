@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://ci8w8doucxdtu" path="res://Scripts/level_select.gd" id="1_37jrt"]
 [ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Fonts/Malam Poek.ttf" id="2_leldv"]
+[ext_resource type="FontFile" uid="uid://bydjq6t8y8mxu" path="res://Assets/Fonts/NotoColorEmoji-Regular.ttf" id="3_sis06"]
+
+[sub_resource type="FontVariation" id="FontVariation_mete7"]
+fallbacks = Array[Font]([ExtResource("3_sis06")])
+base_font = ExtResource("2_leldv")
+
+[sub_resource type="FontVariation" id="FontVariation_0qiq5"]
+fallbacks = Array[Font]([ExtResource("3_sis06")])
+base_font = ExtResource("2_leldv")
 
 [node name="LevelSelect" type="Control" unique_id=1256648337]
 layout_mode = 3
@@ -59,35 +68,35 @@ columns = 6
 [node name="Level1Button" type="Button" parent="GridContainer" unique_id=1333574409]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_leldv")
+theme_override_fonts/font = SubResource("FontVariation_mete7")
 text = "Level 1"
 
 [node name="Level2Button" type="Button" parent="GridContainer" unique_id=2011798741]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_leldv")
+theme_override_fonts/font = SubResource("FontVariation_0qiq5")
 text = "Level 2"
 
 [node name="Level3Button" type="Button" parent="GridContainer" unique_id=1416777013]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_leldv")
+theme_override_fonts/font = SubResource("FontVariation_0qiq5")
 text = "Level 3"
 
 [node name="Level4Button" type="Button" parent="GridContainer" unique_id=1964034674]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_leldv")
+theme_override_fonts/font = SubResource("FontVariation_0qiq5")
 text = "Level 4"
 
 [node name="Level5Button" type="Button" parent="GridContainer" unique_id=432744744]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_leldv")
+theme_override_fonts/font = SubResource("FontVariation_0qiq5")
 text = "Level 5"
 
 [node name="Level6Button" type="Button" parent="GridContainer" unique_id=1469849209]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_leldv")
+theme_override_fonts/font = SubResource("FontVariation_0qiq5")
 text = "Level 6"
