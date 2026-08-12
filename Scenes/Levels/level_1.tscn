@@ -462,7 +462,7 @@ transform = Transform3D(0.050035324, 0, 0, 0, 0.02710576, 0.03959998, 0, -0.1825
 shape = SubResource("ConcavePolygonShape3D_jv26f")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1960669828]
-transform = Transform3D(3.1000535, 0, 0, 0, 0.06842201, 0, 0, 0, 1.238116, -3.5150785, -0.583713, 4.0987296)
+transform = Transform3D(3.1000535, 0, 0, 0, 0.06842201, 0, 0, 0, 1.238116, -3.5132158, -0.583713, 4.098805)
 material_override = SubResource("StandardMaterial3D_ssddb")
 mesh = SubResource("BoxMesh_3mqfk")
 
@@ -600,6 +600,7 @@ shape = SubResource("ConcavePolygonShape3D_k1rx4")
 transform = Transform3D(0.25492415, 0, 0, 0, 0.16165704, 0, 0, 0, 0.2177565, -3.068994, -0.2651031, 4.0534782)
 
 [node name="MeshInstance3D" parent="GameViewport/StaticBody3D/Spikes" index="0" unique_id=375723437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.033, 0.2)
 surface_material_override/0 = SubResource("StandardMaterial3D_k2mw1")
 
 [node name="Spikes5" parent="GameViewport/StaticBody3D" unique_id=577845808 instance=ExtResource("8_jv26f")]
