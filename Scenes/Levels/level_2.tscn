@@ -32,7 +32,10 @@ shader_parameter/proximity_strength = 0.0
 
 [sub_resource type="Environment" id="Environment_fphuk"]
 ambient_light_color = Color(1, 1, 1, 0.6)
-tonemap_mode = 3
+tonemap_mode = 4
+tonemap_white = 19.0
+tonemap_agx_white = 2.0
+tonemap_agx_contrast = 1.0
 ssao_enabled = true
 adjustment_enabled = true
 
@@ -730,18 +733,18 @@ transform = Transform3D(-0.0030892284, -0.99999523, 0, 0.99999523, -0.0030892284
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=737305360]
 transform = Transform3D(0.2962082, 0, 0.9551234, 0, 1, 0, -0.9551234, 0, 0.2962082, 1.1563683, 26.45759, 54.114967)
-light_color = Color(0.3137255, 0.14509805, 0.007843138, 1)
-light_energy = 0.36
+light_color = Color(0.99607843, 0.7490196, 0.5921569, 1)
+light_energy = 0.1
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=522626181]
 transform = Transform3D(0.8540052, 0, -0.52026457, 0, 1, 0, 0.52026457, 0, 0.8540052, 26.051655, 26.457594, 54.114964)
-light_color = Color(0.3137255, 0.14509805, 0.007843138, 1)
-light_energy = 0.36
+light_color = Color(0.99607843, 0.7490196, 0.5921569, 1)
+light_energy = 0.1
 
 [node name="DirectionalLight3D4" type="DirectionalLight3D" parent="GameManager/Environment" unique_id=160359254]
 transform = Transform3D(-0.8131007, 0, -0.582123, 0, 1, 0, 0.582123, 0, -0.8131007, 26.051659, 26.45759, 54.114967)
-light_color = Color(0.3137255, 0.14509805, 0.007843138, 1)
-light_energy = 0.36
+light_color = Color(0.99607843, 0.7490196, 0.5921569, 1)
+light_energy = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GameManager/Environment" unique_id=907718772 groups=["world_environment"]]
 environment = SubResource("Environment_fphuk")
@@ -789,6 +792,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -58.
 navigation_mesh = SubResource("NavigationMesh_uqiic")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GameManager/NavigationRegion3D" unique_id=1136980486]
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2043224889]
+transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 122.469086)
+mesh = SubResource("BoxMesh_blpqv")
+surface_material_override/0 = ExtResource("11_5buja")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1923535474]
 transform = Transform3D(360.5121, 0, 0, 0, 0.9488195, 0, 0, 0, 65.62905, 0, 0, 155.168)
@@ -1176,11 +1184,6 @@ surface_material_override/0 = ExtResource("11_5buja")
 [node name="CollisionShape3D31" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=379404460]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 74.498146)
 shape = SubResource("ConcavePolygonShape3D_1xj2d")
-
-[node name="MeshInstance3D20" type="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2043224889]
-transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 122.469086)
-mesh = SubResource("BoxMesh_blpqv")
-surface_material_override/0 = ExtResource("11_5buja")
 
 [node name="CollisionShape3D32" type="CollisionShape3D" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2113415873]
 transform = Transform3D(358.26593, 0, 0, 0, 58.243694, 0, 0, 0, 0.4964831, 0, -29.50596, 122.469086)
