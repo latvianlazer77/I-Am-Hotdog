@@ -26,9 +26,33 @@ func unlock_level(level_name: String):
 	config.set_value("unlocks", level_name, true)
 	config.save(SAVE_PATH)
 
-func has_ingredient(ingredient_name: String) -> bool:
-	return config.get_value("ingredients", ingredient_name, false)
+# ==========================================
+# ABILITY & UPGRADE SYSTEM
+# ==========================================
 
+func get_ingredient_level(ingredient_name: String) -> int:
+	# Get the value, default to 0 if they don't have it
+	var val = config.get_value("ingredients", ingredient_name, 0)
+	
+	# BACKWARDS COMPATIBILITY: 
+	# If you have an old save file where it was saved as 'true', convert it to level 1!
+	if typeof(val) == TYPE_BOOL:
+		if val == true:
+			return 1
+		else:
+			return 0
+			
+	return val as int
+
+func has_ingredient(ingredient_name: String) -> bool:
+	# If the level is 1 or higher, they own it!
+	return get_ingredient_level(ingredient_name) > 0
+
+func upgrade_ingredient(ingredient_name: String):
+	# Gets the current level and adds 1 to it, then saves it to the hard drive
+	var current_level = get_ingredient_level(ingredient_name)
+	config.set_value("ingredients", ingredient_name, current_level + 1)
+	config.save(SAVE_PATH)
 func save_ingredient(ingredient_name: String):
 	config.set_value("ingredients", ingredient_name, true)
 	config.save(SAVE_PATH)

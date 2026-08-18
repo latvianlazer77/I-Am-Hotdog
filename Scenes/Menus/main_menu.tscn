@@ -222,23 +222,87 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "Shop"
 
-[node name="CloseShopButton" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1951032464]
+[node name="CoinText" type="Label" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=612932208]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -39.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Shop"
+
+[node name="Selection Screen" type="Control" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1933726107]
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 648.0
+
+[node name="SkinsOptionButton" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/Selection Screen" unique_id=804245447]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 49.0
+offset_bottom = 15.5
+grow_vertical = 2
+text = "Skins"
+
+[node name="AbilitiesOptionButton" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/Selection Screen" unique_id=788004528]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Abilities"
+
+[node name="CloseShopButtonSelection" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/Selection Screen" unique_id=163260717]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -131.0
-offset_top = -185.0
-offset_right = 131.0
-offset_bottom = -81.0
+offset_left = 425.0
+offset_top = 423.0
+offset_right = 687.0
+offset_bottom = 527.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 31
 text = "Close"
 
-[node name="BtnRegular" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1122445183]
+[node name="SkinsScreen" type="Control" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=706249422]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseShopButton" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=1951032464]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 425.0
+offset_top = 423.0
+offset_right = 687.0
+offset_bottom = 527.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 31
+text = "Close"
+
+[node name="BtnRegular" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=1122445183]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -249,7 +313,22 @@ offset_bottom = 15.5
 grow_vertical = 2
 text = "Regular skin"
 
-[node name="BtnSilver" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1720854038]
+[node name="BtnSilver" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=1720854038]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 914.0
+offset_top = 288.5
+offset_right = 1112.0
+offset_bottom = 319.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Silver surfer marlon skin"
+
+[node name="BtnIndia" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=976713996]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -261,9 +340,9 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
-text = "Silver surfer marlon skin"
+text = "India Skin"
 
-[node name="BtnIndia" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=976713996]
+[node name="BtnIceman" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=2003020309]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -276,31 +355,120 @@ offset_right = 51.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "India Skin"
+text = "Iceman Skin"
 
-[node name="BtnIceman" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=2003020309]
+[node name="AbilitiesScreen" type="Control" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=316900333]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseShopButton" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=1984788146]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 425.0
+offset_top = 423.0
+offset_right = 687.0
+offset_bottom = 527.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 31
+text = "Close"
+
+[node name="BtnKetchup" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=1567856262]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 199.0
-offset_top = -15.0
-offset_right = 302.0
-offset_bottom = 16.0
+offset_top = -15.5
+offset_right = 103.0
+offset_bottom = 15.5
 grow_vertical = 2
-text = "Iceman Skin"
+text = "Ketchup"
 
-[node name="CoinText" type="Label" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=612932208]
+[node name="BtnMustard" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=1379218551]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 210.0
+offset_top = -15.5
+offset_right = 313.0
+offset_bottom = 15.5
+grow_vertical = 2
+text = "Mustard"
+
+[node name="BtnBun" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=1805053539]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -15.5
+offset_right = -36.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bun
+"
+
+[node name="BtnHotsauce" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=414078496]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 53.5
+offset_top = -15.5
+offset_right = 156.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hotsauce"
+
+[node name="BtnPickle" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=402083510]
+layout_mode = 1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-offset_left = -39.0
-offset_bottom = 23.0
+anchor_bottom = 0.5
+offset_left = -313.0
+offset_top = -15.5
+offset_right = -210.0
+offset_bottom = 15.5
 grow_horizontal = 0
-text = "Shop"
+grow_vertical = 2
+text = "Pickle
+"
+
+[node name="BtnRelish" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=678428694]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Relish
+
+"
 
 [node name="LevelSelectUI" parent="CanvasLayer" unique_id=1256648337 instance=ExtResource("6_4fgt5")]
+visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=502705425]
 stream = ExtResource("2_pha2q")

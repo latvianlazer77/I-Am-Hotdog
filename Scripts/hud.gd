@@ -1,4 +1,5 @@
 extends CanvasLayer
+
 @onready var damage_flash = $DamageFlash
 @onready var timer_label = $TimerLabel
 @onready var popup = $LevelCompletePopup
@@ -93,7 +94,17 @@ func update_slot(ability_name: String):
 	var slot_height = slot.size.y
 
 	if is_active:
-		var time_pct = AbilityManager.timers[ability_name] / AbilityManager.ABILITY_DURATIONS[ability_name]
+		# --- BULLETPROOF CRASH FIX ---
+		var max_duration = 1.0
+		if "ABILITY_DURATIONS" in AbilityManager:
+			max_duration = AbilityManager.ABILITY_DURATIONS.get(ability_name, 1.0)
+		else:
+			printerr("WARNING: ABILITY_DURATIONS missing in AbilityManager!")
+			
+		var current_time = AbilityManager.timers.get(ability_name, 0.0)
+		var time_pct = current_time / max_duration
+		# -----------------------------
+		
 		var covered = slot_height * (1.0 - time_pct)
 		overlay.position.y = 0
 		overlay.size = Vector2(overlay.size.x, covered)

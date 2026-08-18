@@ -9,11 +9,33 @@ extends Control
 @onready var options_popup = $CanvasLayer/MainMenuUI/OptionsPopup
 @onready var shop_popup = $CanvasLayer/MainMenuUI/ShopPopup
 @onready var coin_text = $CanvasLayer/MainMenuUI/ShopPopup/CoinText
-@onready var btn_regular = $CanvasLayer/MainMenuUI/ShopPopup/BtnRegular
-@onready var btn_silver = $CanvasLayer/MainMenuUI/ShopPopup/BtnSilver
-@onready var btn_india = $CanvasLayer/MainMenuUI/ShopPopup/BtnIndia
-@onready var btn_iceman = $CanvasLayer/MainMenuUI/ShopPopup/BtnIceman
-@onready var close_shop_button = $CanvasLayer/MainMenuUI/ShopPopup/CloseShopButton
+
+# === SHOP SCREENS (Updated Paths) ===
+# Notice the quotes around "Selection Screen" because of the space!
+@onready var selection_screen = $"CanvasLayer/MainMenuUI/ShopPopup/Selection Screen"
+@onready var skins_screen = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen
+@onready var abilities_screen = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen
+
+# === SHOP NAVIGATION & CLOSE BUTTONS (Updated Paths) ===
+@onready var btn_go_skins = $"CanvasLayer/MainMenuUI/ShopPopup/Selection Screen/SkinsOptionButton"
+@onready var btn_go_abilities = $"CanvasLayer/MainMenuUI/ShopPopup/Selection Screen/AbilitiesOptionButton"
+@onready var close_shop_button_skins = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/CloseShopButton
+@onready var close_shop_button_abilities = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/CloseShopButton
+
+# === SKIN BUTTONS ===
+@onready var btn_regular = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/BtnRegular
+@onready var btn_silver = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/BtnSilver
+@onready var btn_india = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/BtnIndia
+@onready var btn_iceman = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/BtnIceman
+
+# === ABILITY BUTTONS ===
+@onready var btn_ketchup = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnKetchup
+@onready var btn_mustard = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnMustard
+@onready var btn_bun = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnBun
+@onready var btn_hotsauce = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnHotsauce
+@onready var btn_pickle = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnPickle
+# Assuming Relish is right below Pickle!
+@onready var btn_relish = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnRelish
 
 @onready var menu_hotdog = $SubViewportContainer/SubViewport/MenuHotdog
 @onready var menu_hotdog_mesh = $SubViewportContainer/SubViewport/MenuHotdog/Sausage
@@ -27,10 +49,14 @@ var hotdog_speed = 4.5
 var hotdog_rest_z = 0.0
 var transitioning = false
 
-# Prices for the shop
+# Prices
 const SILVER_PRICE = 100
 const INDIA_PRICE = 67
 const ICEMAN_PRICE = 36
+
+const ABILITY_BASE_COST = 50
+const ABILITY_MULTIPLIER = 25
+const MAX_ABILITY_LEVEL = 5
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -38,21 +64,51 @@ func _ready():
 	level_select_ui.visible = false
 	shop_popup.visible = false
 	
-	play_button.pressed.connect(_on_play)
-	options_button.pressed.connect(_on_options)
-	shop_button.pressed.connect(_on_shop) 
-	quit_button.pressed.connect(_on_quit)
-	back_button.pressed.connect(_on_back)
+	# === SAFE CONNECTIONS ===
+	# These will print an exact error in the console instead of crashing!
 	
-	$CanvasLayer/MainMenuUI/OptionsPopup/CloseButton.pressed.connect(
-		func(): options_popup.visible = false
-	)
+	if play_button: play_button.pressed.connect(_on_play)
+	else: printerr("MISSING NODE: play_button")
+		
+	if options_button: options_button.pressed.connect(_on_options)
+	else: printerr("MISSING NODE: options_button")
+		
+	if shop_button: shop_button.pressed.connect(_on_shop)
+	else: printerr("MISSING NODE: shop_button")
+		
+	if quit_button: quit_button.pressed.connect(_on_quit)
+	else: printerr("MISSING NODE: quit_button")
+		
+	if back_button: back_button.pressed.connect(_on_back)
+	else: printerr("MISSING NODE: back_button")
+
+	var options_close = $CanvasLayer/MainMenuUI/OptionsPopup/CloseButton
+	if options_close: options_close.pressed.connect(func(): options_popup.visible = false)
+	else: printerr("MISSING NODE: OptionsPopup CloseButton")
 	
-	close_shop_button.pressed.connect(func(): shop_popup.visible = false)
-	btn_regular.pressed.connect(_on_regular_skin_pressed)
-	btn_silver.pressed.connect(_on_silver_skin_pressed)
-	btn_india.pressed.connect(_on_india_skin_pressed)
-	btn_iceman.pressed.connect(_on_iceman_skin_pressed) # Added Iceman connection here!
+	if close_shop_button_skins: close_shop_button_skins.pressed.connect(_close_shop)
+	else: printerr("MISSING NODE: close_shop_button_skins")
+		
+	if close_shop_button_abilities: close_shop_button_abilities.pressed.connect(_close_shop)
+	else: printerr("MISSING NODE: close_shop_button_abilities")
+	
+	if btn_go_skins: btn_go_skins.pressed.connect(show_skins_screen)
+	else: printerr("MISSING NODE: btn_go_skins")
+		
+	if btn_go_abilities: btn_go_abilities.pressed.connect(show_abilities_screen)
+	else: printerr("MISSING NODE: btn_go_abilities")
+	
+	if btn_regular: btn_regular.pressed.connect(_on_regular_skin_pressed)
+	if btn_silver: btn_silver.pressed.connect(_on_silver_skin_pressed)
+	if btn_india: btn_india.pressed.connect(_on_india_skin_pressed)
+	if btn_iceman: btn_iceman.pressed.connect(_on_iceman_skin_pressed)
+	
+	if btn_ketchup: btn_ketchup.pressed.connect(func(): handle_ability_button("ketchup"))
+	if btn_mustard: btn_mustard.pressed.connect(func(): handle_ability_button("mustard"))
+	if btn_bun: btn_bun.pressed.connect(func(): handle_ability_button("bun"))
+	if btn_hotsauce: btn_hotsauce.pressed.connect(func(): handle_ability_button("hotsauce"))
+	if btn_pickle: btn_pickle.pressed.connect(func(): handle_ability_button("pickle"))
+	if btn_relish: btn_relish.pressed.connect(func(): handle_ability_button("relish"))
 	
 	# Load shop and 3D skin on startup
 	refresh_shop_ui()
@@ -64,7 +120,6 @@ func _ready():
 	menu_hotdog.position.z = hotdog_rest_z
 	await get_tree().create_timer(0.3).timeout
 	play_title_animation()
-
 func play_title_animation():
 	var tween = create_tween()
 	tween.tween_property(title_label, "scale", Vector2(1.3, 1.3), 0.3).set_trans(Tween.TRANS_EXPO)
@@ -136,21 +191,43 @@ func _on_options():
 	options_popup.visible = true
 	
 func _on_shop():
+	show_selection_screen() # Default to the folder view!
 	refresh_shop_ui()
 	shop_popup.visible = true
 
-func _on_quit():
-	get_tree().quit()
+func _close_shop():
+	shop_popup.visible = false
+	show_selection_screen() # Resets it so next time you open the shop, you see the folders
 
 # ==========================================
-# SCALABLE SHOP SYSTEM
+# SHOP NAVIGATION
+# ==========================================
+
+func show_selection_screen():
+	selection_screen.visible = true
+	skins_screen.visible = false
+	abilities_screen.visible = false
+
+func show_skins_screen():
+	selection_screen.visible = false
+	skins_screen.visible = true
+	abilities_screen.visible = false
+
+func show_abilities_screen():
+	selection_screen.visible = false
+	skins_screen.visible = false
+	abilities_screen.visible = true
+
+# ==========================================
+# SCALABLE SHOP SYSTEM (SKINS & ABILITIES)
 # ==========================================
 
 func refresh_shop_ui():
 	coin_text.text = "Coins: " + str(SaveData.get_coins())
+	
+	# --- SKINS UPDATE ---
 	var equipped = SaveData.get_equipped_skin()
 	
-	# Regular Skin Check
 	if equipped == "regular" or equipped == "default":
 		btn_regular.text = "EQUIPPED"
 		btn_regular.disabled = true
@@ -158,7 +235,6 @@ func refresh_shop_ui():
 		btn_regular.text = "EQUIP REGULAR"
 		btn_regular.disabled = false
 		
-	# Silver Skin Check
 	if equipped == "silver":
 		btn_silver.text = "EQUIPPED"
 		btn_silver.disabled = true
@@ -169,7 +245,6 @@ func refresh_shop_ui():
 		btn_silver.text = "BUY SILVER (" + str(SILVER_PRICE) + " Coins)"
 		btn_silver.disabled = false
 		
-	# India Skin Check
 	if equipped == "india":
 		btn_india.text = "EQUIPPED"
 		btn_india.disabled = true
@@ -180,7 +255,6 @@ func refresh_shop_ui():
 		btn_india.text = "BUY INDIA (" + str(INDIA_PRICE) + " Coins)"
 		btn_india.disabled = false
 		
-	# Iceman Skin Check (Added here!)
 	if equipped == "iceman":
 		btn_iceman.text = "EQUIPPED"
 		btn_iceman.disabled = true
@@ -190,6 +264,28 @@ func refresh_shop_ui():
 	else:
 		btn_iceman.text = "BUY ICEMAN (" + str(ICEMAN_PRICE) + " Coins)"
 		btn_iceman.disabled = false
+
+	# --- ABILITIES UPDATE ---
+	update_ability_button_text(btn_ketchup, "ketchup", "Ketchup")
+	update_ability_button_text(btn_mustard, "mustard", "Mustard")
+	update_ability_button_text(btn_bun, "bun", "Bun")
+	update_ability_button_text(btn_hotsauce, "hotsauce", "Hot Sauce")
+	update_ability_button_text(btn_pickle, "pickle", "Pickle")
+	if btn_relish:
+		update_ability_button_text(btn_relish, "relish", "Relish")
+
+func update_ability_button_text(btn: Button, ability_id: String, display_name: String):
+	var level = SaveData.get_ingredient_level(ability_id)
+	if level >= MAX_ABILITY_LEVEL:
+		btn.text = display_name + " (MAX LEVEL)"
+		btn.disabled = true
+	else:
+		var cost = ABILITY_BASE_COST + (level * ABILITY_MULTIPLIER)
+		if level == 0:
+			btn.text = "BUY " + display_name + " (" + str(cost) + " Coins)"
+		else:
+			btn.text = "UPGRADE " + display_name + " Lvl " + str(level + 1) + " (" + str(cost) + " Coins)"
+		btn.disabled = false
 
 func handle_skin_button(skin_name: String, price: int):
 	if skin_name == "regular" or skin_name == "default":
@@ -208,6 +304,21 @@ func handle_skin_button(skin_name: String, price: int):
 	refresh_shop_ui()
 	update_menu_hotdog_skin()
 
+func handle_ability_button(ability_name: String):
+	var current_level = SaveData.get_ingredient_level(ability_name)
+	if current_level >= MAX_ABILITY_LEVEL:
+		return
+		
+	var cost = ABILITY_BASE_COST + (current_level * ABILITY_MULTIPLIER)
+	
+	if SaveData.spend_coins(cost):
+		SaveData.upgrade_ingredient(ability_name)
+		print(ability_name + " upgraded to level ", SaveData.get_ingredient_level(ability_name))
+	else:
+		print("Not enough coins for " + ability_name + " upgrade!")
+		
+	refresh_shop_ui()
+
 func _on_regular_skin_pressed():
 	handle_skin_button("regular", 0)
 
@@ -217,7 +328,7 @@ func _on_silver_skin_pressed():
 func _on_india_skin_pressed():
 	handle_skin_button("india", INDIA_PRICE)
 
-func _on_iceman_skin_pressed(): # Added Iceman press function!
+func _on_iceman_skin_pressed(): 
 	handle_skin_button("iceman", ICEMAN_PRICE)
 
 # ==========================================
@@ -237,9 +348,12 @@ func update_menu_hotdog_skin():
 		"india": 
 			var india_mat = preload("res://Materials/india.tres")
 			menu_hotdog_mesh.set_surface_override_material(0, india_mat)
-		"iceman": # Added Iceman material here!
+		"iceman": 
 			var iceman_mat = preload("res://Materials/ice.tres")
 			menu_hotdog_mesh.set_surface_override_material(0, iceman_mat)
 		_: 
 			var classic_mat = preload("res://Materials/classic.tres")
 			menu_hotdog_mesh.set_surface_override_material(0, classic_mat)
+
+func _on_quit():
+	get_tree().quit()
