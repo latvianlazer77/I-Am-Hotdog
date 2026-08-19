@@ -233,6 +233,7 @@ grow_horizontal = 0
 text = "Shop"
 
 [node name="Selection Screen" type="Control" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=1933726107]
+visible = false
 anchors_preset = 0
 offset_right = 1154.0
 offset_bottom = 648.0
@@ -293,71 +294,46 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 425.0
-offset_top = 423.0
-offset_right = 687.0
-offset_bottom = 527.0
+offset_left = -131.0
+offset_top = -104.0
+offset_right = 131.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 31
 text = "Close"
 
-[node name="BtnRegular" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=1122445183]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_right = 103.0
-offset_bottom = 15.5
-grow_vertical = 2
-text = "Regular skin"
-
-[node name="BtnSilver" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=1720854038]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 914.0
-offset_top = 288.5
-offset_right = 1112.0
-offset_bottom = 319.5
-grow_horizontal = 0
-grow_vertical = 2
-text = "Silver surfer marlon skin"
-
-[node name="BtnIndia" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=976713996]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -15.5
-offset_bottom = 15.5
-grow_horizontal = 0
-grow_vertical = 2
-text = "India Skin"
-
-[node name="BtnIceman" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=2003020309]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen" unique_id=1428553901]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.5
-offset_top = -15.5
-offset_right = 51.5
-offset_bottom = 15.5
+offset_left = -249.5
+offset_top = -20.0
+offset_right = 249.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BtnRegular" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/HBoxContainer" unique_id=1122445183]
+layout_mode = 2
+text = "Regular skin"
+
+[node name="BtnSilver" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/HBoxContainer" unique_id=1720854038]
+layout_mode = 2
+text = "Silver surfer marlon skin"
+
+[node name="BtnIndia" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/HBoxContainer" unique_id=976713996]
+layout_mode = 2
+text = "India Skin"
+
+[node name="BtnIceman" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/HBoxContainer" unique_id=2003020309]
+layout_mode = 2
 text = "Iceman Skin"
 
 [node name="AbilitiesScreen" type="Control" parent="CanvasLayer/MainMenuUI/ShopPopup" unique_id=316900333]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,97 +348,53 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 425.0
-offset_top = 423.0
-offset_right = 687.0
-offset_bottom = 527.0
+offset_left = -131.0
+offset_top = -52.0
+offset_right = 131.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 31
 text = "Close"
 
-[node name="BtnKetchup" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=1567856262]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_right = 103.0
-offset_bottom = 15.5
-grow_vertical = 2
-text = "Ketchup"
-
-[node name="BtnMustard" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=1379218551]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 210.0
-offset_top = -15.5
-offset_right = 313.0
-offset_bottom = 15.5
-grow_vertical = 2
-text = "Mustard"
-
-[node name="BtnBun" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=1805053539]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=2001198018]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -156.5
-offset_top = -15.5
-offset_right = -36.5
-offset_bottom = 15.5
+offset_left = -198.0
+offset_top = -20.0
+offset_right = 198.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="BtnKetchup" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer" unique_id=1567856262]
+layout_mode = 2
+text = "Ketchup"
+
+[node name="BtnMustard" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer" unique_id=1379218551]
+layout_mode = 2
+text = "Mustard"
+
+[node name="BtnBun" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer" unique_id=1805053539]
+layout_mode = 2
 text = "Bun
 "
 
-[node name="BtnHotsauce" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=414078496]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 53.5
-offset_top = -15.5
-offset_right = 156.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="BtnHotsauce" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer" unique_id=414078496]
+layout_mode = 2
 text = "Hotsauce"
 
-[node name="BtnPickle" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=402083510]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -313.0
-offset_top = -15.5
-offset_right = -210.0
-offset_bottom = 15.5
-grow_horizontal = 0
-grow_vertical = 2
+[node name="BtnPickle" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer" unique_id=402083510]
+layout_mode = 2
 text = "Pickle
 "
 
-[node name="BtnRelish" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen" unique_id=678428694]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -15.5
-offset_bottom = 15.5
-grow_horizontal = 0
-grow_vertical = 2
+[node name="BtnRelish" type="Button" parent="CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer" unique_id=678428694]
+layout_mode = 2
 text = "Relish
 
 "

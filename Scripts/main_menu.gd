@@ -10,32 +10,30 @@ extends Control
 @onready var shop_popup = $CanvasLayer/MainMenuUI/ShopPopup
 @onready var coin_text = $CanvasLayer/MainMenuUI/ShopPopup/CoinText
 
-# === SHOP SCREENS (Updated Paths) ===
-# Notice the quotes around "Selection Screen" because of the space!
+# === SHOP SCREENS ===
 @onready var selection_screen = $"CanvasLayer/MainMenuUI/ShopPopup/Selection Screen"
 @onready var skins_screen = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen
 @onready var abilities_screen = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen
 
-# === SHOP NAVIGATION & CLOSE BUTTONS (Updated Paths) ===
+# === SHOP NAVIGATION & CLOSE BUTTONS ===
 @onready var btn_go_skins = $"CanvasLayer/MainMenuUI/ShopPopup/Selection Screen/SkinsOptionButton"
 @onready var btn_go_abilities = $"CanvasLayer/MainMenuUI/ShopPopup/Selection Screen/AbilitiesOptionButton"
 @onready var close_shop_button_skins = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/CloseShopButton
 @onready var close_shop_button_abilities = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/CloseShopButton
 
-# === SKIN BUTTONS ===
-@onready var btn_regular = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/BtnRegular
-@onready var btn_silver = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/BtnSilver
-@onready var btn_india = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/BtnIndia
-@onready var btn_iceman = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/BtnIceman
+# === SKIN BUTTONS (Inside HBoxContainer) ===
+@onready var btn_regular = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/HBoxContainer/BtnRegular
+@onready var btn_silver = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/HBoxContainer/BtnSilver
+@onready var btn_india = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/HBoxContainer/BtnIndia
+@onready var btn_iceman = $CanvasLayer/MainMenuUI/ShopPopup/SkinsScreen/HBoxContainer/BtnIceman
 
-# === ABILITY BUTTONS ===
-@onready var btn_ketchup = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnKetchup
-@onready var btn_mustard = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnMustard
-@onready var btn_bun = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnBun
-@onready var btn_hotsauce = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnHotsauce
-@onready var btn_pickle = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnPickle
-# Assuming Relish is right below Pickle!
-@onready var btn_relish = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/BtnRelish
+# === ABILITY BUTTONS (Inside HBoxContainer) ===
+@onready var btn_ketchup = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer/BtnKetchup
+@onready var btn_mustard = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer/BtnMustard
+@onready var btn_bun = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer/BtnBun
+@onready var btn_hotsauce = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer/BtnHotsauce
+@onready var btn_pickle = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer/BtnPickle
+@onready var btn_relish = $CanvasLayer/MainMenuUI/ShopPopup/AbilitiesScreen/HBoxContainer/BtnRelish
 
 @onready var menu_hotdog = $SubViewportContainer/SubViewport/MenuHotdog
 @onready var menu_hotdog_mesh = $SubViewportContainer/SubViewport/MenuHotdog/Sausage
@@ -53,10 +51,19 @@ var transitioning = false
 const SILVER_PRICE = 100
 const INDIA_PRICE = 67
 const ICEMAN_PRICE = 36
-
-const ABILITY_BASE_COST = 50
-const ABILITY_MULTIPLIER = 25
 const MAX_ABILITY_LEVEL = 5
+
+# === CUSTOM ABILITY PRICING ===
+# "base" is the cost for level 1. 
+# "multiplier" is how much the price increases per level.
+const ABILITY_PRICES = {
+	"ketchup":  {"base": 10,  "multiplier": 10},
+	"mustard":  {"base": 30,  "multiplier": 20},
+	"bun":      {"base": 50,  "multiplier": 30},
+	"pickle":   {"base": 60,  "multiplier": 40},
+	"hotsauce": {"base": 80, "multiplier": 50}, # Expensive OP Distance!
+	"relish":   {"base": 100, "multiplier": 60}  # Expensive OP Speed!
+}
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -65,8 +72,6 @@ func _ready():
 	shop_popup.visible = false
 	
 	# === SAFE CONNECTIONS ===
-	# These will print an exact error in the console instead of crashing!
-	
 	if play_button: play_button.pressed.connect(_on_play)
 	else: printerr("MISSING NODE: play_button")
 		
@@ -120,6 +125,7 @@ func _ready():
 	menu_hotdog.position.z = hotdog_rest_z
 	await get_tree().create_timer(0.3).timeout
 	play_title_animation()
+
 func play_title_animation():
 	var tween = create_tween()
 	tween.tween_property(title_label, "scale", Vector2(1.3, 1.3), 0.3).set_trans(Tween.TRANS_EXPO)
@@ -191,13 +197,13 @@ func _on_options():
 	options_popup.visible = true
 	
 func _on_shop():
-	show_selection_screen() # Default to the folder view!
+	show_selection_screen() 
 	refresh_shop_ui()
 	shop_popup.visible = true
 
 func _close_shop():
 	shop_popup.visible = false
-	show_selection_screen() # Resets it so next time you open the shop, you see the folders
+	show_selection_screen() 
 
 # ==========================================
 # SHOP NAVIGATION
@@ -275,16 +281,29 @@ func refresh_shop_ui():
 		update_ability_button_text(btn_relish, "relish", "Relish")
 
 func update_ability_button_text(btn: Button, ability_id: String, display_name: String):
+	var upgrade_stat = ""
+	match ability_id:
+		"ketchup": upgrade_stat = "Speed"
+		"mustard": upgrade_stat = "Duration"
+		"bun": upgrade_stat = "Duration"
+		"hotsauce": upgrade_stat = "Distance"
+		"pickle": upgrade_stat = "Duration"
+		"relish": upgrade_stat = "Speed"
+
 	var level = SaveData.get_ingredient_level(ability_id)
+	
 	if level >= MAX_ABILITY_LEVEL:
 		btn.text = display_name + " (MAX LEVEL)"
 		btn.disabled = true
 	else:
-		var cost = ABILITY_BASE_COST + (level * ABILITY_MULTIPLIER)
+		# Use the brand new Dictionary to get the specific cost for THIS item!
+		var item_data = ABILITY_PRICES.get(ability_id, {"base": 50, "multiplier": 25}) # Fallback just in case
+		var cost = item_data["base"] + (level * item_data["multiplier"])
+		
 		if level == 0:
-			btn.text = "BUY " + display_name + " (" + str(cost) + " Coins)"
+			btn.text = "BUY " + display_name + "\n" + upgrade_stat + " (" + str(cost) + " Coins)"
 		else:
-			btn.text = "UPGRADE " + display_name + " Lvl " + str(level + 1) + " (" + str(cost) + " Coins)"
+			btn.text = "UPGRADE " + display_name + "\n" + upgrade_stat + " Lvl " + str(level + 1) + " (" + str(cost) + " Coins)"
 		btn.disabled = false
 
 func handle_skin_button(skin_name: String, price: int):
@@ -309,7 +328,9 @@ func handle_ability_button(ability_name: String):
 	if current_level >= MAX_ABILITY_LEVEL:
 		return
 		
-	var cost = ABILITY_BASE_COST + (current_level * ABILITY_MULTIPLIER)
+	# Calculate custom cost using the Dictionary here as well!
+	var item_data = ABILITY_PRICES.get(ability_name, {"base": 50, "multiplier": 25})
+	var cost = item_data["base"] + (current_level * item_data["multiplier"])
 	
 	if SaveData.spend_coins(cost):
 		SaveData.upgrade_ingredient(ability_name)

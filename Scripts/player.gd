@@ -67,12 +67,8 @@ func _ready():
 	AbilityManager.timers["relish"] = 0.0
 	roll_sound.autoplay = false
 	
-	# Load the equipped skin right when the player spawns!
 	apply_skin()
 
-# ==========================================
-# SKIN SYSTEM
-# ==========================================
 func apply_skin():
 	if not sausage:
 		print("ERROR: Couldn't find the Sausage mesh to apply the skin!")
@@ -93,9 +89,6 @@ func apply_skin():
 		_: 
 			var classic_mat = preload("res://Materials/classic.tres")
 			sausage.set_surface_override_material(0, classic_mat)
-# ==========================================
-# ABILITIES & GAMEPLAY
-# ==========================================
 
 func _on_ability_activated(ability_name: String):
 	print("Ability activated: ", ability_name)
@@ -169,6 +162,10 @@ func stop_flying():
 	var tween = create_tween()
 	tween.tween_property(camera_pivot, "rotation:x", camera_pivot.rotation.x, 0.3)
 
+func get_current_magnet_radius() -> float:
+	var pickle_level = SaveData.get_ingredient_level("pickle")
+	return MAGNET_RADIUS + (pickle_level * 25.0)
+
 func attract_coins():
 	var current_mat = sausage.get_surface_override_material(0)
 	if current_mat != null:
@@ -176,7 +173,7 @@ func attract_coins():
 		
 	var coins = get_tree().get_nodes_in_group("coin")
 	for coin in coins:
-		if coin.global_position.distance_to(global_position) <= MAGNET_RADIUS:
+		if coin.global_position.distance_to(global_position) <= get_current_magnet_radius():
 			coin.start_attraction()
 
 func start_bun_flash():
@@ -260,7 +257,7 @@ func _process(delta):
 	if AbilityManager.is_active("pickle"):
 		var coins = get_tree().get_nodes_in_group("coin")
 		for coin in coins:
-			if not coin.being_attracted and coin.global_position.distance_to(global_position) <= MAGNET_RADIUS:
+			if not coin.being_attracted and coin.global_position.distance_to(global_position) <= get_current_magnet_radius():
 				coin.start_attraction()
 
 func _physics_process(delta):
@@ -304,7 +301,10 @@ func _physics_process(delta):
 	else:
 		stamina = min(stamina + STAMINA_REGEN * delta, MAX_STAMINA)
 
-	var ketchup_mult = 3.0 if AbilityManager.is_active("ketchup") else 1.0
+	var ketchup_level = SaveData.get_ingredient_level("ketchup")
+	var active_ketchup_mult = 2.0 + (ketchup_level * 0.5) 
+	var ketchup_mult = active_ketchup_mult if AbilityManager.is_active("ketchup") else 1.0
+	
 	var top_speed = (SPRINT_SPEED if is_sprinting else MAX_SPEED) * burn_speed_mult * ketchup_mult
 
 	var input_dir = Vector3.ZERO
@@ -366,7 +366,9 @@ func _handle_flying(delta):
 	input_dir = input_dir.normalized()
 
 	var ketchup_mult = 3.0 if AbilityManager.is_active("ketchup") else 1.0
-	var fly_top_speed = FLY_SPEED * ketchup_mult
+	var relish_level = SaveData.get_ingredient_level("relish")
+	var dynamic_fly_speed = FLY_SPEED + (relish_level * 15.0)
+	var fly_top_speed = dynamic_fly_speed * ketchup_mult
 
 	if input_dir.length() > 0.1:
 		current_speed = min(current_speed + ACCELERATION, fly_top_speed)
@@ -382,7 +384,7 @@ func _handle_flying(delta):
 		sausage.rotate_x(horizontal_speed * delta * 0.3)
 
 	var cam_pitch = camera_pivot.rotation.x
-	var vertical_input = -cam_pitch * FLY_SPEED
+	var vertical_input = -cam_pitch * dynamic_fly_speed
 
 	if global_position.y >= fly_start_height + FLY_MAX_HEIGHT:
 		vertical_input = min(vertical_input, 0.0)
@@ -400,10 +402,13 @@ func perform_dash():
 	dash_dir.y = 0
 	dash_dir = dash_dir.normalized()
 
+	var sauce_lvl = SaveData.get_ingredient_level("hotsauce")
+	var actual_dash_distance = DASH_DISTANCE + (sauce_lvl * 20.0)
+
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
 		global_position,
-		global_position + dash_dir * DASH_DISTANCE
+		global_position + dash_dir * actual_dash_distance
 	)
 	query.exclude = [self]
 	var result = space_state.intersect_ray(query)
@@ -411,7 +416,7 @@ func perform_dash():
 	if result:
 		dash_target = result.position - dash_dir * 0.2
 	else:
-		dash_target = global_position + dash_dir * DASH_DISTANCE
+		dash_target = global_position + dash_dir * actual_dash_distance
 
 	dash_progress = 0.0
 	dash_particles.emitting = true
@@ -424,7 +429,7 @@ func perform_dash():
 	var tween = create_tween()
 	tween.tween_method(func(v):
 		global_position = dash_start.lerp(dash_target, v)
-	, 0.0, 1.0, DASH_DISTANCE / DASH_SPEED)
+	, 0.0, 1.0, actual_dash_distance / DASH_SPEED)
 	tween.tween_callback(func():
 		sausage.visible = true
 		is_dashing = false

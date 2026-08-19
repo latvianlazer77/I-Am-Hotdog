@@ -10,8 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://ct6jp730kv04d" path="res://Assets/Images/spark_01.png" id="4_u0h2j"]
 [ext_resource type="Texture2D" uid="uid://dhs8m8y44j83d" path="res://Assets/Images/spark_03.png" id="6_5v5kr"]
 [ext_resource type="Texture2D" uid="uid://crhn54ocns7kh" path="res://Assets/Images/star_07.png" id="7_tv2my"]
-[ext_resource type="Texture2D" uid="uid://cgd6hjjmgn71l" path="res://Assets/Images/star_09.png" id="10_aeb1s"]
+[ext_resource type="QuadMesh" uid="uid://crdolf6wb4nrt" path="res://Materials/cooeffect.tres" id="10_0mnc1"]
 [ext_resource type="AudioStream" uid="uid://b4fp00ygvbv31" path="res://Assets/Audio/Rolling.mp3" id="11_aeb1s"]
+[ext_resource type="Texture2D" uid="uid://nwugf1ydfcg8" path="res://Assets/Images/star_08.png" id="13_mv6qj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aeb1s"]
 radius = 1.5283203
@@ -112,6 +113,8 @@ material = SubResource("StandardMaterial3D_11bkn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81fj7"]
 lifetime_randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 0.01
 direction = Vector3(0, -1, -1)
 initial_velocity_min = 46.55
 initial_velocity_max = 54.6
@@ -126,16 +129,6 @@ billboard_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_5v5kr"]
 material = SubResource("StandardMaterial3D_mfqaq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aeb1s"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.61138725, 1, 0.47657922, 1)
-albedo_texture = ExtResource("10_aeb1s")
-billboard_mode = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_hvqex"]
-material = SubResource("StandardMaterial3D_aeb1s")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aeb1s"]
 render_priority = 0
 shader = ExtResource("4_11bkn")
@@ -145,6 +138,28 @@ shader_parameter/rim_width = 1.5
 material = SubResource("ShaderMaterial_aeb1s")
 radius = 1.0
 height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8e88"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.83968925, 0.1165291, 0.26167297, 1)
+albedo_texture = ExtResource("13_mv6qj")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_o3fnh"]
+material = SubResource("StandardMaterial3D_u8e88")
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i25un"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.7421157, 0.70512533, 0.22931457, 1)
+albedo_texture = ExtResource("4_mfqaq")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_as0g4"]
+material = SubResource("StandardMaterial3D_i25un")
+orientation = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=2768484 groups=["player"]]
 collision_mask = 3
@@ -210,9 +225,10 @@ process_material = SubResource("ParticleProcessMaterial_81fj7")
 draw_pass_1 = SubResource("QuadMesh_5v5kr")
 
 [node name="RelishParticles" type="GPUParticles3D" parent="." unique_id=674195561]
+emitting = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_81fj7")
-draw_pass_1 = SubResource("QuadMesh_hvqex")
+draw_pass_1 = ExtResource("10_0mnc1")
 
 [node name="TimeSphere" type="MeshInstance3D" parent="." unique_id=620897403]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6588134, 0, 0.40953517)
@@ -220,3 +236,14 @@ mesh = SubResource("SphereMesh_hvqex")
 
 [node name="RollSound" type="AudioStreamPlayer" parent="." unique_id=848298032]
 stream = ExtResource("11_aeb1s")
+
+[node name="coo" type="GPUParticles3D" parent="." unique_id=214429497]
+visible = false
+emitting = false
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_81fj7")
+draw_passes = 4
+draw_pass_1 = SubResource("QuadMesh_o3fnh")
+draw_pass_2 = SubResource("QuadMesh_as0g4")
+draw_pass_3 = null
+draw_pass_4 = null
