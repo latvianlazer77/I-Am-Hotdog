@@ -1,7 +1,5 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://brp13x56ltik4"]
 
-[ext_resource type="Texture2D" uid="uid://cos7n32b6ux5b" path="res://Assets/Images/painted_wall_color.png" id="1_vji8e"]
-
 [sub_resource type="Shader" id="Shader_phny5"]
 code = "shader_type spatial;
 render_mode diffuse_lambert, specular_schlick_ggx;
@@ -118,13 +116,16 @@ void fragment() {
 }
 "
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2pv0o"]
+load_path = "res://.godot/imported/painted_wall_color.png-eef177e0a665859431ab6d027a8a0851.s3tc.ctex"
+
 [resource]
 render_priority = 0
 shader = SubResource("Shader_phny5")
-shader_parameter/wall_color = Color(0.82, 0.78, 0.52, 1)
-shader_parameter/stain_color = Color(0.55, 0.48, 0.3, 1)
-shader_parameter/mold_color = Color(0.38, 0.42, 0.28, 1)
-shader_parameter/albedo_texture = ExtResource("1_vji8e")
+shader_parameter/wall_color = Color(0.89411765, 0.9019608, 0.65882355, 1)
+shader_parameter/stain_color = Color(0.6117647, 0.5764706, 0.34509805, 1)
+shader_parameter/mold_color = Color(0.5568628, 0.5294118, 0.26666668, 1)
+shader_parameter/albedo_texture = SubResource("CompressedTexture2D_2pv0o")
 shader_parameter/use_textures = true
 shader_parameter/roughness = 0.88
 shader_parameter/metallic = 0.0
