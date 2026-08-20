@@ -10,7 +10,7 @@ const BASE_COOLDOWNS = {
 	"relish": 1.0
 }
 
-const BASE_DURATIONS = {
+const ABILITY_DURATIONS = {
 	"ketchup": 15.0,
 	"mustard": 6.0,
 	"bun": 6.0,
@@ -36,10 +36,9 @@ func get_max_duration(ability_name: String) -> float:
 	var level = SaveData.get_ingredient_level(ability_name)
 	if level <= 0: return 0.0
 	
-	# Formula: Adds 2 extra seconds of duration for every upgrade level above 1
 	var extra_time = (level - 1) * 2.0 
-	return BASE_DURATIONS[ability_name] + extra_time
-
+	# Make sure it reads from ABILITY_DURATIONS here too!
+	return ABILITY_DURATIONS[ability_name] + extra_time
 func get_max_cooldown(ability_name: String) -> float:
 	var level = SaveData.get_ingredient_level(ability_name)
 	if level <= 0: return 999.0
