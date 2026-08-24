@@ -188,10 +188,10 @@ albedo_color = Color(1, 0.93333334, 0.90588236, 1)
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2mw1"]
-albedo_color = Color(1, 0.93333334, 0.90588236, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hll7"]
-albedo_color = Color(1, 0.93333334, 0.90588236, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6b06j"]
 albedo_color = Color(0.70980394, 0.61960787, 0.47843137, 1)
@@ -288,7 +288,7 @@ background_color = Color(1, 1, 1, 1)
 background_energy_multiplier = 5.0
 sky = SubResource("Sky_k2mw1")
 ambient_light_source = 2
-ambient_light_color = Color(0.90876085, 0.75031245, 0.6090043, 1)
+ambient_light_color = Color(0.96462613, 0.89471996, 0.83506644, 1)
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.1
 glow_blend_mode = 0
@@ -780,9 +780,9 @@ shape = SubResource("BoxShape3D_5f3p6")
 [node name="OmniLight3D2" type="OmniLight3D" parent="Environment" unique_id=531272396]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 70, 0)
 light_color = Color(1, 1, 0.9098039, 1)
-light_energy = 6.0
-shadow_enabled = true
+light_energy = 5.0
 shadow_bias = 1.0
+distance_fade_shadow = 0.0
 omni_range = 670.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2028428800 groups=["world_environment", "world_manager"]]
