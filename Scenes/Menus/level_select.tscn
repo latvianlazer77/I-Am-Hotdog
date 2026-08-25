@@ -61,9 +61,9 @@ offset_right = 311.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 50
+theme_override_constants/h_separation = 200
 theme_override_constants/v_separation = 0
-columns = 6
+columns = 3
 
 [node name="Level1Button" type="Button" parent="GridContainer" unique_id=1333574409]
 layout_mode = 2
@@ -84,18 +84,21 @@ theme_override_fonts/font = SubResource("FontVariation_0qiq5")
 text = "Level 3"
 
 [node name="Level4Button" type="Button" parent="GridContainer" unique_id=1964034674]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("FontVariation_0qiq5")
 text = "Level 4"
 
 [node name="Level5Button" type="Button" parent="GridContainer" unique_id=432744744]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("FontVariation_0qiq5")
 text = "Level 5"
 
 [node name="Level6Button" type="Button" parent="GridContainer" unique_id=1469849209]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("FontVariation_0qiq5")

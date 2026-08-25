@@ -159,20 +159,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MainMenuUI/OptionsPopup" unique_id=1610232895]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.47700003
-anchor_top = 0.437
-anchor_right = 0.47700003
-anchor_bottom = 0.437
-offset_left = 25.495972
-offset_top = -23.175995
-offset_right = 53.99597
-offset_bottom = -0.17599487
-grow_horizontal = 2
-text = "boi"
-
 [node name="CloseButton" type="Button" parent="CanvasLayer/MainMenuUI/OptionsPopup" unique_id=1501792278]
 layout_mode = 1
 anchors_preset = 7
@@ -188,6 +174,12 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 31
 text = "Close"
+
+[node name="BlackoutToggle" type="CheckButton" parent="CanvasLayer/MainMenuUI/OptionsPopup" unique_id=1165737869]
+layout_mode = 1
+offset_right = 190.0
+offset_bottom = 31.0
+text = "Helen Keller Mode"
 
 [node name="Control" type="Control" parent="CanvasLayer/MainMenuUI" unique_id=423799430]
 anchors_preset = 0

@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var blackout_rect = $BlackoutRect # Make sure this is at the top of your scene tree!
 @onready var damage_flash = $DamageFlash
 @onready var timer_label = $TimerLabel
 @onready var popup = $LevelCompletePopup
@@ -25,7 +26,6 @@ var on_complete_callback = null
 var float_tween = null
 var spin_tween = null
 
-
 const ABILITY_DATA = {
 	"ketchup":  {"emoji": "🍅", "key": "Q",     "color": Color(1, 0.2, 0.2)},
 	"mustard":  {"emoji": "🟡", "key": "Z",     "color": Color(1, 0.85, 0.0)},
@@ -38,6 +38,15 @@ const ABILITY_DATA = {
 const ABILITY_ORDER = ["ketchup", "mustard", "bun", "hotsauce", "pickle", "relish"]
 
 func _ready():
+	# --- BLACKOUT MODE SETUP ---
+	var is_blackout = SaveData.is_blackout_mode()
+	if blackout_rect:
+		blackout_rect.visible = is_blackout
+	
+	var bus_index = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_mute(bus_index, is_blackout)
+	# ---------------------------
+
 	damage_flash.visible = false
 	damage_flash.color = Color(1, 0, 0, 0)
 	popup.visible = false
@@ -94,7 +103,6 @@ func update_slot(ability_name: String):
 	var slot_height = slot.size.y
 
 	if is_active:
-		# --- BULLETPROOF CRASH FIX ---
 		var max_duration = 1.0
 		if "ABILITY_DURATIONS" in AbilityManager:
 			max_duration = AbilityManager.ABILITY_DURATIONS.get(ability_name, 1.0)
@@ -103,7 +111,6 @@ func update_slot(ability_name: String):
 			
 		var current_time = AbilityManager.timers.get(ability_name, 0.0)
 		var time_pct = current_time / max_duration
-		# -----------------------------
 		
 		var covered = slot_height * (1.0 - time_pct)
 		overlay.position.y = 0
@@ -190,8 +197,11 @@ func play_ingredient_cutscene(emoji: String, display_name: String, on_complete: 
 		if player:
 			player.get_node("Sausage").rotation.y = 0.0
 		cutscene_layer.visible = false
+		
+		# Always show the ability bar again after the cutscene ends
 		ability_bar.visible = true
 		timer_label.visible = true
+		
 		if on_complete_callback:
 			on_complete_callback.call()
 	)
@@ -221,30 +231,47 @@ func _input(event):
 
 func _process(_delta):
 	if player and not popup.visible and not cutscene_layer.visible:
-		stamina_bar.value = player.get_stamina_percent() * 100
-		stamina_bar.visible = player.is_sprinting or player.stamina < player.MAX_STAMINA
-		if player.stamina < 25.0:
-			stamina_bar.modulate = Color(1, 0.2, 0.2)
-		else:
-			stamina_bar.modulate = Color(0.2, 1, 0.4)
-
-		var burn = player.get_burn_percent()
-		if burn > 0:
-			burn_bar.visible = true
-			burn_bar.value = burn * 100
-			burn_overlay.visible = true
-			burn_overlay.color = Color(1, 0, 0, burn * 0.6)
-			if burn > 0.75:
-				burn_bar.modulate = Color(1, 0.1, 0.1)
-			elif burn > 0.5:
-				burn_bar.modulate = Color(1, 0.5, 0.0)
-			else:
-				burn_bar.modulate = Color(1, 1, 0.0)
-		else:
+		
+		# --- CONSTANTLY CHECK BLACKOUT MODE ---
+		var is_blackout = SaveData.is_blackout_mode()
+		
+		if blackout_rect:
+			blackout_rect.visible = is_blackout
+		# --------------------------------------
+		
+		if is_blackout:
+			# Force these to stay hidden during gameplay
+			stamina_bar.visible = false
 			burn_bar.visible = false
 			burn_overlay.visible = false
-			burn_overlay.color = Color(1, 0, 0, 0)
+			# ability_bar is NO LONGER forced invisible here!
+		else:
+			# Normal gameplay logic
+			stamina_bar.value = player.get_stamina_percent() * 100
+			stamina_bar.visible = player.is_sprinting or player.stamina < player.MAX_STAMINA
+			if player.stamina < 25.0:
+				stamina_bar.modulate = Color(1, 0.2, 0.2)
+			else:
+				stamina_bar.modulate = Color(0.2, 1, 0.4)
 
+			var burn = player.get_burn_percent()
+			if burn > 0:
+				burn_bar.visible = true
+				burn_bar.value = burn * 100
+				burn_overlay.visible = true
+				burn_overlay.color = Color(1, 0, 0, burn * 0.6)
+				if burn > 0.75:
+					burn_bar.modulate = Color(1, 0.1, 0.1)
+				elif burn > 0.5:
+					burn_bar.modulate = Color(1, 0.5, 0.0)
+				else:
+					burn_bar.modulate = Color(1, 1, 0.0)
+			else:
+				burn_bar.visible = false
+				burn_overlay.visible = false
+				burn_overlay.color = Color(1, 0, 0, 0)
+
+		# This needs to update regardless of blackout mode!
 		for ability in ABILITY_ORDER:
 			if AbilityManager.is_active(ability) or AbilityManager.get_cooldown_percent(ability) > 0:
 				update_slot(ability)
