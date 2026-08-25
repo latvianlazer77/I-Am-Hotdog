@@ -42,6 +42,7 @@ extends Control
 @onready var main_menu_ui = $CanvasLayer/MainMenuUI
 @onready var level_select_ui = $CanvasLayer/LevelSelectUI
 @onready var back_button = $CanvasLayer/LevelSelectUI/BackButton
+@onready var blackout_toggle = $CanvasLayer/MainMenuUI/OptionsPopup/BlackoutToggle
 
 var hotdog_speed = 4.5
 var hotdog_rest_z = 0.0
@@ -61,7 +62,7 @@ const ABILITY_PRICES = {
 	"mustard":  {"base": 30,  "multiplier": 20},
 	"bun":      {"base": 50,  "multiplier": 30},
 	"pickle":   {"base": 60,  "multiplier": 40},
-	"hotsauce": {"base": 80, "multiplier": 50}, # Expensive OP Distance!
+	"hotsauce": {"base": 80,  "multiplier": 50}, # Expensive OP Distance!
 	"relish":   {"base": 100, "multiplier": 60}  # Expensive OP Speed!
 }
 
@@ -90,6 +91,14 @@ func _ready():
 	var options_close = $CanvasLayer/MainMenuUI/OptionsPopup/CloseButton
 	if options_close: options_close.pressed.connect(func(): options_popup.visible = false)
 	else: printerr("MISSING NODE: OptionsPopup CloseButton")
+	
+	if blackout_toggle:
+		blackout_toggle.button_pressed = SaveData.is_blackout_mode()
+		blackout_toggle.toggled.connect(_on_blackout_toggled)
+		
+	# Make sure the audio updates immediately if they launch the game with the setting on
+	var bus_index = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_mute(bus_index, SaveData.is_blackout_mode())
 	
 	if close_shop_button_skins: close_shop_button_skins.pressed.connect(_close_shop)
 	else: printerr("MISSING NODE: close_shop_button_skins")
@@ -125,6 +134,7 @@ func _ready():
 	menu_hotdog.position.z = hotdog_rest_z
 	await get_tree().create_timer(0.3).timeout
 	play_title_animation()
+	
 
 func play_title_animation():
 	var tween = create_tween()
@@ -281,29 +291,36 @@ func refresh_shop_ui():
 		update_ability_button_text(btn_relish, "relish", "Relish")
 
 func update_ability_button_text(btn: Button, ability_id: String, display_name: String):
-	var upgrade_stat = ""
+	# 1. Figure out the specific stat boost string
+	var stat_boost = ""
 	match ability_id:
-		"ketchup": upgrade_stat = "Speed"
-		"mustard": upgrade_stat = "Duration"
-		"bun": upgrade_stat = "Duration"
-		"hotsauce": upgrade_stat = "Distance"
-		"pickle": upgrade_stat = "Duration"
-		"relish": upgrade_stat = "Speed"
+		"ketchup": stat_boost = "+0.5 Speed"
+		"mustard": stat_boost = "+2.0s Duration"
+		"bun": stat_boost = "+2.0s Duration"
+		"hotsauce": stat_boost = "+20 Distance"
+		"pickle": stat_boost = "+25 Radius"
+		"relish": stat_boost = "+15 Fly Speed"
 
+	# 2. Get the current level
 	var level = SaveData.get_ingredient_level(ability_id)
 	
+	# 3. Handle max level
 	if level >= MAX_ABILITY_LEVEL:
 		btn.text = display_name + " (MAX LEVEL)"
 		btn.disabled = true
 	else:
-		# Use the brand new Dictionary to get the specific cost for THIS item!
-		var item_data = ABILITY_PRICES.get(ability_id, {"base": 50, "multiplier": 25}) # Fallback just in case
+		# 4. Calculate cost dynamically based on your dictionary
+		var item_data = ABILITY_PRICES.get(ability_id, {"base": 50, "multiplier": 25})
 		var cost = item_data["base"] + (level * item_data["multiplier"])
 		
+		# 5. Format the text based on ownership
 		if level == 0:
-			btn.text = "BUY " + display_name + "\n" + upgrade_stat + " (" + str(cost) + " Coins)"
+			# Player doesn't own it yet -> "Purchase"
+			btn.text = "Purchase " + display_name + "\n" + stat_boost + " (" + str(cost) + " Coins)"
 		else:
-			btn.text = "UPGRADE " + display_name + "\n" + upgrade_stat + " Lvl " + str(level + 1) + " (" + str(cost) + " Coins)"
+			# Player owns it -> "Upgrade"
+			btn.text = "Upgrade " + display_name + " Lvl " + str(level + 1) + "\n" + stat_boost + " (" + str(cost) + " Coins)"
+			
 		btn.disabled = false
 
 func handle_skin_button(skin_name: String, price: int):
@@ -375,6 +392,10 @@ func update_menu_hotdog_skin():
 		_: 
 			var classic_mat = preload("res://Materials/classic.tres")
 			menu_hotdog_mesh.set_surface_override_material(0, classic_mat)
-
+func _on_blackout_toggled(toggled_on: bool):
+	SaveData.set_blackout_mode(toggled_on)
+	var bus_index = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_mute(bus_index, toggled_on)
+	
 func _on_quit():
 	get_tree().quit()
