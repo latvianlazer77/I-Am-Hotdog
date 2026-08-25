@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_rb0md"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="6_u5ghp"]
 [ext_resource type="PackedScene" uid="uid://fvk4ajqp8fof" path="res://Scenes/Level Essentials/spikes.tscn" id="8_jv26f"]
+[ext_resource type="PackedScene" uid="uid://hk7ss2mvo6tk" path="res://model/source/Stop_Sign.fbx" id="8_tjl6l"]
 [ext_resource type="PackedScene" uid="uid://c2ylildwd0ftp" path="res://Scenes/Level Essentials/coin.tscn" id="9_rb0md"]
 [ext_resource type="PackedScene" uid="uid://b2lxq6fynw0py" path="res://Scenes/Level Essentials/fridge.tscn" id="14_k2mw1"]
 
@@ -285,12 +286,18 @@ size = Vector3(60.79419, 1, 41.92099)
 
 [sub_resource type="Environment" id="Environment_jv26f"]
 background_color = Color(1, 1, 1, 1)
-background_energy_multiplier = 5.0
 sky = SubResource("Sky_k2mw1")
 ambient_light_source = 2
 ambient_light_color = Color(0.96462613, 0.89471996, 0.83506644, 1)
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.1
+tonemap_mode = 3
+tonemap_exposure = 0.96
+tonemap_white = 19.0
+ssao_enabled = true
+ssil_enabled = true
+ssil_radius = 10.0
+ssil_sharpness = 1.0
 glow_blend_mode = 0
 glow_hdr_luminance_cap = 2.0
 adjustment_enabled = true
@@ -314,7 +321,7 @@ transform = Transform3D(16.916111, 0, 0, 0, 5.8843265, 0, 0, 0, 10.666513, -0.12
 shape = SubResource("ConcavePolygonShape3D_tlcug")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1512645222]
-transform = Transform3D(5.6306505, 0, 0, 0, 0.19372714, 0, 0, 0, 1.2692356, 0.77519304, -0.6162782, 4.08082)
+transform = Transform3D(5.63065, 0, 0, 0, 0.19372714, 0, 0, 0, 1.2692355, 0.775193, -0.6162782, 4.08082)
 material_override = SubResource("StandardMaterial3D_hsb6f")
 mesh = SubResource("BoxMesh_tlcug")
 
@@ -622,7 +629,7 @@ transform = Transform3D(0.015974872, -0.04294359, 0, 0.024771024, 0.027694331, 0
 shape = SubResource("ConcavePolygonShape3D_yltcr")
 
 [node name="MeshInstance3D34" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=878716606]
-transform = Transform3D(10.138695, 0, 0, 0, 0.99999976, 0, 0, 0, 7.6415596, 0, -2.941615, 0)
+transform = Transform3D(10.138694, 0, 0, 0, 0.9999997, 0, 0, 0, 7.6415596, 0, -2.9416149, 0)
 mesh = SubResource("PlaneMesh_afv7b")
 surface_material_override/0 = SubResource("ShaderMaterial_7r2dd")
 
@@ -748,6 +755,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kvukc")
 [node name="CollisionShape3D32" type="CollisionShape3D" parent="GameViewport/StaticBody3D/MeshInstance3D40" unique_id=2078563067]
 shape = SubResource("ConcavePolygonShape3D_iht5x")
 
+[node name="Stop_Sign" parent="GameViewport/StaticBody3D" unique_id=1073294128 instance=ExtResource("8_tjl6l")]
+transform = Transform3D(-3.2986933e-09, 0, 0.08021369, 0, 0.08689778, 0, -0.07546536, 0, -3.5062493e-09, -1.9726977, -0.5204633, 3.6363935)
+
+[node name="Stop_Sign2" parent="GameViewport/StaticBody3D" unique_id=1400427523 instance=ExtResource("8_tjl6l")]
+transform = Transform3D(-3.2986929e-09, 0, 0.08021369, 0, 0.08689778, 0, -0.07546536, 0, -3.5062493e-09, -1.9726975, -0.5204632, 4.5059896)
+
 [node name="GameManager" parent="GameViewport" unique_id=6342885 instance=ExtResource("1_xgxfi")]
 
 [node name="SpawnPoint" parent="GameViewport/GameManager" unique_id=1033269942 instance=ExtResource("2_5f3p6")]
@@ -790,6 +803,25 @@ environment = SubResource("Environment_jv26f")
 
 [node name="fridge" parent="." unique_id=720257649 instance=ExtResource("14_k2mw1")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 137.53178, -88.42571, 33.430588)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=662668424]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -59.175888, -5.3084106, 109.12042)
+text = "Obstacle in front be careful
+
+
+
+"
+font_size = 96
+outline_size = 32
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=234891805]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -59.175888, -5.3084106, 135.31128)
+text = "前はデカちん気をつけてください
+
+
+"
+font_size = 96
+outline_size = 32
 
 [editable path="GameViewport/StaticBody3D/Spikes"]
 [editable path="GameViewport/StaticBody3D/Spikes5"]
