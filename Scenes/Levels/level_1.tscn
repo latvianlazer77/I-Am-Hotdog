@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://hk7ss2mvo6tk" path="res://model/source/Stop_Sign.fbx" id="8_tjl6l"]
 [ext_resource type="PackedScene" uid="uid://c2ylildwd0ftp" path="res://Scenes/Level Essentials/coin.tscn" id="9_rb0md"]
 [ext_resource type="PackedScene" uid="uid://b2lxq6fynw0py" path="res://Scenes/Level Essentials/fridge.tscn" id="14_k2mw1"]
+[ext_resource type="AudioStream" uid="uid://17ohf8omcl2m" path="res://Assets/Audio/YTDown.com_YouTube_Sade-Paradise-Instrumental_Media_q0YYx6SAiEw_006_128k.mp3" id="16_3628d"]
+[ext_resource type="FontFile" uid="uid://dq6s4bgxsh47h" path="res://Assets/Fonts/MPLUSU-Black.ttf" id="16_irw6p"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_seteq"]
 flip_faces = true
@@ -45,6 +47,11 @@ albedo_color = Color(0.65882355, 0.6627451, 0.6784314, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_irw6p"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5f3p6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5f3p6"]
+size = Vector3(60.79419, 1, 41.92099)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_31phq"]
 
@@ -277,11 +284,6 @@ size = Vector3(20.893127, 0.28187206, 11.266792)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iht5x"]
 data = PackedVector3Array(-10.4466, 0.1409, 6.1542997, 10.4466, 0.1409, 6.1542997, -10.4466, -0.1409, 6.1542997, 10.4466, 0.1409, 6.1542997, 10.4466, -0.1409, 6.1542997, -10.4466, -0.1409, 6.1542997, 10.4466, 0.1409, -6.1542997, -10.4466, 0.1409, -6.1542997, 10.4466, -0.1409, -6.1542997, -10.4466, 0.1409, -6.1542997, -10.4466, -0.1409, -6.1542997, 10.4466, -0.1409, -6.1542997, 10.4466, 0.1409, 6.1542997, 10.4466, 0.1409, -6.1542997, 10.4466, -0.1409, 6.1542997, 10.4466, 0.1409, -6.1542997, 10.4466, -0.1409, -6.1542997, 10.4466, -0.1409, 6.1542997, -10.4466, 0.1409, -6.1542997, -10.4466, 0.1409, 6.1542997, -10.4466, -0.1409, -6.1542997, -10.4466, 0.1409, 6.1542997, -10.4466, -0.1409, 6.1542997, -10.4466, -0.1409, -6.1542997, 10.4466, 0.1409, 6.1542997, -10.4466, 0.1409, 6.1542997, 10.4466, 0.1409, -6.1542997, -10.4466, 0.1409, 6.1542997, -10.4466, 0.1409, -6.1542997, 10.4466, 0.1409, -6.1542997, -10.4466, -0.1409, 6.1542997, 10.4466, -0.1409, 6.1542997, -10.4466, -0.1409, -6.1542997, 10.4466, -0.1409, 6.1542997, 10.4466, -0.1409, -6.1542997, -10.4466, -0.1409, -6.1542997)
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5f3p6"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5f3p6"]
-size = Vector3(60.79419, 1, 41.92099)
-
 [sub_resource type="Sky" id="Sky_k2mw1"]
 
 [sub_resource type="Environment" id="Environment_jv26f"]
@@ -355,6 +357,33 @@ mesh = SubResource("BoxMesh_tjl6l")
 [node name="CollisionShape3D15" type="CollisionShape3D" parent="GameViewport/StaticBody3D" unique_id=1274445367]
 transform = Transform3D(-7.620989e-08, 0, 1.2692347, 0, 0.06676464, 0, -1.7434785, 0, -5.548e-08, -7.979909, -0.5357373, -1.1124506)
 shape = SubResource("ConcavePolygonShape3D_irw6p")
+
+[node name="GameManager" parent="GameViewport/StaticBody3D/CollisionShape3D15" unique_id=6342885 instance=ExtResource("1_xgxfi")]
+
+[node name="SpawnPoint" parent="GameViewport/StaticBody3D/CollisionShape3D15/GameManager" unique_id=1033269942 instance=ExtResource("2_5f3p6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.11, -13.679, 123)
+
+[node name="Player" parent="GameViewport/StaticBody3D/CollisionShape3D15/GameManager" unique_id=2768484 instance=ExtResource("1_tlcug")]
+transform = Transform3D(-0.06963459, 0, -0.99757254, 0, 1, 0, 0.99757254, 0, -0.06963459, 29.11, -13.679, 124.9075)
+
+[node name="KillZone" parent="GameViewport/StaticBody3D/CollisionShape3D15/GameManager" unique_id=716045432 instance=ExtResource("4_jv26f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -44.554478, 108.2054)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GameViewport/StaticBody3D/CollisionShape3D15/GameManager/KillZone" unique_id=1201002944]
+shape = SubResource("WorldBoundaryShape3D_5f3p6")
+
+[node name="FinishZone" parent="GameViewport/StaticBody3D/CollisionShape3D15/GameManager" unique_id=631311601 instance=ExtResource("6_u5ghp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -236.2406, -14.705885, -112.62941)
+visible = false
+
+[node name="KillZone2" parent="GameViewport/StaticBody3D/CollisionShape3D15/GameManager" unique_id=1199234586 instance=ExtResource("4_jv26f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.51378, -15.582436, 140.07469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameViewport/StaticBody3D/CollisionShape3D15/GameManager/KillZone2" unique_id=1946086175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.16748, 0.2840643, -12.804878)
+shape = SubResource("BoxShape3D_5f3p6")
+
+[node name="HUD" parent="GameViewport/StaticBody3D/CollisionShape3D15/GameManager" unique_id=1630524627 instance=ExtResource("5_rb0md")]
 
 [node name="MeshInstance3D18" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=1866666253]
 transform = Transform3D(-1.7338728e-08, 0, 0.42381355, 0, 0.014434375, 0, -0.3966638, 0, -1.8525476e-08, -7.627485, -0.50668484, -0.5758511)
@@ -617,6 +646,7 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, -0.032531857, 0.19
 transform = Transform3D(0.25492415, 0, 0, 0, 0.05677618, 0, 0, 0, 0.21775639, -7.9971304, -0.30979782, 2.7870197)
 
 [node name="MeshInstance3D" parent="GameViewport/StaticBody3D/Spikes5" index="0" unique_id=375723437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, -2.3555293, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_7hll7")
 
 [node name="MeshInstance3D33" type="MeshInstance3D" parent="GameViewport/StaticBody3D" unique_id=439381958]
@@ -761,33 +791,6 @@ transform = Transform3D(-3.2986933e-09, 0, 0.08021369, 0, 0.08689778, 0, -0.0754
 [node name="Stop_Sign2" parent="GameViewport/StaticBody3D" unique_id=1400427523 instance=ExtResource("8_tjl6l")]
 transform = Transform3D(-3.2986929e-09, 0, 0.08021369, 0, 0.08689778, 0, -0.07546536, 0, -3.5062493e-09, -1.9726975, -0.5204632, 4.5059896)
 
-[node name="GameManager" parent="GameViewport" unique_id=6342885 instance=ExtResource("1_xgxfi")]
-
-[node name="SpawnPoint" parent="GameViewport/GameManager" unique_id=1033269942 instance=ExtResource("2_5f3p6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.11, -13.679, 123)
-
-[node name="Player" parent="GameViewport/GameManager" unique_id=2768484 instance=ExtResource("1_tlcug")]
-transform = Transform3D(-0.06963459, 0, -0.99757254, 0, 1, 0, 0.99757254, 0, -0.06963459, 29.11, -13.679, 124.9075)
-
-[node name="KillZone" parent="GameViewport/GameManager" unique_id=716045432 instance=ExtResource("4_jv26f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -44.554478, 108.2054)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="GameViewport/GameManager/KillZone" unique_id=1201002944]
-shape = SubResource("WorldBoundaryShape3D_5f3p6")
-
-[node name="FinishZone" parent="GameViewport/GameManager" unique_id=631311601 instance=ExtResource("6_u5ghp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -236.2406, -14.705885, -112.62941)
-visible = false
-
-[node name="KillZone2" parent="GameViewport/GameManager" unique_id=1199234586 instance=ExtResource("4_jv26f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.51378, -15.582436, 140.07469)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameViewport/GameManager/KillZone2" unique_id=1946086175]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.16748, 0.2840643, -12.804878)
-shape = SubResource("BoxShape3D_5f3p6")
-
-[node name="HUD" parent="GameViewport/GameManager" unique_id=1630524627 instance=ExtResource("5_rb0md")]
-
 [node name="Environment" type="Node3D" parent="." unique_id=627548670]
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Environment" unique_id=531272396]
@@ -820,8 +823,14 @@ text = "前はデカちん気をつけてください
 
 
 "
+font = ExtResource("16_irw6p")
 font_size = 96
 outline_size = 32
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1582705821]
+stream = ExtResource("16_3628d")
+autoplay = true
+parameters/looping = true
 
 [editable path="GameViewport/StaticBody3D/Spikes"]
 [editable path="GameViewport/StaticBody3D/Spikes5"]

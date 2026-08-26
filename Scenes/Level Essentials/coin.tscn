@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://lacg836nlwvp" path="res://Scripts/coin.gd" id="1_whmch"]
 [ext_resource type="Shader" uid="uid://ckytnfkbmmvjd" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="2_q8t31"]
 [ext_resource type="Shader" uid="uid://b21hk1giqs044" path="res://Scripts/outline.gdshader" id="3_m5r4l"]
+[ext_resource type="AudioStream" uid="uid://drd427mi37grw" path="res://Assets/Audio/Cod Points.mp3" id="4_0cov6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m5r4l"]
 render_priority = 0
@@ -58,3 +59,7 @@ light_indirect_energy = 1.5
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1940209160]
 mesh = SubResource("CylinderMesh_q8t31")
 surface_material_override/0 = SubResource("ShaderMaterial_0cov6")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=1761190528]
+stream = ExtResource("4_0cov6")
+volume_db = -0.5

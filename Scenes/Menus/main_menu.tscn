@@ -181,6 +181,16 @@ offset_right = 190.0
 offset_bottom = 31.0
 text = "Helen Keller Mode"
 
+[node name="Button" type="Button" parent="CanvasLayer/MainMenuUI/OptionsPopup" unique_id=622063088]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 192.0
+grow_vertical = 0
+text = "SECRET (DO NOT PRESS)"
+
 [node name="Control" type="Control" parent="CanvasLayer/MainMenuUI" unique_id=423799430]
 anchors_preset = 0
 offset_right = 40.0
@@ -401,6 +411,8 @@ visible = false
 stream = ExtResource("2_pha2q")
 volume_db = -0.882
 autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/MainMenuUI/OptionsPopup/Button" to="." method="_on_button_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/MenuHotdog"]
 [editable path="CanvasLayer/LevelSelectUI"]

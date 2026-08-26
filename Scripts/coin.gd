@@ -10,6 +10,9 @@ var collected = false
 var time = 0.0
 var being_attracted = false
 
+@onready var pickup_sound = $PickupSound
+@onready var mesh = $MeshInstance3D
+
 func _ready():
 	base_y = global_position.y
 	body_entered.connect(_on_body_entered)
@@ -18,13 +21,14 @@ func _ready():
 	mat.emission_enabled = true
 	mat.emission = Color(1, 0.7, 0)
 	mat.emission_energy_multiplier = 2.0
-	$MeshInstance3D.set_surface_override_material(0, mat)
+	mesh.set_surface_override_material(0, mat)
 
 func _process(delta):
 	if AbilityManager.is_active("mustard"):
 		return
 	if collected:
 		return
+		
 	if being_attracted:
 		var player = get_tree().get_first_node_in_group("player")
 		if player:
@@ -34,22 +38,7 @@ func _process(delta):
 			if global_position.distance_to(player.global_position) < 0.5:
 				collect()
 		return
-	time += delta
-	position.y = base_y + sin(time * BOB_SPEED) * BOB_HEIGHT
-	rotate_y(SPIN_SPEED * delta)
-	if collected:
-		return
-
-	if being_attracted:
-		var player = get_tree().get_first_node_in_group("player")
-		if player:
-			var dir = (player.global_position - global_position).normalized()
-			global_position += dir * MAGNET_SPEED * delta
-			rotate_y(SPIN_SPEED * 3.0 * delta)
-			if global_position.distance_to(player.global_position) < 0.5:
-				collect()
-		return
-
+		
 	time += delta
 	position.y = base_y + sin(time * BOB_SPEED) * BOB_HEIGHT
 	rotate_y(SPIN_SPEED * delta)
@@ -64,10 +53,29 @@ func _on_body_entered(body):
 func collect():
 	collected = true
 	SaveData.add_coins(1)
+	
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		hud.update_coin_label()
+		
+	# 1. Play the sound immediately!
+	if pickup_sound:
+		pickup_sound.play()
+
+	# 2. Play the shrinking animation
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector3(2.0, 2.0, 2.0), 0.1)
 	tween.tween_property(self, "scale", Vector3(0.0, 0.0, 0.0), 0.1)
-	tween.tween_callback(func(): queue_free())
+	
+	# Wait for the visual shrink to finish
+	await tween.finished
+	
+	# 3. Hide the coin just in case, while we wait for the sound to finish
+	mesh.visible = false
+	
+	# 4. If the sound is still playing, wait for it to finish before deleting the coin
+	if pickup_sound and pickup_sound.playing:
+		await pickup_sound.finished
+		
+	# 5. Now it is safe to completely delete the coin!
+	queue_free()

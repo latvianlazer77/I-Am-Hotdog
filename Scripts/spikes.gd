@@ -1,6 +1,6 @@
 extends Node3D
 
-const EXTEND_OFFSET = Vector3(0, 3, 0)
+const EXTEND_OFFSET = Vector3(0, 6, 0)
 const EXTEND_TIME = 1
 const RETRACT_TIME = 0.3
 const WAIT_TIME = 1.5

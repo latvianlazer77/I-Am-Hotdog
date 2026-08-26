@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by3rjj5g5beug"
-path="res://.godot/imported/star_03.png-135aa44c5e3fb5c729db5782870d0654.ctex"
+uid="uid://dl448n3hb4rrc"
+path="res://.godot/imported/SSAURA57.png-cb9f92f5aead3977665d13eafe7124f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/star_03.png"
-dest_files=["res://.godot/imported/star_03.png-135aa44c5e3fb5c729db5782870d0654.ctex"]
+source_file="res://Assets/Images/SSAURA57.png"
+dest_files=["res://.godot/imported/SSAURA57.png-cb9f92f5aead3977665d13eafe7124f9.ctex"]
 
 [params]
 
