@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c86dl8qktmbds"]
 
-[ext_resource type="Texture2D" uid="uid://b6q6mk14y0d8d" path="res://textures/coo.png" id="1_sy7oa"]
+[ext_resource type="Texture2D" uid="uid://b6q6mk14y0d8d" path="res://Assets/Images/coo.png" id="1_sy7oa"]
 [ext_resource type="PackedScene" uid="uid://d15uc4100mh2i" path="res://Scenes/Level Essentials/game_manager.tscn" id="1_yy6i0"]
-[ext_resource type="Texture2D" uid="uid://utfc0wyaonoc" path="res://textures/coolest.png" id="2_13yca"]
+[ext_resource type="Texture2D" uid="uid://utfc0wyaonoc" path="res://Assets/Images/coolest.png" id="2_13yca"]
 [ext_resource type="PackedScene" uid="uid://khmc8ciokm30" path="res://Scenes/Level Essentials/spawn_point.tscn" id="2_167vu"]
 [ext_resource type="PackedScene" uid="uid://dnfs7tvfkb8gf" path="res://Scenes/Level Essentials/player.tscn" id="3_x1k1j"]
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="4_4ahh4"]
@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://ccaysxtp6wn07" path="res://Assets/Audio/Iceman.mp3" id="8_x1k1j"]
 [ext_resource type="PackedScene" uid="uid://c2ylildwd0ftp" path="res://Scenes/Level Essentials/coin.tscn" id="10_dl55b"]
 [ext_resource type="PackedScene" uid="uid://dab80x73ea20e" path="res://Scenes/Level Essentials/sweeper.tscn" id="14_1hf40"]
-[ext_resource type="ArrayMesh" uid="uid://dka7lkr3cwfsa" path="res://model/SnowyMountain_V2_Mesh.obj" id="14_13yca"]
+[ext_resource type="ArrayMesh" uid="uid://dka7lkr3cwfsa" path="res://Assets/Models/SnowyMountain_V2_Mesh.obj" id="14_13yca"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md4x4"]
 albedo_texture = ExtResource("1_sy7oa")

@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dp7mdbq41cqu7" path="res://Assets/Fonts/Malam Poek.ttf" id="4_chkef"]
 [ext_resource type="Material" uid="uid://dq6vffal4272a" path="res://Materials/classic.tres" id="5_j4kqa"]
 [ext_resource type="PackedScene" uid="uid://c8dga51l4a67a" path="res://Scenes/Menus/level_select.tscn" id="6_4fgt5"]
-[ext_resource type="StyleBox" uid="uid://b8778mfvdj2c" path="res://Assets/Images/button.tres" id="6_j4kqa"]
+[ext_resource type="StyleBox" uid="uid://b8778mfvdj2c" path="res://Materials/button.tres" id="6_j4kqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4fgt5"]
 render_priority = 0

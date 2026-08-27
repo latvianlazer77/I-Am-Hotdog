@@ -3,7 +3,6 @@ extends CharacterBody3D
 # --- Node references ---
 @onready var nav = $NavigationAgent3D
 # NEW: Grab the spider's animation player node
-@onready var anim = $Sketchfab_Scene/AnimationPlayer
 
 @export var move_speed := 8.0 
 var player : Node3D = null
@@ -54,12 +53,8 @@ func _on_ability_activated(ability_name: String):
 	if ability_name == "mustard":
 		is_frozen = true
 		# Pause the autoplaying run animation
-		if anim:
-			anim.pause() 
 
 func _on_ability_ended(ability_name: String):
 	if ability_name == "mustard":
 		is_frozen = false
 		# Resume the animation right where it left off
-		if anim:
-			anim.play()

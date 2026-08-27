@@ -1414,203 +1414,203 @@ transform = Transform3D(-2.6787936e-07, -3.5961093e-15, -363.23367, -5.357587e-0
 shape = SubResource("ConcavePolygonShape3D_ia1lp")
 
 [node name="Spikes15" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=177855395 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 82.79122)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 0.03340006, -13.6, 82.79122)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes15" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes22" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=208610192 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 67.430725)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 0.03340006, -13.6, 67.430725)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes22" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes35" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=466120811 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 67.430725)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 0.03340006, -13.6, 67.430725)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes35" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes37" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=899916598 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 31.684875)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 0.03340006, -13.6, 31.684875)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes37" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes26" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=803911484 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -42.2807, -1.7922115, 67.430725)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -42.2807, -13.6, 67.430725)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes26" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes34" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=636595576 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -42.2807, -1.7922115, 32.406696)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -42.2807, -13.6, 32.406696)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes34" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes27" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1364432581 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -87.8379, -1.7922115, 67.430725)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -87.8379, -13.6, 67.430725)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes27" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes32" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=781623546 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -87.8379, -1.7922115, 32.298645)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -87.8379, -13.6, 32.298645)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes32" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes28" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1323212694 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -132.88844, -1.7922115, 67.430725)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -132.88844, -13.6, 67.430725)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes28" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes30" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2109415336 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -132.88844, -1.7922115, 32.17357)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -132.88844, -13.6, 32.17357)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes30" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes23" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1991646818 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 41.9982, -1.7922115, 67.430725)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 41.9982, -13.6, 67.430725)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes23" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes39" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1699064702 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 41.9982, -1.7922115, 31.824783)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 41.9982, -13.6, 31.824783)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes39" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes24" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1237749958 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 87.504456, -1.7922115, 67.430725)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 87.504456, -13.6, 67.430725)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes24" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes41" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=591151586 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 87.504456, -1.7922115, 31.69802)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 87.504456, -13.6, 31.69802)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes41" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes25" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=110531931 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 136.9067, -1.7922115, 67.430725)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 136.9067, -13.6, 67.430725)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes25" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes43" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2120023360 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 136.9067, -1.7922115, 30.703438)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 136.9067, -13.6, 30.703438)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes43" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes19" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=769289405 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -42.227623, -1.7922115, 82.79122)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -42.227623, -13.6, 82.79122)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes19" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes20" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1692965143 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -87.74075, -1.7922115, 82.79122)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -87.74075, -13.6, 82.79122)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes20" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes21" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1815018397 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -132.76627, -1.7922115, 82.79122)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -132.76627, -13.6, 82.79122)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes21" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes16" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1133362187 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 42.07783, -1.7922115, 82.79122)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 42.07783, -13.6, 82.79122)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes16" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes17" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1186615710 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 87.670235, -1.7922115, 82.79122)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 87.670235, -13.6, 82.79122)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes17" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes18" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=2094768288 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 136.80157, -1.7922115, 82.79122)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 136.80157, -13.6, 82.79122)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes18" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1697680416 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 0.03340006, -1.7922115, 118.42254)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 0.03340006, -13.6, 118.42254)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes5" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1118502196 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -42.23032, -1.7922115, 118.42254)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -42.23032, -13.6, 118.42254)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes5" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes6" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1609735015 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -87.80454, -1.7922115, 118.42254)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -87.80454, -13.6, 118.42254)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes6" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes7" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1012199356 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, -132.83401, -1.7922115, 118.42254)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, -132.83401, -13.6, 118.42254)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes7" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes4" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=1927829031 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 136.98056, -1.7922115, 118.42254)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 136.98056, -13.6, 118.42254)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes4" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes3" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=92952952 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 87.43611, -1.7922115, 118.42254)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 87.43611, -13.6, 118.42254)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes3" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_u87on")
 
 [node name="Spikes2" parent="GameManager/NavigationRegion3D/StaticBody3D" unique_id=628311257 instance=ExtResource("8_pnnky")]
-transform = Transform3D(5.799726, 0, 0, 0, 6.7, 0, 0, 0, 8.018766, 42.081253, -1.7922115, 118.42254)
+transform = Transform3D(5.799726, 0, 0, 0, 4, 0, 0, 0, 8.018766, 42.081253, -13.6, 118.42254)
 
 [node name="MeshInstance3D" parent="GameManager/NavigationRegion3D/StaticBody3D/Spikes2" index="0" unique_id=375723437]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03253168, 0)
@@ -1658,14 +1658,14 @@ transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, 98.99893, 58.72270
 transform = Transform3D(5.72, 0, 0, 0, 1, 0, 0, 0, 22.822802, -120.682495, 58.722702, -132.88722)
 
 [node name="TrapTrigger" parent="GameManager" unique_id=564451170 node_paths=PackedStringArray("spawn_location_node") instance=ExtResource("16_yxf76")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3728485, 59.50377, -165.23764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.474567, 59.50377, -165.23764)
 spider_scene = ExtResource("15_t27xo")
 horde_size = 9
 spawn_location_node = NodePath("../SpiderSpawnAnchor")
 bigjok_kickback_position = Vector3(-58.703, 1.053, 156.716)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/TrapTrigger" unique_id=516286839]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.90921, -51.3387, 62.281784)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 488.7617, -51.3387, 62.281784)
 shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="SpiderSpawnAnchor" type="Node3D" parent="GameManager" unique_id=861754653]

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://8ii6khhyycf4"]
 
-[ext_resource type="PackedScene" uid="uid://dc00fhbh8t1y3" path="res://Assets/Models/Crying Head/crying_head.glb" id="1_mny0k"]
 [ext_resource type="Script" uid="uid://b3ja04hvkgo2j" path="res://Scripts/spider.gd" id="1_sk3gp"]
 [ext_resource type="PackedScene" uid="uid://bhnvr1ejo51ub" path="res://Scenes/Level Essentials/kill_zone.tscn" id="3_bqeia"]
 
@@ -23,80 +22,3 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.8698941, 16.39305, 6.
 shape = SubResource("CapsuleShape3D_57qmd")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=634932845]
-
-[node name="Sketchfab_Scene" parent="." unique_id=1379706515 instance=ExtResource("1_mny0k")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 15.349091, 0)
-
-[node name="Skeleton3D" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/CHsk/Object_5" parent_id_path=PackedInt32Array(1379706515, 85537997) index="0" unique_id=924383956]
-bones/1/position = Vector3(-0.00053153373, -0.060011007, 0.037293866)
-bones/1/rotation = Quaternion(0.67996836, 0.0054369653, 0.005097419, 0.73320365)
-bones/2/rotation = Quaternion(0.7907823, -0.016337365, 0.009743452, 0.611802)
-bones/4/rotation = Quaternion(0.9496978, 0.2545962, 0.15691856, -0.09290598)
-bones/5/rotation = Quaternion(-0.0274994, 0.37401387, -0.7009952, 0.6065996)
-bones/6/rotation = Quaternion(0.29093462, 0.7940855, 0.4763086, 0.2406565)
-bones/7/rotation = Quaternion(0.8873722, 0.24647109, -0.1464892, 0.36105892)
-bones/8/rotation = Quaternion(0.4756168, 0.006691844, -0.022013066, 0.87935174)
-bones/10/rotation = Quaternion(0.9467809, -0.26644003, -0.1643883, -0.074780464)
-bones/11/rotation = Quaternion(-0.034900848, -0.35836866, 0.72379273, 0.58862376)
-bones/12/rotation = Quaternion(0.29805645, -0.7880752, -0.47568494, 0.25263345)
-bones/13/rotation = Quaternion(0.90348536, -0.20244849, 0.14693317, 0.34805107)
-bones/14/rotation = Quaternion(0.54663265, 0.00024682283, 0.012333222, 0.8372817)
-bones/16/rotation = Quaternion(0.9568944, 0.025925264, 0.10678411, 0.2688459)
-bones/17/rotation = Quaternion(0.106282994, 0.25107208, -0.08450862, 0.9583972)
-bones/18/rotation = Quaternion(-0.28012365, -0.15676533, -0.53750837, 0.7797693)
-bones/18/scale = Vector3(1.0000069, 0.999998, 0.99999756)
-bones/19/rotation = Quaternion(0.5201916, 0.052511528, 0.27227634, 0.8077802)
-bones/22/rotation = Quaternion(0.9521044, -0.2250468, 0.084704265, 0.18888238)
-bones/23/rotation = Quaternion(-0.48295453, -0.58639354, 0.037949692, 0.6491976)
-bones/23/scale = Vector3(1.000005, 1.0000005, 0.99999547)
-bones/24/rotation = Quaternion(0.19893023, -0.091217116, 0.23511228, 0.9470102)
-bones/24/scale = Vector3(1.0000044, 0.9999908, 1.000005)
-bones/25/rotation = Quaternion(0.007605089, 0.0128057, -0.80087566, 0.5986455)
-bones/26/rotation = Quaternion(-0.104958534, -0.018517384, -0.45565337, 0.88375384)
-bones/28/rotation = Quaternion(0.926289, 0.093482316, 0.014567226, -0.36474317)
-bones/29/rotation = Quaternion(0.0765356, 0.08069071, -0.27210647, 0.9558188)
-bones/30/rotation = Quaternion(0.27152294, 0.17348868, 0.21003622, 0.92307204)
-bones/31/rotation = Quaternion(-0.4701885, -0.24892405, 0.06882928, 0.8439325)
-bones/32/rotation = Quaternion(-0.014726238, 0.00054062164, 0.031327896, 0.9994006)
-bones/34/rotation = Quaternion(0.93741536, 0.05492749, 0.121901795, -0.32152042)
-bones/35/rotation = Quaternion(-0.012834193, -0.09853732, 0.33894494, 0.9355438)
-bones/36/rotation = Quaternion(0.4763686, -0.038793325, -0.14645204, 0.8660946)
-bones/37/rotation = Quaternion(-0.5005584, -0.24830142, 0.16812043, 0.8121104)
-bones/38/rotation = Quaternion(-0.034180045, -0.0025299217, -0.0772909, 0.9964193)
-bones/40/rotation = Quaternion(-0.8396015, 0.14022854, -0.31171095, 0.42218667)
-bones/41/rotation = Quaternion(0.077185296, 0.12409796, -0.32351416, 0.93486935)
-bones/42/rotation = Quaternion(0.41958722, 0.223249, -0.3134498, 0.8221044)
-bones/43/rotation = Quaternion(-0.030199092, 0.107221566, -0.073608294, 0.9910466)
-bones/44/rotation = Quaternion(-0.63130355, -0.18295108, -0.26438236, 0.70575255)
-bones/46/rotation = Quaternion(-0.9245449, -0.17479874, 0.17449981, 0.29019308)
-bones/47/rotation = Quaternion(0.009823382, -0.18122768, 0.42651913, 0.8860821)
-bones/48/rotation = Quaternion(0.33635548, -0.24037293, 0.25060403, 0.87537616)
-bones/49/rotation = Quaternion(0.37115481, 0.4910456, 0.15131935, 0.77344733)
-bones/50/rotation = Quaternion(-0.33109248, -0.22045222, -0.6186386, 0.67754334)
-bones/52/rotation = Quaternion(0.511832, -0.24946684, -0.1539123, 0.8075304)
-bones/55/rotation = Quaternion(0.103242256, -0.7610984, 0.040890608, 0.6390605)
-bones/57/rotation = Quaternion(-0.061247706, 0.053916637, -0.01944135, 0.9964757)
-bones/59/position = Vector3(0.15787147, 0.00418213, -0.15155105)
-bones/59/rotation = Quaternion(0.106946215, -0.015254114, -0.7699028, 0.62895113)
-bones/61/position = Vector3(-0.19390991, 0.02042377, -0.14599001)
-bones/61/rotation = Quaternion(-0.003903001, 0.44175658, 0.557277, 0.7030492)
-bones/63/position = Vector3(0.1334731, -0.216422, -0.16351895)
-bones/63/rotation = Quaternion(0.7071069, 1.1258335e-09, 8.08639e-09, 0.70710677)
-bones/65/position = Vector3(-0.09575768, -0.207741, -0.16361342)
-bones/65/rotation = Quaternion(0.7071069, 7.7930835e-09, 7.2054394e-09, 0.70710665)
-bones/67/position = Vector3(0.1408009, 0.2337234, -0.16217281)
-bones/67/rotation = Quaternion(0.7071069, 4.8511235e-09, 8.086389e-09, 0.70710677)
-bones/69/position = Vector3(-0.07014638, 0.23002198, -0.16751939)
-bones/69/rotation = Quaternion(0.7071069, 4.8511235e-09, 8.086389e-09, 0.70710677)
-
-[node name="������������������" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode" parent_id_path=PackedInt32Array(1379706515, 2060992676) index="2" unique_id=1923606834]
-visible = false
-
-[node name="������������������_Floor_0" parent="Sketchfab_Scene/Sketchfab_model/81a700dfea5f4baaa2796427b2167f7e_fbx/Object_2/RootNode/������������������" index="0" unique_id=662273145]
-visible = false
-
-[node name="AnimationPlayer" parent="Sketchfab_Scene" index="1" unique_id=1432895012]
-autoplay = &"MOVE"
-speed_scale = 3.0
-
-[editable path="Sketchfab_Scene"]

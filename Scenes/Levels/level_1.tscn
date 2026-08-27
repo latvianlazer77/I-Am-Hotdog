@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b33mgi44mkbk0" path="res://Scenes/Level Essentials/hud.tscn" id="5_rb0md"]
 [ext_resource type="PackedScene" uid="uid://we530dimrro0" path="res://Scenes/Level Essentials/finish_zone.tscn" id="6_u5ghp"]
 [ext_resource type="PackedScene" uid="uid://fvk4ajqp8fof" path="res://Scenes/Level Essentials/spikes.tscn" id="8_jv26f"]
-[ext_resource type="PackedScene" uid="uid://hk7ss2mvo6tk" path="res://model/source/Stop_Sign.fbx" id="8_tjl6l"]
+[ext_resource type="PackedScene" uid="uid://hk7ss2mvo6tk" path="res://Assets/Models/source/Stop_Sign.fbx" id="8_tjl6l"]
 [ext_resource type="PackedScene" uid="uid://c2ylildwd0ftp" path="res://Scenes/Level Essentials/coin.tscn" id="9_rb0md"]
 [ext_resource type="PackedScene" uid="uid://b2lxq6fynw0py" path="res://Scenes/Level Essentials/fridge.tscn" id="14_k2mw1"]
 [ext_resource type="AudioStream" uid="uid://17ohf8omcl2m" path="res://Assets/Audio/YTDown.com_YouTube_Sade-Paradise-Instrumental_Media_q0YYx6SAiEw_006_128k.mp3" id="16_3628d"]
@@ -636,7 +636,7 @@ shape = SubResource("ConcavePolygonShape3D_k1rx4")
 transform = Transform3D(0.25492415, 0, 0, 0, 0.16165704, 0, 0, 0, 0.2177565, -3.068994, -0.2651031, 4.0534782)
 
 [node name="MeshInstance3D" parent="GameViewport/StaticBody3D/Spikes" index="0" unique_id=375723437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.033, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, -2.2720075, 0.20000076)
 surface_material_override/0 = SubResource("StandardMaterial3D_k2mw1")
 
 [node name="CollisionShape3D" parent="GameViewport/StaticBody3D/Spikes/Area3D" parent_id_path=PackedInt32Array(1413839985, 1210945430) index="0" unique_id=367737234]
