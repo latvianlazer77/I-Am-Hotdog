@@ -793,16 +793,26 @@ transform = Transform3D(-3.2986929e-09, 0, 0.08021369, 0, 0.08689778, 0, -0.0754
 
 [node name="Environment" type="Node3D" parent="." unique_id=627548670]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2028428800 groups=["world_environment", "world_manager"]]
+environment = SubResource("Environment_jv26f")
+
 [node name="OmniLight3D2" type="OmniLight3D" parent="Environment" unique_id=531272396]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 70, 0)
 light_color = Color(1, 1, 0.9098039, 1)
-light_energy = 5.0
+light_energy = 16.0
 shadow_bias = 1.0
 distance_fade_shadow = 0.0
 omni_range = 670.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2028428800 groups=["world_environment", "world_manager"]]
-environment = SubResource("Environment_jv26f")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=866967033]
+transform = Transform3D(-0.89717907, 0, 0.44166693, 0, 1, 0, -0.44166693, 0, -0.89717907, 23.752338, 0, 57.743347)
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Environment" unique_id=1078748906]
+transform = Transform3D(0.23231596, 0, 0.97264034, 0, 1, 0, -0.97264034, 0, 0.23231596, -133.51381, 0, 108.40283)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment" unique_id=368543276]
+transform = Transform3D(0.5677827, 0, -0.82317847, 0, 1, 0, 0.82317847, 0, 0.5677827, 108.36874, 0, 108.4827)
+shadow_enabled = true
 
 [node name="fridge" parent="." unique_id=720257649 instance=ExtResource("14_k2mw1")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 137.53178, -88.42571, 33.430588)
